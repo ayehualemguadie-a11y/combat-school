@@ -39,7 +39,8 @@ db.prepare("INSERT INTO admins (username, password) VALUES (?, ?)").run("admin",
 // ዋና ገጽ (Home Page)
 app.get("/", (req, res) => {
     const settings = db.prepare("SELECT * FROM settings LIMIT 1").get();
-    const news = db.prepare("SELECT * FROM news ORDER BY id DESC LIMIT 5").all();
+const news = db.prepare("SELECT * FROM news ORDER BY id DESC LIMIT 20").all();
+
     res.render("index", { settings, news });
 });
 
