@@ -4,6 +4,8 @@ const multer = require("multer");
 const path = require("path");
 const db = require("./database");
 const app = express();
+db.prepare("DELETE FROM admins").run();
+db.prepare("INSERT INTO admins (username, password) VALUES (?, ?)").run("admin", "admin123");
 app.set("view engine", "ejs");
 app.set("views", "./views");
 const storage = multer.diskStorage({

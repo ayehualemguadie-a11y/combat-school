@@ -21,6 +21,15 @@ CREATE TABLE IF NOT EXISTS gallery (
 console.log("Gallery table ready.");
 
 console.log("Admin table ready.");
+const admin = db.prepare("SELECT * FROM admins WHERE id = 1").get();
+
+if (!admin) {
+    db.prepare(
+        "INSERT INTO admins (username, password) VALUES (?, ?)"
+    ).run("admin", "admin123");
+
+    console.log("Default admin created.");
+}
 db.prepare(`
 CREATE TABLE IF NOT EXISTS news (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
