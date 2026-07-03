@@ -10,6 +10,17 @@ CREATE TABLE IF NOT EXISTS admins (
     password TEXT
 )
 `).run();
+const existingAdmin = db.prepare(
+    "SELECT * FROM admins WHERE username = ?"
+).get("admin");
+
+if (!existingAdmin) {
+    db.prepare(
+        "INSERT INTO admins (username, password) VALUES (?, ?)"
+    ).run("admin", "admin123");
+
+    console.log("Default admin created.");
+}
 db.prepare(`
 CREATE TABLE IF NOT EXISTS gallery (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
