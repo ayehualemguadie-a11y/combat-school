@@ -1,69 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
-<meta charset="UTF-8">
-
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Manage Admin Account</title>
-
-<link rel="stylesheet" href="style.css">
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Admin Account</title>
+    <link rel="stylesheet" href="/style.css"> <!-- Render ላይ እንዲሰራ /style.css ተደርጓል -->
 </head>
 
 <body>
 
 <header>
-
-<img src="images/logo.jpg" width="100">
-
-<h1>Main Directorate of Defense Education and Training</h1>
-
-<p>Combat Technic School</p>
-
+    <img src="/images/logo.jpg" width="100">
+    <h1>Main Directorate of Defense Education and Training</h1>
+    <p>Combat Technic School</p>
 </header>
 
-<section>
+<!-- 👤 ወደ ዳሽቦርድ መመለሻ ሊንክ እዚህ ጋር ተጨምሯል 👤 -->
+<nav style="background: #111827; padding: 10px; text-align: center; margin-bottom: 20px;">
+    <a href="/dashboard.html" style="color: white; text-decoration: none; margin: 0 15px; font-weight: bold;">← Back to Dashboard</a>
+</nav>
 
-<div class="card">
-
-<h2>Manage Admin Account</h2>
-
-<form action="/change-admin" method="POST">
-
-<label>New Username</label><br><br>
-
-<input
-type="text"
-name="username"
-style="width:100%;padding:10px;"
-required>
-
-<br><br>
-
-<label>New Password</label><br><br>
-
-<input
-type="password"
-name="password"
-style="width:100%;padding:10px;"
-required>
-
-<br><br>
-
-<button type="submit">
-
-Save Changes
-
-</button>
-
-</form>
-
-</div>
-
+<section class="container">
+    <div class="card" style="max-width: 450px; margin: 0 auto; padding: 25px;">
+        <h2 align="center" style="margin-bottom: 20px;">👤 Manage Admin Account</h2>
+        
+        <form action="/change-admin" method="POST">
+            
+            <label style="font-weight: bold; display: block; margin-bottom: 8px;">New Username</label>
+            <input type="text" name="username" style="width:100%; padding:10px; border: 1px solid #ccc; border-radius:4px; box-sizing: border-box;" required>
+            
+            <br><br>
+            
+            <label style="font-weight: bold; display: block; margin-bottom: 8px;">New Password</label>
+            <input type="password" name="password" style="width:100%; padding:10px; border: 1px solid #ccc; border-radius:4px; box-sizing: border-box;" required>
+            
+            <br><br>
+            
+            <button type="submit" class="btn" style="width: 100%; padding: 12px; background: #111827; color: white; border: none; border-radius: 4px; font-size: 16px; cursor: pointer;">
+                Save Changes
+            </button>
+            
+        </form>
+    </div>
 </section>
 
 </body>
-
 </html>
