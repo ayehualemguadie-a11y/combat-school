@@ -12,7 +12,7 @@ const { CloudinaryStorage } = require("multer-storage-cloudinary");
 cloudinary.config({
     cloud_name: 'lpaxylxn',
     api_key: '881511541899897',
-    api_secret: 'My3ih-4o5BWb8n9r8Wv2X03H-vo'
+    api_secret: 'My3ih-4o5BWb'
 });
 
 // ፎቶዎችን ቀጥታ ክላውድ ላይ ለመጫን ማዘጋጀት
@@ -33,17 +33,14 @@ app.set("views", "./views");
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
-// የአድሚን ፓስወርድ ማስገደጃ
-// ⚠️ የቆየውን ሙሉ በሙሉ አጥፍተህ ይህንን ንጹሕ ኮድ በቦታው ለጥፈው (Paste አድርገው)፦
+// የአድሚን ፓስወርድ እና የኮንታክት መረጃ ማስገደጃ
 try {
-    // መጀመሪያ አድሚን መኖሩን ይፈትሻል፣ ከሌለ ብቻ አዲስ ይፈጥራል (አይደራረብም)
     const adminCheck = db.prepare("SELECT * FROM admins LIMIT 1").get();
     if (!adminCheck) {
         db.prepare("INSERT INTO admins (username, password) VALUES (?, ?)").run("admin", "admin123");
-        console.log("Default admin created successfully.");
+        console.log("Clean admin account verified.");
     }
 
-    // መጀመሪያ የኮንታክት መረጃ መኖሩን ይፈትሻል፣ ከሌለ ብቻ ይፈጥራል (አይደራረብም)
     const settingsCheck = db.prepare("SELECT * FROM settings LIMIT 1").get();
     if (!settingsCheck) {
         db.prepare(`
@@ -51,11 +48,11 @@ try {
             VALUES (?, ?, ?, ?)
         `).run(
             "Combat Technic School",
-            "Ethiopia", 
+            "0335400666", 
             "0335400640",
             "e.mail-combat_technique@mode.gov.et"
         );
-        console.log("Default settings loaded successfully.");
+        console.log("Clean official settings verified.");
     }
 } catch (err) {
     console.log("Database initial setup error:", err.message);
@@ -70,7 +67,7 @@ app.get("/", (req, res) => {
     res.render("index", { settings, news });
 });
 
-// የጋለሪ ፎቶዎች ማሳያ ገጽ (Public Gallery Page)
+// የጋለሪ ፎቶዎች ማሳያ ገጽ
 app.get("/gallery", (req, res) => {
     const photos = db.prepare("SELECT * FROM gallery ORDER BY id DESC").all();
     res.render("gallery", { photos });
@@ -109,17 +106,14 @@ app.post("/login", (req, res) => {
     }
 });
 
-// 📸 ጋለሪ ፎቶ መጫኛ ተግባር (በ Cloudinary የተስተካከለ)
-// 📸 ጋለሪ ፎቶ መጫኛ ተግባር (ያለህበት መስመር)
+// 📸 ጋለሪ ፎቶ መጫኛ ተግባር
 app.post("/upload", upload.single("photo"), (req, res) => {
     if (!req.file) return res.send("Please select a photo.");
-
     db.prepare("INSERT INTO gallery(filename) VALUES(?)").run(req.file.path);
-
     res.send(`<h2>Photo uploaded successfully to Cloud Storage!</h2><br><a href="/upload.html">Upload Another Photo</a><br><br><a href="/dashboard.html">Back to Dashboard</a>`);
 });
 
-// 📰 ዜና እና ማስታወቂያዎችን በክላውድ permanent አድርጎ መለጠፊያ ተግባር (እዚህ ጋር ተጨምሯል)
+// 📰 ዜና እና ማስታወቂያዎችን መለጠፊያ ተግባር
 app.post("/upload-news", upload.single("image"), (req, res) => {
     const title = req.body.title;
     const description = req.body.description;
@@ -138,7 +132,8 @@ app.post("/upload-news", upload.single("image"), (req, res) => {
         </div>
     `);
 });
-// 👤 የአድሚን አካውንት የተጠቃሚ ስምና ይለፍ ቃል መቀየሪያ ተግባር (POST)
+
+// 👤 የአድሚን አካውንት መቀየሪያ ተግባር
 app.post("/change-admin", (req, res) => {
     const newUsername = req.body.username;
     const newPassword = req.body.password;
@@ -148,9 +143,7 @@ app.post("/change-admin", (req, res) => {
     }
 
     try {
-        // በአዲሱ መረጃ መሠረት id = 1 የሆነውን የአድሚን አካውንት ያሻሽላል
         db.prepare("UPDATE admins SET username = ?, password = ? WHERE id = 1").run(newUsername, newPassword);
-        
         res.send(`
             <div style="font-family:sans-serif; text-align:center; margin-top:50px;">
                 <h2 style="color:green;">👤 Admin Account Updated Successfully!</h2>
@@ -166,10 +159,7 @@ app.post("/change-admin", (req, res) => {
     }
 });
 
-
-// የሰርቨሩ መነሻ (ሁልጊዜ መጨረሻ ላይ ነው የሚቀረው)
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
     console.log(`Server running at http://localhost:${PORT}`);
 });
-

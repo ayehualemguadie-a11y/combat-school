@@ -1,7 +1,7 @@
 const Database = require("better-sqlite3");
 const path = require("path");
 
-// ⚠️ ሰርቨሩ በየጊዜው ሲነሳ መረጃ እንዳይጠፋ ዴታቤዙን ወደ Render ቋሚ ማከማቻ (/data) ያስጠጋዋል
+// ሰርቨሩ በየጊዜው ሲነሳ መረጃ እንዳይጠፋ ዴታቤዙን ወደ Render ቋሚ ማከማቻ (/data) ያስጠጋዋል
 const dbPath = process.env.RENDER ? '/data/school.db' : path.join(__dirname, 'school.db');
 const db = new Database(dbPath);
 
