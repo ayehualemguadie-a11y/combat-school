@@ -34,31 +34,31 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
 // የአድሚን ፓስወርድ ማስገደጃ
+// ⚠️ የቆየውን ሙሉ በሙሉ አጥፍተህ ይህንን ንጹሕ ኮድ በቦታው ለጥፈው (Paste አድርገው)፦
 try {
-    // የቆየውን አጥፍተህ ይህንን አዲሱን ኮድ በቦታው ለጥፈው (Paste አድርገው)
-try {
-    // 1. አድሚኑ እንዳይጠፋ እዚህ ጋር ይቆያል
-    db.prepare("DELETE FROM admins").run();
-    db.prepare("INSERT INTO admins (username, password) VALUES (?, ?)").run("admin", "admin123");
+    // መጀመሪያ አድሚን መኖሩን ይፈትሻል፣ ከሌለ ብቻ አዲስ ይፈጥራል (አይደራረብም)
+    const adminCheck = db.prepare("SELECT * FROM admins LIMIT 1").get();
+    if (!adminCheck) {
+        db.prepare("INSERT INTO admins (username, password) VALUES (?, ?)").run("admin", "admin123");
+        console.log("Default admin created successfully.");
+    }
 
-    // 2. 📞 የአዲሱን የኮንታክት መረጃ እዚህ ጋር በቋሚነት ጨምረነዋል
-    db.prepare("DELETE FROM settings").run();
-    db.prepare(`
-        INSERT INTO settings (school_name, address, phone, email) 
-        VALUES (?, ?, ?, ?)
-    `).run(
-        "Combat Technic School",
-        "Ethiopia", 
-        "0335400640",
-        "e.mail-combat_technique@mode.gov.et"
-    );
-    console.log("Default settings and admin loaded successfully.");
+    // መጀመሪያ የኮንታክት መረጃ መኖሩን ይፈትሻል፣ ከሌለ ብቻ ይፈጥራል (አይደራረብም)
+    const settingsCheck = db.prepare("SELECT * FROM settings LIMIT 1").get();
+    if (!settingsCheck) {
+        db.prepare(`
+            INSERT INTO settings (school_name, address, phone, email) 
+            VALUES (?, ?, ?, ?)
+        `).run(
+            "Combat Technic School",
+            "Ethiopia", 
+            "0335400640",
+            "e.mail-combat_technique@mode.gov.et"
+        );
+        console.log("Default settings loaded successfully.");
+    }
 } catch (err) {
-    console.log("Admin setup:", err.message);
-}
-
-} catch (err) {
-    console.log("Admin setup:", err.message);
+    console.log("Database initial setup error:", err.message);
 }
 
 // ------------------ የገጾች ማሳያ መንገዶች (GET) ------------------
