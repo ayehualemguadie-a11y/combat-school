@@ -110,6 +110,7 @@ app.post("/login", (req, res) => {
 });
 
 // 📸 ጋለሪ ፎቶ መጫኛ ተግባር (በ Cloudinary የተስተካከለ)
+// 📸 ጋለሪ ፎቶ መጫኛ ተግባር (ያለህበት መስመር)
 app.post("/upload", upload.single("photo"), (req, res) => {
     if (!req.file) return res.send("Please select a photo.");
 
@@ -118,7 +119,29 @@ app.post("/upload", upload.single("photo"), (req, res) => {
     res.send(`<h2>Photo uploaded successfully to Cloud Storage!</h2><br><a href="/upload.html">Upload Another Photo</a><br><br><a href="/dashboard.html">Back to Dashboard</a>`);
 });
 
+// 📰 ዜና እና ማስታወቂያዎችን በክላውድ permanent አድርጎ መለጠፊያ ተግባር (እዚህ ጋር ተጨምሯል)
+app.post("/upload-news", upload.single("image"), (req, res) => {
+    const title = req.body.title;
+    const description = req.body.description;
+    const imageUrl = req.file ? req.file.path : "";
+
+    db.prepare("INSERT INTO news (title, description, image) VALUES (?, ?, ?)")
+      .run(title, description, imageUrl);
+
+    res.send(`
+        <div style="font-family:sans-serif; text-align:center; margin-top:50px;">
+            <h2 style="color:green;">📰 News Published Successfully to Cloud Storage!</h2>
+            <br>
+            <a href="/news.html" style="padding:10px; background:#222; color:#fff; text-decoration:none; border-radius:5px;">Add Another News</a>
+            <br><br><br>
+            <a href="/dashboard.html" style="color:#555;">Back to Dashboard</a>
+        </div>
+    `);
+});
+
+// የሰርቨሩ መነሻ (ሁልጊዜ መጨረሻ ላይ ነው የሚቀረው)
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
     console.log(`Server running at http://localhost:${PORT}`);
 });
+
