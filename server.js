@@ -138,6 +138,34 @@ app.post("/upload-news", upload.single("image"), (req, res) => {
         </div>
     `);
 });
+// 👤 የአድሚን አካውንት የተጠቃሚ ስምና ይለፍ ቃል መቀየሪያ ተግባር (POST)
+app.post("/change-admin", (req, res) => {
+    const newUsername = req.body.username;
+    const newPassword = req.body.password;
+
+    if (!newUsername || !newPassword) {
+        return res.send("<h2>Please fill out both username and password fields.</h2><br><a href='/admin-account.html'>Try Again</a>");
+    }
+
+    try {
+        // በአዲሱ መረጃ መሠረት id = 1 የሆነውን የአድሚን አካውንት ያሻሽላል
+        db.prepare("UPDATE admins SET username = ?, password = ? WHERE id = 1").run(newUsername, newPassword);
+        
+        res.send(`
+            <div style="font-family:sans-serif; text-align:center; margin-top:50px;">
+                <h2 style="color:green;">👤 Admin Account Updated Successfully!</h2>
+                <p>Please use your new credentials next time you log in.</p>
+                <br>
+                <a href="/login.html" style="padding:10px 15px; background:#111827; color:#fff; text-decoration:none; border-radius:5px;">Go to Login Page</a>
+                <br><br><br>
+                <a href="/dashboard.html" style="color:#555;">Back to Dashboard</a>
+            </div>
+        `);
+    } catch (err) {
+        res.send(`<h2>Error updating admin account: ${err.message}</h2><br><a href="/admin-account.html">Back</a>`);
+    }
+});
+
 
 // የሰርቨሩ መነሻ (ሁልጊዜ መጨረሻ ላይ ነው የሚቀረው)
 const PORT = process.env.PORT || 3000;

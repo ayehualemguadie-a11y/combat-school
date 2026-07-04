@@ -1,8 +1,14 @@
 const Database = require("better-sqlite3");
+const path = require("path");
 
-const db = new Database("school.db");
+// ⚠️ ሰርቨሩ በየጊዜው ሲነሳ መረጃ እንዳይጠፋ ዴታቤዙን ወደ Render ቋሚ ማከማቻ (/data) ያስጠጋዋል
+const dbPath = process.env.RENDER ? '/data/school.db' : path.join(__dirname, 'school.db');
+const db = new Database(dbPath);
 
-console.log("Database connected successfully.");
+console.log("Database permanently connected to:", dbPath);
+
+module.exports = db;
+
 db.prepare(`
 CREATE TABLE IF NOT EXISTS admins (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
