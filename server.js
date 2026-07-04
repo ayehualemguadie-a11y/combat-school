@@ -16,11 +16,12 @@ cloudinary.config({
 });
 
 // ፎቶዎችን ቀጥታ ክላውድ ላይ ለመጫን ማዘጋጀት
+// ⚠️ በ server.js ውስጥ ያለውን የ storage ክፍል በዚህ ብቻ ቀይረው (allowedFormats ተስተካክሏል)
 const storage = new CloudinaryStorage({
     cloudinary: cloudinary,
     params: {
         folder: 'combat_school_gallery',
-        allowed_formats: ['jpg', 'png', 'jpeg', 'webp'],
+        allowedFormats: ['jpg', 'png', 'jpeg', 'webp'], // 💡 allowed_formats የነበረው ወደ allowedFormats ተቀይሯል!
     },
 });
 
