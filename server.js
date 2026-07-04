@@ -9,21 +9,27 @@ const app = express();
 app.set("view engine", "ejs");
 app.set("views", "./views");
 
-// Render ላይ የፎቶ ማስቀመጫ ፎልደር መኖሩን ማረጋገጫ (ከሌለ ይፈጥረዋል)
-const uploadDir = path.join(__dirname, "public", "images");
-if (!fs.existsSync(uploadDir)) {
-    fs.mkdirSync(uploadDir, { recursive: true });
-}
+// ☁️ የ Cloudinary ማገናኛ ኮድ (የድሮውን multer.diskStorage አጥፍተህ ይህንን ተካው)
+const cloudinary = require("cloudinary").v2;
+const { CloudinaryStorage } = require("multer-storage-cloudinary");
 
-// ፎቶዎች የሚቀመጡበት ቦታ ማስተካከያ
-const storage = multer.diskStorage({
-    destination: function (req, file, cb) {
-        cb(null, "public/images");
-    },
-    filename: function (req, file, cb) {
-        cb(null, Date.now() + path.extname(file.originalname));
-    }
+cloudinary.config({
+    cloud_name: 'lpaxylxn',   // እዚህ ጋ ያንተን Cloud Name አስገባ
+    api_key: '881511541899897',         // እዚህ ጋ ያንተን API Key አስገባ
+    api_secret: 'ያንተ_API_Secret'    // እዚህ ጋ ያንተን API Secret አስገባ (ሙሉ መሆኑን አረጋግጥ)
 });
+
+// ፎቶዎችን ቀጥታ ክላውድ ላይ ለመጫን ማዘጋጀት
+const storage = new CloudinaryStorage({
+    cloudinary: cloudinary,
+    params: {
+        folder: 'combat_school_gallery',
+        allowed_formats: ['jpg', 'png', 'jpeg', 'webp'],
+    },
+});
+
+const upload = multer({ storage: storage });
+
 
 const upload = multer({ storage: storage });
 
