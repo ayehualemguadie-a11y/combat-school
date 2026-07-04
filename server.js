@@ -3,7 +3,7 @@ const bodyParser = require("body-parser");
 const multer = require("multer");
 const path = require("path");
 const fs = require("fs");
-const db = require("./database"); // ከ database.js የመጣው የክላውድ ግንኙነት
+const db = require("./database"); 
 
 // ☁️ የ Cloudinary ማገናኛ ኮድ
 const cloudinary = require("cloudinary").v2;
@@ -16,13 +16,12 @@ cloudinary.config({
 });
 
 // ፎቶዎችን ቀጥታ ክላውድ ላይ ለመጫን ማዘጋጀት
-// ⚠️ በ server.js ውስጥ ያለውን የ storage ክፍል በዚህ ብቻ ቀይረው (allowedFormats ተስተካክሏል)
 const storage = new CloudinaryStorage({
     cloudinary: cloudinary,
     params: {
         folder: 'combat_school_gallery',
-        allowedFormats: ['jpg', 'png', 'jpeg', 'webp'], // 💡 allowed_formats የነበረው ወደ allowedFormats ተቀይሯል!
-    },
+        allowedFormats: ['jpg', 'png', 'jpeg', 'webp']
+    }
 });
 
 const upload = multer({ storage: storage });
@@ -47,7 +46,7 @@ setupDatabase();
 
 // ------------------ የገጾች ማሳያ መንገዶች (GET) ------------------
 
-// ዋና ገጽ (Home Page - ⚠️ Updated for Cloud Postgres)
+// ዋና ገጽ (Home Page)
 app.get("/", async (req, res) => {
     try {
         const settingsResult = await db.query("SELECT * FROM settings LIMIT 1");
@@ -60,7 +59,7 @@ app.get("/", async (req, res) => {
     }
 });
 
-// የጋለሪ ፎቶዎች ማሳያ ገጽ (⚠️ Updated for Cloud Postgres)
+// የጋለሪ ፎቶዎች ማሳያ ገጽ
 app.get("/gallery", async (req, res) => {
     try {
         const result = await db.query("SELECT * FROM gallery ORDER BY id DESC");
@@ -87,7 +86,7 @@ app.get("/login.html", (req, res) => {
 
 // ------------------ መረጃ መቀበያ መንገዶች (POST) ------------------
 
-// አድሚን ለመግባት (Login - ⚠️ Updated for Cloud Postgres)
+// አድሚን ለመግባት (Login)
 app.post("/login", async (req, res) => {
     const username = String(req.body.username || "");
     const password = String(req.body.password || "");
@@ -105,7 +104,7 @@ app.post("/login", async (req, res) => {
     }
 });
 
-// 📸 ጋለሪ ፎቶ መጫኛ ተግባር (⚠️ Updated for Cloud Postgres)
+// 📸 ጋለሪ ፎቶ መጫኛ ተግባር
 app.post("/upload", upload.single("photo"), async (req, res) => {
     if (!req.file) return res.send("Please select a photo.");
     try {
@@ -116,7 +115,7 @@ app.post("/upload", upload.single("photo"), async (req, res) => {
     }
 });
 
-// 📰 ዜና እና ማስታወቂያዎችን መለጠፊያ ተግባር (⚠️ Updated for Cloud Postgres)
+// 📰 ዜና እና ማስታወቂያዎችን መለጠፊያ ተግባር
 app.post("/upload-news", upload.single("image"), async (req, res) => {
     const title = req.body.title;
     const description = req.body.description;
@@ -138,7 +137,7 @@ app.post("/upload-news", upload.single("image"), async (req, res) => {
     }
 });
 
-// 👤 የአድሚን አካውንት መቀየሪያ ተግባር (⚠️ Updated for Cloud Postgres)
+// 👤 የአድሚን አካውንት መቀየሪያ ተግባር
 app.post("/change-admin", async (req, res) => {
     const newUsername = req.body.username;
     const newPassword = req.body.password;
