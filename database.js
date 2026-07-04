@@ -9,45 +9,10 @@ const pool = new Pool({
 // ዴታቤዝ ውስጥ ሰንጠረዦች ከሌሉ በራስ-ሰር እንዲፈጥር ማዘጋጀት
 const initDb = async () => {
     try {
-        // 1. የጋለሪ ሰንጠረዥ
-        await pool.query(`
-            CREATE TABLE IF NOT EXISTS gallery (
-                id SERIAL PRIMARY KEY,
-                filename TEXT NOT NULL
-            )
-        `);
-        
-        // 2. የአድሚን ሰንጠረዥ
-        await pool.query(`
-            CREATE TABLE IF NOT EXISTS admins (
-                id SERIAL PRIMARY KEY,
-                username TEXT NOT NULL,
-                password TEXT NOT NULL
-            )
-        `);
-
-        // 3. የዜና ሰንጠረዥ
-        await pool.query(`
-            CREATE TABLE IF NOT EXISTS news (
-                id SERIAL PRIMARY KEY,
-                title TEXT NOT NULL,
-                description TEXT NOT NULL,
-                image TEXT,
-                created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-            )
-        `);
-
-        // 4. የኮንታክት (Settings) ሰንጠረዥ
-        await pool.query(`
-            CREATE TABLE IF NOT EXISTS settings (
-                id SERIAL PRIMARY KEY,
-                school_name TEXT,
-                address TEXT,
-                phone TEXT,
-                email TEXT
-            )
-        `);
-
+        await pool.query(`CREATE TABLE IF NOT EXISTS gallery (id SERIAL PRIMARY KEY, filename TEXT NOT NULL)`);
+        await pool.query(`CREATE TABLE IF NOT EXISTS admins (id SERIAL PRIMARY KEY, username TEXT NOT NULL, password TEXT NOT NULL)`);
+        await pool.query(`CREATE TABLE IF NOT EXISTS news (id SERIAL PRIMARY KEY, title TEXT NOT NULL, description TEXT NOT NULL, image TEXT, created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP)`);
+        await pool.query(`CREATE TABLE IF NOT EXISTS settings (id SERIAL PRIMARY KEY, school_name TEXT, address TEXT, phone TEXT, email TEXT)`);
         console.log("🚀 Neon Cloud Database Tables Verified & Ready!");
     } catch (err) {
         console.error("Database init error:", err.message);
@@ -56,21 +21,24 @@ const initDb = async () => {
 
 initDb();
 
-// ከ SQLite መጠይቆች (db.prepare) ጋር ኮዱ እንዲናበብ አስመሳይ ረዳት ተግባር (Helper)
+// 💡 ከ SQLite መጠይቆች (db.prepare) ጋር የውጤት ቅርጹን ፍጹም አጣጥሞ የሚያስተካክል ረዳት (Helper)
 module.exports = {
     query: (text, params) => pool.query(text, params),
     prepare: (text) => {
+        // የ SQLite "?" ምልክቶችን ወደ PostgreSQL "$1, $2" ይለውጣል
+        const pgText = text.replace(/\?/g, (_, i) => `$${i + 1}`);
         return {
             get: async (...params) => {
-                const res = await pool.query(text.replace(/\?/g, (_, i) => `$${i + 1}`), params);
-                return res.rows[0];
+                const res = await pool.query(pgText, params);
+                // ⚠️ PostgreSQL ሁልጊዜ Array ስለሚመልስ የመጀመሪያውን መስመር ብቻ ነጥሎ ይሰጣል
+                return res.rows.length > 0 ? res.rows[0] : null; 
             },
             all: async (...params) => {
-                const res = await pool.query(text.replace(/\?/g, (_, i) => `$${i + 1}`), params);
+                const res = await pool.query(pgText, params);
                 return res.rows;
             },
             run: async (...params) => {
-                return await pool.query(text.replace(/\?/g, (_, i) => `$${i + 1}`), params);
+                return await pool.query(pgText, params);
             }
         };
     }
