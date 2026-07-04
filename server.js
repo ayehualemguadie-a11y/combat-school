@@ -64,17 +64,21 @@ setupDatabase();
 // ------------------ የገጾች ማሳያ መንገዶች (GET) ------------------
 
 // ዋና ገጽ (Home Page)
+// 🏠 ዋና ገጽ (Home Page) - የክላውድ መረጃ አደራደር ማስተካከያ
 app.get("/", async (req, res) => {
     try {
         const settingsRows = await db.prepare("SELECT * FROM settings LIMIT 1").get();
         const newsRows = await db.prepare("SELECT * FROM news ORDER BY id DESC LIMIT 20").all();
         
-        const settings = settingsRows[0] || null;
+        // ⚠️ PostgreSQL ሁልጊዜ ዝርዝር (Array) ስለሚመልስ የመጀመሪያውን መስመር በዚህ መልኩ እንነጥላለን
+        const settings = (settingsRows && settingsRows.length > 0) ? settingsRows[0] : null;
+        
         res.render("index", { settings, news: newsRows });
     } catch (err) {
         res.send("Error loading home page: " + err.message);
     }
 });
+
 
 // የጋለሪ ፎቶዎች ማሳያ ገጽ
 app.get("/gallery", async (req, res) => {
@@ -104,6 +108,7 @@ app.get("/login.html", (req, res) => {
 // ------------------ መረጃ መቀበያ መንገዶች (POST) ------------------
 
 // አድሚን ለመግባት (Login - ⚠️ Updated for Cloud DB)
+// 👤 አድሚን ለመግባት (Login) - የክላውድ መረጃ አደራደር ማስተካከያ
 app.post("/login", async (req, res) => {
     const username = req.body.username;
     const password = req.body.password;
@@ -111,6 +116,7 @@ app.post("/login", async (req, res) => {
     try {
         const rows = await db.prepare("SELECT * FROM admins WHERE username = ? AND password = ?").get(username, password);
         
+        // ⚠️ መረጃው ካለ የመጀመሪያውን አድሚን አይቶ ያስገባል
         if (rows && rows.length > 0) {
             res.redirect("/dashboard.html");
         } else {
@@ -120,6 +126,7 @@ app.post("/login", async (req, res) => {
         res.send("Login Error: " + err.message);
     }
 });
+
 
 // 📸 ጋለሪ ፎቶ መጫኛ ተግባር (⚠️ Updated for Cloud DB)
 app.post("/upload", upload.single("photo"), async (req, res) => {
