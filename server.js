@@ -3,7 +3,7 @@ const bodyParser = require("body-parser");
 const multer = require("multer");
 const path = require("path");
 const fs = require("fs");
-const db = require("./database");
+const db = require("./database"); // ከ database.js የመጣው የክላውድ ግንኙነት
 
 // ☁️ የ Cloudinary ማገናኛ ኮድ
 const cloudinary = require("cloudinary").v2;
@@ -33,11 +33,11 @@ app.set("views", "./views");
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
-// 👤 የክላውድ ዴታቤዝ መነሻ ዝግጅት
+// 👤 የክላውድ ዴታቤዝ መነሻ ዝግጅት (የመጀመሪያውን አድሚን ይፈጥራል)
 const setupDatabase = async () => {
     try {
         await db.query("INSERT INTO admins (username, password) VALUES ($1, $2) ON CONFLICT DO NOTHING", ["admin", "admin123"]);
-        console.log("🚀 Neon Cloud Admin account verified.");
+        console.log("🚀 Neon Cloud Database Verified and Ready!");
     } catch (err) {
         console.log("Cloud db setup trace:", err.message);
     }
@@ -46,7 +46,7 @@ setupDatabase();
 
 // ------------------ የገጾች ማሳያ መንገዶች (GET) ------------------
 
-// ዋና ገጽ (Home Page)
+// ዋና ገጽ (Home Page - ⚠️ Updated for Cloud Postgres)
 app.get("/", async (req, res) => {
     try {
         const settingsResult = await db.query("SELECT * FROM settings LIMIT 1");
@@ -59,7 +59,7 @@ app.get("/", async (req, res) => {
     }
 });
 
-// የጋለሪ ፎቶዎች ማሳያ ገጽ
+// የጋለሪ ፎቶዎች ማሳያ ገጽ (⚠️ Updated for Cloud Postgres)
 app.get("/gallery", async (req, res) => {
     try {
         const result = await db.query("SELECT * FROM gallery ORDER BY id DESC");
@@ -86,7 +86,7 @@ app.get("/login.html", (req, res) => {
 
 // ------------------ መረጃ መቀበያ መንገዶች (POST) ------------------
 
-// አድሚን ለመግባት (Login)
+// አድሚን ለመግባት (Login - ⚠️ Updated for Cloud Postgres)
 app.post("/login", async (req, res) => {
     const username = String(req.body.username || "");
     const password = String(req.body.password || "");
@@ -104,7 +104,7 @@ app.post("/login", async (req, res) => {
     }
 });
 
-// 📸 ጋለሪ ፎቶ መጫኛ ተግባር (ለክላውድ ቀጥታ የተስተካከለ)
+// 📸 ጋለሪ ፎቶ መጫኛ ተግባር (⚠️ Updated for Cloud Postgres)
 app.post("/upload", upload.single("photo"), async (req, res) => {
     if (!req.file) return res.send("Please select a photo.");
     try {
@@ -115,7 +115,7 @@ app.post("/upload", upload.single("photo"), async (req, res) => {
     }
 });
 
-// 📰 ዜና እና ማስታወቂያዎችን መለጠፊያ ተግባር (ለክላውድ ቀጥታ የተስተካከለ)
+// 📰 ዜና እና ማስታወቂያዎችን መለጠፊያ ተግባር (⚠️ Updated for Cloud Postgres)
 app.post("/upload-news", upload.single("image"), async (req, res) => {
     const title = req.body.title;
     const description = req.body.description;
@@ -137,7 +137,7 @@ app.post("/upload-news", upload.single("image"), async (req, res) => {
     }
 });
 
-// 👤 የአድሚን አካውንት መቀየሪያ ተግባር (ለክላውድ ቀጥታ የተስተካከለ)
+// 👤 የአድሚን አካውንት መቀየሪያ ተግባር (⚠️ Updated for Cloud Postgres)
 app.post("/change-admin", async (req, res) => {
     const newUsername = req.body.username;
     const newPassword = req.body.password;
