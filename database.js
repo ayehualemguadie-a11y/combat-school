@@ -21,24 +21,26 @@ const initDb = async () => {
 
 initDb();
 
-// 💡 ከ SQLite መጠይቆች (db.prepare) ጋር የውጤት ቅርጹን ፍጹም አጣጥሞ የሚያስተካክል ረዳት (Helper)
+// 💡 የ PostgreSQL መረጃ ዓይነቶችን (Data Types) በትክክል ለይቶ የሚያስተካክል ረዳት (Helper)
 module.exports = {
     query: (text, params) => pool.query(text, params),
     prepare: (text) => {
-        // የ SQLite "?" ምልክቶችን ወደ PostgreSQL "$1, $2" ይለውጣል
         const pgText = text.replace(/\?/g, (_, i) => `$${i + 1}`);
         return {
             get: async (...params) => {
-                const res = await pool.query(pgText, params);
-                // ⚠️ PostgreSQL ሁልጊዜ Array ስለሚመልስ የመጀመሪያውን መስመር ብቻ ነጥሎ ይሰጣል
+                // ⚠️ የ parameter ስህተትን ለመከላከል መረጃዎቹን ወደ string/ጽሑፍ እንለውጣቸዋለን
+                const cleanParams = params.map(p => p !== undefined && p !== null ? String(p) : null);
+                const res = await pool.query(pgText, cleanParams);
                 return res.rows.length > 0 ? res.rows[0] : null; 
             },
             all: async (...params) => {
-                const res = await pool.query(pgText, params);
+                const cleanParams = params.map(p => p !== undefined && p !== null ? String(p) : null);
+                const res = await pool.query(pgText, cleanParams);
                 return res.rows;
             },
             run: async (...params) => {
-                return await pool.query(pgText, params);
+                const cleanParams = params.map(p => p !== undefined && p !== null ? String(p) : null);
+                return await pool.query(pgText, cleanParams);
             }
         };
     }
