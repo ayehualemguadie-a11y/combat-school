@@ -36,13 +36,32 @@ app.use(express.static("public"));
 // 👤 የክላውድ ዴታቤዝ መነሻ ዝግጅት (የመጀመሪያውን አድሚን ይፈጥራል)
 const setupDatabase = async () => {
     try {
-        await db.query("INSERT INTO admins (username, password) VALUES ($1, $2) ON CONFLICT DO NOTHING", ["admin", "admin123"]);
-        console.log("🚀 Neon Cloud Database Verified and Ready!");
+        // አድሚን መኖሩን ማረጋገጥ
+        const adminCheck = await db.query("SELECT * FROM admins LIMIT 1");
+        if (adminCheck.rows.length === 0) {
+            await db.query("INSERT INTO admins (username, password) VALUES ($1, $2)", ["admin", "admin123"]);
+        }
+
+        // 📞 የኮንታክት መረጃው ባዶ ከሆነ በግድ እንዲሞላ ማድረግ (ይህ የ 500 ስህተቱን ይፈታል!)
+        const settingsCheck = await db.query("SELECT * FROM settings LIMIT 1");
+        if (settingsCheck.rows.length === 0) {
+            await db.query(`
+                INSERT INTO settings (school_name, address, phone, email) 
+                VALUES ($1, $2, $3, $4)
+            `, [
+                "Combat Technic School", 
+                "0335400666", // Fax
+                "0335400640", // Phone
+                "e.mail-combat_technique@mode.gov.et" // Email
+            ]);
+            console.log("🚀 Official military contact information seeded to cloud!");
+        }
     } catch (err) {
         console.log("Cloud db setup trace:", err.message);
     }
 };
 setupDatabase();
+
 
 // ------------------ የገጾች ማሳያ መንገዶች (GET) ------------------
 
