@@ -16,7 +16,7 @@ const { CloudinaryStorage } = require("multer-storage-cloudinary");
 cloudinary.config({
     cloud_name: 'lpaxylxn',   // እዚህ ጋ ያንተን Cloud Name አስገባ
     api_key: '881511541899897',         // እዚህ ጋ ያንተን API Key አስገባ
-    api_secret: 'ያንተ_API_Secret'    // እዚህ ጋ ያንተን API Secret አስገባ (ሙሉ መሆኑን አረጋግጥ)
+    api_secret: 'My3ih-4o5BWb'    // እዚህ ጋ ያንተን API Secret አስገባ (ሙሉ መሆኑን አረጋግጥ)
 });
 
 // ፎቶዎችን ቀጥታ ክላውድ ላይ ለመጫን ማዘጋጀት
@@ -152,11 +152,16 @@ app.post("/login", (req, res) => {
 });
 
 // 📸 ጋለሪ ፎቶ መጫኛ ተግባር (Upload Photo)
+// 📸 የጋለሪ ፎቶ መጫኛ (በ Cloudinary የተስተካከለ)
 app.post("/upload", upload.single("photo"), (req, res) => {
     if (!req.file) return res.send("Please select a photo.");
-    db.prepare("INSERT INTO gallery(filename) VALUES(?)").run(req.file.filename);
-    res.send(`<h2>Photo uploaded successfully!</h2><br><a href="/upload.html">Upload Another Photo</a><br><br><a href="/dashboard.html">Back to Dashboard</a>`);
+
+    // ⚠️ ከታች ያለው መስመር ላይ filename የነበረው ወደ req.file.path ተቀይሯል!
+    db.prepare("INSERT INTO gallery(filename) VALUES(?)").run(req.file.path);
+
+    res.send(`<h2>Photo uploaded successfully to Cloud Storage!</h2><br><a href="/upload.html">Upload Another Photo</a><br><br><a href="/dashboard.html">Back to Dashboard</a>`);
 });
+
 
 // 📰 ዜና መለጠፊያ ተግባር (Publish News)
 app.post("/upload-news", upload.single("image"), (req, res) => {
