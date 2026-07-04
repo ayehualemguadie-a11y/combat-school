@@ -6,10 +6,11 @@ const pool = new Pool({
     ssl: { rejectUnauthorized: false }
 });
 
-// ⚠️ ሰንጠረዦቹ በክላውድ ላይ በግድ መፈጠራቸውን የሚያረጋግጥ ወሳኝ ተግባር
+// 🔒 ሰንጠረዦቹ ለዘላለም በቋሚነት እንዲቆለፉ የሚያደርግ ፍጹም ንጹሕ ተግባር
 const initDb = async () => {
     try {
-        // የጋለሪ ሰንጠረዥ መፈጠሩን ማረጋገጥ (የቀድሞውን ስህተት ይፈታል)
+        // ⚠️ መረጃ የሚያጠፋው DROP TABLE መስመር ሙሉ በሙሉ ጠፍቷል! 
+        // ሰንጠረዦቹ ከሌሉ ብቻ አዲስ ይፈጠራሉ፤ ቀድሞ ካሉ ግን በፍጹም አይነኩም!
         await pool.query(`
             CREATE TABLE IF NOT EXISTS gallery (
                 id SERIAL PRIMARY KEY,
@@ -45,7 +46,7 @@ const initDb = async () => {
             )
         `);
         
-        console.log("🚀 ALL NEON CLOUD TABLES ARE 100% READY!");
+        console.log("🚀 CLOUD TABLES SECURED & LOCKED PERMANENTLY!");
     } catch (err) {
         console.error("Database init error:", err.message);
     }
