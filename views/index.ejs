@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Combat Technic School</title>
-    <link rel="stylesheet" href="/style.css"> <!-- Render ላይ እንዲሰራ /style.css ተደርጓል -->
+    <link rel="stylesheet" href="/style.css">
 </head>
 
 <body>
@@ -19,7 +19,6 @@
     </div>
 
     <ul>
-        <!-- Render ላይ እንዳይበላሹ ሊንኮቹ ከፊት ለፊታቸው ስላሽ (/) ተደርጓል -->
         <li><a href="/">Home</a></li>
         <li><a href="/about.html">About</a></li>
         <li><a href="/history.html">History</a></li>
@@ -38,7 +37,7 @@
     </div>
 </section>
 
-<!-- 📰 አዲሱ የዜና ማሳያ ክፍል እዚህ ጋር ተጨምሯል 📰 -->
+<!-- 📰 የዜና ማሳያ ክፍል -->
 <section class="container">
     <h2 align="center">📰 Latest News & Announcements</h2>
     
@@ -70,6 +69,18 @@
             technical and military training using experienced instructors,
             modern equipment, and practical exercises.
         </p>
+    </div>
+</section>
+
+<!-- 📞 የተስተካከለው የመገናኛ መረጃ (Contact Information) ክፍል እዚህ ጋር ነው 📞 -->
+<section class="container">
+    <h2 align="center">📞 Contact Information</h2>
+    <div class="card" style="max-width: 600px; margin: 0 auto; padding: 20px; line-height: 1.8;">
+        <p><strong>School:</strong> <%= (settings && settings.school_name) ? settings.school_name : "Combat Technic School" %></p>
+        <p><strong>Location:</strong> Awash Arba, Ethiopia</p>
+        <p><strong>Email:</strong> <%= (settings && settings.email) ? settings.email : "e.mail-combat_technique@mode.gov.et" %></p>
+        <p><strong>Phone:</strong> <%= (settings && settings.phone) ? settings.phone : "0335400640" %></p>
+        <p><strong>Fax:</strong> <%= (settings && settings.address) ? settings.address : "0335400666" %></p>
     </div>
 </section>
 
