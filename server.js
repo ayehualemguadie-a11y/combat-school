@@ -33,54 +33,37 @@ app.set("views", "./views");
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
-// የአድሚን ፓስወርድ እና የኮንታክት መረጃ ማስገደጃ (ክላውድ)
-// 👤 Force setup default admin on cloud
+// 👤 የክላውድ ዴታቤዝ መነሻ ዝግጅት
 const setupDatabase = async () => {
     try {
-        // Clear old empty attempts and force insert the admin
-        await db.query("DELETE FROM admins");
-        await db.query("INSERT INTO admins (username, password) VALUES ($1, $2)", ["admin", "admin123"]);
-        console.log("🚀 Default admin successfully written to Neon Cloud!");
-
-        // Setup settings table if empty
-        const settingsCheck = await db.query("SELECT * FROM settings LIMIT 1");
-        if (settingsCheck.rows.length === 0) {
-            await db.query(`
-                INSERT INTO settings (school_name, address, phone, email) 
-                VALUES ($1, $2, $3, $4)
-            `, ["Combat Technic School", "0335400666", "0335400640", "e.mail-combat_technique@mode.gov.et"]);
-        }
+        await db.query("INSERT INTO admins (username, password) VALUES ($1, $2) ON CONFLICT DO NOTHING", ["admin", "admin123"]);
+        console.log("🚀 Neon Cloud Admin account verified.");
     } catch (err) {
-        console.log("Cloud db verification setup error:", err.message);
+        console.log("Cloud db setup trace:", err.message);
     }
 };
 setupDatabase();
 
-
 // ------------------ የገጾች ማሳያ መንገዶች (GET) ------------------
 
 // ዋና ገጽ (Home Page)
-// 🏠 ዋና ገጽ (Home Page) - የክላውድ መረጃ አደራደር ማስተካከያ
 app.get("/", async (req, res) => {
     try {
-        const settingsRows = await db.prepare("SELECT * FROM settings LIMIT 1").get();
-        const newsRows = await db.prepare("SELECT * FROM news ORDER BY id DESC LIMIT 20").all();
+        const settingsResult = await db.query("SELECT * FROM settings LIMIT 1");
+        const newsResult = await db.query("SELECT * FROM news ORDER BY id DESC LIMIT 20");
         
-        // ⚠️ PostgreSQL ሁልጊዜ ዝርዝር (Array) ስለሚመልስ የመጀመሪያውን መስመር በዚህ መልኩ እንነጥላለን
-        const settings = (settingsRows && settingsRows.length > 0) ? settingsRows[0] : null;
-        
-        res.render("index", { settings, news: newsRows });
+        const settings = settingsResult.rows.length > 0 ? settingsResult.rows[0] : null;
+        res.render("index", { settings, news: newsResult.rows });
     } catch (err) {
         res.send("Error loading home page: " + err.message);
     }
 });
 
-
 // የጋለሪ ፎቶዎች ማሳያ ገጽ
 app.get("/gallery", async (req, res) => {
     try {
-        const photos = await db.prepare("SELECT * FROM gallery ORDER BY id DESC").all();
-        res.render("gallery", { photos });
+        const result = await db.query("SELECT * FROM gallery ORDER BY id DESC");
+        res.render("gallery", { photos: result.rows });
     } catch (err) {
         res.send("Error loading gallery: " + err.message);
     }
@@ -103,16 +86,12 @@ app.get("/login.html", (req, res) => {
 
 // ------------------ መረጃ መቀበያ መንገዶች (POST) ------------------
 
-// አድሚን ለመግባት (Login - ⚠️ Updated for Cloud DB)
-// 👤 አድሚን ለመግባት (Login) - የክላውድ መረጃ አደራደር ማስተካከያ
-// 👤 አድሚን ለመግባት (Login) - ለክላውድ ፖስትግሬስ ዳታ ታይፕ ፍጹም የተስተካከለ
-// 👤 አድሚን ለመግባት (Login) - የዳታ ታይፕ ስህተቱን ለማጥፋት ቀጥታ የተስተካከለ
+// አድሚን ለመግባት (Login)
 app.post("/login", async (req, res) => {
     const username = String(req.body.username || "");
     const password = String(req.body.password || "");
 
     try {
-        // 💡 db.prepare() የሚለውን አጥፍተን ቀጥታ በ db.query() እና በ $1, $2 ቅርጽ አስተካክለነዋል!
         const result = await db.query("SELECT * FROM admins WHERE username = $1 AND password = $2", [username, password]);
         
         if (result && result.rows.length > 0) {
@@ -125,14 +104,10 @@ app.post("/login", async (req, res) => {
     }
 });
 
-
-
-
-// 📸 ጋለሪ ፎቶ መጫኛ ተግባር (⚠️ Updated for Cloud DB)
+// 📸 ጋለሪ ፎቶ መጫኛ ተግባር (ለክላውድ ቀጥታ የተስተካከለ)
 app.post("/upload", upload.single("photo"), async (req, res) => {
     if (!req.file) return res.send("Please select a photo.");
     try {
-        // 💡 db.prepare() የነበረው ጠፍቶ ቀጥታ በ db.query() እና በ $1 ተተክቷል!
         await db.query("INSERT INTO gallery (filename) VALUES ($1)", [req.file.path]);
         res.send(`<h2>Photo uploaded successfully to Cloud Storage!</h2><br><a href="/upload.html">Upload Another Photo</a><br><br><a href="/dashboard.html">Back to Dashboard</a>`);
     } catch (err) {
@@ -140,15 +115,14 @@ app.post("/upload", upload.single("photo"), async (req, res) => {
     }
 });
 
-
-// 📰 ዜና እና ማስታወቂያዎችን መለጠፊያ ተግባር (⚠️ Updated for Cloud DB)
+// 📰 ዜና እና ማስታወቂያዎችን መለጠፊያ ተግባር (ለክላውድ ቀጥታ የተስተካከለ)
 app.post("/upload-news", upload.single("image"), async (req, res) => {
     const title = req.body.title;
     const description = req.body.description;
     const imageUrl = req.file ? req.file.path : "";
 
     try {
-        await db.prepare("INSERT INTO news (title, description, image) VALUES (?, ?, ?)").run(title, description, imageUrl);
+        await db.query("INSERT INTO news (title, description, image) VALUES ($1, $2, $3)", [title, description, imageUrl]);
         res.send(`
             <div style="font-family:sans-serif; text-align:center; margin-top:50px;">
                 <h2 style="color:green;">📰 News Published Successfully to Cloud Storage!</h2>
@@ -163,7 +137,7 @@ app.post("/upload-news", upload.single("image"), async (req, res) => {
     }
 });
 
-// 👤 የአድሚን አካውንት መቀየሪያ ተግባር (⚠️ Updated for Cloud DB)
+// 👤 የአድሚን አካውንት መቀየሪያ ተግባር (ለክላውድ ቀጥታ የተስተካከለ)
 app.post("/change-admin", async (req, res) => {
     const newUsername = req.body.username;
     const newPassword = req.body.password;
@@ -173,11 +147,10 @@ app.post("/change-admin", async (req, res) => {
     }
 
     try {
-        // በመጀመሪያ አድሚን መኖሩን ለማረጋገጥ መታወቂያውን (ID) ያገኛል
-        const adminCheck = await db.prepare("SELECT id FROM admins LIMIT 1").get();
-        const adminId = adminCheck && adminCheck.length > 0 ? adminCheck[0].id : 1;
+        const adminCheck = await db.query("SELECT id FROM admins LIMIT 1");
+        const adminId = adminCheck.rows.length > 0 ? adminCheck.rows[0].id : 1;
 
-        await db.prepare("UPDATE admins SET username = ?, password = ? WHERE id = ?").run(newUsername, newPassword, adminId);
+        await db.query("UPDATE admins SET username = $1, password = $2 WHERE id = $3", [newUsername, newPassword, adminId]);
         res.send(`
             <div style="font-family:sans-serif; text-align:center; margin-top:50px;">
                 <h2 style="color:green;">👤 Admin Account Updated Successfully!</h2>
