@@ -34,32 +34,28 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
 // የአድሚን ፓስወርድ እና የኮንታክት መረጃ ማስገደጃ (ክላውድ)
+// 👤 Force setup default admin on cloud
 const setupDatabase = async () => {
     try {
-        const adminCheck = await db.prepare("SELECT * FROM admins LIMIT 1").get();
-        if (!adminCheck || adminCheck.length === 0) {
-            await db.prepare("INSERT INTO admins (username, password) VALUES (?, ?)").run("admin", "admin123");
-            console.log("Default admin verified on cloud.");
-        }
+        // Clear old empty attempts and force insert the admin
+        await db.query("DELETE FROM admins");
+        await db.query("INSERT INTO admins (username, password) VALUES ($1, $2)", ["admin", "admin123"]);
+        console.log("🚀 Default admin successfully written to Neon Cloud!");
 
-        const settingsCheck = await db.prepare("SELECT * FROM settings LIMIT 1").get();
-        if (!settingsCheck || settingsCheck.length === 0) {
-            await db.prepare(`
+        // Setup settings table if empty
+        const settingsCheck = await db.query("SELECT * FROM settings LIMIT 1");
+        if (settingsCheck.rows.length === 0) {
+            await db.query(`
                 INSERT INTO settings (school_name, address, phone, email) 
-                VALUES (?, ?, ?, ?)
-            `).run(
-                "Combat Technic School",
-                "0335400666", 
-                "0335400640",
-                "e.mail-combat_technique@mode.gov.et"
-            );
-            console.log("Default contact info verified on cloud.");
+                VALUES ($1, $2, $3, $4)
+            `, ["Combat Technic School", "0335400666", "0335400640", "e.mail-combat_technique@mode.gov.et"]);
         }
     } catch (err) {
         console.log("Cloud db verification setup error:", err.message);
     }
 };
 setupDatabase();
+
 
 // ------------------ የገጾች ማሳያ መንገዶች (GET) ------------------
 
