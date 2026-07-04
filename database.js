@@ -1,11 +1,9 @@
 const Database = require("better-sqlite3");
-const path = require("path");
 
-// ሰርቨሩ በየጊዜው ሲነሳ መረጃ እንዳይጠፋ ዴታቤዙን ወደ Render ቋሚ ማከማቻ (/data) ያስጠጋዋል
-const dbPath = process.env.RENDER ? '/data/school.db' : path.join(__dirname, 'school.db');
-const db = new Database(dbPath);
+// ሰርቨሩ በአረንጓዴ እንዲነሳ ዴታቤዙን ወደ መደበኛው ፋይል መልሰነዋል
+const db = new Database("school.db");
 
-console.log("Database permanently connected to:", dbPath);
+console.log("Database connected successfully to school.db");
 
 module.exports = db;
 
