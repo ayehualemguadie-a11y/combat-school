@@ -35,8 +35,28 @@ app.use(express.static("public"));
 
 // የአድሚን ፓስወርድ ማስገደጃ
 try {
+    // የቆየውን አጥፍተህ ይህንን አዲሱን ኮድ በቦታው ለጥፈው (Paste አድርገው)
+try {
+    // 1. አድሚኑ እንዳይጠፋ እዚህ ጋር ይቆያል
     db.prepare("DELETE FROM admins").run();
     db.prepare("INSERT INTO admins (username, password) VALUES (?, ?)").run("admin", "admin123");
+
+    // 2. 📞 የአዲሱን የኮንታክት መረጃ እዚህ ጋር በቋሚነት ጨምረነዋል
+    db.prepare("DELETE FROM settings").run();
+    db.prepare(`
+        INSERT INTO settings (school_name, address, phone, email) 
+        VALUES (?, ?, ?, ?)
+    `).run(
+        "Combat Technic School",
+        "Ethiopia", 
+        "0335400640",
+        "e.mail-combat_technique@mode.gov.et"
+    );
+    console.log("Default settings and admin loaded successfully.");
+} catch (err) {
+    console.log("Admin setup:", err.message);
+}
+
 } catch (err) {
     console.log("Admin setup:", err.message);
 }
