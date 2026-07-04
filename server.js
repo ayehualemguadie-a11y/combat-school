@@ -33,30 +33,35 @@ app.set("views", "./views");
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
-// የአድሚን ፓስወርድ እና የኮንታክት መረጃ ማስገደጃ
-try {
-    const adminCheck = db.prepare("SELECT * FROM admins LIMIT 1").get();
-    if (!adminCheck) {
-        db.prepare("INSERT INTO admins (username, password) VALUES (?, ?)").run("admin", "admin123");
-        console.log("Clean admin account verified.");
-    }
+// ⚠️ የቆየውን የ try-catch ክፍል አጥፍተህ ይህንን አዲሱን የክላውድ ኮድ ለጥፈው (Paste)፦
+const setupDatabase = async () => {
+    try {
+        // አድሚን መኖሩን በክላውድ ላይ ይፈትሻል
+        const adminCheck = await db.prepare("SELECT * FROM admins LIMIT 1").get();
+        if (!adminCheck || adminCheck.length === 0) {
+            await db.prepare("INSERT INTO admins (username, password) VALUES (?, ?)").run("admin", "admin123");
+            console.log("Default admin verified on cloud.");
+        }
 
-    const settingsCheck = db.prepare("SELECT * FROM settings LIMIT 1").get();
-    if (!settingsCheck) {
-        db.prepare(`
-            INSERT INTO settings (school_name, address, phone, email) 
-            VALUES (?, ?, ?, ?)
-        `).run(
-            "Combat Technic School",
-            "0335400666", 
-            "0335400640",
-            "e.mail-combat_technique@mode.gov.et"
-        );
-        console.log("Clean official settings verified.");
+        // የኮንታክት መረጃ መኖሩን በክላውድ ላይ ይፈትሻል
+        const settingsCheck = await db.prepare("SELECT * FROM settings LIMIT 1").get();
+        if (!settingsCheck || settingsCheck.length === 0) {
+            await db.prepare(`
+                INSERT INTO settings (school_name, address, phone, email) 
+                VALUES (?, ?, ?, ?)
+            `).run(
+                "Combat Technic School",
+                "0335400666", 
+                "0335400640",
+                "e.mail-combat_technique@mode.gov.et"
+            );
+            console.log("Default contact info verified on cloud.");
+        }
+    } catch (err) {
+        console.log("Cloud db verification setup error:", err.message);
     }
-} catch (err) {
-    console.log("Database initial setup error:", err.message);
-}
+};
+setupDatabase();
 
 // ------------------ የገጾች ማሳያ መንገዶች (GET) ------------------
 
