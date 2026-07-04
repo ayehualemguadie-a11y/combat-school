@@ -132,12 +132,14 @@ app.post("/login", async (req, res) => {
 app.post("/upload", upload.single("photo"), async (req, res) => {
     if (!req.file) return res.send("Please select a photo.");
     try {
-        await db.prepare("INSERT INTO gallery(filename) VALUES(?)").run(req.file.path);
+        // 💡 db.prepare() የነበረው ጠፍቶ ቀጥታ በ db.query() እና በ $1 ተተክቷል!
+        await db.query("INSERT INTO gallery (filename) VALUES ($1)", [req.file.path]);
         res.send(`<h2>Photo uploaded successfully to Cloud Storage!</h2><br><a href="/upload.html">Upload Another Photo</a><br><br><a href="/dashboard.html">Back to Dashboard</a>`);
     } catch (err) {
         res.send("Upload Error: " + err.message);
     }
 });
+
 
 // 📰 ዜና እና ማስታወቂያዎችን መለጠፊያ ተግባር (⚠️ Updated for Cloud DB)
 app.post("/upload-news", upload.single("image"), async (req, res) => {
