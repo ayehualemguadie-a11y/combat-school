@@ -2,34 +2,27 @@
 <html lang="en">
 
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Gallery</title>
-
-<link rel="stylesheet" href="style.css">
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery</title>
+    <link rel="stylesheet" href="/style.css"> <!-- Render ላይ እንዲሰራ /style.css ተደርጓል -->
 </head>
 
 <body>
 
 <header>
-
-<img src="images/logo.jpg" width="120">
-
-<h1>Combat Technic School</h1>
-
-<p>School Photo Gallery</p>
-
+    <img src="/images/logo.jpg" width="120">
+    <h1>Combat Technic School</h1>
+    <p>School Photo Gallery</p>
 </header>
 
 <nav>
-
-<a href="index.html">Home</a>
-<a href="about.html">About</a>
-<a href="history.html">History</a>
-<a href="gallery.html">Gallery</a>
-<a href="contact.html">Contact</a>
-
+    <!-- Render ላይ እንዳይበላሹ ሊንኮቹ ከፊት ለፊታቸው ስላሽ (/) ተደርጓል -->
+    <a href="/">Home</a>
+    <a href="/about.html">About</a>
+    <a href="/history.html">History</a>
+    <a href="/gallery">Gallery</a>
+    <a href="/contact.html">Contact</a>
 </nav>
 
 <section>
@@ -37,24 +30,18 @@
 <h2>School Gallery</h2>
 
 <div class="gallery">
+    <div class="card">
+        <h2>School Gallery</h2>
 
-<div class="card">
+        <% photos.forEach(photo => { %>
+            <!-- ☁️ የክላውድ ሊንኩን በቀጥታ እንዲያነብ እዚህ ጋር ተስተካክሏል ☁️ -->
+            <img src="<%= photo.filename %>" style="width:300px; margin:10px; border-radius:10px;" alt="Combat School Photo">
+        <% }) %>
 
-<h2>School Gallery</h2>
-
-<% photos.forEach(photo => { %>
-
-<img
-src="/images/<%= photo.filename %>"
-style="width:300px;margin:10px;border-radius:10px;">
-
-<% }) %>
-
-</div>
+    </div>
 </div>
 
 </section>
 
 </body>
-
 </html>
