@@ -109,14 +109,15 @@ app.get("/login.html", (req, res) => {
 
 // አድሚን ለመግባት (Login - ⚠️ Updated for Cloud DB)
 // 👤 አድሚን ለመግባት (Login) - የክላውድ መረጃ አደራደር ማስተካከያ
+// 👤 አድሚን ለመግባት (Login) - ለክላውድ ፖስትግሬስ ዳታ ታይፕ ፍጹም የተስተካከለ
 app.post("/login", async (req, res) => {
-    const username = req.body.username;
-    const password = req.body.password;
+    const username = String(req.body.username || "");
+    const password = String(req.body.password || "");
 
     try {
-        const rows = await db.prepare("SELECT * FROM admins WHERE username = ? AND password = ?").get(username, password);
+        // 💡 ::text የሚለው ምልክት ለክላውድ ዴታቤዙ የላክንለት መረጃ ጽሑፍ መሆኑን በግልጽ ያሳውቃል!
+        const rows = await db.prepare("SELECT * FROM admins WHERE username = ?::text AND password = ?::text").get(username, password);
         
-        // ⚠️ መረጃው ካለ የመጀመሪያውን አድሚን አይቶ ያስገባል
         if (rows && rows.length > 0) {
             res.redirect("/dashboard.html");
         } else {
@@ -126,6 +127,7 @@ app.post("/login", async (req, res) => {
         res.send("Login Error: " + err.message);
     }
 });
+
 
 
 // 📸 ጋለሪ ፎቶ መጫኛ ተግባር (⚠️ Updated for Cloud DB)
