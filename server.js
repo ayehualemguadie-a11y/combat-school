@@ -110,15 +110,16 @@ app.get("/login.html", (req, res) => {
 // አድሚን ለመግባት (Login - ⚠️ Updated for Cloud DB)
 // 👤 አድሚን ለመግባት (Login) - የክላውድ መረጃ አደራደር ማስተካከያ
 // 👤 አድሚን ለመግባት (Login) - ለክላውድ ፖስትግሬስ ዳታ ታይፕ ፍጹም የተስተካከለ
+// 👤 አድሚን ለመግባት (Login) - የዳታ ታይፕ ስህተቱን ለማጥፋት ቀጥታ የተስተካከለ
 app.post("/login", async (req, res) => {
     const username = String(req.body.username || "");
     const password = String(req.body.password || "");
 
     try {
-        // 💡 ::text የሚለው ምልክት ለክላውድ ዴታቤዙ የላክንለት መረጃ ጽሑፍ መሆኑን በግልጽ ያሳውቃል!
-        const rows = await db.prepare("SELECT * FROM admins WHERE username = ?::text AND password = ?::text").get(username, password);
+        // 💡 db.prepare() የሚለውን አጥፍተን ቀጥታ በ db.query() እና በ $1, $2 ቅርጽ አስተካክለነዋል!
+        const result = await db.query("SELECT * FROM admins WHERE username = $1 AND password = $2", [username, password]);
         
-        if (rows && rows.length > 0) {
+        if (result && result.rows.length > 0) {
             res.redirect("/dashboard.html");
         } else {
             res.send("<h2>Invalid Username or Password</h2><br><a href='/login.html'>Try Again</a>");
@@ -127,6 +128,7 @@ app.post("/login", async (req, res) => {
         res.send("Login Error: " + err.message);
     }
 });
+
 
 
 
