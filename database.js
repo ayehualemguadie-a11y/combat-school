@@ -10,10 +10,10 @@ const pool = new Pool({
 const initDb = async () => {
     try {
         // የቆዩትን እና የተጋጩትን ሰንጠረዦች ሙሉ በሙሉ ያጸዳል
-        await pool.query(`DROP TABLE IF EXISTS settings CASCADE`);
-        await pool.query(`DROP TABLE IF EXISTS gallery CASCADE`);
-        await pool.query(`DROP TABLE IF EXISTS news CASCADE`);
-        await pool.query(`DROP TABLE IF EXISTS admins CASCADE`);
+        //await pool.query(`DROP TABLE IF EXISTS settings CASCADE`);
+        //await pool.query(`DROP TABLE IF EXISTS gallery CASCADE`);
+        //await pool.query(`DROP TABLE IF EXISTS news CASCADE`);
+        //await pool.query(`DROP TABLE IF EXISTS admins CASCADE`);
 
         // 1. አዲስ የጋለሪ ሰንጠረዥ
         await pool.query(`
