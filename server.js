@@ -33,17 +33,15 @@ app.set("views", "./views");
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
-// ⚠️ የቆየውን የ try-catch ክፍል አጥፍተህ ይህንን አዲሱን የክላውድ ኮድ ለጥፈው (Paste)፦
+// የአድሚን ፓስወርድ እና የኮንታክት መረጃ ማስገደጃ (ክላውድ)
 const setupDatabase = async () => {
     try {
-        // አድሚን መኖሩን በክላውድ ላይ ይፈትሻል
         const adminCheck = await db.prepare("SELECT * FROM admins LIMIT 1").get();
         if (!adminCheck || adminCheck.length === 0) {
             await db.prepare("INSERT INTO admins (username, password) VALUES (?, ?)").run("admin", "admin123");
             console.log("Default admin verified on cloud.");
         }
 
-        // የኮንታክት መረጃ መኖሩን በክላውድ ላይ ይፈትሻል
         const settingsCheck = await db.prepare("SELECT * FROM settings LIMIT 1").get();
         if (!settingsCheck || settingsCheck.length === 0) {
             await db.prepare(`
@@ -66,16 +64,26 @@ setupDatabase();
 // ------------------ የገጾች ማሳያ መንገዶች (GET) ------------------
 
 // ዋና ገጽ (Home Page)
-app.get("/", (req, res) => {
-    const settings = db.prepare("SELECT * FROM settings LIMIT 1").get();
-    const news = db.prepare("SELECT * FROM news ORDER BY id DESC LIMIT 20").all();
-    res.render("index", { settings, news });
+app.get("/", async (req, res) => {
+    try {
+        const settingsRows = await db.prepare("SELECT * FROM settings LIMIT 1").get();
+        const newsRows = await db.prepare("SELECT * FROM news ORDER BY id DESC LIMIT 20").all();
+        
+        const settings = settingsRows[0] || null;
+        res.render("index", { settings, news: newsRows });
+    } catch (err) {
+        res.send("Error loading home page: " + err.message);
+    }
 });
 
 // የጋለሪ ፎቶዎች ማሳያ ገጽ
-app.get("/gallery", (req, res) => {
-    const photos = db.prepare("SELECT * FROM gallery ORDER BY id DESC").all();
-    res.render("gallery", { photos });
+app.get("/gallery", async (req, res) => {
+    try {
+        const photos = await db.prepare("SELECT * FROM gallery ORDER BY id DESC").all();
+        res.render("gallery", { photos });
+    } catch (err) {
+        res.send("Error loading gallery: " + err.message);
+    }
 });
 
 // የፎቶ መጫኛ ፎርም ገጽ
@@ -95,51 +103,59 @@ app.get("/login.html", (req, res) => {
 
 // ------------------ መረጃ መቀበያ መንገዶች (POST) ------------------
 
-// አድሚን ለመግባት (Login)
-app.post("/login", (req, res) => {
+// አድሚን ለመግባት (Login - ⚠️ Updated for Cloud DB)
+app.post("/login", async (req, res) => {
     const username = req.body.username;
     const password = req.body.password;
 
-    const admin = db.prepare(
-        "SELECT * FROM admins WHERE username = ? AND password = ?"
-    ).get(username, password);
-
-    if (admin) {
-       res.redirect("/dashboard.html");
-    } else {
-        res.send("<h2>Invalid Username or Password</h2><br><a href='/login.html'>Try Again</a>");
+    try {
+        const rows = await db.prepare("SELECT * FROM admins WHERE username = ? AND password = ?").get(username, password);
+        
+        if (rows && rows.length > 0) {
+            res.redirect("/dashboard.html");
+        } else {
+            res.send("<h2>Invalid Username or Password</h2><br><a href='/login.html'>Try Again</a>");
+        }
+    } catch (err) {
+        res.send("Login Error: " + err.message);
     }
 });
 
-// 📸 ጋለሪ ፎቶ መጫኛ ተግባር
-app.post("/upload", upload.single("photo"), (req, res) => {
+// 📸 ጋለሪ ፎቶ መጫኛ ተግባር (⚠️ Updated for Cloud DB)
+app.post("/upload", upload.single("photo"), async (req, res) => {
     if (!req.file) return res.send("Please select a photo.");
-    db.prepare("INSERT INTO gallery(filename) VALUES(?)").run(req.file.path);
-    res.send(`<h2>Photo uploaded successfully to Cloud Storage!</h2><br><a href="/upload.html">Upload Another Photo</a><br><br><a href="/dashboard.html">Back to Dashboard</a>`);
+    try {
+        await db.prepare("INSERT INTO gallery(filename) VALUES(?)").run(req.file.path);
+        res.send(`<h2>Photo uploaded successfully to Cloud Storage!</h2><br><a href="/upload.html">Upload Another Photo</a><br><br><a href="/dashboard.html">Back to Dashboard</a>`);
+    } catch (err) {
+        res.send("Upload Error: " + err.message);
+    }
 });
 
-// 📰 ዜና እና ማስታወቂያዎችን መለጠፊያ ተግባር
-app.post("/upload-news", upload.single("image"), (req, res) => {
+// 📰 ዜና እና ማስታወቂያዎችን መለጠፊያ ተግባር (⚠️ Updated for Cloud DB)
+app.post("/upload-news", upload.single("image"), async (req, res) => {
     const title = req.body.title;
     const description = req.body.description;
     const imageUrl = req.file ? req.file.path : "";
 
-    db.prepare("INSERT INTO news (title, description, image) VALUES (?, ?, ?)")
-      .run(title, description, imageUrl);
-
-    res.send(`
-        <div style="font-family:sans-serif; text-align:center; margin-top:50px;">
-            <h2 style="color:green;">📰 News Published Successfully to Cloud Storage!</h2>
-            <br>
-            <a href="/news.html" style="padding:10px; background:#222; color:#fff; text-decoration:none; border-radius:5px;">Add Another News</a>
-            <br><br><br>
-            <a href="/dashboard.html" style="color:#555;">Back to Dashboard</a>
-        </div>
-    `);
+    try {
+        await db.prepare("INSERT INTO news (title, description, image) VALUES (?, ?, ?)").run(title, description, imageUrl);
+        res.send(`
+            <div style="font-family:sans-serif; text-align:center; margin-top:50px;">
+                <h2 style="color:green;">📰 News Published Successfully to Cloud Storage!</h2>
+                <br>
+                <a href="/news.html" style="padding:10px; background:#222; color:#fff; text-decoration:none; border-radius:5px;">Add Another News</a>
+                <br><br><br>
+                <a href="/dashboard.html" style="color:#555;">Back to Dashboard</a>
+            </div>
+        `);
+    } catch (err) {
+        res.send("News Upload Error: " + err.message);
+    }
 });
 
-// 👤 የአድሚን አካውንት መቀየሪያ ተግባር
-app.post("/change-admin", (req, res) => {
+// 👤 የአድሚን አካውንት መቀየሪያ ተግባር (⚠️ Updated for Cloud DB)
+app.post("/change-admin", async (req, res) => {
     const newUsername = req.body.username;
     const newPassword = req.body.password;
 
@@ -148,7 +164,11 @@ app.post("/change-admin", (req, res) => {
     }
 
     try {
-        db.prepare("UPDATE admins SET username = ?, password = ? WHERE id = 1").run(newUsername, newPassword);
+        // በመጀመሪያ አድሚን መኖሩን ለማረጋገጥ መታወቂያውን (ID) ያገኛል
+        const adminCheck = await db.prepare("SELECT id FROM admins LIMIT 1").get();
+        const adminId = adminCheck && adminCheck.length > 0 ? adminCheck[0].id : 1;
+
+        await db.prepare("UPDATE admins SET username = ?, password = ? WHERE id = ?").run(newUsername, newPassword, adminId);
         res.send(`
             <div style="font-family:sans-serif; text-align:center; margin-top:50px;">
                 <h2 style="color:green;">👤 Admin Account Updated Successfully!</h2>
