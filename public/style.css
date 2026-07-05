@@ -53,11 +53,17 @@ nav a:hover, .navbar ul li a:hover {
     border-radius: 5px;
 }
 
+/* 🔙 የትምህርት ቤቱን የጀርባ ምስል በይፋ መመለሻ ኮድ */
 .hero {
-    background-color: #f4f4f4;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('/images/background.jpg'); /* 💡 ⚠️ በ public/images ፎልደርህ ውስጥ ያለው የጀርባ ፎቶ ስም background.jpg ካልሆነ ልክ በፎቶው እውነተኛ ስም ቀይረው */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     text-align: center;
-    padding: 50px 20px;
+    padding: 80px 20px;
+    color: white;
 }
+
 
 .hero h1 {
     font-size: 36px;
