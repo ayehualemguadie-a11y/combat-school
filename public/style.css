@@ -53,15 +53,18 @@ nav a:hover, .navbar ul li a:hover {
 }
 
 /* 🖼️ ⚠️ የጀርባ ምስሉን ፍንትው አድርጎ የሚቆልፈው አስተማማኝ የጀግናው ሳጥን */
+/* 🖼️ ⚠️ የጀርባ ምስሉን በግድ ፈልጎ የሚያወጣው ፍጹም ትክክለኛ ኮድ */
 .hero {
     background-image: linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.55)), url('/images/background.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+    background-attachment: scroll; /* በሞባይልም በኮምፒውተርም ምስሉን በግድ ያሳያል */
     text-align: center;
-    padding: 90px 20px;
+    padding: 100px 20px;
     color: white;
 }
+
 
 .hero h1 {
     font-size: 36px;
