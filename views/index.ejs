@@ -6,156 +6,120 @@
     <title>Combat Technic School</title>
     <link rel="stylesheet" href="/style.css">
 </head>
-
 <body>
 
-<nav class="navbar">
-    <div class="logo">
-        <img src="/images/logo.jpg" width="65">
-        <div>
-            <h2>Main Directorate of Defense Education and Training</h2>
-            <p>Combat Technic School</p>
-        </div>
-    </div>
-
-    <ul>
-        <li><a href="/">Home</a></li>
-        <li><a href="/about.html">About</a></li>
-        <li><a href="/history.html">History</a></li>
-        <li><a href="https://t.me" target="_blank">Gallery 📸</a></li>
-        <li><a href="/contact.html">Contact</a></li>
-        <li><a href="/login.html">Admin</a></li>
-    </ul>
-</nav>
-
-<!-- 🎖️ አዲሱ የትምህርት ቤቱ መፈክር ያለበት Header ክፍል እዚህ ጋር ገብቷል 🎖️ -->
-<<!-- 🎖️ የትምህርት ቤቱ አናት (Header) ፍጹም በሆነ አማርኛ ተስተካክሏል 🎖️ -->
-<header style="text-align: center; padding: 25px 10px; background: #111827; color: white;">
-    <!-- 📌 የትምህርት ቤቱ መፈክር በውብ ወታደራዊ ሳጥን -->
-    <div style="display: inline-block; background: #1f2937; padding: 12px 20px; border-left: 4px solid #0088cc; border-right: 4px solid #0088cc; border-radius: 4px; max-width: 90%;">
-        <span style="font-size: 16px; font-weight: bold; color: #38bdf8; font-style: italic; letter-spacing: 0.5px; display: block;">
+<header>
+    <img src="/images/logo.jpg" width="120" style="border-radius: 50%; margin-bottom: 15px;" alt="Logo">
+    <h1>Main Directorate of Defense Education and Training</h1>
+    <p>Combat Technic School</p>
+    
+    <!-- 📌 በትክክለኛው አማርኛ የተስተካከለው መፈክር -->
+    <div style="display: inline-block; background: rgba(255,255,255,0.1); padding: 12px 20px; border-left: 4px solid #fbbf24; border-right: 4px solid #fbbf24; border-radius: 4px; margin-top: 15px; max-width: 90%;">
+        <span style="font-size: 16px; font-weight: bold; color: #fbbf24; font-style: italic;">
             "እናቅዳለን፤ እንጀምራለን፤ እናሰፋለን፤ በፍጥነት እና በጥራት እንፈጽማለን።"
         </span>
     </div>
 </header>
 
+<nav>
+    <a href="/">Home</a>
+    <a href="/about.html">About</a>
+    <a href="/history.html">History</a>
+    <a href="https://t.me" target="_blank">Gallery 📸</a>
+    <a href="https://t.me" target="_blank">News & Announcements 📰</a>
+    <a href="/contact.html">Contact</a>
+</nav>
 
-<section class="hero">
-    <div class="hero-content">
-        <h1>Combat Technic School</h1>
-        <p>Training Today's Soldiers for Tomorrow's Mission</p>
-        <a href="/about.html" class="btn">Learn More</a>
-        <a href="/contact.html" class="btn">Contact Us</a>
+<section class="container" style="text-align: center; margin-top: 40px;">
+    <div class="card" style="padding: 40px 20px; background: white;">
+        <h1 style="color: #064e3b; margin-bottom: 10px;">Combat Technic School</h1>
+        <p style="font-size: 18px; color: #4b5563; margin-bottom: 25px;">Training Today's Soldiers for Tomorrow's Mission</p>
+        <div style="display: flex; justify-content: center; gap: 15px;">
+            <a href="/about.html" style="padding: 12px 25px; background: #059669; color: white; text-decoration: none; border-radius: 5px; font-weight: bold;">Learn More</a>
+            <a href="/contact.html" style="padding: 12px 25px; background: #111827; color: white; text-decoration: none; border-radius: 5px; font-weight: bold;">Contact Us</a>
+        </div>
     </div>
 </section>
 
 <!-- 📰 የዜና ማሳያ ክፍል -->
 <section class="container">
-    <h2 align="center">📰 Latest News & Announcements</h2>
-    
-    <% if (news && news.length > 0) { %>
-        <% news.forEach(item => { %>
-            <div class="card" style="margin-bottom: 20px;">
-                <h3><%= item.title %></h3>
-                <p><%= item.description %></p>
-                <% if (item.image) { %>
-                    <br>
-                    <img src="<%= item.image %>" style="max-width:100%; height:auto; border-radius:8px; max-height:300px; object-fit:cover;">
-                <% } %>
-                <br><br>
-                <small style="color: #666;">Posted on: <%= item.created_at %></small>
-            </div>
-        <% }) %>
-    <% } else { %>
-        <div class="card">
-            <p align="center" style="color: #666;">No news or announcements available at the moment.</p>
-        </div>
-    <% } %>
-</section>
-
-<section class="container">
     <div class="card">
-        <h2>Welcome</h2>
-        <p>
-            Combat Technic School is committed to providing high-quality
-            technical and military training using experienced instructors,
-            modern equipment, and practical exercises.
-        </p>
+        <h2>📰 Latest News & Announcements</h2>
+        <hr style="border:0; border-top:1px solid #eee; margin: 15px 0;">
+        <% if (news && news.length > 0) { %>
+            <% news.forEach(item => { %>
+                <div style="margin-bottom: 25px; padding-bottom: 20px; border-bottom: 1px dashed #eee;">
+                    <h3><%= item.title %></h3>
+                    <p><%= item.description %></p>
+                    <% if (item.image) { %>
+                        <br>
+                        <img src="<%= item.image %>" style="max-width:100%; height:auto; border-radius:8px; max-height:300px; object-fit:cover;">
+                    <% } %>
+                    <br>
+                    <small style="color: #6b7280;">Posted on: <%= item.created_at %></small>
+                </div>
+            <% }) %>
+        <% } else { %>
+            <p align="center" style="color: #6b7280; font-style: italic;">No news or announcements available at the moment.</p>
+        <% } %>
     </div>
 </section>
 
-<!-- 📞 የመገናኛ መረጃ ከቴሌግራም ሙሉ ሊንክ ጋር ፍጹም ተስተካክሏል 📞 -->
+<!-- 🛡️ የውጊያ ቴክኒክ ት/ቤት ራዕይ እና ተልዕኮ ክፍል -->
 <section class="container">
-    <h2 align="center">📞 Contact Information</h2>
-    <div class="card" style="max-width: 600px; margin: 0 auto; padding: 25px; line-height: 1.8;">
+    <div class="card">
+        <h2 style="color: #064e3b; margin-bottom: 20px;">🛡️ የውጊያ ቴክኒክ ት/ቤት ራዕይ እና ተልዕኮ</h2>
+        
+        <h3 style="color: #059669;">👁️ ራዕይ</h3>
+        <p style="font-size: 16px; font-weight: 500;">
+            በዘመኑ የጥምር ጦር ውጊያ ውስጥ ግዳጃቸውን በላቀ ደረጃ መወጣት የሚችሉ ብቁ የሜካናይዝድና ሞተራይዝድ ሙያተኞችን ማፍራት የሚችል ተመራጭ ት/ቤት ሆኖ ማየት።
+        </p>
+        
+        <hr style="border: 0; border-top: 1px solid #eee; margin: 20px 0;">
+        
+        <h3 style="color: #059669;">🎯 ተልዕኮ</h3>
+        <p style="font-size: 16px; font-weight: 500;">
+            በሜካናይዝድና በሞተራይዝድ ሙያ ግዳጃቸውን በብቃት መወጣት የሚችሉ ምድብተኞችን፣ የመሳሪያ አዛዦችን እና የመቶ አመራሮችን ማፍራት፣
+        </p>
+        
+        <hr style="border: 0; border-top: 1px solid #eee; margin: 20px 0;">
+        
+        <h3 style="color: #059669;">⭐ ዋና ዋና ተግባራት</h3>
+        <ul style="list-style-type: none; padding-left: 0; font-size: 15px;">
+            <li style="margin-bottom: 12px; padding-left: 20px; text-indent: -20px;">🔹 በት/ቤቱ ሥርዓተ-ትምህርት መሰረት ቀጣይነት ያለውና ደረጃውን የጠበቀ የሜካናይዝድ የቴክኒክ ሥልጠና መስጠት፣</li>
+            <li style="margin-bottom: 12px; padding-left: 20px; text-indent: -20px;">🔹 የፈጠራ ስራዎችን ማከናወንና በቴክኖሎጂ የተደገፈ ሥልጠና መስጠት፣</li>
+            <li style="margin-bottom: 12px; padding-left: 20px; text-indent: -20px;">🔹 ለሠራዊታችን ክፍሎች ቀጥተኛ ሙያዊ ድጋፍ በመስጠት የሜካናይዝድ ክፍሎችን የማድረግ አቅም ማሳደግ፣</li>
+            <li style="margin-bottom: 5px; padding-left: 20px; text-indent: -20px;">🔹 ከአካባቢው ማህበረሰብ ጋር በፀጥታና በልማት ስራዎች በትብብር መስራት፣</li>
+        </ul>
+    </div>
+</section>
+
+<!-- 📞 የኮንታክት መረጃ ሳጥን -->
+<section class="container">
+    <div class="card" style="max-width: 600px; margin: 0 auto;">
+        <h2 style="color: #064e3b; margin-bottom: 15px;">📞 Contact Information</h2>
         <p><strong>School:</strong> Combat Technic School</p>
         <p><strong>Location:</strong> Awash Arba, Ethiopia</p>
         <p><strong>Email:</strong> e.mail-combat_technique@mode.gov.et</p>
         <p><strong>Phone:</strong> 0335400640</p>
         <p><strong>Fax:</strong> 0335400666</p>
-        <p><strong>Telegram Channel:</strong> <a href="https://t.me" target="_blank" style="color: #0088cc; font-weight: bold; text-decoration: underline;">https://t.me</a></p>
+        <p><strong>Telegram Channel:</strong> <a href="https://t.me" target="_blank" style="color: #059669; font-weight: bold; text-decoration: underline;">https://t.me</a></p>
         
-        <hr style="margin: 20px 0; border: 0; border-top: 1px solid #eee;">
+        <hr style="border: 0; border-top: 1px solid #eee; margin: 20px 0;">
         
         <p style="font-size: 15px; color: #555; text-align: center; margin-bottom: 15px;">
             For all official school news, photo galleries, announcements, and live updates, please join our official Telegram channel:
         </p>
         
-        <!-- 💡 ⚠️ የቴሌግራም ሙሉ ሊንኩ እዚህ አዝራር ላይ በትክክል ተቆልፏል -->
         <p style="text-align: center; margin: 0;">
-            <a href="https://t.me" target="_blank" style="display: inline-block; padding: 12px 25px; background: #0088cc; color: white; text-decoration: none; border-radius: 5px; font-weight: bold; font-size: 16px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); transition: background 0.3s; text-align: center;">
+            <a href="https://t.me" target="_blank" style="display: inline-block; padding: 12px 25px; background: #0088cc; color: white; text-decoration: none; border-radius: 5px; font-weight: bold; font-size: 16px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
                 Join Our Official Telegram Channel 📸 📰
             </a>
         </p>
     </div>
 </section>
 
-<!-- 🛡️ የውጊያ ቴክኒክ ት/ቤት ራዕይ እና ተልዕኮ ክፍል 🛡️ -->
-<section class="container">
-    <!-- 📌 ዋናው አርዕስት በትክክል አንተ በፈለግከው ስም ተቀይሯል -->
-    <h2 align="center" style="color: #111827; margin-bottom: 25px;">🛡️ የውጊያ ቴክኒክ ት/ቤት ራዕይ እና ተልዕኮ</h2>
-    <div class="card" style="line-height: 1.8; padding: 25px;">
-        
-        <!-- 👁️ ራዕይ ክፍል -->
-        <!-- 👁️ የራዕይ ክፍል ማብቂያው "ሆኖ ማየት።" ተብሎ ተስተካክሏል -->
-<h3 style="color: #0088cc; margin-top: 0;"><span style="font-size: 22px;">👁️</span> ራዕይ</h3>
-<p style="font-size: 16px; font-weight: 500; margin-bottom: 5px;">
-    በዘመኑ የጥምር ጦር ውጊያ ውስጥ ግዳጃቸውን በላቀ ደረጃ መወጣት የሚችሉ ብቁ የሜካናይዝድና ሞተራይዝድ ሙያተኞችን ማፍራት የሚችል ተመራጭ ት/ቤት ሆኖ ማየት።
-</p>
-
-        
-        <hr style="border: 0; border-top: 1px solid #eee; margin: 20px 0;">
-        
-        <!-- 🎯 ተልዕኮ ክፍል -->
-        <h3 style="color: #0088cc;"><span style="font-size: 22px;">🎯</span> ተልዕኮ</h3>
-        <p style="font-size: 16px; font-weight: 500; margin-bottom: 5px;">
-            በሜካናይዝድና በሞተራይዝድ ሙያ ግዳጃቸውን በብቃት መወጣት የሚችሉ ምድብተኞችን፣ የመሳሪያ አዛዦችን እና የመቶ አመራሮችን ማፍራት፣
-        </p>
-        
-        <hr style="border: 0; border-top: 1px solid #eee; margin: 20px 0;">
-        
-        <!-- ⭐ ዋና ዋና ተግባራት ክፍል -->
-        <h3 style="color: #0088cc;"><span style="font-size: 22px;">⭐</span> ዋና ዋና ተግባራት</h3>
-        <ul style="list-style-type: none; padding-left: 0; font-size: 15px; margin-top: 10px;">
-            <li style="margin-bottom: 12px; padding-left: 25px; text-indent: -25px;">
-                🔹 በት/ቤቱ ሥርዓተ-ትምህርት መሰረት ቀጣይነት ያለውና ደረጃውን የጠበቀ የሜካናይዝድ የቴክኒክ ሥልጠና መስጠት፣
-            </li>
-            <li style="margin-bottom: 12px; padding-left: 25px; text-indent: -25px;">
-                🔹 የፈጠራ ስራዎችን ማከናወንና በቴክኖሎጂ የተደገፈ ሥልጠና መስጠት፣
-            </li>
-            <li style="margin-bottom: 12px; padding-left: 25px; text-indent: -25px;">
-                🔹 ለሠራዊታችን ክፍሎች ቀጥተኛ ሙያዊ ድጋፍ በመስጠት የሜካናይዝድ ክፍሎችን የማድረግ አቅም ማሳደግ፣
-            </li>
-            <li style="margin-bottom: 5px; padding-left: 25px; text-indent: -25px;">
-                🔹 ከአካባቢው ማህበረሰብ ጋር በፀጥታና በልማት ስራዎች በትብብር መስራት፣
-            </li>
-        </ul>
-
-    </div>
-</section>
-
-
-<footer style="background:#111827;color:white;text-align:center;padding:30px;margin-top:40px;">
+<footer style="background:#111827; color:white; text-align:center; padding:30px; margin-top:40px;">
     <p>© 2026 Combat Technic School</p>
 </footer>
 
