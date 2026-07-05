@@ -54,15 +54,47 @@ nav a:hover, .navbar ul li a:hover {
 }
 
 /* 🔙 የትምህርት ቤቱን የጀርባ ምስል በይፋ መመለሻ ኮድ */
+/* 🔙 የትምህርት ቤቱ ግቢ ፎቶ ለጀርባ መቆለፊያ */
+/* 🔙 የትምህርት ቤቱ ግቢ ፎቶ ለጀርባ መቆለፊያ */
 .hero {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('/images/background.jpg'); /* 💡 ⚠️ በ public/images ፎልደርህ ውስጥ ያለው የጀርባ ፎቶ ስም background.jpg ካልሆነ ልክ በፎቶው እውነተኛ ስም ቀይረው */
+    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('/images/background.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     text-align: center;
-    padding: 80px 20px;
+    padding: 100px 20px;
     color: white;
 }
+
+.hero h1 {
+    font-size: 38px;
+    font-weight: bold;
+    margin-bottom: 12px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+}
+
+.hero p {
+    font-size: 20px;
+    color: #f3f4f6;
+    margin-bottom: 25px;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.6);
+}
+
+
+.hero h1 {
+    font-size: 38px;
+    font-weight: bold;
+    margin-bottom: 12px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+}
+
+.hero p {
+    font-size: 20px;
+    color: #f3f4f6;
+    margin-bottom: 25px;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.6);
+}
+
 
 
 .hero h1 {
