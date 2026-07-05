@@ -202,3 +202,36 @@ transition:.3s;
 .navbar ul li a:hover{
 color:#facc15;
 }
+/* 📱 ለማንኛውም የሞባይል ስልክ ስክሪን የተስተካከለ ዲዛይን */
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+    
+    header h1 {
+        font-size: 20px; /* በስልክ ስክሪን ርዕሱ ትልቅ እንዳይሆን */
+    }
+
+    nav {
+        display: flex;
+        flex-direction: column; /* ማውጫዎቹ በስልክ ላይ ወደ ታች በቅደም ተከተል እንዲሰለፉ */
+        text-align: center;
+        gap: 8px;
+    }
+
+    nav a {
+        display: block;
+        padding: 10px;
+        margin: 2px 0;
+        background: #1f2937;
+        border-radius: 4px;
+    }
+
+    .card {
+        width: 100% !important; /* ሳጥኑ ከስልኩ ስክሪን ጋር እኩል እንዲለጠጥ */
+        box-sizing: border-box;
+        padding: 15px !important;
+        margin: 10px 0;
+    }
+}
+
