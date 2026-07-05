@@ -8,32 +8,43 @@ body {
 }
 
 /* 🎖️ የላይኛው አናት (Header) - ጥቁሩ ዳራ በክብር ተመልሷል ግን ፎቶውን እንዳይሸፍን አጭር ተደርጓል */
+/* 🎖️ የላይኛው ክፍል ወደ ከፊል ግልጽ ወታደራዊ አረንጓዴ ተቀይሯል - ፎቶው ከአናት እንዲታይ ያደርጋል */
 header {
-    background-color: #111827;
+    background: rgba(6, 78, 59, 0.75); /* ከፊል ግልጽ ወታደራዊ አረንጓዴ ዳራ */
+    backdrop-filter: blur(10px); /* የጀርባውን ፎቶ በትንሹ የማደብዘዝ ዘመናዊ ውበት */
+    -webkit-backdrop-filter: blur(10px);
     color: white;
     text-align: center;
-    padding: 25px 15px;
+    padding: 30px 15px 15px 15px;
+    position: relative;
+    z-index: 5; /* ጽሑፎቹ ከላይ እንዲንሳፈፉ */
 }
 
 header h1 {
     margin: 5px 0;
     font-size: 24px;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
 }
 
 header p {
     margin: 5px 0;
     font-size: 16px;
-    color: #9ca3af;
+    color: #e5e7eb;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
 }
 
-/* 🌐 የናቭባር (Navbar) ማውጫ ስታይል - ፍጹም ሥርዓት የያዘ */
+/* 🌐 የናቭባር (Navbar) ማውጫ ስታይል - ከላይኛው ቀለም ጋር እንዲዋሃድ ግልጽ ተደርጓል */
 nav, .navbar {
-    background-color: #1f2937;
+    background: rgba(17, 24, 39, 0.8); /* በከፊል ግልጽ የሆነ ጥቁር አጨልማ */
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
     display: flex;
     justify-content: center;
     padding: 12px 0;
     gap: 10px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    position: relative;
+    z-index: 5;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 nav a, .navbar ul li a {
@@ -48,34 +59,38 @@ nav a, .navbar ul li a {
 }
 
 nav a:hover, .navbar ul li a:hover {
-    background-color: #374151;
-    color: #fbbf24; /* የክብር ወርቃማ ቀለም በሆቨር ላይ */
+    background-color: #059669; /* በሆቨር ጊዜ ወደ ደማቅ አረንጓዴ ይለወጣል */
+    color: white;
 }
 
-/* 🖼️ ⚠️ የትምህርት ቤቱ ውብ የሕንፃ ፎቶ ያለምንም መደራረብ ቁልጭ ብሎ የሚታይበት ጀግናው ሳጥን */
+/* 🖼️ ⚠️ ሙሉው የሕንፃ ፎቶ ከአናት ጀምሮ ያለምንም መቆረጥ በሙሉ ግርማ ሞገሱ የሚታይበት ዋናው ሳጥን */
 .hero {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)), url('/images/background.jpg');
+    background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.5)), url('/images/background.jpg');
     background-size: cover;
-    background-position: center 25%;
+    background-position: center center;
     background-repeat: no-repeat;
     text-align: center;
-    padding: 100px 20px;
     color: white;
-    box-shadow: inset 0 0 100px rgba(0,0,0,0.5);
+    
+    /* 💡 ፎቶውን ወደ ላይኛው ጫፍ ሙሉ በሙሉ በመሳብ ከአናት ጀምሮ እንዲታይ የሚያደርገው አስደናቂ ጥንቅር፡ */
+    margin-top: -260px; 
+    padding: 300px 20px 100px 20px; 
+    box-shadow: inset 0 0 100px rgba(0,0,0,0.6);
 }
 
 .hero h1 {
-    font-size: 36px;
+    font-size: 38px;
     margin-bottom: 10px;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.9);
 }
 
 .hero p {
     font-size: 18px;
     color: #f3f4f6;
     margin-bottom: 25px;
-    text-shadow: 1px 1px 3px rgba(0,0,0,0.6);
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
 }
+
 
 /* 📦 የመረጃ ሳጥኖች (Cards) አቀማመጥ */
 .container {
