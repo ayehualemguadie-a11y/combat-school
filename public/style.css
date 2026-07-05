@@ -1,3 +1,4 @@
+/* 🌐 አጠቃላይ የመነሻ አደራደር */
 body {
     font-family: sans-serif;
     margin: 0;
@@ -6,89 +7,123 @@ body {
     color: #333;
 }
 
-/* 🎖️ የላይኛው ጥቁር ክፍል ጠፍቶ ወደ ግልጽ (Transparent) የተለወጠበት አዲስ Header */
+/* 🎖️ የላይኛው አናት (Header) - ጥቁሩ ዳራ በክብር ተመልሷል ግን ፎቶውን እንዳይሸፍን አጭር ተደርጓል */
 header {
-    text-align: center;
-    padding: 30px 10px 10px 10px;
-    background: transparent; /* 💡 ጥቁሩ ቀለም ሙሉ በሙሉ ጠፍቷል! */
+    background-color: #111827;
     color: white;
-    position: relative;
-    z-index: 2;
+    text-align: center;
+    padding: 25px 15px;
 }
 
 header h1 {
-    font-size: 26px;
     margin: 5px 0;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.9); /* ጽሑፉ በፎቶው ላይ ጎልቶ እንዲነበብ */
+    font-size: 24px;
 }
 
 header p {
+    margin: 5px 0;
     font-size: 16px;
-    color: #e5e7eb;
-    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.9);
+    color: #9ca3af;
 }
 
-/* 🌐 የማውጫው (Navbar) ዳራ ይበልጥ እንዲዋሃድ ቅኝቱ በትንሹ መጥቆር አለበት */
+/* 🌐 የናቭባር (Navbar) ማውጫ ስታይል - ፍጹም ሥርዓት የያዘ */
 nav, .navbar {
-    background-color: rgba(17, 24, 39, 0.85); /* በከፊል ግልጽ የሆነ ውብ ጥቁር */
-    backdrop-filter: blur(5px); /* ከበስተጀርባ ያለውን ፎቶ በትንሹ የማደብዘዝ ውበት */
+    background-color: #1f2937;
     display: flex;
     justify-content: center;
     padding: 12px 0;
-    position: relative;
-    z-index: 2;
+    gap: 10px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
-/* 🖼️ ⚠️ ሙሉው ፎቶ ከአናት ጀምሮ ሕንፃውን ሳያጨልም በሙሉ ውበቱ እንዲታይ የሚያደርገው ዋናው ሳጥን */
+nav a, .navbar ul li a {
+    color: white;
+    padding: 10px 18px;
+    text-decoration: none;
+    text-align: center;
+    font-weight: bold;
+    font-size: 15px;
+    border-radius: 4px;
+    transition: background 0.3s;
+}
+
+nav a:hover, .navbar ul li a:hover {
+    background-color: #374151;
+    color: #fbbf24; /* የክብር ወርቃማ ቀለም በሆቨር ላይ */
+}
+
+/* 🖼️ ⚠️ የትምህርት ቤቱ ውብ የሕንፃ ፎቶ ያለምንም መደራረብ ቁልጭ ብሎ የሚታይበት ጀግናው ሳጥን */
 .hero {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.5)), url('/images/background.jpg');
+    background-image: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)), url('/images/background.jpg');
     background-size: cover;
-    background-position: center 20%; /* 💡 ፎቶው ወደ ላይ ከፍ ብሎ ሕንፃው በግልጽ እንዲታይ ያደርጋል */
+    background-position: center 25%;
     background-repeat: no-repeat;
     text-align: center;
-    padding: 160px 20px 80px 20px; /* ጽሑፉ ወደ ታች ወረድ ብሎ ፎቶውን እንዲለቀው */
+    padding: 100px 20px;
     color: white;
-    margin-top: -300px; /* 💡 ፎቶውን ወደ ላይኛው ጫፍ በግድ በመሳብ ጥቁሩን ክፍል ሙሉ በሙሉ ይተካዋል */
-    padding-top: 320px; /* የላይኛውን ጽሑፍ ቦታ ለማመቻቸት */
+    box-shadow: inset 0 0 100px rgba(0,0,0,0.5);
 }
 
 .hero h1 {
-    font-size: 38px;
+    font-size: 36px;
     margin-bottom: 10px;
-    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.9);
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
 }
 
 .hero p {
     font-size: 18px;
     color: #f3f4f6;
-    margin-bottom: 20px;
-    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
+    margin-bottom: 25px;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.6);
 }
 
+/* 📦 የመረጃ ሳጥኖች (Cards) አቀማመጥ */
+.container {
+    padding: 20px;
+    max-width: 850px;
+    margin: auto;
+}
 
+.card {
+    background: white;
+    padding: 25px;
+    margin-top: 25px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+    border-radius: 6px;
+    border-top: 4px solid #111827; /* የወታደራዊ ጥቁር መስመር ክብር */
+}
+
+/* 🔘 የአዝራሮች (Buttons) ዲዛይን */
 .btn {
     display: inline-block;
-    background-color: #0088cc; /* የቴሌግራም ሰማያዊ ቀለም ለውበት */
+    background-color: #0088cc; /* የቴሌግራም ሰማያዊ ቀለም */
     color: white;
     padding: 12px 24px;
     text-decoration: none;
     border-radius: 5px;
     font-weight: bold;
     margin: 5px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.15);
+    transition: background 0.3s;
 }
 
 .btn:hover {
     background-color: #006699;
 }
 
+/* 📱 ለማንኛውም የሞባይል ስልክ ስክሪን የተስተካከለ */
 @media (max-width: 768px) {
     nav, .navbar {
         flex-direction: column;
-        text-align: center;
+        align-items: center;
+        padding: 10px 0;
     }
     nav a, .navbar ul li a {
         display: block;
+        width: 80%;
         padding: 10px;
+    }
+    .hero h1 {
+        font-size: 26px;
     }
 }
