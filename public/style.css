@@ -1,98 +1,98 @@
-/* 🌐 አጠቃላይ የዌብሳይቱ መነሻ ስታይል */
+/* 🔙 መጀመሪያ ወደነበረበት የተመለሰው ፍጹም ትክክለኛው የድሮ CSS ኮድህ */
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f3f4f6;
-    color: #1f2937;
+    background-color: #f9f9f9;
+    color: #333;
 }
 
-/* 🎖️ የላይኛው አናት (Header) ዲዛይን */
 header {
-    text-align: center;
-    padding: 40px 20px;
-    background: linear-gradient(135deg, #111827 0%, #064e3b 100%); /* ወታደራዊ ጥቁርና አረንጓዴ ድብልቅ */
+    background-color: #111827;
     color: white;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    text-align: center;
+    padding: 20px;
 }
 
 header h1 {
-    margin: 10px 0 5px 0;
-    font-size: 28px;
-    letter-spacing: 0.5px;
-    color: #fbbf24; /* የክብር ወርቃማ ቀለም */
+    margin: 5px 0;
 }
 
-header p {
-    margin: 0;
-    font-size: 16px;
-    color: #d1d5db;
-}
-
-/* 🌐 የናቭባር (Navbar) ማውጫ ስታይል */
 nav, .navbar {
     background-color: #111827;
-    padding: 15px 20px;
+    overflow: hidden;
     display: flex;
     justify-content: center;
-    gap: 20px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    padding: 10px 0;
 }
 
 nav a, .navbar ul li a {
-    color: #e5e7eb;
+    color: white;
+    padding: 14px 20px;
     text-decoration: none;
-    font-weight: 600;
-    padding: 8px 16px;
-    border-radius: 4px;
-    transition: all 0.3s ease;
+    text-align: center;
+    font-weight: bold;
 }
 
 nav a:hover, .navbar ul li a:hover {
-    background-color: #059669; /* አረንጓዴ ማቅለሚያ */
-    color: white;
+    background-color: #ddd;
+    color: black;
 }
 
-/* 📦 የመረጃ ሳጥኖች (Cards) ስታይል */
 .container {
-    max-width: 900px;
-    margin: 30px auto;
-    padding: 0 20px;
+    padding: 20px;
+    max-width: 800px;
+    margin: auto;
 }
 
 .card {
     background: white;
-    border-radius: 8px;
-    padding: 30px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
-    border-top: 4px solid #059669; /* የአረንጓዴ መስመር ክብር */
-    margin-bottom: 25px;
+    padding: 20px;
+    margin-top: 20px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    border-radius: 5px;
 }
 
-.card h2, .card h3 {
-    color: #064e3b;
-    margin-top: 0;
+.hero {
+    background-color: #f4f4f4;
+    text-align: center;
+    padding: 50px 20px;
 }
 
-/* 📱 ለማንኛውም የሞባይል ስልክ ስክሪን ፍጹም የተስተካከለ ዲዛይን */
+.hero h1 {
+    font-size: 36px;
+    margin-bottom: 10px;
+}
+
+.hero p {
+    font-size: 18px;
+    color: #666;
+    margin-bottom: 20px;
+}
+
+.btn {
+    display: inline-block;
+    background-color: #111827;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    margin: 5px;
+}
+
+.btn:hover {
+    background-color: #374151;
+}
+
+/* 📱 የሞባይል ስልክ ማስተካከያ */
 @media (max-width: 768px) {
-    header h1 {
-        font-size: 22px;
-    }
-    
     nav, .navbar {
         flex-direction: column;
-        align-items: center;
-        gap: 10px;
-    }
-    
-    nav a, .navbar ul li a {
-        width: 80%;
         text-align: center;
-        display: block;
     }
-    
-    .card {
-        padding: 20px;
+    nav a, .navbar ul li a {
+        display: block;
+        padding: 10px;
     }
 }
