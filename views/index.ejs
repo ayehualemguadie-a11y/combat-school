@@ -22,11 +22,21 @@
         <li><a href="/">Home</a></li>
         <li><a href="/about.html">About</a></li>
         <li><a href="/history.html">History</a></li>
-        <li><a href="/gallery">Gallery</a></li>
+        <li><a href="https://t.me" target="_blank">Gallery 📸</a></li>
         <li><a href="/contact.html">Contact</a></li>
         <li><a href="/login.html">Admin</a></li>
     </ul>
 </nav>
+
+<!-- 🎖️ አዲሱ የትምህርት ቤቱ መፈክር ያለበት Header ክፍል እዚህ ጋር ገብቷል 🎖️ -->
+<header style="text-align: center; padding: 25px 10px; background: #111827; color: white;">
+    <!-- 📌 የትምህርት ቤቱ መፈክር በውብ ወታደራዊ ሳጥን -->
+    <div style="display: inline-block; background: #1f2937; padding: 12px 20px; border-left: 4px solid #0088cc; border-right: 4px solid #0088cc; border-radius: 4px; max-width: 90%;">
+        <span style="font-size: 16px; font-weight: bold; color: #38bdf8; font-style: italic; letter-spacing: 0.5px; display: block;">
+            "እናቅዳለን፤ እንጀምраለን፤ እናሰፋለን፤ በፍጥነት እና በጥራት እንፈጽማለን።"
+        </span>
+    </div>
+</header>
 
 <section class="hero">
     <div class="hero-content">
@@ -48,7 +58,7 @@
                 <p><%= item.description %></p>
                 <% if (item.image) { %>
                     <br>
-                    <img src="/images/<%= item.image %>" style="max-width:100%; height:auto; border-radius:8px; max-height:300px; object-fit:cover;">
+                    <img src="<%= item.image %>" style="max-width:100%; height:auto; border-radius:8px; max-height:300px; object-fit:cover;">
                 <% } %>
                 <br><br>
                 <small style="color: #666;">Posted on: <%= item.created_at %></small>
@@ -72,10 +82,7 @@
     </div>
 </section>
 
-<!-- 📞 የተስተካከለው የመገናኛ መረጃ (Contact Information) ክፍል እዚህ ጋር ነው 📞 -->
-<!-- 📞 የተስተካከለው የመገናኛ መረጃ ከቴሌግራም ሊንክ ጋር 📞 -->
-<!-- 🔗 ስትነካው ቀጥታ ወደ ቴሌግራም ቻናሉ የሚወስደው እውነተኛው አዝራር 🔗 -->
-<!-- 📞 ሁሉንም ያካተተ ፍጹም የተሟላ የእውቂያ መረጃ ሳጥን 📞 -->
+<!-- 📞 የመገናኛ መረጃ ከቴሌግራም ሙሉ ሊንክ ጋር ፍጹም ተስተካክሏል 📞 -->
 <section class="container">
     <h2 align="center">📞 Contact Information</h2>
     <div class="card" style="max-width: 600px; margin: 0 auto; padding: 25px; line-height: 1.8;">
@@ -84,6 +91,7 @@
         <p><strong>Email:</strong> e.mail-combat_technique@mode.gov.et</p>
         <p><strong>Phone:</strong> 0335400640</p>
         <p><strong>Fax:</strong> 0335400666</p>
+        <p><strong>Telegram Channel:</strong> <a href="https://t.me" target="_blank" style="color: #0088cc; font-weight: bold; text-decoration: underline;">https://t.me</a></p>
         
         <hr style="margin: 20px 0; border: 0; border-top: 1px solid #eee;">
         
@@ -91,16 +99,15 @@
             For all official school news, photo galleries, announcements, and live updates, please join our official Telegram channel:
         </p>
         
-        <!-- 📢 የቴሌግራም ሙሉ ሊንኩ እዚህ ጋር በግልጽ href ውስጥ ገብቷል -->
-        <<!-- 🔗 የቴሌግራም መለያህ በትክክል የገባበት እውነተኛው አዝራር 🔗 -->
-<p style="text-align: center; margin: 0;">
-    <a href="https://t.me" target="_blank" style="display: inline-block; padding: 12px 25px; background: #0088cc; color: white; text-decoration: none; border-radius: 5px; font-weight: bold; font-size: 16px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); transition: background 0.3s;">
-        Join Our Official Telegram Channel 📸 📰
-    </a>
-</p>
-
+        <!-- 💡 ⚠️ የቴሌግራም ሙሉ ሊንኩ እዚህ አዝራር ላይ በትክክል ተቆልፏል -->
+        <p style="text-align: center; margin: 0;">
+            <a href="https://t.me" target="_blank" style="display: inline-block; padding: 12px 25px; background: #0088cc; color: white; text-decoration: none; border-radius: 5px; font-weight: bold; font-size: 16px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); transition: background 0.3s; text-align: center;">
+                Join Our Official Telegram Channel 📸 📰
+            </a>
+        </p>
     </div>
 </section>
+
 <section class="container">
     <h2 align="center">Why Choose Us?</h2>
     <div class="card">
