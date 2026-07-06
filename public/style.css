@@ -1,11 +1,19 @@
 /* 🔙 መጀመሪያ ወደነበረበት የተመለሰው ፍጹም ሥርዓታማ የድሮ CSS ኮድህ */
+/* 🖼️ ⚠️ አዲሱ ውብ ምስል ለመላው ድረ-ገጽ በጀርባነት የተቆለፈበት አዲስ ስታይል */
 body {
     font-family: sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f9f9f9;
+    
+    /* 💡 የላክኸው አዲስ ምስል እዚህ ጋር በጀርባነት በቋሚነት ተቆልፏል፡ */
+    background-image: linear-gradient(rgba(255, 255, 255, 0.92), rgba(255, 255, 255, 0.92)), url('/images/about-bg.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed; /* ገጹ ወደታች ሲወርድ ምስሉ አብሮ እንዲንሸራተት ውበት ይሰጠዋል */
     color: #333;
 }
+
 
 /* 🎖️ የላይኛው ክፍል ጠፍቶ ሙሉ በሙሉ ግልጽ (Transparent) ሆኗል - ፎቶው ከአናት እንዲታይ ያደርጋል */
 header {
