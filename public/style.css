@@ -26,15 +26,21 @@ header h1 {
 }
 
 /* 🌐 የናቭባር (Navbar) ጥቁር ሳጥን ጠፍቶ ሙሉ በሙሉ ግልጽ ሆኗል */
+/* 🌐 ማውጫዎቹ (Home, About...) ያሉበት መስመር ውብ በሆነ ሰማያዊ ቀለም ተለውጧል */
 nav, .navbar {
-    background-color: transparent !important; /* 💡 ጥቁሩ ዳራ ሙሉ በሙሉ ጠፍቷል! */
+    background: linear-gradient(135deg, #1d4ed8 0%, #1e40af 100%) !important; /* 💡 ማራኪ የክብር ሰማያዊ (Royal Blue) ቀለም */
     display: flex;
     justify-content: center;
-    padding: 10px 0;
+    padding: 14px 0;
     gap: 15px;
     position: relative;
-    z-index: 5;
+    z-index: 10;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25); /* ለሳጥኑ ውብ ጥላ መስጫ */
+    border-radius: 4px; /* ማዕዘኖቹ በጥቂቱ እንዲታጠፉ */
+    margin: 10px auto 0 auto;
+    max-width: 95%;
 }
+
 
 nav a, .navbar ul li a {
     color: white;
