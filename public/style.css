@@ -1,69 +1,121 @@
-/* 🎖️ የላይኛው አረንጓዴ ሳጥን ጠፍቶ ሙሉ በሙሉ ግልጽ (Transparent) ሆኗል */
+/* 🔙 መጀመሪያ ወደነበረበት የተመለሰው ፍጹም ሥርዓታማ የድሮ CSS ኮድህ */
+body {
+    font-family: sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+    color: #333;
+}
+
 header {
-    background: transparent !important; /* 💡 አረንጓዴው ቀለም ሙሉ በሙሉ ጠፍቷል! */
+    background-color: #111827;
     color: white;
     text-align: center;
-    padding: 30px 10px 10px 10px;
-    position: relative;
-    z-index: 5;
+    padding: 30px 15px;
 }
 
 header h1 {
-    margin: 5px 0;
-    font-size: 26px;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.9); /* ጽሑፉ በሰማዩ ላይ ጎልቶ እንዲነበብ */
+    margin: 10px 0 5px 0;
+    font-size: 30px;
+    color: #fbbf24; /* የክብር ወርቃማ ቀለም */
 }
 
-/* 🌐 የናቭባር (Navbar) ጥቁር ሳጥን ጠፍቶ ሙሉ በሙሉ ግልጽ ሆኗል */
 nav, .navbar {
-    background: transparent !important; /* 💡 ጥቁሩ ዳራ ሙሉ በሙሉ ጠፍቷል! */
+    background-color: #1f2937;
     display: flex;
     justify-content: center;
-    padding: 10px 0;
-    gap: 15px;
-    position: relative;
-    z-index: 5;
+    padding: 12px 0;
+    gap: 10px;
 }
 
 nav a, .navbar ul li a {
     color: white;
-    padding: 8px 16px;
+    padding: 10px 20px;
     text-decoration: none;
     text-align: center;
     font-weight: bold;
     font-size: 15px;
-    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.9); /* ሊንኮቹ በግልጽ እንዲታዩ */
+    border-radius: 4px;
+    transition: background 0.3s;
 }
 
 nav a:hover, .navbar ul li a:hover {
-    color: #fbbf24; /* በሆቨር ጊዜ ወርቃማ ቀለም */
+    background-color: #374151;
+    color: #fbbf24;
 }
 
-/* 🖼️ ⚠️ ሙሉው ሕንፃ ከአናት ጀምሮ ያለምንም መሸፈን ፍንትው ብሎ የሚወጣበት ዋናው የጀርባ አቀማመጥ */
+.container {
+    padding: 20px;
+    max-width: 850px;
+    margin: auto;
+}
+
+.card {
+    background: white;
+    padding: 25px;
+    margin-top: 25px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.1);
+    border-radius: 6px;
+    border-top: 4px solid #111827;
+}
+
+.card h2, .card h3 {
+    margin-top: 0;
+}
+
+/* 🖼️ የጀርባ ምስሉን እና አዝራሮቹን ያለምንም መጋረድ ፍጹም አድርጎ የሚያሳየው የጀግናው ሳጥን */
 .hero {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.45)), url('/images/background.jpg');
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/images/background.jpg');
     background-size: cover;
-    background-position: center top; /* 💡 ፎቶው ከአናት ጀምሮ ሕንፃውን ሙሉ በሙሉ ያሳያል */
+    background-position: center center;
     background-repeat: no-repeat;
     text-align: center;
+    padding: 90px 20px;
     color: white;
-    
-    /* 💡 ፎቶውን ወደ ላይኛው ጫፍ በመሳብ ማውጫዎቹን በሕንፃው ሰማይ ላይ ያደርጋቸዋል */
-    margin-top: -300px; 
-    padding-top: 320px; 
-    padding-bottom: 80px;
-    box-shadow: inset 0 0 100px rgba(0,0,0,0.5);
 }
 
 .hero h1 {
-    font-size: 38px;
+    font-size: 36px;
     margin-bottom: 10px;
-    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.9);
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
 }
 
 .hero p {
     font-size: 18px;
     color: #f3f4f6;
-    margin-bottom: 25px;
-    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
+    margin-bottom: 20px;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+}
+
+.btn {
+    display: inline-block;
+    background-color: #059669; /* ማራኪ አረንጓዴ */
+    color: white;
+    padding: 12px 24px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    margin: 5px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    transition: background 0.3s;
+}
+
+.btn:hover {
+    background-color: #047857;
+}
+
+/* 📱 የሞባይል ስልክ ማስተካከያ */
+@media (max-width: 768px) {
+    nav, .navbar {
+        flex-direction: column;
+        align-items: center;
+    }
+    nav a, .navbar ul li a {
+        display: block;
+        width: 80%;
+        padding: 10px;
+    }
+    .hero h1 {
+        font-size: 26px;
+    }
 }
