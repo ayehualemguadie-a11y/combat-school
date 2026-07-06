@@ -9,29 +9,42 @@
 <body>
 
 <!-- 🎖️ የትምህርት ቤቱ መለያ ባነር ክፍል -->
-<header>
-    <!-- 🖼️ ሎጎውን፣ ታንኩንና መድፉን በአንድ መስመር በሥርዓት የሚያሰልፍ ዋና ሳጥን -->
-    <div style="display: flex; justify-content: center; align-items: center; gap: 15px; margin-bottom: 15px; flex-wrap: wrap;">
-        <!-- 🚜 በግራ አጠገብ፦ T-72 ታንክ -->
-        <img src="/images/t72.jpg" style="width: 120px; height: 85px; object-fit: cover; border-radius: 6px; box-shadow: 0 4px 8px rgba(0,0,0,0.3); border: 2px solid #fbbf24;" alt="T-72 Tank">
+<!-- 🎖️ የታንኩና የመድፉ መጠን አድጎ ወደ ታች ዝቅ የተደረገበት ፍጹም Header 🎖️ -->
+<header style="position: relative; text-align: center; padding: 15px 10px 5px 10px; background: transparent; color: white; z-index: 5;">
+    
+    <!-- 🖼️ ሎጎውን መሃል አድርጎ ታንኩንና መድፉን በትልቁ ወደ ታች ዝቅ አድርጎ የሚያሰልፍ ዋና ሳጥን -->
+    <div style="display: flex; justify-content: center; align-items: flex-end; gap: 40px; margin-bottom: 5px; max-width: 95%; margin-left: auto; margin-right: auto; padding-top: 10px;">
         
-        <!-- 🛡️ መሃል ላይ፦ የትምህርት ቤቱ ክብ ሎጎ -->
-        <img src="/images/logo.jpg" width="100" style="border-radius: 50%; box-shadow: 0 4px 6px rgba(0,0,0,0.2);" alt="Logo">
+        <!-- 🚜 በግራ በኩል፦ T-72 ታንክ (መጠኑ ወደ 200px አድጓል፣ ወደ ታች ዝቅ ብሎ ከHome በላይ እንዲሆን margin-bottom ተሰጥቶታል) -->
+        <div style="display: inline-block; margin-bottom: -15px;">
+            <img src="/images/t72.jpg" style="width: 200px; height: 135px; object-fit: cover; border-radius: 8px; box-shadow: 0 8px 16px rgba(0,0,0,0.6); border: 3px solid #fbbf24;" alt="T-72 Tank">
+        </div>
         
-        <!-- 💥 በቀኝ አጠገብ፦ 155 ሚ.ሜ መድፍ -->
-        <img src="/images/medif155.jpg" style="width: 120px; height: 85px; object-fit: cover; border-radius: 6px; box-shadow: 0 4px 8px rgba(0,0,0,0.3); border: 2px solid #fbbf24;" alt="155mm Artillery">
+        <!-- 🛡️ መሃል ላይ፦ የትምህርት ቤቱ ክብ ሎጎ (ከላይ ከፍ ብሎ እንዲቆይ የተደረገ) -->
+        <div style="display: flex; align-items: center; margin-bottom: 25px;">
+            <img src="/images/logo.jpg" width="130" style="border-radius: 50%; box-shadow: 0 6px 12px rgba(0,0,0,0.4);" alt="Logo">
+        </div>
+        
+        <!-- 💥 በቀኝ በኩል፦ 155 ሚ.ሜ መድፍ (መጠኑ ወደ 200px አድጓል፣ ወደ ታች ዝቅ ብሎ ከAdmin በላይ እንዲሆን margin-bottom ተሰጥቶታል) -->
+        <div style="display: inline-block; margin-bottom: -15px;">
+            <img src="/images/medif155.jpg" style="width: 200px; height: 135px; object-fit: cover; border-radius: 8px; box-shadow: 0 8px 16px rgba(0,0,0,0.5); border: 3px solid #fbbf24;" alt="155mm Artillery">
+        </div>
+        
     </div>
 
-    <!-- 📌 ዋናው ርዕስ በአማርኛ -->
-    <h1>ውጊያ ቴክኒክ ት/ቤት</h1>
+    <!-- 📌 ዋናው ርዕስ በአማርኛ በትልቅ እና በወርቃማ ቀለም -->
+    <h1 style="font-size: 38px; font-weight: 800; color: #fbbf24; text-shadow: 2px 2px 6px rgba(0,0,0,0.9); margin: 5px 0 10px 0; letter-spacing: 1px;">
+        ውጊያ ቴክኒክ ት/ቤት
+    </h1>
     
-    <!-- 📌 መፈክሩ በክብር ባለበት ይቆያል -->
-    <div style="display: inline-block; background: rgba(255, 255, 255, 0.1); padding: 10px 20px; border-left: 4px solid #fbbf24; border-right: 4px solid #fbbf24; border-radius: 4px; margin-top: 10px; max-width: 90%;">
-        <span style="font-size: 16px; font-weight: bold; color: #fbbf24; font-style: italic;">
-            "እናቅዳለን፤ እንጀምራለን፤ እናሰፋለን፤ በፍጥነት እና በጥራት እንፈጽማለን。"
+    <!-- 📌 መፈክሩ ምንም ሳይነካ ልክ እንደነበረው በክብር -->
+    <div style="display: inline-block; background: rgba(17, 24, 39, 0.65); padding: 12px 25px; border-left: 4px solid #fbbf24; border-right: 4px solid #fbbf24; border-radius: 4px; max-width: 90%; backdrop-filter: blur(5px); margin-bottom: 10px;">
+        <span style="font-size: 16px; font-weight: bold; color: #fff; font-style: italic; text-shadow: 1px 1px 2px rgba(0,0,0,0.8);">
+            "እናቅዳለን፤ እንጀምራለን፤ እናሰፋለን፤ በፍጥነት እና በጥራት እንፈጽማለን።"
         </span>
     </div>
 </header>
+
 
 <!-- 🌐 ንጹሕና ፍጹም ማራኪ ማውጫ (Navbar) -->
 <nav>
