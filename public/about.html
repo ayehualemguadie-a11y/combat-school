@@ -6,20 +6,32 @@
     <title>About Us | Combat Technic School</title>
     <link rel="stylesheet" href="/style.css">
     <style>
-        /* 💡 ⚠️ ይህ አጭር ኮድ የስታይል ፋይሉን ነጭ ቀለም በግድ ሰብሮ ጀርባውን ግልጽ ያደርገዋል */
+        /* 💡 ⚠️ ይህ ኃይለኛ ስታይል ማንኛውንም ነጭ ዳራና ጥላ በግድ ሰብሮ ያጠፋዋል */
+        body {
+            background-image: linear-gradient(rgba(255, 255, 255, 0.92), rgba(255, 255, 255, 0.92)), url('/images/about-bg.jpg') !important;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
         .card {
             background: transparent !important;
             background-color: transparent !important;
             box-shadow: none !important;
             border: none !important;
+            padding: 10px !important;
+            margin-top: 10px !important;
         }
         p, li {
-            color: #111827 !important; /* ጽሑፎቹ በፎቶው ላይ በጥራት እንዲነበቡ ወፍራም ጥቁር የተደረገ */
-            font-weight: 600 !important;
+            color: #000000 !important; /* ጽሑፎቹ በፎቶው ላይ በግልጽ እንዲነበቡ ሙሉ ጥቁር የተደረገ */
+            font-weight: 700 !important; /* ፊደላቱ ይበልጥ ወፍራም እንዲሆኑ */
+            font-size: 16px !important;
+            line-height: 1.9 !important;
         }
-        h3, h4 {
-            color: #1e40af !important; /* ንዑስ አርዕስቶች ማራኪ ሰማያዊ የተደረጉ */
+        h2, h3, h4 {
+            color: #1e40af !important; /* አርዕስቶቹ ማራኪ ጥልቅ ሰማያዊ የተደረጉ */
             font-weight: bold !important;
+            text-shadow: 1px 1px 1px rgba(255,255,255,0.9) !important;
         }
     </style>
 </head>
@@ -30,21 +42,20 @@
     <h1 style="color: #fbbf24; font-size: 34px; font-weight: 800; text-shadow: 2px 2px 4px rgba(0,0,0,0.5); margin: 0;">ውጊያ ቴክኒክ ት/ቤት</h1>
 </header>
 
-<nav>
-    <a href="/">Home</a>
-    <a href="/about.html">About</a>
-    <a href="/history.html">History</a>
-    <a href="https://t.me" target="_blank">Gallery 📸</a>
-    <a href="https://t.me" target="_blank">News & Announcements 📰</a>
-    <a href="/contact.html">Contact</a>
-    <a href="/login.html">Admin</a>
+<nav style="background: linear-gradient(135deg, #1d4ed8 0%, #1e40af 100%) !important; display: flex; justify-content: center; padding: 14px 0; gap: 15px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25); border-radius: 4px; margin: 10px auto 0 auto; max-width: 95%;">
+    <a href="/" style="color: white; text-decoration: none; font-weight: bold; padding: 10px 15px;">Home</a>
+    <a href="/about.html" style="color: white; text-decoration: none; font-weight: bold; padding: 10px 15px;">About</a>
+    <a href="/history.html" style="color: white; text-decoration: none; font-weight: bold; padding: 10px 15px;">History</a>
+    <a href="https://t.me" target="_blank" style="color: white; text-decoration: none; font-weight: bold; padding: 10px 15px;">Gallery 📸</a>
+    <a href="https://t.me" target="_blank" style="color: white; text-decoration: none; font-weight: bold; padding: 10px 15px;">News & Announcements 📰</a>
+    <a href="/contact.html" style="color: white; text-decoration: none; font-weight: bold; padding: 10px 15px;">Contact</a>
+    <a href="/login.html" style="color: white; text-decoration: none; font-weight: bold; padding: 10px 15px;">Admin</a>
 </nav>
 
 <section class="container">
-    <!-- 🖼️ ነጩ ሳጥን ሙሉ በሙሉ እንዲጠፋ የተደረገበት የይዘት ክፍል -->
     <div class="card">
         
-        <h2 align="center" style="color: #111827; margin-bottom: 25px;">🛡️ የውጊያ ቴክኒክ ት/ቤት የሚሰጣቸው ሥልጠናዎች</h2>
+        <h2 align="center" style="margin-bottom: 25px;">🛡️ የውጊያ ቴክኒክ ት/ቤት የሚሰጣቸው ሥልጠናዎች</h2>
         
         <p>
             የጥምር ጦር ውጊያ በርካታ ግዳጅና ሚና ያላቸው የጦር ክፍሎች የተለያዩ ከባድና ቀላል የጦር መሣሪያዎችን ታጥቀው በመቀናጀት የሚሳተፉበት ጦርነት ነው። በዚህ ውጊያ ውስጥ ጦሩን ለድል ከሚያበቁ ከፍተኛ የተኩስ ኃይልና ምት ማሳረፍ፣ ፈጣን ተንቀሳቃሽ የሆኑ በግንባርና በጠላት ጥልቀት ግዳጅ መወጣት የሚችሉ የምድር ኃይል ዋና የተኩስ አቅም <strong>የሜካናይዝድ ክፍል</strong> ነው። በውጊያ ውስጥ የተለያዩ የሙያ ዘርፍ ያላቸው ክፍሎች የሚሳተፉ ሲሆን፣ በውጊያ ቴክኒክ ት/ቤት ሥልጠና የሚሰጥባቸው ታንኮችና ብ.ለ.ተ (ብረት ለበስ ተሽከርካሪዎች)፣ መድፎች፣ የተለያዩ ፀረ-ታንክና የአየር መቃወሚያ መሣሪያዎች በዋናነት የሚጠቀሱ ናቸው።
@@ -60,17 +71,17 @@
             ት/ቤቱ ከድሮው አሠራር ተላቆ ወደ ዘመኑ ያፈራቸው ዲጂታል ማስተማሪያ ግብዓቶች ማለትም፦ ኮምፒውተር፣ LCD ፕሮጀክተር እና ሳይንቲፊክ ካልኩሌተር ወደ መጠቀም ተሸጋግሯል። ከዚህም በተጨማሪ ት/ቤቱ በከፍተኛ ደረጃ መሻሻል እንዳለበት በበላይ አካል ታምኖበት ከ1998 ዓ.ም ጀምሮ አዳዲስ የማስተማሪያ ሕንፃዎች እንዲጠናቀቁ ተደርጓል።
         </p>
         <p>
-            መንግሥት ዘመናዊ የማስተማሪያ ሲሙሌተሮችን ከተለያዩ አገራት ገዝቶ በማስገባት እንዲተከሉና አሰልጣኞችም ሥልጠና እንዲያገኙ በማድረግ የትምህርቱን አሰጣጥ እጅግ ከማዘመኑም በላይ፣ የተኳሽና የነዳጅ ወጪን፣ የጊዜ ብክነትን እና የመምህራንን ጉልበት በከፍተኛ ደረጃ ለመቆጠብ አስችሏል። XML በተጨማሪም ለሥልጠና ተግባር አገልግሎት ላይ የሚውሉ መሣሪያዎችና ተሽከርካሪዎች ለጥገናና መለዋወጫ የሚወጣውን ከፍተኛ ወጪ በቋሚነት ለመቀነስ አስችሏል።
+            መንግሥት ዘመናዊ የማስተማሪያ ሲሙሌተሮችን ከተለያዩ አገራት ገዝቶ በማስገባት እንዲተከሉና አሰልጣኞችም ሥልጠና እንዲያገኙ በማድረግ የትምህርቱን አሰጣጥ እጅግ ከማዘመኑም በላይ፣ የተኳሽና የነዳጅ ወጪን፣ የጊዜ ብክነትን እና የመምህራንን ጉልበት በከፍተኛ ደረጃ ለመቆጠብ አስችሏል። በተጨማሪም ለሥልጠና ተግባር አገልግሎት ላይ የሚውሉ መሣሪያዎችና ተሽከርካሪዎች ለጥገናና መለዋወጫ የሚወጣውን ከፍተኛ ወጪ በቋሚነት ለመቀነስ አስችሏል።
         </p>
         
         <hr style="border: 0; border-top: 1px solid #ddd; margin: 25px 0;">
 
-        <h3 align="center" style="color: #111827; margin-bottom: 20px;">📋 ሀ/ ከት/ቤቱ ምሥረታ ጀምሮ እስከ 1983 ዓ.ም ድረስ ይሰጡ የነበሩ ሥልጠናዎች</h3>
+        <h3 align="center" style="margin-bottom: 20px;">📋 ሀ/ ከት/ቤቱ ምሥረታ ጀምሮ እስከ 1983 ዓ.ም ድረስ ይሰጡ የነበሩ ሥልጠናዎች</h3>
         
         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
             <div>
-                <h4>🔥 የመድፈኛ ት/ቤት</h4>
-                <ul style="padding-left: 20px; margin-top: 5px;">
+                <h3>🔥 የመድፈኛ ት/ቤት</h3>
+                <ul>
                     <li>1. ሞርተር፦ 82 ሚ.ሜ እና 120 ሚ.ሜ</li>
                     <li>2. መድፍ (ሃውቲዘር)፦ 76፣ 85፣ 122 እና 130 ሚ.ሜ</li>
                     <li>3. ሮኬት፦ ቢኤም-21 እና ቢኤም-24 ሮኬት</li>
@@ -79,15 +90,15 @@
                 </ul>
             </div>
             <div>
-                <h4>🚜 የሜካናይዝድ ት/ቤት</h4>
-                <ul style="padding-left: 20px; margin-top: 5px;">
+                <h3>🚜 የሜካናይዝድ ት/ቤት</h3>
+                <ul>
                     <li>1. ቢቲአር-152 እና ቢቲአር-60ፒቢ ባለጎማ ብ.ለ.ተ</li>
                     <li>2. ቢአርዲኤም-2 ባለጎማ ብ.ለ.ተ</li>
-                    <li>3. ቢኤም平-1 (BMP-1) ባለሰንሰለት ብ.ለ.ተ</li>
+                    <li>3. ቢኤምፒ-1 (BMP-1) ባለሰንሰለት ብ.ለ.ተ</li>
                     <li>4. የብ.ለ.ተ ወራጅ እግረኛ ሥልጠና (እስከ 1983 ዓ.ም የነበረ)</li>
                     <li>5. የተለያዩ ሽጉጦችና ቦምቦች አጠቃቀም</li>
                     <li>6. ኤኬኤም (AKM) ክላሽንኮቭ ጠመንጃ</li>
-                    <li>7. אርፒኬ (RPK) እና ፒኬኤም (PKM) መትረየስ</li>
+                    <li>7. አርፒኬ (RPK) እና ፒኬኤም (PKM) መትረየስ</li>
                     <li>8. አርፒጂ (RPG) ላውንቸር</li>
                 </ul>
             </div>
@@ -95,8 +106,8 @@
 
         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 20px;">
             <div>
-                <h4>✈️ የአየር መቃወሚያ ት/ቤት</h4>
-                <ul style="padding-left: 20px; margin-top: 5px;">
+                <h3>✈️ የአየር መቃወሚያ ት/ቤት</h3>
+                <ul>
                     <li>1. 14.5 ሚ.ሜ ዜድፒዩ (ZPU)</li>
                     <li>2. ዙ-23-2 (ZU-23-2) ሚ.ሜ</li>
                     <li>3. 37 ሚ.ሜ አየር መቃወሚያ መድፍ</li>
@@ -106,8 +117,8 @@
                 </ul>
             </div>
             <div>
-                <h4>🛡️ የታንከኛ ት/ቤት</h4>
-                <ul style="padding-left: 20px; margin-top: 5px;">
+                <h3>🛡️ የታንከኛ ት/ቤት</h3>
+                <ul>
                     <li>1. T-34 ታንክ ሥልጠና</li>
                     <li>2. T-55 ታንክ ሥልጠና</li>
                     <li>3. T-62 ታንክ ሥልጠና</li>
@@ -117,15 +128,15 @@
 
         <hr style="border: 0; border-top: 1px solid #ddd; margin: 25px 0;">
 
-        <h3 align="center" style="color: #111827; margin-bottom: 20px;">🚀 ለ/ ከ1983 ዓ.ም በኋላ የተደራጁ 6 ዋና ዋና ዲፓርትመንቶች</h3>
+        <h3 align="center" style="margin-bottom: 20px;">🚀 ለ/ ከ1983 ዓ.ም በኋላ የተደራጁ 6 ዋና ዋና ዲፓርትመንቶች</h3>
         <p>
             ከ1983 ዓ.ም የመንግሥት ለውጥ በኋላ ት/ቤቱን እንደ አዲስ በማደራጀት ሥልጠናውን በሦስት ዲፓርትመንቶች መስጠት የጀመረ ሲሆን፣ በሂደት የዲፓርትመንቶችን ብዛት ወደ ስድስት አሳድጓል።
         </p>
 
         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 15px;">
             <div>
-                <h4>🎯 የመድፈኛ ዲፓርትመንት</h4>
-                <ul style="padding-left: 20px; margin-top: 5px; list-style-type: circle;">
+                <h3>🎯 የመድፈኛ ዲፓርትመንት</h3>
+                <ul style="list-style-type: circle;">
                     <li>120 ሚ.ሜ ሞርተር</li>
                     <li>76 ሚ.ሜ እና 85 ሚ.ሜ መድፎች</li>
                     <li>122 ሚ.ሜ እና 130 ሚ.ሜ መድፎች</li>
@@ -136,9 +147,9 @@
                 </ul>
             </div>
             <div>
-                <h4>🚜 የታንክ እና የብ.ለ.ተ ሾፌር ዲፓርትመንት</h4>
-                <ul style="padding-left: 20px; margin-top: 5px; list-style-type: circle;">
-                    <li>T-55停 T-62 እና T-72 ታንኮች ሥልጠና</li>
+                <h3>🚜 የታንክ እና የብ.ለ.ተ ሾፌር ዲፓርትመንት</h3>
+                <ul style="list-style-type: circle;">
+                    <li>T-55፣ T-62 እና T-72 ታንኮች ሥልጠና</li>
                     <li>ቢቲአር-60ፒቢ ባለጎማ ብ.ለ.ተ</li>
                     <li>ቢአርዲኤም-2 ባለጎማ ብ.ለ.ተ</li>
                     <li>አይነት 89 ባለሰንሰለት ብ.ለ.ተ</li>
@@ -147,10 +158,10 @@
             </div>
         </div>
 
-        <div style="margin-top: 25px; background: rgba(0,0,0,0.05); padding: 20px; border-radius: 6px; border-left: 4px solid #1e40af;">
-            <h4 style="color: #111827; margin-top: 0; margin-bottom: 10px;">🎖️ የአመራር ሥልጠናዎች ዲፓርትመንት</h4>
+        <div style="margin-top: 25px; background: rgba(0,0,0,0.06); padding: 20px; border-radius: 6px; border-left: 4px solid #1e40af;">
+            <h4 style="margin-top: 0; margin-bottom: 10px;">🎖️ የአመራር ሥልጠናዎች ዲፓርትመንት</h4>
             <p style="margin: 0;">
-                ከትምህርቶቹ ጎን ለጎን ሠራዊቱን በዕውቀት ለመገንባት የሚከተሉት የአመራርነት ሥልጠናዎች በከፍተኛ ዲስፕሊን ይሰጣሉ፦
+                ከትምህርቶቹ GOን ለጎን ሠራዊቱን በዕውቀት ለመገንባት የሚከተሉት የአመራርነት ሥልጠናዎች በከፍተኛ ዲስፕሊን ይሰጣሉ፦
             </p>
             <ul style="padding-left: 20px; margin-top: 8px; display: grid; grid-template-columns: 1fr 1fr;">
                 <li>✔ የሻምበል አዛዥነት (ባትሪ) የጋራ ሥልጠና</li>
