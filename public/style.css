@@ -16,14 +16,18 @@ body {
 
 
 /* 🎖️ የላይኛው ክፍል ጠፍቶ ሙሉ በሙሉ ግልጽ (Transparent) ሆኗል - ፎቶው ከአናት እንዲታይ ያደርጋል */
+/* 🖼️ ⚠️ የላይኛው ባነር ጀርባ ነጩ ጠፍቶ በአዲሱ ውብ ምስልህ ተተክቷል */
 header {
-    background-color: transparent !important; /* 💡 ጥቁሩ ዳራ ሙሉ በሙሉ ጠፍቷል! */
+    background-image: linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.55)), url('/images/about-bg.jpg') !important;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     color: white;
     text-align: center;
-    padding: 30px 15px 10px 15px;
-    position: relative;
-    z-index: 5; /* ጽሑፎቹና ፎቶዎቹ ከላይ እንዲንሳፈፉ */
+    padding: 35px 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
+
 
 header h1 {
     margin: 10px 0 5px 0;
