@@ -12,6 +12,7 @@
 <!-- 🎖️ የታንኩና የመድፉ መጠን እጅግ በጣም በግዙፍ ስፋትና ቁመት የተቆለፈበት አዲስ Header 🎖️ -->
 <!-- 🎖️ መፈክሩ በ 60 ሳይዝ በሚያብረቀርቅ ወርቃማ ኒዮን ቀለም የተቆለፈበት አዲስ Header 🎖️ -->
 <!-- 🎖️ የውጊያ ቴክኒክ ት/ቤት እውነተኛ ማንነት እና የራሳችን ፎቶዎች ተንሸራታች የያዘ አዲስ ባነር 🎖️ -->
+<!-- 🎖️ የውጊያ ቴክኒክ ት/ቤት 4ቱ ፎቶዎች እጅግ በጣም በትልቅ እና በሰፊው የተቆለፉበት አዲስ ባነር 🎖️ -->
 <header style="position: relative; text-align: center; padding: 25px 10px 20px 10px; background: transparent; color: white; z-index: 5;">
     
     <!-- 🖼️ የራሳችን አርማ አሰላለፍ (T-72 ታንክ፣ ሎጎ እና 155 ሚ.ሜ መድፍ) -->
@@ -35,27 +36,25 @@
         ውጊያ ቴክኒክ ት/ቤት
     </h1>
     
-    <!-- 📌 የራሳችን ታላቅ መፈክር በሚያብረቀርቅ እና በሚተነፍስ አኒሜሽን -->
+    <!-- 📌 ታላቁ መፈክር በ 55 ሳይዝ በቋሚነት በሚንቀሳቀስ አኒሜሽን -->
     <div style="margin: 20px auto; max-width: 95%; text-align: center; padding: 10px 0;">
         <span class="animated-slogan" style="font-size: 55px; font-weight: 900; color: #fbbf24; font-style: italic; line-height: 1.3; display: block; letter-spacing: 0.5px;">
             "እናቅዳለን፤ እንጀምራለን፤ እናሰፋለን፤ በፍጥነት እና በጥራት እንፈጽማለን。"
         </span>
     </div>
 
-    <!-- 🎡 የራሳችን 5ቱ ወታደራዊ ፎቶዎች አውቶማቲክ ተንሸራታች መድረክ 🎡 -->
-    <div class="slider-container" style="position: relative; max-width: 850px; height: 400px; margin: 30px auto 10px auto; overflow: hidden; border-radius: 10px; box-shadow: 0 10px 25px rgba(0,0,0,0.5); border: 4px solid rgba(255,255,255,0.15);">
+    <!-- 🎡 ⚠️ የራሳችን 4ቱ ፎቶዎች እጅግ በጣም ሰፊ እና ትልቅ (Max Width 1100px & Height 480px) የተደረገበት ሳጥን 🎡 -->
+    <div class="slider-container" style="position: relative; max-width: 1100px; height: 480px; margin: 30px auto 10px auto; overflow: hidden; border-radius: 12px; box-shadow: 0 12px 30px rgba(0,0,0,0.6); border: 4px solid rgba(255,255,255,0.2);">
         
-        <!-- 📸 በ public/images/ ውስጥ ያሉትን የራሳችንን 5 ፎቶዎች በግልጽ መጥሪያ ኮድ -->
-        <div class="slide fade active"><img src="/images/photo1.jpg" style="width:100%; height:400px; object-fit:cover;" alt="Our Slide 1"></div>
-        <div class="slide fade"><img src="/images/photo2.jpg" style="width:100%; height:400px; object-fit:cover;" alt="Our Slide 2"></div>
-        <div class="slide fade"><img src="/images/photo3.jpg" style="width:100%; height:400px; object-fit:cover;" alt="Our Slide 3"></div>
-        <div class="slide fade"><img src="/images/photo4.jpg" style="width:100%; height:400px; object-fit:cover;" alt="Our Slide 4"></div>
-        <div class="slide fade"><img src="/images/photo5.jpg" style="width:100%; height:400px; object-fit:cover;" alt="Our Slide 5"></div>
+        <!-- 📸 ⚠️ ከ photo1 እስከ photo4 ብቻ የተቆለፉት 4ቱ የራሳችን ፎቶዎች -->
+        <div class="slide fade active"><img src="/images/photo1.jpg" style="width:100%; height:480px; object-fit:cover;" alt="Our Slide 1"></div>
+        <div class="slide fade"><img src="/images/photo2.jpg" style="width:100%; height:480px; object-fit:cover;" alt="Our Slide 2"></div>
+        <div class="slide fade"><img src="/images/photo3.jpg" style="width:100%; height:480px; object-fit:cover;" alt="Our Slide 3"></div>
+        <div class="slide fade"><img src="/images/photo4.jpg" style="width:100%; height:480px; object-fit:cover;" alt="Our Slide 4"></div>
 
-        <!-- 👇 የትኛው ፎቶ ላይ እንዳለን ማሳያ የነጥቦች ማውጫ (Indicators) -->
-        <div style="position: absolute; bottom: 15px; left: 50%; transform: translateX(-50%); display: flex; gap: 8px; z-index: 10;">
+        <!-- 👇 የ 4ቱ ፎቶዎች ብቻ ጠቋሚ ነጥቦች (4 Dots Indicator) -->
+        <div style="position: absolute; bottom: 18px; left: 50%; transform: translateX(-50%); display: flex; gap: 8px; z-index: 10;">
             <span class="dot active"></span>
-            <span class="dot"></span>
             <span class="dot"></span>
             <span class="dot"></span>
             <span class="dot"></span>
@@ -72,21 +71,21 @@
         }
         .animated-slogan { animation: sloganGlowAndWave 4s ease-in-out infinite; }
 
-        /* Slider Animation logic */
+        /* Slider Animation Logic */
         .slide { display: none; width: 100%; height: 100%; }
         .slide.active { display: block; }
         .fade { animation: fadeEffect 1s ease-in-out; }
         @keyframes fadeEffect {
-            from { opacity: 0.4; transform: scale(1.02); }
+            from { opacity: 0.5; transform: scale(1.01); }
             to { opacity: 1; transform: scale(1); }
         }
 
-        /* Dots logic */
-        .dot { height: 10px; width: 10px; background-color: rgba(255,255,255,0.4); border-radius: 50%; display: inline-block; transition: background-color 0.6s ease; }
-        .dot.active { background-color: #fbbf24; width: 24px; border-radius: 5px; }
+        /* Dots Styling */
+        .dot { height: 11px; width: 11px; background-color: rgba(255,255,255,0.4); border-radius: 50%; display: inline-block; transition: background-color 0.6s ease; }
+        .dot.active { background-color: #fbbf24; width: 26px; border-radius: 6px; }
     </style>
 
-    <!-- 💡 በየ 3 ሰከንዱ የራሳችንን ፎቶዎች በራሱ ጊዜ የሚያንሸራትተው ጃቫስክሪፕት (JS) -->
+    <!-- 💡 በየ 3 ሰከንዱ 4ቱን ፎቶዎች ብቻ የሚያንሸራትተው ጃቫስክሪፕት (JS) -->
     <script>
         let currentSlideIndex = 0;
         const slides = document.querySelectorAll('.slide');
@@ -96,6 +95,7 @@
             slides[currentSlideIndex].classList.remove('active');
             dots[currentSlideIndex].classList.remove('active');
 
+            // ⚠️ 4 ፎቶዎች ብቻ ስለሆኑ በ 4 ማካፈል (Modulo 4) አውቶማቲክ ያደርገዋል
             currentSlideIndex = (currentSlideIndex + 1) % slides.length;
 
             slides[currentSlideIndex].classList.add('active');
@@ -105,7 +105,6 @@
         setInterval(showNextSlide, 3000); // 3 seconds interval
     </script>
 </header>
-
 <!-- 🌐 ውቡ ሰማያዊ ማውጫ (Navbar) -->
 <nav>
     <a href="/">Home</a>
