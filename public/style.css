@@ -117,22 +117,30 @@ nav a:hover, .navbar ul li a:hover {
     text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
 }
 
+/* 🔘 በመከላከያ ዩኒቨርሲቲ (ETDU) ስታይል የተስተካከሉ አዝራሮች */
 .btn {
     display: inline-block;
-    background-color: #059669; /* ማራኪ አረንጓዴ */
-    color: white;
-    padding: 12px 24px;
+    background-color: #1e40af; /* የክብር ጥልቅ ሰማያዊ ቀለም */
+    color: white !important;
+    padding: 12px 28px;
     text-decoration: none;
-    border-radius: 5px;
+    border-radius: 4px; /* ማዕዘኖቹ በጥቂቱ የታጠፉ (ETDU Style) */
     font-weight: bold;
-    margin: 5px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
-    transition: background 0.3s;
+    font-size: 15px;
+    margin: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
+    border: 2px solid transparent;
+    transition: all 0.4s ease-in-out; /* ቀለሙ ቀስ ብሎ እንዲቀየር ማድረጊያ */
 }
 
+/* 💡 ማውዙ ሲያርፍበት ቀለሙ ወደ ወታደራዊ አረንጓዴነት የሚቀየርበት ውብ ሆቨር */
 .btn:hover {
-    background-color: #047857;
+    background-color: #064e3b; /* ወታደራዊ ጥቁር አረንጓዴ */
+    border-color: #fbbf24; /* የክብር ወርቃማ መስመር */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25);
+    transform: translateY(-2px); /* በጥቂቱ ከፍ የማለት ውበት */
 }
+
 
 /* 📱 የሞባይል ስልክ ማስተካከያ */
 @media (max-width: 768px) {
