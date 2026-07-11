@@ -193,13 +193,12 @@
             <li style="margin-bottom: 12px; padding-left: 20px; text-indent: -20px;">🔹 ለሠራዊታችን ክፍሎች ቀጥተኛ ሙያዊ ድጋፍ በመስጠት የሜካናይዝድ ክፍሎችን የማድረግ አቅም ማሳደግ፣</li>
             <li style="margin-bottom: 5px; padding-left: 20px; text-indent: -20px;">🔹 ከአካባቢው ማህበረሰብ ጋር በፀጥታና በልማት ስራዎች በትብብር መስራት፣</li>
         </ul>
-<!-- 🎖️ ያንተን ስም የያዘው የክብር ግርጌ ማስታወሻ (Footer) እዚህ ተመልሷል -->
-<!-- 🎖️ ያንተ ስም ያለበት የግርጌ ማስታወሻ ስፋቱ አጥሮ ከመሃል ሳጥን ጋር እኩል ተደርጓል -->
-<<!-- 🎖️ ያንተ ስም ያለበት የግርጌ ማስታወሻ ስፋቱ አጥሮ ከመሃል ሳጥን ጋር እኩል ተደርጓል -->
-<<!-- 🎖️ ያንተ ስም ያለበት የግርጌ ማስታወሻ ልክ እንደ ታስክባር ከዳር እስከ ዳር 100% ሙሉ በሙሉ ተዘርግቷል -->
-<footer style="background: #111827; color: white; text-align: center; padding: 25px 10px; margin-top: 50px; font-size: 15px; width: 100% !important; max-width: 100% !important; position: relative; left: 0; right: 0; box-sizing: border-box;">
+<!-- 🎖️ ያንተ ስም ያለበት የግርጌ ማስታወሻ ልክ እንደ ታስክባር ከዳር እስከ ዳር 100% ሙሉ በሙሉ ተዘርግቷል -->
+<<!-- ⚠️ ከሳጥን ውጭ ወጥቶ ልክ እንደ ዊንዶውስ ታስክባር 100% ከዳር እስከ ዳር የሚዘረጋ አዲስ የክብር Footer -->
+<footer style="background: #111827; color: white; text-align: center; padding: 25px 10px; margin-top: 50px; font-size: 15px; width: 100vw !important; max-width: 100vw !important; position: absolute; left: 50%; transform: translateX(-50%); box-sizing: border-box; z-index: 999; border-radius: 0 !important; box-shadow: none !important;">
     <p>© 2026 Combat Technic School | Developed by Second Lieutenant Ayehualem Guadie</p>
 </footer>
+
 <script>
     let currentSlideIndex = 0;
     const slides = document.querySelectorAll('.slide');
@@ -213,11 +212,12 @@
         currentSlideIndex = (currentSlideIndex + 1) % slides.length;
         
         const nextSlide = slides[currentSlideIndex];
-        nextSlide.style.animation = 'none';
-        nextSlide.offsetHeight; 
-        nextSlide.style.animation = '';
-        
-        nextSlide.classList.add('active');
+        if (nextSlide) {
+            nextSlide.style.animation = 'none';
+            nextSlide.offsetHeight; 
+            nextSlide.style.animation = '';
+            nextSlide.classList.add('active');
+        }
         if(dots.length > currentSlideIndex) dots[currentSlideIndex].classList.add('active');
     }
     setInterval(showNextSlide, 3000);
