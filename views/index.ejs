@@ -144,12 +144,113 @@
 </section>
 
 <!-- 🛡️ አዲሱ የታንኮች እና የሲሙሌተር መሣሪያዎች ማሳያ ፎቶ -->
-<section class="container" style="text-align: center;">
-    <div class="card" style="padding: 15px;">
-        <h3 style="color: #111827; margin-bottom: 15px;">🎖️ የትምህርት ቤቱ ዘመናዊ የሥልጠና መሣሪያዎች እና ሲሙሌተሮች</h3>
-        <img src="/images/military-gear.jpg" style="width: 100%; height: auto; border-radius: 6px; box-shadow: 0 4px 8px rgba(0,0,0,0.15);" alt="Military Equipment">
+<<!-- 🎖️ ⚠️ የሥልጠና ፎቶዎቹ መጠናቸው ቀንሶ ከቀኝ ወደ ግራ እየሮጡ 360 ዲግሪ እንዲሽከረከሩ የተቆለፈበት አዲስ ክፍል 🎖️ -->
+<section class="container" style="text-align: center; overflow: hidden; padding: 25px 10px;">
+    <div class="card" style="padding: 20px; background: white; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); overflow: hidden; position: relative;">
+        
+        <!-- 📌 የሥልጠና ክፍል አርዕስት (የተስተካከለ የክብር ቀለም) -->
+        <div style="background-color: #d11252; color: white; padding: 10px 20px; display: inline-block; font-weight: bold; border-radius: 4px; margin-bottom: 25px; font-size: 16px;">
+            የሜካናይዝድ ዕጩ መኮንኖች / የኮሌጅ / ሥልጠና
+        </div>
+
+        <!-- 🎡 ⚠️ 4ቱ ፎቶዎች በተከታታይ ከቀኝ ወደ ግራ እየሮጡ 360 ዲግሪ የሚዞሩበት ዋና የሩጫ መስመር (Marquee Area) -->
+        <div class="training-marquee-wrapper" style="width: 100%; overflow: hidden; position: relative; white-space: nowrap; padding: 15px 0;">
+            <div class="training-marquee-content" style="display: inline-block; white-space: nowrap;">
+                
+                <!-- 📸 ፎቶ 1 (መጠኑ በትክክል ቀንሶ የ360 ዲግሪ ስፒን አኒሜሽን ገብቶበታል) -->
+                <div class="training-spin-photo-box">
+                    <img src="/images/photo1.jpg" alt="Training Slide 1">
+                </div>
+                
+                <!-- 📸 ፎቶ 2 -->
+                <div class="training-spin-photo-box">
+                    <img src="/images/photo2.jpg" alt="Training Slide 2">
+                </div>
+                
+                <!-- 📸 ፎቶ 3 -->
+                <div class="training-spin-photo-box">
+                    <img src="/images/photo3.jpg" alt="Training Slide 3">
+                </div>
+                
+                <!-- 📸 ፎቶ 4 -->
+                <div class="training-spin-photo-box">
+                    <img src="/images/photo4.jpg" alt="Training Slide 4">
+                </div>
+
+                <!-- 🔄 አኒሜሽኑ ሳያቋርጥ በተከታታይ እንዲሮጥ ለማድረግ 4ቱ ፎቶዎች በድጋሚ እዚህ ተደግመዋል (Looping Copy) -->
+                <div class="training-spin-photo-box"><img src="/images/photo1.jpg" alt="1"></div>
+                <div class="training-spin-photo-box"><img src="/images/photo2.jpg" alt="2"></div>
+                <div class="training-spin-photo-box"><img src="/images/photo3.jpg" alt="3"></div>
+                <div class="training-spin-photo-box"><img src="/images/photo4.jpg" alt="4"></div>
+
+            </div>
+        </div>
+
+        <!-- 📌 የታችኛው ንዑስ አርዕስት ባነር -->
+        <div style="background-color: #d11252; color: white; padding: 10px 20px; display: inline-block; font-weight: bold; border-radius: 4px; margin-top: 25px; font-size: 16px;">
+            በዘመናዊ ቴክኖሎጂ የተደገፈ የመድፈኛ ሥልጠና
+        </div>
+
     </div>
 </section>
+
+<!-- 💡 4ቱን ፎቶዎች በየተራ መጠናቸውን ቀንሶ ከቀኝ ወደ ግራ የሚያንቀሳቅሰውና 360 ዲግሪ የሚያዞረው የስታይል ማዘዣ (CSS) -->
+<style>
+    /* 📐 የእያንዳንዱ ፎቶ መጠን ፍጹም ተስተካክሎ እንዲቀንስ ማድረጊያ ሳጥን */
+    .training-spin-photo-box {
+        display: inline-block;
+        width: 250px; /* 💡 ፎቶው ሙሉ በሙሉ እንዲታይ መጠኑ ከ 250px በላይ እንዳይሆን በጥራት ቀንሷል */
+        height: 180px;
+        margin: 0 20px;
+        overflow: hidden;
+        border-radius: 8px;
+        box-shadow: 0 6px 12px rgba(0,0,0,0.25);
+        border: 2.5px solid #fbbf24; /* ወርቃማ ፍሬም */
+        background-color: #000;
+    }
+    
+    .training-spin-photo-box img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s ease;
+    }
+
+    /* 🏃‍♂️ 4ቱን ፎቶዎች በአንድ ላይ በተከታታይ ከቀኝ ወደ ግራ የሚያንሸራትተው ዋና የሩጫ አኒሜሽን */
+    @keyframes scrollTrainingPhotos {
+        0% {
+            transform: translateX(0);
+        }
+        100% {
+            transform: translateX(-1160px); /* የ 4ቱ ፎቶዎች ሙሉ የርዝመት መለኪያ */
+        }
+    }
+
+    /* 🔄 እያንዳንዱ ፎቶ በራሱ ጊዜ በቋሚነት 360 ዲግሪ እንዲሽከረከር (እንዲዞር) ማድረጊያ አኒሜሽን */
+    @keyframes spinPhotosForever {
+        0% { transform: rotate(0deg); }
+        45% { transform: rotate(0deg); } /* ቀጥ ብሎ በሰላም ይጓዛል */
+        50% { transform: rotate(360deg); } /* 💡 ልክ መሃል መስመር ሲደርስ 360 ዲግሪ ሙሉ ዙር ይዞራል */
+        55% { transform: rotate(360deg); }
+        100% { transform: rotate(360deg); }
+    }
+
+    /* አኒሜሽኖቹ በቋሚነት ያለምንም ማቋረጥ እንዲሠሩ ማዘዣ */
+    .training-marquee-content {
+        animation: scrollTrainingPhotos 20s linear infinite; /* ከቀኝ ወደ ግራ የማያቋርጥ ለስላሳ ጉዞ */
+    }
+    
+    .training-spin-photo-box img {
+        animation: spinPhotosForever 6s ease-in-out infinite; /* በየተራ 360 ዲግሪ የመዞር ጥበብ */
+    }
+
+    /* ማውዙን ፎቶው ላይ ሲያስጠጉት አኒሜሽኑ ለጥቂት ሰከንድ ቆሞ  ፎቶው ጎልቶ እንዲታይ ማድረጊያ ውበት */
+    .training-marquee-wrapper:hover .training-marquee-content,
+    .training-marquee-wrapper:hover .training-spin-photo-box img {
+        animation-play-state: paused;
+    }
+</style>
+
 
 <!-- 🛡️ የውጊያ ቴክኒክ ት/ቤት ራዕይ እና ተልዕኮ ክፍል -->
 <section class="container">
