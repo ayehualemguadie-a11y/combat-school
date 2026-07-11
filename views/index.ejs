@@ -6,7 +6,7 @@
     <title>Combat Technic School</title>
     <link rel="stylesheet" href="/style.css">
     <style>
-        /* 1. የመፈክሩ የ360 ዲግሪ አኒሜሽን ማዘዣ */
+        /* 1. የመፈክሩ የግራና ቀኝ የ360 ዲግሪ አኒሜሽን ማዘዣ */
         @keyframes moveAndSpinSlogan {
             0% { transform: translateX(100vw) rotate(0deg); text-shadow: 0 0 10px #fbbf24, 0 0 20px #d97706, 2px 2px 5px rgba(0,0,0,0.9); }
             45% { transform: translateX(10vw) rotate(0deg); }
@@ -28,10 +28,10 @@
         .dot { height: 11px; width: 11px; background-color: rgba(255,255,255,0.4); border-radius: 50%; display: inline-block; transition: background-color 0.6s ease; }
         .dot.active { background-color: #fbbf24; width: 26px; border-radius: 6px; }
 
-        /* 🔴 ⚠️ አዲሱ የደማቅ ቀይ አዝራሮች (Red Buttons) ስታይል ማዘዣ */
+        /* አዲሱ የደማቅ ቀይ አዝራሮች (Red Buttons) ስታይል ማዘዣ */
         .btn-red {
             display: inline-block;
-            background-color: #dc2626 !important; /* 💡 ኃይለኛ ደማቅ ቀይ ቀለም */
+            background-color: #dc2626 !important;
             color: white !important;
             padding: 14px 32px;
             text-decoration: none;
@@ -39,23 +39,61 @@
             font-weight: 900;
             font-size: 16px;
             margin: 10px;
-            box-shadow: 0 6px 15px rgba(220, 38, 38, 0.4); /* ቀይ ፍንጣቂ ጥላ */
+            box-shadow: 0 6px 15px rgba(220, 38, 38, 0.4);
             border: 2px solid transparent;
             transition: all 0.3s ease-in-out;
             text-transform: uppercase;
             letter-spacing: 0.5px;
         }
         .btn-red:hover {
-            background-color: #b91c1c !important; /* ማውዙ ሲያርፍበት ይበልጥ የሚጠቁር ቀይ */
-            border-color: #fbbf24; /* ወርቃማ መስመር መስጫ */
+            background-color: #b91c1c !important;
+            border-color: #fbbf24;
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
             transform: translateY(-3px);
         }
+
+        /* የእያንዳንዱ የሥልጠና ፎቶ መጠን ማዘዣ ሳጥን */
+        .training-spin-photo-box {
+            display: inline-block;
+            width: 250px;
+            height: 180px;
+            margin: 0 20px;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 6px 12px rgba(0,0,0,0.25);
+            border: 2.5px solid #fbbf24;
+            background-color: #000;
+        }
+        .training-spin-photo-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* ፎቶዎቹን በአንድ ላይ ከቀኝ ወደ ግራ የሚያሸራትተው አኒሜሽን */
+        @keyframes scrollTrainingPhotos {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-1450px); } /* 5ቱ ፎቶዎች ሲሆኑ ርዝመቱ እንዲጨምር ተስተካክሏል */
+        }
+
+        /* እያንዳንዱ ፎቶ በራሱ ጊዜ በቋሚነት 360 ዲግሪ እንዲሽከረከር ማድረጊያ */
+        @keyframes spinPhotosForever {
+            0% { transform: rotate(0deg); }
+            45% { transform: rotate(0deg); }
+            50% { transform: rotate(360deg); }
+            55% { transform: rotate(360deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .training-marquee-content { animation: scrollTrainingPhotos 24s linear infinite; }
+        .training-spin-photo-box img { animation: spinPhotosForever 6s ease-in-out infinite; }
+        .training-marquee-wrapper:hover .training-marquee-content,
+        .training-marquee-wrapper:hover .training-spin-photo-box img { animation-play-state: paused; }
     </style>
 </head>
 <body>
 
-<!-- 🎖️ የትምህርት ቤቱ መለያ አናት (Header) -->
+<!-- 🎖Header 🎖 -->
 <header style="position: relative; text-align: center; padding: 25px 10px 20px 10px; background: transparent; color: white; z-index: 5;">
     <div style="display: flex; justify-content: center; align-items: flex-end; gap: 40px; margin-bottom: 25px; max-width: 95%; margin-left: auto; margin-right: auto; padding-top: 10px;">
         <div style="display: inline-block; margin-bottom: -15px;">
@@ -94,7 +132,7 @@
     </div>
 </header>
 
-<!-- 🌐 ውቡ ሰማያዊ ማውጫ (Navbar) -->
+<!-- 🌐 Navbar -->
 <nav style="background: linear-gradient(135deg, #1d4ed8 0%, #1e40af 100%) !important; display: flex; justify-content: center; padding: 14px 0; gap: 15px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25); border-radius: 4px; margin: 10px auto 0 auto; max-width: 95%; position: relative; z-index: 10;">
     <a href="/" style="color: white; text-decoration: none; font-weight: bold; padding: 10px 15px;">Home</a>
     <a href="/about.html" style="color: white; text-decoration: none; font-weight: bold; padding: 10px 15px;">About</a>
@@ -105,21 +143,18 @@
     <a href="/login.html" style="color: white; text-decoration: none; font-weight: bold; padding: 10px 15px;">Admin</a>
 </nav>
 
-<!-- 🖼️ ⚠️ መደራረብ የጸዳበት እና አዝራሮቹ ወደ ደማቅ ቀይ የተለወጡበት የጀርባ ምስል ክፍል -->
+<!-- Hero Section -->
 <section class="hero" style="background-image: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)), url('/images/background.jpg'); background-size: cover; background-position: center 25%; background-repeat: no-repeat; text-align: center; padding: 130px 20px 100px 20px; color: white; position: relative; z-index: 1; margin-top: -10px;">
-    
     <h2 style="font-size: 42px; font-weight: 800; color: #ffffff; text-shadow: 3px 3px 6px rgba(0,0,0,0.95); margin-bottom: 40px; line-height: 1.4; letter-spacing: 0.5px; font-family: sans-serif;">
         ጠንካራ የሜካናይዝድ ኃይል በመገንባት ዝግጁነታችንን እናረጋግጣለን!
     </h2>
-    
-    <!-- 🔴 ⚠️ እጅግ በጣም ጎልተው የሚታዩት አዲሶቹ ቀይ አዝራሮች እዚህ ገብተዋል -->
     <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
         <a href="/about.html" class="btn-red">Learn More</a>
         <a href="/contact.html" class="btn-red">Contact Us</a>
     </div>
 </section>
 
-<!-- 📰 የዜና ማሳያ ክፍል -->
+<!-- 📰 Latest News Section -->
 <section class="container">
     <div class="card">
         <h2>📰 Latest News & Announcements</h2>
@@ -131,131 +166,3 @@
                     <p><%= item.description %></p>
                     <% if (item.image) { %>
                         <br>
-                        <img src="<%= item.image %>" style="max-width:100%; height:auto; border-radius:8px; max-height:300px; object-fit:cover;">
-                    <% } %>
-                    <br>
-                    <small style="color: #6b7280;">Posted on: <%= item.created_at %></small>
-                </div>
-            <% }) %>
-        <% } else { %>
-            <p align="center" style="color: #6b7280; font-style: italic;">No news or announcements available at the moment.</p>
-        <% } %>
-    </div>
-</section>
-
-<!-- 🛡️ አዲሱ የታንኮች እና የሲሙሌተር መሣሪያዎች ማሳያ ፎቶ -->
-<<!-- 🎖️ ⚠️ የሥልጠና ፎቶዎቹ መጠናቸው ቀንሶ ከቀኝ ወደ ግራ እየሮጡ 360 ዲግሪ እንዲሽከረከሩ የተቆለፈበት አዲስ ክፍል 🎖️ -->
-<section class="container" style="text-align: center; overflow: hidden; padding: 25px 10px;">
-    <div class="card" style="padding: 20px; background: white; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); overflow: hidden; position: relative;">
-        
-        <!-- 📌 የሥልጠና ክፍል አርዕስት (የተስተካከለ የክብር ቀለም) -->
-        <div style="background-color: #d11252; color: white; padding: 10px 20px; display: inline-block; font-weight: bold; border-radius: 4px; margin-bottom: 25px; font-size: 16px;">
-            የሜካናይዝድ ዕጩ መኮንኖች / የኮሌጅ / ሥልጠና
-        </div>
-
-        <!-- 🎡 ⚠️ 4ቱ ፎቶዎች በተከታታይ ከቀኝ ወደ ግራ እየሮጡ 360 ዲግሪ የሚዞሩበት ዋና የሩጫ መስመር (Marquee Area) -->
-        <div class="training-marquee-wrapper" style="width: 100%; overflow: hidden; position: relative; white-space: nowrap; padding: 15px 0;">
-            <div class="training-marquee-content" style="display: inline-block; white-space: nowrap;">
-                
-                <!-- 📸 ፎቶ 1 (መጠኑ በትክክል ቀንሶ የ360 ዲግሪ ስፒን አኒሜሽን ገብቶበታል) -->
-                <div class="training-spin-photo-box">
-                    <img src="/images/photo1.jpg" alt="Training Slide 1">
-                </div>
-                
-                <!-- 📸 ፎቶ 2 -->
-                <div class="training-spin-photo-box">
-                    <img src="/images/photo2.jpg" alt="Training Slide 2">
-                </div>
-                
-                <!-- 📸 ፎቶ 3 -->
-                <div class="training-spin-photo-box">
-                    <img src="/images/photo3.jpg" alt="Training Slide 3">
-                </div>
-                
-                <!-- 📸 ፎቶ 4 -->
-                <div class="training-spin-photo-box">
-                    <img src="/images/photo4.jpg" alt="Training Slide 4">
-                </div>
-
-                <!-- 🔄 አኒሜሽኑ ሳያቋርጥ በተከታታይ እንዲሮጥ ለማድረግ 4ቱ ፎቶዎች በድጋሚ እዚህ ተደግመዋል (Looping Copy) -->
-                <div class="training-spin-photo-box"><img src="/images/photo1.jpg" alt="1"></div>
-                <div class="training-spin-photo-box"><img src="/images/photo2.jpg" alt="2"></div>
-                <div class="training-spin-photo-box"><img src="/images/photo3.jpg" alt="3"></div>
-                <div class="training-spin-photo-box"><img src="/images/photo4.jpg" alt="4"></div>
-
-            </div>
-        </div>
-
-        <!-- 📌 የታችኛው ንዑስ አርዕስት ባነር -->
-        <div style="background-color: #d11252; color: white; padding: 10px 20px; display: inline-block; font-weight: bold; border-radius: 4px; margin-top: 25px; font-size: 16px;">
-            በዘመናዊ ቴክኖሎጂ የተደገፈ የመድፈኛ ሥልጠና
-        </div>
-
-    </div>
-</section>
-
-<!-- 💡 4ቱን ፎቶዎች በየተራ መጠናቸውን ቀንሶ ከቀኝ ወደ ግራ የሚያንቀሳቅሰውና 360 ዲግሪ የሚያዞረው የስታይል ማዘዣ (CSS) -->
-<style>
-    /* 📐 የእያንዳንዱ ፎቶ መጠን ፍጹም ተስተካክሎ እንዲቀንስ ማድረጊያ ሳጥን */
-    .training-spin-photo-box {
-        display: inline-block;
-        width: 250px; /* 💡 ፎቶው ሙሉ በሙሉ እንዲታይ መጠኑ ከ 250px በላይ እንዳይሆን በጥራት ቀንሷል */
-        height: 180px;
-        margin: 0 20px;
-        overflow: hidden;
-        border-radius: 8px;
-        box-shadow: 0 6px 12px rgba(0,0,0,0.25);
-        border: 2.5px solid #fbbf24; /* ወርቃማ ፍሬም */
-        background-color: #000;
-    }
-    
-    .training-spin-photo-box img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        transition: transform 0.5s ease;
-    }
-
-    /* 🏃‍♂️ 4ቱን ፎቶዎች በአንድ ላይ በተከታታይ ከቀኝ ወደ ግራ የሚያንሸራትተው ዋና የሩጫ አኒሜሽን */
-    @keyframes scrollTrainingPhotos {
-        0% {
-            transform: translateX(0);
-        }
-        100% {
-            transform: translateX(-1160px); /* የ 4ቱ ፎቶዎች ሙሉ የርዝመት መለኪያ */
-        }
-    }
-
-    /* 🔄 እያንዳንዱ ፎቶ በራሱ ጊዜ በቋሚነት 360 ዲግሪ እንዲሽከረከር (እንዲዞር) ማድረጊያ አኒሜሽን */
-    @keyframes spinPhotosForever {
-        0% { transform: rotate(0deg); }
-        45% { transform: rotate(0deg); } /* ቀጥ ብሎ በሰላም ይጓዛል */
-        50% { transform: rotate(360deg); } /* 💡 ልክ መሃል መስመር ሲደርስ 360 ዲግሪ ሙሉ ዙር ይዞራል */
-        55% { transform: rotate(360deg); }
-        100% { transform: rotate(360deg); }
-    }
-
-    /* አኒሜሽኖቹ በቋሚነት ያለምንም ማቋረጥ እንዲሠሩ ማዘዣ */
-    .training-marquee-content {
-        animation: scrollTrainingPhotos 20s linear infinite; /* ከቀኝ ወደ ግራ የማያቋርጥ ለስላሳ ጉዞ */
-    }
-    
-    .training-spin-photo-box img {
-        animation: spinPhotosForever 6s ease-in-out infinite; /* በየተራ 360 ዲግሪ የመዞር ጥበብ */
-    }
-
-    /* ማውዙን ፎቶው ላይ ሲያስጠጉት አኒሜሽኑ ለጥቂት ሰከንድ ቆሞ  ፎቶው ጎልቶ እንዲታይ ማድረጊያ ውበት */
-    .training-marquee-wrapper:hover .training-marquee-content,
-    .training-marquee-wrapper:hover .training-spin-photo-box img {
-        animation-play-state: paused;
-    }
-</style>
-
-
-<!-- 🛡️ የውጊያ ቴክኒክ ት/ቤት ራዕይ እና ተልዕኮ ክፍል -->
-<section class="container">
-    <div class="card">
-        <h2 style="margin-bottom: 20px;">🛡️ የውጊያ ቴክኒክ ት/ቤት ራዕይ እና ተልዕኮ</h2>
-        
-        <h3 style="color: #0088cc;">👁️ ራዕይ</h3>
-        <p style="font-size: 16px; font-weight: 500;">
