@@ -8,7 +8,7 @@
 </head>
 <body>
 
-<!-- 🎖️ የታንክና መድፍ መጠን አድጎ፣ መፈክሩና ፎቶዎቹ 360 ዲግሪ የሚሽከረከሩበት ዋናው ባነር ክፍል 🎖️ -->
+<!-- 🎖️ የታንክና መድፍ መጠን አድጎ፣ መፈክሩና ፎቶዎቹ ከቀኝ ወደ ግራ በለስላሳ ሁኔታ የሚንሸራተቱበት ዋናው ባነር ክፍል 🎖️ -->
 <header style="position: relative; text-align: center; padding: 25px 10px 20px 10px; background: transparent; color: white; z-index: 5;">
     
     <!-- 🖼️ የራሳችን አርማ አሰላለፍ (T-72 ታንክ፣ ሎጎ እና 155 ሚ.ሜ መድፍ) -->
@@ -32,21 +32,21 @@
         ውጊያ ቴክኒክ ት/ቤት
     </h1>
     
-    <!-- 📌 ⚠️ ታላቁ መፈክር ከቀኝ ወደ ግራ እየተንቀሳቀሰ 360 ዲግሪ በሚሽከረከር አኒሜሽን ተቆልፏል -->
+    <!-- 📌 ታላቁ መፈክር ከቀኝ ወደ ግራ እየተንቀሳቀሰ 360 ዲግሪ በሚሽከረከር አኒሜሽን ተቆልፏል -->
     <div class="slogan-marquee-container" style="margin: 25px auto; max-width: 100%; overflow: hidden; padding: 15px 0; background: rgba(0, 0, 0, 0.2); backdrop-filter: blur(5px); border-top: 1px solid rgba(255,255,255,0.1); border-bottom: 1px solid rgba(255,255,255,0.1);">
         <span class="scrolling-glowing-slogan" style="font-size: 50px; font-weight: 900; color: #fbbf24; font-style: italic; white-space: nowrap; display: inline-block; letter-spacing: 1px;">
             "እናቅዳለን፤ እንጀምራለን፤ እናሰፋለን፤ በፍጥነት እና በጥራት እንፈጽማለን。"
         </span>
     </div>
 
-    <!-- 🎡 ⚠️ አራቱ ፎቶዎች በየተራ 360 ዲግሪ እየተሽከረከሩ እንዲመጡ የተቆለፈበት አዲስ ሳጥን -->
+    <!-- 🎡 ⚠️ አራቱ ፎቶዎች ከቀኝ ወደ ግራ በለስላሳ ሁኔታ ተንሸራተው እንዲገቡ የተቆለፈበት አዲስ ሳጥን -->
     <div class="slider-container" style="position: relative; max-width: 600px; height: 550px; margin: 30px auto 10px auto; overflow: hidden; border-radius: 12px; box-shadow: 0 12px 30px rgba(0,0,0,0.5); border: 4px solid rgba(255,255,255,0.2); background-color: transparent;">
         
-        <!-- 📸 ⚠️ ፎቶዎቹ 360 ዲግሪ እንዲዞሩ spin-effect የሚለው አዲሱ አኒሜሽን ገብቶባቸዋል -->
-        <div class="slide spin-effect active"><img src="/images/photo1.jpg" style="width:100%; height:150%; object-fit: fill;" alt="Our Slide 1"></div>
-        <div class="slide spin-effect"><img src="/images/photo2.jpg" style="width:100%; height:150%; object-fit: fill;" alt="Our Slide 2"></div>
-        <div class="slide spin-effect"><img src="/images/photo3.jpg" style="width:100%; height:150%; object-fit: fill;" alt="Our Slide 3"></div>
-        <div class="slide spin-effect"><img src="/images/photo4.jpg" style="width:100%; height:150%; object-fit: fill;" alt="Our Slide 4"></div>
+        <!-- 📸 ⚠️ ፎቶዎቹ ከቀኝ ወደ ግራ እንዲንሸራተቱ slide-left-effect የሚለው አዲሱ ለስላሳ አኒሜሽን ገብቶባቸዋል -->
+        <div class="slide slide-left-effect active"><img src="/images/photo1.jpg" style="width:100%; height:150%; object-fit: fill;" alt="Our Slide 1"></div>
+        <div class="slide slide-left-effect"><img src="/images/photo2.jpg" style="width:100%; height:150%; object-fit: fill;" alt="Our Slide 2"></div>
+        <div class="slide slide-left-effect"><img src="/images/photo3.jpg" style="width:100%; height:150%; object-fit: fill;" alt="Our Slide 3"></div>
+        <div class="slide slide-left-effect"><img src="/images/photo4.jpg" style="width:100%; height:150%; object-fit: fill;" alt="Our Slide 4"></div>
 
         <!-- 👇 የ 4ቱ ፎቶዎች ጠቋሚ ነጥቦች -->
         <div style="position: absolute; bottom: 18px; left: 50%; transform: translateX(-50%); display: flex; gap: 8px; z-index: 10;">
@@ -59,7 +59,7 @@
 
     <!-- 💡 የሰላይደሩ እና የመፈክሩ አጠቃላይ የአኒሜሽን ማዘዣ (CSS Styles) -->
     <style>
-        /* 1. የመፈክሩ የግራና ቀኝ የ360 ዲግሪ አኒሜሽን ማዘዣ */
+        /* 1. የመፈክሩ የ360 ዲግሪ አኒሜሽን ማዘዣ */
         @keyframes moveAndSpinSlogan {
             0% { transform: translateX(100vw) rotate(0deg); text-shadow: 0 0 10px #fbbf24, 0 0 20px #d97706, 2px 2px 5px rgba(0,0,0,0.9); }
             45% { transform: translateX(10vw) rotate(0deg); }
@@ -69,21 +69,30 @@
         }
         .scrolling-glowing-slogan { animation: moveAndSpinSlogan 15s linear infinite; }
 
-        /* 2. አራቱንም ፎቶዎች በየተራ 360 ዲግሪ የሚያሽከረክረው አዲሱ አኒሜሽን */
+        /* 🔄 2. ⚠️ አራቱንም ፎቶዎች ከቀኝ ወደ ግራ በለስላሳ የሚያሸራትተው አዲሱ የሲኒማ አኒሜሽን (Horizontal Smooth Slider) */
         .slide { display: none; width: 100%; height: 100%; }
         .slide.active { display: block; }
-        .spin-effect { animation: photo360Spin 1.2s cubic-bezier(0.4, 0, 0.2, 1) forwards; }
         
-        @keyframes photo360Spin {
-            from { opacity: 0.2; transform: scale(0.3) rotate(0deg); }
-            to { opacity: 1; transform: scale(1) rotate(360deg); }
+        .slide-left-effect { 
+            animation: smoothSlideLeft 1.2s cubic-bezier(0.25, 1, 0.5, 1) forwards; 
+        }
+        
+        @keyframes smoothSlideLeft {
+            from { 
+                opacity: 0.3;
+                transform: translateX(100%); /* 💡 ከቀኝ በኩል ተንሸራቶ መግባት ይጀምራል */
+            }
+            to { 
+                opacity: 1;
+                transform: translateX(0); /* 💡 መሃል ላይ በትክክል ይቆማል */
+            }
         }
 
         .dot { height: 11px; width: 11px; background-color: rgba(255,255,255,0.4); border-radius: 50%; display: inline-block; transition: background-color 0.6s ease; }
         .dot.active { background-color: #fbbf24; width: 26px; border-radius: 6px; }
     </style>
 
-    <!-- 💡 በየ 3 ሰከንዱ ፎቶዎቹን እያዞረ የሚቀያይረው ጃቫስክሪፕት (JavaScript Logic) -->
+    <!-- 💡 በየ 3 ሰከንዱ ፎቶዎቹን ከቀኝ ወደ ግራ እያሸራተተ የሚቀያይረው ጃቫስክሪፕት (JavaScript Logic) -->
     <script>
         let currentSlideIndex = 0;
         const slides = document.querySelectorAll('.slide');
@@ -180,6 +189,3 @@
         
         <hr style="border: 0; border-top: 1px solid #eee; margin: 20px 0;">
         
-        <h3 style="color: #0088cc;">⭐ ዋና ዋና ተግባራት</h3>
-        <ul style="list-style-type: none; padding-left: 0; font-size: 15px;">
-            <li style="margin-bottom: 12px; padding-left: 20px; text-indent: -20px;">🔹 በት/ቤቱ ሥርዓተ-ትምህርት መሰረት ቀጣይነት ያለውና ደረጃውን የጠበቀ የሜካናይዝድ የቴክኒክ ሥልጠና መስጠት፣</li>
