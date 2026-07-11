@@ -5,59 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Combat Technic School</title>
     <link rel="stylesheet" href="/style.css">
-</head>
-<body>
-
-<!-- 🎖️ የታንክና መድፍ መጠን አድጎ፣ መፈክሩና ፎቶዎቹ ከቀኝ ወደ ግራ በለስላሳ ሁኔታ የሚንሸራተቱበት ዋናው ባነር ክፍል 🎖️ -->
-<header style="position: relative; text-align: center; padding: 25px 10px 20px 10px; background: transparent; color: white; z-index: 5;">
-    
-    <!-- 🖼️ የራሳችን አርማ አሰላለፍ (T-72 ታንክ፣ ሎጎ እና 155 ሚ.ሜ መድፍ) -->
-    <div style="display: flex; justify-content: center; align-items: flex-end; gap: 40px; margin-bottom: 25px; max-width: 95%; margin-left: auto; margin-right: auto; padding-top: 10px;">
-        <!-- 🚜 የራሳችን T-72 ታንክ -->
-        <div style="display: inline-block; margin-bottom: -15px;">
-            <img src="/images/t72.jpg" style="width: 200px; height: 135px; object-fit: cover; border-radius: 8px; box-shadow: 0 8px 16px rgba(0,0,0,0.6); border: 3px solid #fbbf24;" alt="T-72 Tank">
-        </div>
-        <!-- 🛡️ የራሳችን ክብ ሎጎ -->
-        <div style="display: flex; align-items: center; margin-bottom: 25px;">
-            <img src="/images/logo.jpg" width="130" style="border-radius: 50%; box-shadow: 0 6px 12px rgba(0,0,0,0.4);" alt="Logo">
-        </div>
-        <!-- 💥 የራሳችን 155 ሚ.ሜ መድፍ -->
-        <div style="display: inline-block; margin-bottom: -15px;">
-            <img src="/images/medif155.jpg" style="width: 200px; height: 135px; object-fit: cover; border-radius: 8px; box-shadow: 0 8px 16px rgba(0,0,0,0.5); border: 3px solid #fbbf24;" alt="155mm Artillery">
-        </div>
-    </div>
-
-    <!-- 📌 የራሳችን ዋና ርዕስ በወርቃማ ቀለም -->
-    <h1 style="font-size: 38px; font-weight: 800; color: #fbbf24; text-shadow: 2px 2px 6px rgba(0,0,0,0.9); margin: 5px 0 25px 0; letter-spacing: 1px;">
-        ውጊያ ቴክኒክ ት/ቤት
-    </h1>
-    
-    <!-- 📌 ታላቁ መፈክር ከቀኝ ወደ ግራ እየተንቀሳቀሰ 360 ዲግሪ በሚሽከረከር አኒሜሽን ተቆልፏል -->
-    <div class="slogan-marquee-container" style="margin: 25px auto; max-width: 100%; overflow: hidden; padding: 15px 0; background: rgba(0, 0, 0, 0.2); backdrop-filter: blur(5px); border-top: 1px solid rgba(255,255,255,0.1); border-bottom: 1px solid rgba(255,255,255,0.1);">
-        <span class="scrolling-glowing-slogan" style="font-size: 50px; font-weight: 900; color: #fbbf24; font-style: italic; white-space: nowrap; display: inline-block; letter-spacing: 1px;">
-            "እናቅዳለን፤ እንጀምራለን፤ እናሰፋለን፤ በፍጥነት እና በጥራት እንፈጽማለን。"
-        </span>
-    </div>
-
-    <!-- 🎡 ⚠️ አራቱ ፎቶዎች ከቀኝ ወደ ግራ በለስላሳ ሁኔታ ተንሸራተው እንዲገቡ የተቆለፈበት አዲስ ሳጥን -->
-    <div class="slider-container" style="position: relative; max-width: 600px; height: 550px; margin: 30px auto 10px auto; overflow: hidden; border-radius: 12px; box-shadow: 0 12px 30px rgba(0,0,0,0.5); border: 4px solid rgba(255,255,255,0.2); background-color: transparent;">
-        
-        <!-- 📸 ⚠️ ፎቶዎቹ ከቀኝ ወደ ግራ እንዲንሸራተቱ slide-left-effect የሚለው አዲሱ ለስላሳ አኒሜሽን ገብቶባቸዋል -->
-        <div class="slide slide-left-effect active"><img src="/images/photo1.jpg" style="width:100%; height:150%; object-fit: fill;" alt="Our Slide 1"></div>
-        <div class="slide slide-left-effect"><img src="/images/photo2.jpg" style="width:100%; height:150%; object-fit: fill;" alt="Our Slide 2"></div>
-        <div class="slide slide-left-effect"><img src="/images/photo3.jpg" style="width:100%; height:150%; object-fit: fill;" alt="Our Slide 3"></div>
-        <div class="slide slide-left-effect"><img src="/images/photo4.jpg" style="width:100%; height:150%; object-fit: fill;" alt="Our Slide 4"></div>
-
-        <!-- 👇 የ 4ቱ ፎቶዎች ጠቋሚ ነጥቦች -->
-        <div style="position: absolute; bottom: 18px; left: 50%; transform: translateX(-50%); display: flex; gap: 8px; z-index: 10;">
-            <span class="dot active"></span>
-            <span class="dot"></span>
-            <span class="dot"></span>
-            <span class="dot"></span>
-        </div>
-    </div>
-
-    <!-- 💡 የሰላይደሩ እና የመፈክሩ አጠቃላይ የአኒሜሽን ማዘዣ (CSS Styles) -->
     <style>
         /* 1. የመፈክሩ የ360 ዲግሪ አኒሜሽን ማዘዣ */
         @keyframes moveAndSpinSlogan {
@@ -69,81 +16,109 @@
         }
         .scrolling-glowing-slogan { animation: moveAndSpinSlogan 15s linear infinite; }
 
-        /* 🔄 2. ⚠️ አራቱንም ፎቶዎች ከቀኝ ወደ ግራ በለስላሳ የሚያሸራትተው አዲሱ የሲኒማ አኒሜሽን (Horizontal Smooth Slider) */
+        /* 2. አራቱንም ፎቶዎች ከቀኝ ወደ ግራ የሚያሸራትተው አኒሜሽን */
         .slide { display: none; width: 100%; height: 100%; }
         .slide.active { display: block; }
-        
-        .slide-left-effect { 
-            animation: smoothSlideLeft 1.2s cubic-bezier(0.25, 1, 0.5, 1) forwards; 
-        }
-        
+        .slide-left-effect { animation: smoothSlideLeft 1.2s cubic-bezier(0.25, 1, 0.5, 1) forwards; }
         @keyframes smoothSlideLeft {
-            from { 
-                opacity: 0.3;
-                transform: translateX(100%); /* 💡 ከቀኝ በኩል ተንሸራቶ መግባት ይጀምራል */
-            }
-            to { 
-                opacity: 1;
-                transform: translateX(0); /* 💡 መሃል ላይ በትክክል ይቆማል */
-            }
+            from { opacity: 0.3; transform: translateX(100%); }
+            to { opacity: 1; transform: translateX(0); }
         }
 
         .dot { height: 11px; width: 11px; background-color: rgba(255,255,255,0.4); border-radius: 50%; display: inline-block; transition: background-color 0.6s ease; }
         .dot.active { background-color: #fbbf24; width: 26px; border-radius: 6px; }
-    </style>
 
-    <!-- 💡 በየ 3 ሰከንዱ ፎቶዎቹን ከቀኝ ወደ ግራ እያሸራተተ የሚቀያይረው ጃቫስክሪፕት (JavaScript Logic) -->
-    <script>
-        let currentSlideIndex = 0;
-        const slides = document.querySelectorAll('.slide');
-        const dots = document.querySelectorAll('.dot');
-
-        function showNextSlide() {
-            slides[currentSlideIndex].classList.remove('active');
-            dots[currentSlideIndex].classList.remove('active');
-
-            currentSlideIndex = (currentSlideIndex + 1) % slides.length;
-
-            const nextSlide = slides[currentSlideIndex];
-            nextSlide.style.animation = 'none';
-            nextSlide.offsetHeight; 
-            nextSlide.style.animation = '';
-
-            nextSlide.classList.add('active');
-            dots[currentSlideIndex].classList.add('active');
+        /* 🔴 ⚠️ አዲሱ የደማቅ ቀይ አዝራሮች (Red Buttons) ስታይል ማዘዣ */
+        .btn-red {
+            display: inline-block;
+            background-color: #dc2626 !important; /* 💡 ኃይለኛ ደማቅ ቀይ ቀለም */
+            color: white !important;
+            padding: 14px 32px;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 900;
+            font-size: 16px;
+            margin: 10px;
+            box-shadow: 0 6px 15px rgba(220, 38, 38, 0.4); /* ቀይ ፍንጣቂ ጥላ */
+            border: 2px solid transparent;
+            transition: all 0.3s ease-in-out;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
+        .btn-red:hover {
+            background-color: #b91c1c !important; /* ማውዙ ሲያርፍበት ይበልጥ የሚጠቁር ቀይ */
+            border-color: #fbbf24; /* ወርቃማ መስመር መስጫ */
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+            transform: translateY(-3px);
+        }
+    </style>
+</head>
+<body>
 
-        setInterval(showNextSlide, 3000);
-    </script>
+<!-- 🎖️ የትምህርት ቤቱ መለያ አናት (Header) -->
+<header style="position: relative; text-align: center; padding: 25px 10px 20px 10px; background: transparent; color: white; z-index: 5;">
+    <div style="display: flex; justify-content: center; align-items: flex-end; gap: 40px; margin-bottom: 25px; max-width: 95%; margin-left: auto; margin-right: auto; padding-top: 10px;">
+        <div style="display: inline-block; margin-bottom: -15px;">
+            <img src="/images/t72.jpg" style="width: 200px; height: 135px; object-fit: cover; border-radius: 8px; box-shadow: 0 8px 16px rgba(0,0,0,0.6); border: 3px solid #fbbf24;" alt="T-72 Tank">
+        </div>
+        <div style="display: flex; align-items: center; margin-bottom: 25px;">
+            <img src="/images/logo.jpg" width="130" style="border-radius: 50%; box-shadow: 0 6px 12px rgba(0,0,0,0.4);" alt="Logo">
+        </div>
+        <div style="display: inline-block; margin-bottom: -15px;">
+            <img src="/images/medif155.jpg" style="width: 200px; height: 135px; object-fit: cover; border-radius: 8px; box-shadow: 0 8px 16px rgba(0,0,0,0.5); border: 3px solid #fbbf24;" alt="155mm Artillery">
+        </div>
+    </div>
+
+    <h1 style="font-size: 38px; font-weight: 800; color: #fbbf24; text-shadow: 2px 2px 6px rgba(0,0,0,0.9); margin: 5px 0 25px 0; letter-spacing: 1px;">
+        ውጊያ ቴክኒክ ት/ቤት
+    </h1>
+    
+    <div class="slogan-marquee-container" style="margin: 25px auto; max-width: 100%; overflow: hidden; padding: 15px 0; background: rgba(0, 0, 0, 0.2); backdrop-filter: blur(5px); border-top: 1px solid rgba(255,255,255,0.1); border-bottom: 1px solid rgba(255,255,255,0.1);">
+        <span class="scrolling-glowing-slogan" style="font-size: 50px; font-weight: 900; color: #fbbf24; font-style: italic; white-space: nowrap; display: inline-block; letter-spacing: 1px;">
+            "እናቅዳለን፤ እንጀምራለን፤ እናሰፋለን፤ በፍጥነት እና በጥራት እንፈጽማለን。"
+        </span>
+    </div>
+
+    <div class="slider-container" style="position: relative; max-width: 600px; height: 550px; margin: 30px auto 10px auto; overflow: hidden; border-radius: 12px; box-shadow: 0 12px 30px rgba(0,0,0,0.5); border: 4px solid rgba(255,255,255,0.2); background-color: transparent;">
+        <div class="slide slide-left-effect active"><img src="/images/photo1.jpg" style="width:100%; height:150%; object-fit: fill;" alt="Our Slide 1"></div>
+        <div class="slide slide-left-effect"><img src="/images/photo2.jpg" style="width:100%; height:150%; object-fit: fill;" alt="Our Slide 2"></div>
+        <div class="slide slide-left-effect"><img src="/images/photo3.jpg" style="width:100%; height:150%; object-fit: fill;" alt="Our Slide 3"></div>
+        <div class="slide slide-left-effect"><img src="/images/photo4.jpg" style="width:100%; height:150%; object-fit: fill;" alt="Our Slide 4"></div>
+
+        <div style="position: absolute; bottom: 18px; left: 50%; transform: translateX(-50%); display: flex; gap: 8px; z-index: 10;">
+            <span class="dot active"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+        </div>
+    </div>
 </header>
 
 <!-- 🌐 ውቡ ሰማያዊ ማውጫ (Navbar) -->
-<nav>
-    <a href="/">Home</a>
-    <a href="/about.html">About</a>
-    <a href="/history.html">History</a>
-    <a href="https://t.me" target="_blank">Gallery 📸</a>
-    <a href="https://t.me" target="_blank">News & Announcements 📰</a>
-    <a href="/contact.html">Contact</a>
-    <a href="/login.html">Admin</a>
+<nav style="background: linear-gradient(135deg, #1d4ed8 0%, #1e40af 100%) !important; display: flex; justify-content: center; padding: 14px 0; gap: 15px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25); border-radius: 4px; margin: 10px auto 0 auto; max-width: 95%; position: relative; z-index: 10;">
+    <a href="/" style="color: white; text-decoration: none; font-weight: bold; padding: 10px 15px;">Home</a>
+    <a href="/about.html" style="color: white; text-decoration: none; font-weight: bold; padding: 10px 15px;">About</a>
+    <a href="/history.html" style="color: white; text-decoration: none; font-weight: bold; padding: 10px 15px;">History</a>
+    <a href="https://t.me" target="_blank" style="color: white; text-decoration: none; font-weight: bold; padding: 10px 15px;">Gallery 📸</a>
+    <a href="https://t.me" target="_blank" style="color: white; text-decoration: none; font-weight: bold; padding: 10px 15px;">News & Announcements 📰</a>
+    <a href="/contact.html" style="color: white; text-decoration: none; font-weight: bold; padding: 10px 15px;">Contact</a>
+    <a href="/login.html" style="color: white; text-decoration: none; font-weight: bold; padding: 10px 15px;">Admin</a>
 </nav>
 
-<!-- 🖼️ የጀርባ ምስሉን እና የፊቱን ጽሑፍ የያዘው የጀግናው ክፍል -->
-<!-- 🖼️ ⚠️ የጀርባ ምስሉ ላይ የነበሩት የእንግሊዘኛ ጽሑፎች ጠፍተው በአዲሱ ጠንካራ የአማርኛ መፈክር ተክተዋል -->
-<<!-- 🖼️ ⚠️ በ HTML ፋይሉ ውስጥ የነበሩት የእንግሊዘኛ ጽሑፎች ጠፍተው በአዲሱ ጠንካራ መፈክርህ ተክተዋል -->
-<section class="hero" style="background-image: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)), url('/images/background.jpg'); background-size: cover; background-position: center 25%; background-repeat: no-repeat; text-align: center; padding: 110px 20px; color: white;">
+<!-- 🖼️ ⚠️ መደራረብ የጸዳበት እና አዝራሮቹ ወደ ደማቅ ቀይ የተለወጡበት የጀርባ ምስል ክፍል -->
+<section class="hero" style="background-image: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)), url('/images/background.jpg'); background-size: cover; background-position: center 25%; background-repeat: no-repeat; text-align: center; padding: 130px 20px 100px 20px; color: white; position: relative; z-index: 1; margin-top: -10px;">
     
-    <!-- 📌 አዲሱ ጠንካራ መፈክር በትልቅ መጠን እና በደመቀ የጽሑፍ ጥላ ተቆልፏል -->
-    <h2 style="font-size: 42px; font-weight: 800; color: #ffffff; text-shadow: 3px 3px 6px rgba(0,0,0,0.95); margin-bottom: 30px; line-height: 1.4; letter-spacing: 0.5px; font-family: sans-serif;">
+    <h2 style="font-size: 42px; font-weight: 800; color: #ffffff; text-shadow: 3px 3px 6px rgba(0,0,0,0.95); margin-bottom: 40px; line-height: 1.4; letter-spacing: 0.5px; font-family: sans-serif;">
         ጠንካራ የሜካናይዝድ ኃይል በመገንባት ዝግጁነታችንን እናረጋግጣለን!
     </h2>
     
-    <!-- 👇 ሁለቱ አዝራሮች (Buttons) ከሥሩ በሥርዓት እንዲቀመጡ ተደርጓል -->
-    <div style="display: flex; justify-content: center; gap: 15px; flex-wrap: wrap;">
-        <a href="/about.html" class="btn">Learn More</a>
-        <a href="/contact.html" class="btn" style="background-color: #111827;">Contact Us</a>
+    <!-- 🔴 ⚠️ እጅግ በጣም ጎልተው የሚታዩት አዲሶቹ ቀይ አዝራሮች እዚህ ገብተዋል -->
+    <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
+        <a href="/about.html" class="btn-red">Learn More</a>
+        <a href="/contact.html" class="btn-red">Contact Us</a>
     </div>
 </section>
+
 <!-- 📰 የዜና ማሳያ ክፍል -->
 <section class="container">
     <div class="card">
@@ -183,15 +158,3 @@
         
         <h3 style="color: #0088cc;">👁️ ራዕይ</h3>
         <p style="font-size: 16px; font-weight: 500;">
-            በዘመኑ የጥምር ጦር ውጊያ ውስጥ ግዳጃቸውን በላቀ ደረጃ መወጣት የሚችሉ ብቁ የሜካናይዝድና ሞተራይዝድ ሙያተኞችን ማፍራት የሚችል ተመራጭ ት/ቤት ሆኖ ማየት እንዲሁም በ 2022 ዓ.ም በአፍሪካ 1ኛ እና ተመራጭ የሜካናይዝድ ማሰልጠኛ ተቋም መሆን።
-        </p>
-        
-        <hr style="border: 0; border-top: 1px solid #eee; margin: 20px 0;">
-        
-        <h3 style="color: #0088cc;">🎯 ተልዕኮ</h3>
-        <p style="font-size: 16px; font-weight: 500;">
-            በሜካናይዝድና በሞተራይዝድ ሙያ ግዳጃቸውን በብቃት መወጣት የሚችሉ ምድብተኞችን፣ የመሳሪያ አዛዦችን እና የመቶ አመራሮችን ማፍራት፣
-        </p>
-        
-        <hr style="border: 0; border-top: 1px solid #eee; margin: 20px 0;">
-        
