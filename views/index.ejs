@@ -193,4 +193,33 @@
             <li style="margin-bottom: 12px; padding-left: 20px; text-indent: -20px;">🔹 ለሠራዊታችን ክፍሎች ቀጥተኛ ሙያዊ ድጋፍ በመስጠት የሜካናይዝድ ክፍሎችን የማድረግ አቅም ማሳደግ፣</li>
             <li style="margin-bottom: 5px; padding-left: 20px; text-indent: -20px;">🔹 ከአካባቢው ማህበረሰብ ጋር በፀጥታና በልማት ስራዎች በትብብር መስራት፣</li>
         </ul>
+<!-- 🎖️ ያንተን ስም የያዘው የክብር ግርጌ ማስታወሻ (Footer) እዚህ ተመልሷል -->
+<footer style="background:#111827; color:white; text-align:center; padding:30px; margin-top:40px; font-size: 15px;">
+    <p>© 2026 Combat Technic School | Developed by Second Lieutenant Ayehualem Guadie</p>
+</footer>
+
+<script>
+    let currentSlideIndex = 0;
+    const slides = document.querySelectorAll('.slide');
+    const dots = document.querySelectorAll('.dot');
+
+    function showNextSlide() {
+        if(slides.length === 0) return;
+        slides[currentSlideIndex].classList.remove('active');
+        if(dots.length > currentSlideIndex) dots[currentSlideIndex].classList.remove('active');
+        
+        currentSlideIndex = (currentSlideIndex + 1) % slides.length;
+        
+        const nextSlide = slides[currentSlideIndex];
+        nextSlide.style.animation = 'none';
+        nextSlide.offsetHeight; 
+        nextSlide.style.animation = '';
+        
+        nextSlide.classList.add('active');
+        if(dots.length > currentSlideIndex) dots[currentSlideIndex].classList.add('active');
+    }
+    setInterval(showNextSlide, 3000);
+</script>
+</body>
+</html>
 
