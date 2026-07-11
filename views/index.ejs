@@ -120,28 +120,77 @@
 </section>
 
 <!-- 📰 Latest News Section (EJS ስህተት ሙሉ በሙሉ የጸዳበት አስተማማኝ መዋቅር) -->
-<section class="container">
-    <div class="card" style="background: white; padding: 25px; margin-top: 25px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); border-radius: 6px; border-top: 4px solid #111827;">
-        <h2>📰 Latest News & Announcements</h2>
-        <hr style="border:0; border-top:1px solid #eee; margin: 15px 0;">
-        <% if (news && news.length > 0) { %>
-            <% for(var i=0; i < news.length; i++) { %>
-                <div style="margin-bottom: 25px; padding-bottom: 20px; border-bottom: 1px dashed #eee;">
-                    <h3><%= news[i].title %></h3>
-                    <p><%= news[i].description %></p>
-                    <% if (news[i].image) { %>
-                        <br>
-                        <img src="<%= news[i].image %>" style="max-width:100%; height:auto; border-radius:8px; max-height:300px; object-fit:cover;">
-                    <% } %>
-                    <br>
-                    <small style="color: #6b7280;">Posted on: <%= news[i].created_at %></small>
-                </div>
-            <% } %>
-        <% } else { %>
-            <p align="center" style="color: #6b7280; font-style: italic;">No news or announcements available at the moment.</p>
-        <% } %>
+<!-- 🎡 ⚠️ አራቱ የሥልጠና ፎቶዎች ባሉበት መስመር ከግራ ወደ ቀኝ እንዲንሸራተቱ የተቆለፈበት አዲስ ክፍል -->
+<section class="container" style="text-align: center; overflow: hidden; padding: 25px 10px;">
+    <div class="card" style="padding: 20px; background: white; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); overflow: hidden; position: relative;">
+        
+        <!-- 📌 የላይኛው ቀይ አርዕስት ባነር -->
+        <div style="background-color: #d11252; color: white; padding: 10px 20px; display: inline-block; font-weight: bold; border-radius: 4px; margin-bottom: 25px; font-size: 16px;">
+            የሜካናይዝድ ዕጩ መኮንኖች / የኮሌጅ / ሥልጠና
+        </div>
+
+        <!-- 🏃‍♂️ ፎቶዎቹ በአንድ መስመር ከግራ ወደ ቀኝ የሚሮጡበት ዋና የትርኢት መስመር -->
+        <div class="training-marquee-container" style="width: 100%; overflow: hidden; position: relative; white-space: nowrap; padding: 10px 0;">
+            <div class="training-marquee-track" style="display: inline-block; white-space: nowrap; animation: scrollPhotosLeftToRight 20s linear infinite;">
+                
+                <!-- 📸 4ቱ የራሳችን ወታደራዊ ፎቶዎች በሥርዓት ተሰልፈው (መጠናቸው በጥራት ቀንሷል) -->
+                <div class="training-photo-item"><img src="/images/photo1.jpg" alt="Training 1"></div>
+                <div class="training-photo-item"><img src="/images/photo2.jpg" alt="Training 2"></div>
+                <div class="training-photo-item"><img src="/images/photo3.jpg" alt="Training 3"></div>
+                <div class="training-photo-item"><img src="/images/photo4.jpg" alt="Training 4"></div>
+
+                <!-- 🔄 አኒሜሽኑ ሳያቋርጥ በተከታታይ እንዲሮጥ የተደገሙ ፎቶዎች (Loop Copy) -->
+                <div class="training-photo-item"><img src="/images/photo1.jpg" alt="Training 1 Copy"></div>
+                <div class="training-photo-item"><img src="/images/photo2.jpg" alt="Training 2 Copy"></div>
+                <div class="training-photo-item"><img src="/images/photo3.jpg" alt="Training 3 Copy"></div>
+                <div class="training-photo-item"><img src="/images/photo4.jpg" alt="Training 4 Copy"></div>
+
+            </div>
+        </div>
+
+        <!-- 📌 የታችኛው ቀይ አርዕስት ባነር -->
+        <div style="background-color: #d11252; color: white; padding: 10px 20px; display: inline-block; font-weight: bold; border-radius: 4px; margin-top: 25px; font-size: 16px;">
+            በዘመናዊ ቴክኖሎጂ የተደገፈ የመድፈኛ ሥልጠና
+        </div>
+
     </div>
 </section>
+
+<!-- 💡 ፎቶዎቹ በአንድ መስመር ከግራ ወደ ቀኝ እንዲንሸራተቱ ማዘዣ (CSS) -->
+<style>
+    /* 📐 የእያንዳንዱ ፎቶ ስፋትና ቁመት መጠን በጥራት እንዲቀንስ ማድረጊያ */
+    .training-photo-item {
+        display: inline-block;
+        width: 260px; /* ፎቶዎቹ ሙሉ በሙሉ እንዲታዩ መጠናቸው ቀንሷል */
+        height: 180px;
+        margin: 0 15px;
+        overflow: hidden;
+        border-radius: 6px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        border: 2px solid #fbbf24; /* ወርቃማ ፍሬም */
+    }
+    
+    .training-photo-item img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    /* 🏃‍♂️ ፎቶዎቹን ከግራ ወደ ቀኝ በለስላሳ የሚያሸራትተው ዋናው አኒሜሽን */
+    @keyframes scrollPhotosLeftToRight {
+        0% {
+            transform: translateX(-50%); /* ከግራ በኩል ተንሸራቶ ጉዞ ይጀምራል */
+        }
+        100% {
+            transform: translateX(0); /* ወደ ቀኝ በኩል ያለምንም ማቋረጥ ይጓዛል */
+        }
+    }
+
+    /* ማውዙ ፎቶው ላይ ሲያርፍ አኒሜሽኑ ለጥቂት ሰከንድ ቆም እንዲል ማድረጊያ ውበት */
+    .training-marquee-container:hover .training-marquee-track {
+        animation-play-state: paused;
+    }
+</style>
 
 <!-- 🛡️ የውጊያ ቴክኒክ ት/ቤት ራዕይ እና ተልዕኮ ክፍል -->
 <section class="container">
