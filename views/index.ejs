@@ -5,62 +5,127 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Combat Technic School</title>
     <link rel="stylesheet" href="/style.css">
+    <style>
+        /* 1. የመፈክሩ ከቀኝ ወደ ግራ የመንሸራተቻ እና የ360 ዲግሪ አኒሜሽን ማዘዣ */
+        @keyframes moveAndSpinSlogan {
+            0% { transform: translateX(100vw) rotate(0deg); text-shadow: 0 0 10px #fbbf24, 0 0 20px #d97706, 2px 2px 5px rgba(0,0,0,0.9); }
+            45% { transform: translateX(10vw) rotate(0deg); }
+            50% { transform: translateX(0vw) rotate(360deg); text-shadow: 0 0 25px #fbbf24, 0 0 45px #f59e0b, 2px 2px 5px rgba(0,0,0,0.9); }
+            55% { transform: translateX(-10vw) rotate(360deg); }
+            100% { transform: translateX(-100%) rotate(360deg); text-shadow: 0 0 10px #fbbf24, 0 0 20px #d97706, 2px 2px 5px rgba(0,0,0,0.9); }
+        }
+        .scrolling-glowing-slogan { animation: moveAndSpinSlogan 15s linear infinite; }
+
+        /* 2. ⚠️ አራቱንም የባነር ፎቶዎች ከቀኝ ወደ ግራ በለስላሳ የሚያሸራትተው አዲሱ አኒሜሽን */
+        .slide { display: none; width: 100%; height: 100%; }
+        .slide.active { display: block; }
+        .slide-left-effect { animation: smoothSlideLeft 1.2s cubic-bezier(0.25, 1, 0.5, 1) forwards; }
+        
+        @keyframes smoothSlideLeft {
+            from { opacity: 0.3; transform: translateX(100%); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        .dot { height: 11px; width: 11px; background-color: rgba(255,255,255,0.4); border-radius: 50%; display: inline-block; transition: background-color 0.6s ease; }
+        .dot.active { background-color: #fbbf24; width: 26px; border-radius: 6px; }
+
+        /* አዲሱ የደማቅ ቀይ አዝራሮች (Red Buttons) ስታይል ማዘዣ */
+        .btn-red {
+            display: inline-block;
+            background-color: #dc2626 !important;
+            color: white !important;
+            padding: 14px 32px;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 900;
+            font-size: 16px;
+            margin: 10px;
+            box-shadow: 0 6px 15px rgba(220, 38, 38, 0.4);
+            border: 2px solid transparent;
+            transition: all 0.3s ease-in-out;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .btn-red:hover {
+            background-color: #b91c1c !important;
+            border-color: #fbbf24;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+            transform: translateY(-3px);
+        }
+    </style>
 </head>
 <body>
 
-<!-- 🎖️ የትምህርት ቤቱ መለያ ባነር ክፍል -->
-<header style="position: relative; text-align: center; padding: 25px 10px 15px 10px; background: transparent; color: white; z-index: 5;">
-    <!-- 🖼️ ሎጎውን፣ ታንኩንና መድፉን በአንድ መስመር በሥርዓት የሚያሰልፍ ዋና ሳጥን -->
-    <div style="display: flex; justify-content: center; align-items: center; gap: 25px; margin-bottom: 15px; flex-wrap: wrap;">
-        <!-- 🚜 በግራ አጠገብ፦ T-72 ታንክ -->
-        <img src="/images/t72.jpg" style="width: 140px; height: 100px; object-fit: cover; border-radius: 6px; box-shadow: 0 4px 8px rgba(0,0,0,0.3); border: 2px solid #fbbf24;" alt="T-72 Tank">
-        
-        <!-- 🛡️ መሃል ላይ፦ የትምህርት ቤቱ ክብ ሎጎ -->
-        <img src="/images/logo.jpg" width="110" style="border-radius: 50%; box-shadow: 0 4px 6px rgba(0,0,0,0.2);" alt="Logo">
-        
-        <!-- 💥 በቀኝ አጠገብ፦ 155 ሚ.ሜ መድፍ -->
-        <img src="/images/medif155.jpg" style="width: 140px; height: 100px; object-fit: cover; border-radius: 6px; box-shadow: 0 4px 8px rgba(0,0,0,0.3); border: 2px solid #fbbf24;" alt="155mm Artillery">
+<!-- 🎖️ የትምህርት ቤቱ መለያ አናት (Header) 🎖️ -->
+<header style="position: relative; text-align: center; padding: 25px 10px 20px 10px; background: transparent; color: white; z-index: 5;">
+    <div style="display: flex; justify-content: center; align-items: flex-end; gap: 40px; margin-bottom: 25px; max-width: 95%; margin-left: auto; margin-right: auto; padding-top: 10px;">
+        <div style="display: inline-block; margin-bottom: -15px;">
+            <img src="/images/t72.jpg" style="width: 200px; height: 135px; object-fit: cover; border-radius: 8px; box-shadow: 0 8px 16px rgba(0,0,0,0.6); border: 3px solid #fbbf24;" alt="T-72 Tank">
+        </div>
+        <div style="display: flex; align-items: center; margin-bottom: 25px;">
+            <img src="/images/logo.jpg" width="130" style="border-radius: 50%; box-shadow: 0 6px 12px rgba(0,0,0,0.4);" alt="Logo">
+        </div>
+        <div style="display: inline-block; margin-bottom: -15px;">
+            <img src="/images/medif155.jpg" style="width: 200px; height: 135px; object-fit: cover; border-radius: 8px; box-shadow: 0 8px 16px rgba(0,0,0,0.5); border: 3px solid #fbbf24;" alt="155mm Artillery">
+        </div>
     </div>
 
-    <!-- 📌 ዋናው ርዕስ በአማርኛ -->
-    <h1 style="color: #fbbf24; font-size: 32px; text-shadow: 2px 2px 4px rgba(0,0,0,0.8); margin: 5px 0;">ውጊያ ቴክኒክ ት/ቤት</h1>
+    <h1 style="font-size: 38px; font-weight: 800; color: #fbbf24; text-shadow: 2px 2px 6px rgba(0,0,0,0.9); margin: 5px 0 25px 0; letter-spacing: 1px;">
+        ውጊያ ቴክኒክ ት/ቤት
+    </h1>
     
-    <!-- 📌 መፈክሩ በክብር ባለበት ይቆያል -->
-    <div style="display: inline-block; background: rgba(0, 0, 0, 0.4); padding: 10px 20px; border-left: 4px solid #fbbf24; border-right: 4px solid #fbbf24; border-radius: 4px; margin-top: 10px; max-width: 90%;">
-        <span style="font-size: 16px; font-weight: bold; color: #fff; font-style: italic;">
+    <!-- 📌 ተንቀሳቃሽ መፈክር (ከቀኝ ወደ ግራ የሚሄድ) -->
+    <div class="slogan-marquee-container" style="margin: 25px auto; max-width: 100%; overflow: hidden; padding: 15px 0; background: rgba(0, 0, 0, 0.2); backdrop-filter: blur(5px); border-top: 1px solid rgba(255,255,255,0.1); border-bottom: 1px solid rgba(255,255,255,0.1);">
+        <span class="scrolling-glowing-slogan" style="font-size: 50px; font-weight: 900; color: #fbbf24; font-style: italic; white-space: nowrap; display: inline-block; letter-spacing: 1px;">
             "እናቅዳለን፤ እንጀምራለን፤ እናሰፋለን፤ በፍጥነት እና በጥራት እንፈጽማለን。"
         </span>
     </div>
+
+    <!-- 🎡 ⚠️ አራቱ ፎቶዎች ከቀኝ ወደ ግራ በለስላሳ ሁኔታ የሚንሸራተቱበት የተስተካከለ ሳጥን -->
+    <div class="slider-container" style="position: relative; max-width: 600px; height: 550px; margin: 30px auto 10px auto; overflow: hidden; border-radius: 12px; box-shadow: 0 12px 30px rgba(0,0,0,0.5); border: 4px solid rgba(255,255,255,0.2); background-color: transparent;">
+        <div class="slide slide-left-effect active"><img src="/images/photo1.jpg" style="width:100%; height:150%; object-fit: fill;" alt="Our Slide 1"></div>
+        <div class="slide slide-left-effect"><img src="/images/photo2.jpg" style="width:100%; height:150%; object-fit: fill;" alt="Our Slide 2"></div>
+        <div class="slide slide-left-effect"><img src="/images/photo3.jpg" style="width:100%; height:150%; object-fit: fill;" alt="Our Slide 3"></div>
+        <div class="slide slide-left-effect"><img src="/images/photo4.jpg" style="width:100%; height:150%; object-fit: fill;" alt="Our Slide 4"></div>
+
+        <div style="position: absolute; bottom: 18px; left: 50%; transform: translateX(-50%); display: flex; gap: 8px; z-index: 10;">
+            <span class="dot active"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+        </div>
+    </div>
 </header>
 
-<!-- 🌐 ንጹሕና ፍጹም ማራኪ ማውጫ (Navbar) -->
-<nav style="background: linear-gradient(135deg, #1d4ed8 0%, #1e40af 100%) !important; display: flex; justify-content: center; padding: 14px 0; gap: 15px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25); border-radius: 4px; margin: 10px auto 0 auto; max-width: 95%;">
-    <a href="/">Home</a>
-    <a href="/about.html">About</a>
-    <a href="/history.html">History</a>
-    <a href="https://t.me" target="_blank">Gallery 📸</a>
-    <a href="https://t.me" target="_blank">News & Announcements 📰</a>
-    <a href="/contact.html">Contact</a>
-    <a href="/login.html">Admin</a>
+<!-- 🌐 Navbar -->
+<nav style="background: linear-gradient(135deg, #1d4ed8 0%, #1e40af 100%) !important; display: flex; justify-content: center; padding: 14px 0; gap: 15px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25); border-radius: 4px; margin: 10px auto 0 auto; max-width: 95%; position: relative; z-index: 10;">
+    <a href="/" style="color: white; text-decoration: none; font-weight: bold; padding: 10px 15px;">Home</a>
+    <a href="/about.html" style="color: white; text-decoration: none; font-weight: bold; padding: 10px 15px;">About</a>
+    <a href="/history.html" style="color: white; text-decoration: none; font-weight: bold; padding: 10px 15px;">History</a>
+    <a href="https://t.me" target="_blank" style="color: white; text-decoration: none; font-weight: bold; padding: 10px 15px;">Gallery 📸</a>
+    <a href="https://t.me" target="_blank" style="color: white; text-decoration: none; font-weight: bold; padding: 10px 15px;">News & Announcements 📰</a>
+    <a href="/contact.html" style="color: white; text-decoration: none; font-weight: bold; padding: 10px 15px;">Contact</a>
+    <a href="/login.html" style="color: white; text-decoration: none; font-weight: bold; padding: 10px 15px;">Admin</a>
 </nav>
 
-<!-- 🖼️ የትምህርት ቤቱ የጀርባ ምስል እና ጽሑፉ ፍጹም በሆነ ቁመት የተቀመጠበት የጀግናው ክፍል -->
-<section class="hero" style="background-image: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)), url('/images/background.jpg'); background-size: cover; background-position: center 25%; background-repeat: no-repeat; text-align: center; padding: 110px 20px; color: white;">
-    <div class="hero-content">
-        <h1 style="font-size: 38px; text-shadow: 2px 2px 4px rgba(0,0,0,0.8); margin-bottom: 10px;">Combat Technic School</h1>
-        <p style="font-size: 18px; text-shadow: 1px 1px 3px rgba(0,0,0,0.6); margin-bottom: 25px;">Training Today's Soldiers for Tomorrow's Mission</p>
-        <a href="/about.html" class="btn" style="display: inline-block; background-color: #059669; color: white; padding: 12px 24px; text-decoration: none; border-radius: 5px; font-weight: bold; margin: 5px;">Learn More</a>
-        <a href="/contact.html" class="btn" style="display: inline-block; background-color: #111827; color: white; padding: 12px 24px; text-decoration: none; border-radius: 5px; font-weight: bold; margin: 5px;">Contact Us</a>
+<!-- Hero Section -->
+<section class="hero" style="background-image: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)), url('/images/background.jpg'); background-size: cover; background-position: center 25%; background-repeat: no-repeat; text-align: center; padding: 130px 20px 100px 20px; color: white; position: relative; z-index: 1; margin-top: -10px;">
+    <h2 style="font-size: 42px; font-weight: 800; color: #ffffff; text-shadow: 3px 3px 6px rgba(0,0,0,0.95); margin-bottom: 40px; line-height: 1.4; letter-spacing: 0.5px; font-family: sans-serif;">
+        ጠንካራ የሜካናይዝድ ኃይል በመገንባት ዝግጁነታችንን እናረጋግጣለን!
+    </h2>
+    <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
+        <a href="/about.html" class="btn-red">Learn More</a>
+        <a href="/contact.html" class="btn-red">Contact Us</a>
     </div>
 </section>
 
-<!-- 📰 የዜና ማሳያ ክፍል -->
+<!-- 📰 Latest News Section -->
 <section class="container">
     <div class="card" style="background: white; padding: 25px; margin-top: 25px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); border-radius: 6px; border-top: 4px solid #111827;">
         <h2>📰 Latest News & Announcements</h2>
         <hr style="border:0; border-top:1px solid #eee; margin: 15px 0;">
-        <% if (news && news.length > 0) { %>
-            <% news.forEach(item => { %>
+        <% if (typeof news !== 'undefined' && news && news.length > 0) { %>
+            <% news.forEach(function(item) { %>
                 <div style="margin-bottom: 25px; padding-bottom: 20px; border-bottom: 1px dashed #eee;">
                     <h3><%= item.title %></h3>
                     <p><%= item.description %></p>
@@ -71,18 +136,10 @@
                     <br>
                     <small style="color: #6b7280;">Posted on: <%= item.created_at %></small>
                 </div>
-            <% }) %>
+            <% }); %>
         <% } else { %>
             <p align="center" style="color: #6b7280; font-style: italic;">No news or announcements available at the moment.</p>
         <% } %>
-    </div>
-</section>
-
-<!-- 🛡️ የትምህርት ቤቱ ዘመናዊ የሥልጠና መሣሪያዎች ክፍል -->
-<section class="container">
-    <div class="card" style="background: white; padding: 25px; margin-top: 25px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); border-radius: 6px; border-top: 4px solid #111827; text-align: center;">
-        <h3 style="color: #111827; margin-bottom: 15px;">🎖️ የትምህርት ቤቱ ዘመናዊ የሥልጠና መሣሪያዎች እና ሲሙሌተሮች</h3>
-        <img src="/images/military-gear.jpg" style="width: 100%; height: auto; border-radius: 6px; box-shadow: 0 4px 8px rgba(0,0,0,0.15);" alt="Military Equipment">
     </div>
 </section>
 
@@ -93,32 +150,7 @@
         <hr style="border:0; border-top:1px solid #eee; margin: 15px 0;">
         
         <h3 style="color: #0088cc;">👁️ ራዕይ</h3>
-        <p style="font-size: 16px; font-weight: 500;">
+        <p style="font-size: 16px; font-weight: 500; line-height: 1.6;">
             በዘመኑ የጥምር ጦር ውጊያ ውስጥ ግዳጃቸውን በላቀ ደረጃ መወጣት የሚችሉ ብቁ የሜካናይዝድና ሞተራይዝድ ሙያተኞችን ማፍራት የሚችል ተመራጭ ት/ቤት ሆኖ ማየት እንዲሁም በ 2022 ዓ.ም በአፍሪካ 1ኛ እና ተመራጭ የሜካናይዝድ ማሰልጠኛ ተቋም መሆን።
         </p>
         
-        <hr style="border: 0; border-top: 1px solid #eee; margin: 20px 0;">
-        
-        <h3 style="color: #0088cc;">🎯 ተልዕኮ</h3>
-        <p style="font-size: 16px; font-weight: 500;">
-            በሜካናይዝድና በሞተራይዝድ ሙያ ግዳጃቸውን በብቃት መወጣት የሚችሉ ምድብተኞችን፣ የመሳሪያ አዛዦችን እና የመቶ አመራሮችን ማፍራት፣
-        </p>
-        
-        <hr style="border: 0; border-top: 1px solid #eee; margin: 20px 0;">
-        
-        <h3 style="color: #0088cc;">⭐ ዋና ዋና ተግባራት</h3>
-        <ul style="list-style-type: none; padding-left: 0; font-size: 15px;">
-            <li style="margin-bottom: 12px; padding-left: 20px; text-indent: -20px;">🔹 በት/ቤቱ ሥርዓተ-ትምህርት መሰረት ቀጣይነት ያለውና ደረጃውን የጠበቀ የሜካናይዝድ የቴክኒክ ሥልጠና መስጠት፣</li>
-            <li style="margin-bottom: 12px; padding-left: 20px; text-indent: -20px;">🔹 የፈጠራ ስራዎችን ማከናወንና በቴክኖሎጂ የተደገፈ ሥልጠና መስጠት፣</li>
-            <li style="margin-bottom: 12px; padding-left: 20px; text-indent: -20px;">🔹 ለሠራዊታችን ክፍሎች ቀጥተኛ ሙያዊ ድጋፍ በመስጠት የሜካናይዝድ ክፍሎችን የማድረግ አቅም ማሳደግ፣</li>
-            <li style="margin-bottom: 5px; padding-left: 20px; text-indent: -20px;">🔹 ከአካባቢው ማህበረሰብ ጋር በፀጥታና በልማት ስራዎች በትብብር መስራት፣</li>
-        </ul>
-    </div>
-</section>
-
-<footer style="background:#111827; color:white; text-align:center; padding:30px; margin-top:40px;">
-    <p>© 2026 Combat Technic School | Developed by Second Lieutenant Ayehualem Guadie</p>
-</footer>
-
-</body>
-</html>
