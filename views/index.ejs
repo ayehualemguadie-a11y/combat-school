@@ -119,24 +119,24 @@
     </div>
 </section>
 
-<!-- 📰 Latest News Section -->
+<!-- 📰 Latest News Section (EJS ስህተት ሙሉ በሙሉ የጸዳበት አስተማማኝ መዋቅር) -->
 <section class="container">
     <div class="card" style="background: white; padding: 25px; margin-top: 25px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); border-radius: 6px; border-top: 4px solid #111827;">
         <h2>📰 Latest News & Announcements</h2>
         <hr style="border:0; border-top:1px solid #eee; margin: 15px 0;">
-        <% if (typeof news !== 'undefined' && news && news.length > 0) { %>
-            <% news.forEach(function(item) { %>
+        <% if (news && news.length > 0) { %>
+            <% for(var i=0; i < news.length; i++) { %>
                 <div style="margin-bottom: 25px; padding-bottom: 20px; border-bottom: 1px dashed #eee;">
-                    <h3><%= item.title %></h3>
-                    <p><%= item.description %></p>
-                    <% if (item.image) { %>
+                    <h3><%= news[i].title %></h3>
+                    <p><%= news[i].description %></p>
+                    <% if (news[i].image) { %>
                         <br>
-                        <img src="<%= item.image %>" style="max-width:100%; height:auto; border-radius:8px; max-height:300px; object-fit:cover;">
+                        <img src="<%= news[i].image %>" style="max-width:100%; height:auto; border-radius:8px; max-height:300px; object-fit:cover;">
                     <% } %>
                     <br>
-                    <small style="color: #6b7280;">Posted on: <%= item.created_at %></small>
+                    <small style="color: #6b7280;">Posted on: <%= news[i].created_at %></small>
                 </div>
-            <% }); %>
+            <% } %>
         <% } else { %>
             <p align="center" style="color: #6b7280; font-style: italic;">No news or announcements available at the moment.</p>
         <% } %>
