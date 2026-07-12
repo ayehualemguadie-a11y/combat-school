@@ -95,48 +95,46 @@
     <a href="/login.html" style="color: white; text-decoration: none; font-weight: bold; padding: 10px 15px;">Admin</a>
 </nav>
 
-<!-- Hero Section -->
-
-<!-- 🎡 ⚠️ 9ኙም ፎቶዎች እጅግ በጣም በትልቅ መጠን (ስፋት 360px ቁመት 240px) ያደጉበት አዲስ የተስተካከለ የሩጫ መስመር -->
+<!-- 🎡 አራቱ ፎቶዎች እና ስድስቱ የአዋሽ አርባ (aw1-aw6) ፎቶዎች በአንድ ላይ ከግራ ወደ ቀኝ እንዲንቀሳቀሱ የተቆለፈበት አዲስ ክፍል -->
 <section class="container" style="text-align: center; overflow: hidden; padding: 30px 10px;">
-    <!-- 🖼️ ⚠️ ነጩ ዳራ ጠፍቶ በምትኩ የ water.jpg ፎቶ እንደ ዳራ የተቆለፈበት አዲስ መስመር -->
-<div class="card" style="padding: 25px 15px; background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url('/images/water.jpg') !important; background-size: cover !important; background-position: center !important; border-radius: 12px !important; box-shadow: 0 10px 30px rgba(0,0,0,0.4) !important; overflow: hidden; position: relative; border: none !important;">
-
+    <div class="card" style="padding: 25px 15px; background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url('/images/water.jpg') !important; background-size: cover !important; background-position: center !important; border-radius: 12px !important; box-shadow: 0 10px 30px rgba(0,0,0,0.4) !important; overflow: hidden; position: relative; border: none !important;">
         
         <!-- 📌 ጠንካራ መፈክር በሚዞሩት ፎቶዎች አናት ላይ በትልቅ እና በደመቀ ሮዝ ቀለም -->
         <h2 style="font-size: 34px; font-weight: 800; color: #e11d48; text-shadow: 2px 2px 5px rgba(0,0,0,0.8); margin-bottom: 30px; line-height: 1.4; font-family: sans-serif;">
             "ጠንካራ የሜካናይዝድ ኃይል በመገንባት ዝግጁነታችንን እናረጋግጣለን!"
         </h2>
 
-        <!-- 🏃‍♂️ 9ኙም ግዙፍ ፎቶዎች በተከታታይ ከግራ ወደ ቀኝ የሚሮጡበት መስመር -->
+        <!-- 🏃‍♂️ ሁሉም ፎቶዎች በአንድ ረድፍ በተከታታይ የሚሮጡበት የትርኢት መስመር -->
         <div class="training-marquee-container" style="width: 100%; overflow: hidden; position: relative; white-space: nowrap; padding: 15px 0;">
-            <div class="training-marquee-track" style="display: inline-block; white-space: nowrap; animation: scrollPhotosLeftToRight 35s linear infinite;">
+            <div class="training-marquee-track" style="display: inline-block; white-space: nowrap; animation: scrollPhotosLeftToRight 38s linear infinite;">
                 
-                <!-- 📸 1. መደበኞቹ 4ቱ የሥልጠና ፎቶዎች (መጠናቸው በትልቁ አድጓል) -->
+                <!-- 📸 1. መደበኞቹ 4ቱ የሥልጠና ፎቶዎች -->
                 <div class="training-photo-item"><img src="/images/photo1.jpg" alt="Training 1"></div>
                 <div class="training-photo-item"><img src="/images/photo2.jpg" alt="Training 2"></div>
                 <div class="training-photo-item"><img src="/images/photo3.jpg" alt="Training 3"></div>
                 <div class="training-photo-item"><img src="/images/photo4.jpg" alt="Training 4"></div>
 
-                <!-- 📸 2. አዲሶቹ 5ቱ የአዋሽ አርባ ፎቶዎች (aw1.jpg ካልሠራ በካፒታል AW1.jpg እና aw1.JPG በግድ እንዲፈልግ ተደርጓል) -->
-                <div class="training-photo-item">
-                    <img src="/images/aw1.jpg" onerror="this.src='/images/AW1.jpg'; this.onerror=function(){this.src='/images/aw1.JPG';};" alt="Awash 1">
-                </div>
+                <!-- 📸 2. አዲሶቹ የአዋሽ አርባ ፎቶዎች (aw1 - aw6 እዚህ ተሟልተዋል) -->
+                <div class="training-photo-item"><img src="/images/aw1.jpg" onerror="this.src='/images/AW1.jpg';" alt="Awash 1"></div>
                 <div class="training-photo-item"><img src="/images/aw2.jpg" onerror="this.src='/images/AW2.jpg';" alt="Awash 2"></div>
                 <div class="training-photo-item"><img src="/images/aw3.jpg" onerror="this.src='/images/AW3.jpg';" alt="Awash 3"></div>
                 <div class="training-photo-item"><img src="/images/aw4.jpg" onerror="this.src='/images/AW4.jpg';" alt="Awash 4"></div>
                 <div class="training-photo-item"><img src="/images/aw5.jpg" onerror="this.src='/images/AW5.jpg';" alt="Awash 5"></div>
+                
+                <!-- 💡 ⚠️ አዲሱ aw6.jpg ፎቶ እዚህ ጋር በክብር ተጨምሯል -->
+                <div class="training-photo-item"><img src="/images/aw6.jpg" onerror="this.src='/images/AW6.jpg';" alt="Awash 6"></div>
 
-                <!-- 🔄 3. አኒሜሽኑ ሳያቋርጥ በተከታታይ እንዲዞር የተደገሙ 9 ፎቶዎች (Loop Copy) -->
+                <!-- 🔄 3. አኒሜሽኑ ሳያቋርጥ በተከታታይ እንዲዞር የተደገሙ ፎቶዎች (Loop Copy) -->
                 <div class="training-photo-item"><img src="/images/photo1.jpg" alt="c1"></div>
                 <div class="training-photo-item"><img src="/images/photo2.jpg" alt="c2"></div>
                 <div class="training-photo-item"><img src="/images/photo3.jpg" alt="c3"></div>
                 <div class="training-photo-item"><img src="/images/photo4.jpg" alt="c4"></div>
-                <div class="training-photo-item"><img src="/images/aw1.jpg" onerror="this.src='/images/AW1.jpg';" alt="c5"></div>
+                <div class="training-photo-item"><img src="/images/aw1.jpg" alt="c5"></div>
                 <div class="training-photo-item"><img src="/images/aw2.jpg" alt="c6"></div>
                 <div class="training-photo-item"><img src="/images/aw3.jpg" alt="c7"></div>
                 <div class="training-photo-item"><img src="/images/aw4.jpg" alt="c8"></div>
                 <div class="training-photo-item"><img src="/images/aw5.jpg" alt="c9"></div>
+                <div class="training-photo-item"><img src="/images/aw6.jpg" alt="c10"></div>
             </div>
         </div>
 
