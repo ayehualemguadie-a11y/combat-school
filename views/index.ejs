@@ -94,17 +94,16 @@
     <a href="/contact.html" style="color: white; text-decoration: none; font-weight: bold; padding: 10px 15px;">Contact</a>
     <a href="/login.html" style="color: white; text-decoration: none; font-weight: bold; padding: 10px 15px;">Admin</a>
 </nav>
-
-<!-- 🎡 አራቱ ፎቶዎች እና ስድስቱ የአዋሽ አርባ (aw1-aw6) ፎቶዎች በአንድ ላይ ከግራ ወደ ቀኝ እንዲንቀሳቀሱ የተቆለፈበት አዲስ ክፍል -->
-<section class="container" style="text-align: center; overflow: hidden; padding: 30px 10px;">
-    <div class="card" style="padding: 25px 15px; background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url('/images/water.jpg') !important; background-size: cover !important; background-position: center !important; border-radius: 12px !important; box-shadow: 0 10px 30px rgba(0,0,0,0.4) !important; overflow: hidden; position: relative; border: none !important;">
-        
+<!-- 🎡 ⚠️ ዳራውና የፎቶዎቹ የሩጫ መስመር 100% ከዳር እስከ ዳር (Full Width) እንዲዘረጋ የተቆለፈበት አዲስ ክፍል -->
+<section class="container-fluid" style="width: 100vw !important; max-width: 100vw !important; padding: 35px 0; overflow: hidden; position: relative; left: 50%; transform: translateX(-50%); box-sizing: border-box; background: linear-gradient(rgba(0,0,0,0.25), rgba(0,0,0,0.25)), url('/images/water.jpg') !important; background-size: cover !important; background-position: center !important; margin: 40px 0;">
+    
+    <div style="text-align: center; width: 100%;">
         <!-- 📌 ጠንካራ መፈክር በሚዞሩት ፎቶዎች አናት ላይ በትልቅ እና በደመቀ ሮዝ ቀለም -->
-        <h2 style="font-size: 34px; font-weight: 800; color: #e11d48; text-shadow: 2px 2px 5px rgba(0,0,0,0.8); margin-bottom: 30px; line-height: 1.4; font-family: sans-serif;">
+        <h2 style="font-size: 36px; font-weight: 800; color: #e11d48; text-shadow: 2px 2px 5px rgba(0,0,0,0.9); margin-bottom: 30px; line-height: 1.4; font-family: sans-serif; padding: 0 20px;">
             "ጠንካራ የሜካናይዝድ ኃይል በመገንባት ዝግጁነታችንን እናረጋግጣለን!"
         </h2>
 
-        <!-- 🏃‍♂️ ሁሉም ፎቶዎች በአንድ ረድፍ በተከታታይ የሚሮጡበት የትርኢት መስመር -->
+        <!-- 🏃‍♂️ ⚠️ ከዳር እስከ ዳር ያለምንም መቆራረጥ ፎቶዎቹ የሚሮጡበት ሙሉ ስክሪን መስመር -->
         <div class="training-marquee-container" style="width: 100%; overflow: hidden; position: relative; white-space: nowrap; padding: 15px 0;">
             <div class="training-marquee-track" style="display: inline-block; white-space: nowrap; animation: scrollPhotosLeftToRight 38s linear infinite;">
                 
@@ -114,14 +113,12 @@
                 <div class="training-photo-item"><img src="/images/photo3.jpg" alt="Training 3"></div>
                 <div class="training-photo-item"><img src="/images/photo4.jpg" alt="Training 4"></div>
 
-                <!-- 📸 2. አዲሶቹ የአዋሽ አርባ ፎቶዎች (aw1 - aw6 እዚህ ተሟልተዋል) -->
+                <!-- 📸 2. አዲሶቹ የአዋሽ አርባ ፎቶዎች (aw1 - aw6) -->
                 <div class="training-photo-item"><img src="/images/aw1.jpg" onerror="this.src='/images/AW1.jpg';" alt="Awash 1"></div>
                 <div class="training-photo-item"><img src="/images/aw2.jpg" onerror="this.src='/images/AW2.jpg';" alt="Awash 2"></div>
                 <div class="training-photo-item"><img src="/images/aw3.jpg" onerror="this.src='/images/AW3.jpg';" alt="Awash 3"></div>
                 <div class="training-photo-item"><img src="/images/aw4.jpg" onerror="this.src='/images/AW4.jpg';" alt="Awash 4"></div>
                 <div class="training-photo-item"><img src="/images/aw5.jpg" onerror="this.src='/images/AW5.jpg';" alt="Awash 5"></div>
-                
-                <!-- 💡 ⚠️ አዲሱ aw6.jpg ፎቶ እዚህ ጋር በክብር ተጨምሯል -->
                 <div class="training-photo-item"><img src="/images/aw6.jpg" onerror="this.src='/images/AW6.jpg';" alt="Awash 6"></div>
 
                 <!-- 🔄 3. አኒሜሽኑ ሳያቋርጥ በተከታታይ እንዲዞር የተደገሙ ፎቶዎች (Loop Copy) -->
@@ -137,9 +134,10 @@
                 <div class="training-photo-item"><img src="/images/aw6.jpg" alt="c10"></div>
             </div>
         </div>
-
     </div>
 </section>
+
+
 
 <!-- 💡 የፎቶዎቹን መጠን በግዙፍ ያሳደገው አዲሱ የሲኤስኤስ ስታይል ማዘዣ -->
 <style>
