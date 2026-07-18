@@ -77,17 +77,81 @@
 </header>
 
 <!-- 🌐 Navbar -->
-<nav style="background: linear-gradient(135deg, #1d4ed8 0%, #1e40af 100%) !important; display: flex; justify-content: center; padding: 14px 0; gap: 15px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25); border-radius: 4px; margin: 10px auto 0 auto; max-width: 95%; position: relative; z-index: 10;">
+<!-- 🌐 4ቱንም ገጾች መልሶ ተቆልቋዩን በሚያምር ሁኔታ የሚያስተካክለው ይፋዊ ማውጫ (Navbar) -->
+<nav style="background: linear-gradient(135deg, #1d4ed8 0%, #1e40af 100%) !important; display: flex; justify-content: center; align-items: center; padding: 14px 0; gap: 15px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25); border-radius: 4px; margin: 10px auto 0 auto; max-width: 95%; position: relative; z-index: 9999;">
+    
+    <!-- 🏠 Home -->
     <a href="/" style="color: white; text-decoration: none; font-weight: bold; padding: 10px 15px;">Home</a>
-    <a href="/about.html" style="color: white; text-decoration: none; font-weight: bold; padding: 10px 15px;">About</a>
-    <a href="/history.html" style="color: white; text-decoration: none; font-weight: bold; padding: 10px 15px;">History</a>
-        <!-- ⚠️ አዲሱ አዝራር እዚህ ተጨምሯል -->
-    <a href="/leadership.html">Leadership 🎖️</a>
+    
+    <!-- ℹ️ About Dropdown (እዚህ ውስጥ ተቆልፈዋል) -->
+    <div class="edu-dropdown" style="display: inline-block; position: relative;">
+        <a href="/about.html" style="color: white; text-decoration: none; font-weight: bold; padding: 10px 15px; display: inline-block;">
+            About ▾
+        </a>
+        <div class="edu-dropdown-content">
+            <a href="/leadership.html">Leadership 🎖️</a>
+            <a href="/students">Students / Trainees 👨‍✈️</a>
+            <a href="/vision.html">Vision And Mission 👁️</a>
+            <a href="/history.html">History 📜</a>
+        </div>
+    </div>
+    
+    <!-- 🏢 OFFICES Dropdown (እነኚህም ተመልሰዋል) -->
+    <div class="edu-dropdown" style="display: inline-block; position: relative;">
+        <a href="/offices.html" style="color: white; text-decoration: none; font-weight: bold; padding: 10px 15px; display: inline-block;">
+            OFFICES ▾
+        </a>
+        <div class="edu-dropdown-content">
+            <a href="/commander.html">⭐ 1ኛ. ዋና አዛዥ</a>
+            <a href="/logistics.html">📦 2ኛ. ም/አዛዥ ሥልጠና ድጋፍ</a>
+            <a href="/training-office.html">🎯 3ኛ. ም/አዛዥ ሥልጠና ኃላፊ</a>
+        </div>
+    </div>
+    
+    <!-- 📸 Gallery & News -->
     <a href="https://t.me" target="_blank" style="color: white; text-decoration: none; font-weight: bold; padding: 10px 15px;">Gallery 📸</a>
     <a href="https://t.me" target="_blank" style="color: white; text-decoration: none; font-weight: bold; padding: 10px 15px;">News & Announcements 📰</a>
+    
+    <!-- 📞 Contact & Admin -->
     <a href="/contact.html" style="color: white; text-decoration: none; font-weight: bold; padding: 10px 15px;">Contact</a>
     <a href="/login.html" style="color: white; text-decoration: none; font-weight: bold; padding: 10px 15px;">Admin</a>
 </nav>
+
+<!-- 🎨 ተቆልቋዩን ወደታች ብቻ እንዲወርድ የሚያዝ ልዩ የCSS ስታይል -->
+<style>
+    .edu-dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #ffffff !important;
+        min-width: 260px;
+        box-shadow: 0px 8px 24px rgba(0,0,0,0.3);
+        border-radius: 6px;
+        padding: 5px 0;
+        top: 100%;
+        left: 0;
+        border-top: 4px solid #fbbf24;
+        z-index: 999999 !important;
+    }
+    .edu-dropdown-content a {
+        display: block !important;
+        color: #1f2937 !important;
+        padding: 11px 18px !important;
+        text-decoration: none !important;
+        font-weight: bold !important;
+        font-size: 14px !important;
+        text-align: left !important;
+        border-bottom: 1px dashed #f3f4f6;
+    }
+    .edu-dropdown:hover .edu-dropdown-content {
+        display: block !important;
+    }
+    .edu-dropdown-content a:hover {
+        background-color: #eff6ff !important;
+        color: #1d4ed8 !important;
+        padding-left: 22px !important;
+    }
+</style>
+
 <!-- 🎡 ⚠️ ዳራውና የፎቶዎቹ የሩጫ መስመር 100% ከዳር እስከ ዳር (Full Width) እንዲዘረጋ የተቆለፈበት አዲስ ክፍል -->
 <section class="container-fluid" style="width: 100vw !important; max-width: 100vw !important; padding: 35px 0; overflow: hidden; position: relative; left: 50%; transform: translateX(-50%); box-sizing: border-box; background: linear-gradient(rgba(0,0,0,0.25), rgba(0,0,0,0.25)), url('/images/water.jpg') !important; background-size: cover !important; background-position: center !important; margin: 40px 0;">
     
