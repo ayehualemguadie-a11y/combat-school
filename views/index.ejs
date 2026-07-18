@@ -55,26 +55,39 @@
     </style>
 </head>
 <body>
-<!-- 🎖️ የትምህርት ቤቱ መለያ አናት (Header) 🎖️ -->
-<header style="position: relative; text-align: center; padding: 25px 10px 20px 10px; background: transparent; color: white; z-index: 5;">
-        <!-- 🛡️ ⚠️ ታንኩና መድፉ ሙሉ በሙሉ ጠፍተው የትምህርት ቤቱ ክብ ሎጎ ብቻ መሃል ላይ የቆመበት አዲስ ንጹሕ አሰላለፍ -->
-    <div style="text-align: center; margin-bottom: 25px; padding-top: 15px;">
-        <div style="display: inline-block; position: relative;">
-            <img src="/images/logo.jpg" width="135" style="border-radius: 50%; box-shadow: 0 8px 20px rgba(0,0,0,0.6); border: 3px solid #fbbf24;" alt="Official School Logo">
+<!-- 🎖️ የመከላከያ ሎጎ፣ የዋና መግቢያ በር ፎቶ እና የት/ቤት ሎጎ በአንድ ላይ የተቆለፉበት አዲሱ የክብር ራስጌ ክፍል -->
+<header style="background: linear-gradient(rgba(17, 24, 39, 0.5), rgba(17, 24, 39, 0.75)), url('/images/gate.jpg') !important; background-size: cover !important; background-position: center 30% !important; background-repeat: no-repeat !important; border-bottom: 4px solid #fbbf24; padding: 25px 40px !important; box-shadow: 0 4px 15px rgba(0,0,0,0.5); position: relative; z-index: 10; max-width: 95% !important; margin: 0 auto !important; border-radius: 0 0 8px 8px;">
+    <div style="display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: 0 auto; gap: 15px; flex-wrap: nowrap; position: relative; z-index: 12;">
+        
+        <!-- 🇪🇹 1. በግራ ጫፍ የኢፌድሪ መከላከያ ሠራዊት ሎጎ -->
+        <div style="flex: 0 0 auto; text-align: left;">
+            <img src="/images/defense-logo.png" 
+                 onerror="this.src='/image/defense-logo.png'; this.onerror=function(){this.src='/images/defense-logo.jpg';};" 
+                 style="height: 85px !important; width: auto; object-fit: contain; filter: drop-shadow(0 3px 6px rgba(0,0,0,0.8));" 
+                 alt="FDRE Defense Force Logo">
         </div>
-    </div>
 
-    <h1 style="font-size: 38px; font-weight: 800; color: #fbbf24; text-shadow: 2px 2px 6px rgba(0,0,0,0.9); margin: 5px 0 25px 0; letter-spacing: 1px;">
-        ውጊያ ቴክኒክ ት/ቤት
-    </h1>
-    
-    <!-- 📌 ተንቀሳቃሽ መፈክር (ከቀኝ ወደ ግራ የሚሄድ) -->
-    <div class="slogan-marquee-container" style="margin: 25px auto; max-width: 100%; overflow: hidden; padding: 15px 0; background: rgba(0, 0, 0, 0.2); backdrop-filter: blur(5px); border-top: 1px solid rgba(255,255,255,0.1); border-bottom: 1px solid rgba(255,255,255,0.1);">
-        <span class="scrolling-glowing-slogan" style="font-size: 50px; font-weight: 900; color: #fbbf24; font-style: italic; white-space: nowrap; display: inline-block; letter-spacing: 1px;">
-            "እናቅዳለን፤ እንጀምራለን፤ እናሰፋለን፤ በፍጥነት እና በጥራት እንፈጽማለን。"
-        </span>
+        <!-- 🏫 2. በመካከላቸው የትምህርት ቤቱ ስምና መፈክር -->
+        <div style="flex: 1 1 auto; text-align: center; max-width: 650px;">
+            <h1 style="color: #fbbf24; font-size: 26px !important; font-weight: 800; text-shadow: 2px 2px 4px rgba(0,0,0,1); margin: 0; font-family: sans-serif; letter-spacing: 0.5px;">
+                የውጊያ ቴክኒክ ትምህርት ቤት
+            </h1>
+            <p style="color: #ffffff; font-size: 13.5px !important; font-weight: bold; text-shadow: 2px 2px 4px rgba(0,0,0,1); margin: 5px 0 0 0; font-style: italic;">
+                "እናቅዳለን፤ እንጀምራለን፤ እናሰፋለን፤ በፍጥነት እና በጥራት እንፈጽማለን。"
+            </p>
+        </div>
+
+        <!-- 🚜 3. በቀኝ ጫፍ የውጊያ ቴክኒክ ትምህርት ቤት ሎጎ -->
+        <div style="flex: 0 0 auto; text-align: right;">
+            <img src="/images/logo.png" 
+                 onerror="this.src='/image/logo.png'; this.onerror=function(){this.src='/images/logo.jpg';};" 
+                 style="height: 85px !important; width: auto; object-fit: contain; filter: drop-shadow(0 3px 6px rgba(0,0,0,0.8));" 
+                 alt="Combat Technic School Logo">
+        </div>
+
     </div>
 </header>
+
 
 <!-- 🌐 Navbar -->
 <!-- 🌐 4ቱንም ገጾች መልሶ ተቆልቋዩን በሚያምር ሁኔታ የሚያስተካክለው ይፋዊ ማውጫ (Navbar) -->
