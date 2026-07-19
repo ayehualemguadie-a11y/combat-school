@@ -102,6 +102,11 @@ app.get("/dashboard.html", (req, res) => {
 app.get("/login.html", (req, res) => {
     res.sendFile(path.join(__dirname, "public", "login.html"));
 });
+// 👁️ የራዕይና ተልዕኮ ገጽን (vision.ejs) ለሰርቨሩ የሚያስተዋውቅ አዲሱ የዕዝ መስመር
+app.get('/vision', (req, res) => {
+    res.render('vision');
+});
+
 
 // ------------------ መረጃ መቀበያ መንገዶች (POST) ------------------
 
