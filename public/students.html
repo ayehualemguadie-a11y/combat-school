@@ -4,12 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>የሰልጣኞች እና የምርቃት ፎቶ ማሳያ</title>
-    <!-- ካንተ style.css ጋር እንዲገናኝ ያደርገዋል -->
     <link rel="stylesheet" href="style.css"> 
     <style>
-        /* 1. አዲሱን የጭስ ፎቶ በጀርባ (Background) ላይ መለጠፍ */
         body {
-            background-image: url('images/bg-smoke.png'); /* የፎቶውን ስም ከዚህ ጋር ማመሳሰል አስፈላጊ ነው */
+            background-image: url('images/bg-smoke.png');
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
@@ -17,11 +15,11 @@
             margin: 0;
             padding: 0;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow-x: hidden; /* ወደ ጎን ስክሮል ባር እንዳይታይ */
         }
         
-        /* የላይኛው መመለሻ አሞሌ (Navigation Area) */
         .nav-bar {
-            background-color: rgba(44, 62, 80, 0.85); /* የጀርባው ፎቶ በጥቂቱ እንዲታይ ለማድረግ */
+            background-color: rgba(44, 62, 80, 0.85);
             padding: 15px 30px;
             display: flex;
             justify-content: space-between;
@@ -29,7 +27,6 @@
             box-shadow: 0 2px 5px rgba(0,0,0,0.2);
         }
         
-        /* ወደ ኋላ መመለሻ (Home በተን) ስታይል - በትክክለኛው ሊንክ የተሰራ */
         .home-btn {
             background-color: #e74c3c;
             color: white;
@@ -46,20 +43,11 @@
 
         .gallery-container {
             max-width: 1200px;
-            margin: 30px auto;
-            padding: 20px;
+            margin: 20px auto;
+            padding: 10px;
             text-align: center;
         }
         
-        /* በጥቁር ጀርባ ላይ ጽሑፉ በደንብ እንዲታይ ነጭ ቀለም */
-        .gallery-title {
-            color: #ffffff;
-            margin-bottom: 5px;
-            font-size: 32px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.6);
-        }
-        
-        /* 2. መፈክር (Slogan) ስታይል - በጥቁር ጀርባ ላይ ደምቆ እንዲወጣ ወርቃማ ቀለም */
         .slogan {
             color: #f1c40f; 
             font-size: 22px;
@@ -70,139 +58,138 @@
             text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
         }
 
-        /* ንዑስ ርዕስ */
-        .gallery-subtitle {
-            color: #ecf0f1;
-            margin-bottom: 30px;
-            font-size: 16px;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        /* የክፍሎች (Sections) አቀማመጥ */
+        .section-box {
+            margin-bottom: 40px;
+            text-align: left;
+            padding: 0 20px;
         }
 
-        .photo-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-            gap: 30px;
-            padding: 10px;
+        .section-title {
+            color: #ffffff;
+            font-size: 24px;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.6);
+            border-left: 5px solid #f1c40f;
+            padding-left: 10px;
         }
-        
-        .photo-card {
-            background: rgba(255, 255, 255, 0.95); /* ፎቶዎቹ ጎልተው እንዲታዩ የካርዱ ጀርባ ነጭ */
-            border-radius: 8px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+
+        /* 1. የፎቶዎች ወደ ጎን መሽከርከሪያ ማዕቀፍ (Slider Wrapper) */
+        .slider-wrapper {
+            width: 100%;
             overflow: hidden;
-            transition: transform 0.3s ease;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 15px 0;
+            border-radius: 10px;
+            box-shadow: inset 0 0 10px rgba(0,0,0,0.3);
         }
-        
-        .photo-card:hover {
-            transform: translateY(-5px);
+
+        /* ፎቶዎቹ የሚደረደሩበት ረጅም መስመር */
+        .photo-track {
+            display: flex;
+            width: max-content;
+        }
+
+        /* ከቀኝ ወደ ግራ በዝግታ የሚያዞር አኒሜሽን (30 ሰከንድ ይፈጃል) */
+        .animate-left {
+            animation: scrollLeft 30s linear infinite;
+        }
+
+        /* ማውሱ ፎቶው ላይ ሲያርፍ (Hover ሲያደርግ) መዞሩ እንዲቆም */
+        .slider-wrapper:hover .photo-track {
+            animation-play-state: paused;
+        }
+
+        .photo-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            overflow: hidden;
+            width: 300px;
+            margin: 0 15px;
+            flex-shrink: 0;
         }
         
         .photo-card img {
             width: 100%;
-            height: 250px;
+            height: 200px;
             object-fit: cover;
             display: block;
-            background-color: #ddd;
         }
         
         .photo-info {
-            padding: 15px;
+            padding: 10px;
             background: #fdfdfd;
             border-top: 1px solid #eee;
+            text-align: center;
         }
         
         .photo-info h3 {
-            margin: 0 0 5px 0;
-            font-size: 18px;
+            margin: 0;
+            font-size: 16px;
             color: #2c3e50;
         }
-        
-        .photo-info p {
-            margin: 0;
-            color: #27ae60;
-            font-weight: bold;
-            font-size: 14px;
+
+        /* ፎቶዎቹን ወደ ጎን የማንሸራተቻ ህግ (Animation Keyframes) */
+        @keyframes scrollLeft {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); } /* ፎቶዎቹ ሲያልቁ ድጋሚ ያለምንም መቆራረጥ እንዲቀጥል */
         }
     </style>
 </head>
 <body>
 
-    <!-- የላይኛው መመለሻ አሞሌ ከነ Home በተኑ -->
     <div class="nav-bar">
-        <span style="color: white; font-weight: bold; font-size: 18px;">የምርቃት እና ስልጠና ፎቶዎች</span>
-        <!-- ትክክለኛው የሆም በተን አድራሻ (/) እዚህ ገብቷል -->
+        <span style="color: white; font-weight: bold; font-size: 18px;">የውጊያ ቴክኒክ ትምህርት ቤት</span>
         <a href="/" class="home-btn">🏠 ወደ ዋናው ገጽ (Home) ተመለስ</a>
     </div>
 
     <div class="gallery-container">
-        <h1 class="gallery-title">የሰልጣኞች እና የምርቃት መዝገብ ፎቶዎች</h1>
-        
-        <!-- መፈክር (Slogan) -->
+        <!-- መፈክር -->
         <p class="slogan">"እናቅዳለን፤ እንጀምራለን፤ እናሰፋለን፤ በፍጥነት እና በጥራት እንፈጽማለን!"</p>
         
-        <p class="gallery-subtitle">የስልጠና እንቅስቃሴ ሁኔታ</p>
-
-        <div class="photo-grid">
-            
-            <!-- ፎቶ 1 -->
-            <div class="photo-card">
-                <img src="images/training1.jpg" alt="የሰልጣኞች ስልጠና">
-                <div class="photo-info">
-                    <h3>የሰልጣኞች ተግባራዊ ልምምድ</h3>
-                    <p>በስልጠና ላይ</p>
+        <!-- ክፍል 1፦ የምርቃት ስነ-ስርዓት (ከላይ) -->
+        <div class="section-box">
+            <h2 class="section-title">የምርቃት ስነ-ስርዓት</h2>
+            <div class="slider-wrapper">
+                <!-- ፎቶዎቹ ያለምንም መቆራረጥ እንዲዞሩ አምስቱ ፎቶዎች በኮዱ ውስጥ ሁለት ጊዜ ተደግመው ተጽፈዋል -->
+                <div class="photo-track animate-left">
+                    <!-- የመጀመሪያው ዙር 5 ፎቶዎች -->
+                    <div class="photo-card"><img src="images/st1.jpg"><div class="photo-info"><h3>የምርቃት ስነ-ስርዓት</h3></div></div>
+                    <div class="photo-card"><img src="images/st2.jpg"><div class="photo-info"><h3>የምርቃት ስነ-ስርዓት</h3></div></div>
+                    <div class="photo-card"><img src="images/st3.jpg"><div class="photo-info"><h3>የምርቃት ስነ-ስርዓት</h3></div></div>
+                    <div class="photo-card"><img src="images/st4.jpg"><div class="photo-info"><h3>የምርቃት ስነ-ስርዓት</h3></div></div>
+                    <div class="photo-card"><img src="images/st5.jpg"><div class="photo-info"><h3>የምርቃት ስነ-ስርዓት</h3></div></div>
+                    <!-- ሁለተኛው ዙር (ለስላሳ ስክሮል እንዲሆን መደገም አለበት) -->
+                    <div class="photo-card"><img src="images/st1.jpg"><div class="photo-info"><h3>የምርቃት ስነ-ስርዓት</h3></div></div>
+                    <div class="photo-card"><img src="images/st2.jpg"><div class="photo-info"><h3>የምርቃት ስነ-ስርዓት</h3></div></div>
+                    <div class="photo-card"><img src="images/st3.jpg"><div class="photo-info"><h3>የምርቃት ስነ-ስርዓት</h3></div></div>
+                    <div class="photo-card"><img src="images/st4.jpg"><div class="photo-info"><h3>የምርቃት ስነ-ስርዓት</h3></div></div>
+                    <div class="photo-card"><img src="images/st5.jpg"><div class="photo-info"><h3>የምርቃት ስነ-ስርዓት</h3></div></div>
                 </div>
             </div>
-
-            <!-- ፎቶ 2 -->
-                   <div class="photo-grid">
-            
-            <!-- ፎቶ 1 -->
-            <div class="photo-card">
-                <img src="images/st1.jpg" alt="የምርቃት ስነ-ስርዓት">
-                <div class="photo-info">
-                    <h3>የምርቃት ስነ-ስርዓት</h3>
-                    <p>የምርቃት ቀን</p>
-                </div>
-            </div>
-
-            <!-- ፎቶ 2 -->
-            <div class="photo-card">
-                <img src="images/st2.jpg" alt="የምርቃት ስነ-ስርዓት">
-                <div class="photo-info">
-                    <h3>የምርቃት ስነ-ስርዓት</h3>
-                    <p>የምርቃት ቀን</p>
-                </div>
-            </div>
-
-            <!-- ፎቶ 3 -->
-            <div class="photo-card">
-                <img src="images/st3.jpg" alt="የምርቃት ስነ-ስርዓት">
-                <div class="photo-info">
-                    <h3>የምርቃት ስነ-ስርዓት</h3>
-                    <p>የምርቃት ቀን</p>
-                </div>
-            </div>
-
-            <!-- ፎቶ 4 -->
-            <div class="photo-card">
-                <img src="images/st4.jpg" alt="የምርቃት ስነ-ስርዓት">
-                <div class="photo-info">
-                    <h3>የምርቃት ስነ-ስርዓት</h3>
-                    <p>የምርቃት ቀን</p>
-                </div>
-            </div>
-
-            <!-- ፎቶ 5 -->
-            <div class="photo-card">
-                <img src="images/st5.jpg" alt="የምርቃት ስነ-ስርዓት">
-                <div class="photo-info">
-                    <h3>የምርቃት ስነ-ስርዓት</h3>
-                    <p>የምርቃት ቀን</p>
-                </div>
-            </div>
-
         </div>
 
+        <!-- ክፍል 2፦ የሰልጣኞች ስልጠና አውደርዕይ (ከታች) -->
+        <div class="section-box">
+            <h2 class="section-title">የሰልጣኞች ስልጠና አውደርዕይ</h2>
+            <div class="slider-wrapper">
+                <div class="photo-track animate-left">
+                    <!-- እዚህ ጋር በ images ፎልደርህ ውስጥ ያሉትን የድሮ የስልጠና ፎቶዎች ተጠቅሜያለሁ -->
+                    <div class="photo-card"><img src="images/training1.jpg"><div class="photo-info"><h3>የሰልጣኞች ስልጠና አውደርዕይ</h3></div></div>
+                    <div class="photo-card"><img src="images/training2.jpg"><div class="photo-info"><h3>የሰልጣኞች ስልጠና አውደርዕይ</h3></div></div>
+                    <div class="photo-card"><img src="images/training3.jpg"><div class="photo-info"><h3>የሰልጣኞች ስልጠና አውደርዕይ</h3></div></div>
+                    <div class="photo-card"><img src="images/training1.jpg"><div class="photo-info"><h3>የሰልጣኞች ስልጠና አውደርዕይ</h3></div></div>
+                    <!-- ለስላሳ ስክሮል ድግግሞሽ -->
+                    <div class="photo-card"><img src="images/training1.jpg"><div class="photo-info"><h3>የሰልጣኞች ስልጠና አውደርዕይ</h3></div></div>
+                    <div class="photo-card"><img src="images/training2.jpg"><div class="photo-info"><h3>የሰልጣኞች ስልጠና አውደርዕይ</h3></div></div>
+                    <div class="photo-card"><img src="images/training3.jpg"><div class="photo-info"><h3>የሰልጣኞች ስልጠና አውደርዕይ</h3></div></div>
+                    <div class="photo-card"><img src="images/training1.jpg"><div class="photo-info"><h3>የሰልጣኞች ስልጠና አውደርዕይ</h3></div></div>
+                </div>
+            </div>
+        </div>
+
+    </div>
 
 </body>
 </html>
