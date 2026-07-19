@@ -7,55 +7,108 @@
     <!-- ካንተ style.css ጋር እንዲገናኝ ያደርገዋል -->
     <link rel="stylesheet" href="style.css"> 
     <style>
-        /* ለፎቶ ጋለሪው የሚሆኑ ዘመናዊ ስታይሎች */
+        /* 1. የጀርባ ቀለም (Background) መቀየር - ውብ የሆነ ወታደራዊ ሳምራዊ ሰማያዊ ወይንም ወታደራዊ ግራጫ ማድረግ ይቻላል */
+        body {
+            background-color: #f0f4f8; /* ለስላሳ እና ፕሮፌሽናል የሆነ የጀርባ ቀለም */
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        /* ወደ ኋላ መመለሻ አሞሌ (Navigation Area) */
+        .nav-bar {
+            background-color: #2c3e50;
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        /* 3. ወደ ኋላ መመለሻ (Home በተን) ስታይል */
+        .home-btn {
+            background-color: #e74c3c; /* ጎልቶ የሚታይ ቀይ በተን */
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-weight: bold;
+            font-size: 15px;
+            transition: background 0.3s ease;
+        }
+        .home-btn:hover {
+            background-color: #c0392b;
+        }
+
         .gallery-container {
             max-width: 1200px;
             margin: 30px auto;
             padding: 20px;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             text-align: center;
         }
+        
         .gallery-title {
             color: #2c3e50;
-            margin-bottom: 10px;
+            margin-bottom: 5px;
             font-size: 28px;
         }
+        
+        /* 2. መፈክር (Slogan) ስታይል - ጎልቶ እንዲታይ በቀይ እና በሰያፍ የተሰራ */
+        .slogan {
+            color: #d32f2f;
+            font-size: 20px;
+            font-weight: bold;
+            font-style: italic;
+            margin-top: 5px;
+            margin-bottom: 25px;
+            letter-spacing: 0.5px;
+        }
+
         .gallery-subtitle {
             color: #7f8c8d;
             margin-bottom: 30px;
+            font-size: 16px;
         }
+
         .photo-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1-fr));
-            gap: 25px;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 30px;
             padding: 10px;
         }
+        
         .photo-card {
             background: #fff;
             border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
             overflow: hidden;
             transition: transform 0.3s ease;
         }
+        
         .photo-card:hover {
             transform: translateY(-5px);
         }
+        
         .photo-card img {
             width: 100%;
-            height: 220px;
+            height: 250px;
             object-fit: cover;
             display: block;
+            background-color: #ddd; /* ፎቶው እስኪጭን ምስል መኖሩን ያሳያል */
         }
+        
         .photo-info {
             padding: 15px;
             background: #fdfdfd;
             border-top: 1px solid #eee;
         }
+        
         .photo-info h3 {
             margin: 0 0 5px 0;
             font-size: 18px;
             color: #2c3e50;
         }
+        
         .photo-info p {
             margin: 0;
             color: #27ae60;
@@ -66,15 +119,25 @@
 </head>
 <body>
 
+    <!-- የላይኛው መመለሻ አሞሌ ከነ Home በተኑ -->
+    <div class="nav-bar">
+        <span style="color: white; font-weight: bold; font-size: 18px;">የውጊያ ቴክኒክ ትምህርት ቤት</span>
+        <!-- ወደ ኋላ መመለሻ ሊንክ (Home) -->
+        <a href="index.html" class="home-btn">🏠 ወደ ዋናው ገጽ (Home) ተመለስ</a>
+    </div>
+
     <div class="gallery-container">
         <h1 class="gallery-title">የሰልጣኞች እና የምርቃት መዝገብ ፎቶዎች</h1>
+        
+        <!-- 2. መፈክር (Slogan) እዚህ ገብቷል -->
+        <p class="slogan">"እናቅዳለን፤ እንጀምራለን፤ እናሰፋለን፤ በፍጥነት እና በጥራት እንፈጽማለን!"</p>
+        
         <p class="gallery-subtitle">በውጊያ ቴክኒክ ትምህርት ቤት የሰልጣኞች የክትትል እና የምርቃት ትዝታዎች</p>
 
         <div class="photo-grid">
             
-            <!-- ፎቶ 1፡ የሰልጣኝ ፎቶ -->
+            <!-- ፎቶ 1 -->
             <div class="photo-card">
-                <!-- የምትፈልገውን ፎቶ ስም images/ ውስጥ ካለው ጋር አስተካክል -->
                 <img src="images/training1.jpg" alt="የሰልጣኞች ስልጠና">
                 <div class="photo-info">
                     <h3>የሰልጣኞች ተግባራዊ ልምምድ</h3>
@@ -82,29 +145,11 @@
                 </div>
             </div>
 
-            <!-- ፎቶ 2፡ የምርቃት ፎቶ -->
+            <!-- ፎቶ 2 -->
             <div class="photo-card">
                 <img src="images/training2.jpg" alt="የምርቃት ስነ-ስርዓት">
                 <div class="photo-info">
                     <h3>የምርቃት እና የሽልማት ስነ-ስርዓት</h3>
-                    <p>የምርቃት ቀን</p>
-                </div>
-            </div>
-
-            <!-- ፎቶ 3 -->
-            <div class="photo-card">
-                <img src="images/training3.jpg" alt="የሰልጣኞች ፎቶ">
-                <div class="photo-info">
-                    <h3>የመካናይዝድ ኃይል ስልጠና</h3>
-                    <p>በስልጠና ላይ</p>
-                </div>
-            </div>
-
-            <!-- ፎቶ 4 -->
-            <div class="photo-card">
-                <img src="images/training4.jpg" alt="የምርቃት ፎቶ">
-                <div class="photo-info">
-                    <h3>የምሩቃን ሰልፍ</h3>
                     <p>የምርቃት ቀን</p>
                 </div>
             </div>
