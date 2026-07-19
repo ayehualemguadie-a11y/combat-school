@@ -7,27 +7,31 @@
     <!-- ካንተ style.css ጋር እንዲገናኝ ያደርገዋል -->
     <link rel="stylesheet" href="style.css"> 
     <style>
-        /* 1. የጀርባ ቀለም (Background) መቀየር - ውብ የሆነ ወታደራዊ ሳምራዊ ሰማያዊ ወይንም ወታደራዊ ግራጫ ማድረግ ይቻላል */
+        /* 1. አዲሱን የጭስ ፎቶ በጀርባ (Background) ላይ መለጠፍ */
         body {
-            background-color: #f0f4f8; /* ለስላሳ እና ፕሮፌሽናል የሆነ የጀርባ ቀለም */
+            background-image: url('images/bg-smoke.png'); /* የፎቶውን ስም ከዚህ ጋር ማመሳሰል አስፈላጊ ነው */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
             margin: 0;
             padding: 0;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
         
-        /* ወደ ኋላ መመለሻ አሞሌ (Navigation Area) */
+        /* የላይኛው መመለሻ አሞሌ (Navigation Area) */
         .nav-bar {
-            background-color: #2c3e50;
+            background-color: rgba(44, 62, 80, 0.85); /* የጀርባው ፎቶ በጥቂቱ እንዲታይ ለማድረግ */
             padding: 15px 30px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
         }
         
-        /* 3. ወደ ኋላ መመለሻ (Home በተን) ስታይል */
+        /* ወደ ኋላ መመለሻ (Home በተን) ስታይል - በትክክለኛው ሊንክ የተሰራ */
         .home-btn {
-            background-color: #e74c3c; /* ጎልቶ የሚታይ ቀይ በተን */
+            background-color: #e74c3c;
             color: white;
             text-decoration: none;
             padding: 10px 20px;
@@ -47,27 +51,31 @@
             text-align: center;
         }
         
+        /* በጥቁር ጀርባ ላይ ጽሑፉ በደንብ እንዲታይ ነጭ ቀለም */
         .gallery-title {
-            color: #2c3e50;
+            color: #ffffff;
             margin-bottom: 5px;
-            font-size: 28px;
+            font-size: 32px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.6);
         }
         
-        /* 2. መፈክር (Slogan) ስታይል - ጎልቶ እንዲታይ በቀይ እና በሰያፍ የተሰራ */
+        /* 2. መፈክር (Slogan) ስታይል - በጥቁር ጀርባ ላይ ደምቆ እንዲወጣ ወርቃማ ቀለም */
         .slogan {
-            color: #d32f2f;
-            font-size: 20px;
+            color: #f1c40f; 
+            font-size: 22px;
             font-weight: bold;
             font-style: italic;
-            margin-top: 5px;
+            margin-top: 10px;
             margin-bottom: 25px;
-            letter-spacing: 0.5px;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
         }
 
+        /* ንዑስ ርዕስ */
         .gallery-subtitle {
-            color: #7f8c8d;
+            color: #ecf0f1;
             margin-bottom: 30px;
             font-size: 16px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
         }
 
         .photo-grid {
@@ -78,9 +86,9 @@
         }
         
         .photo-card {
-            background: #fff;
+            background: rgba(255, 255, 255, 0.95); /* ፎቶዎቹ ጎልተው እንዲታዩ የካርዱ ጀርባ ነጭ */
             border-radius: 8px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
             overflow: hidden;
             transition: transform 0.3s ease;
         }
@@ -94,7 +102,7 @@
             height: 250px;
             object-fit: cover;
             display: block;
-            background-color: #ddd; /* ፎቶው እስኪጭን ምስል መኖሩን ያሳያል */
+            background-color: #ddd;
         }
         
         .photo-info {
@@ -121,19 +129,18 @@
 
     <!-- የላይኛው መመለሻ አሞሌ ከነ Home በተኑ -->
     <div class="nav-bar">
-        <span style="color: white; font-weight: bold; font-size: 18px;">የምርቃት እና የስልጠና  እንቅስቃሴ በከፊል</span>
-        <!-- ወደ ኋላ መመለሻ ሊንክ (Home) -->
-     <a href="/" class="home-btn">🏠 ወደ ዋናው ገጽ (Home) ተመለስ</a>
-
+        <span style="color: white; font-weight: bold; font-size: 18px;">የምርቃት እና ስልጠና ፎቶዎች</span>
+        <!-- ትክክለኛው የሆም በተን አድራሻ (/) እዚህ ገብቷል -->
+        <a href="/" class="home-btn">🏠 ወደ ዋናው ገጽ (Home) ተመለስ</a>
     </div>
 
     <div class="gallery-container">
         <h1 class="gallery-title">የሰልጣኞች እና የምርቃት መዝገብ ፎቶዎች</h1>
         
-        <!-- 2. መፈክር (Slogan) እዚህ ገብቷል -->
+        <!-- መፈክር (Slogan) -->
         <p class="slogan">"እናቅዳለን፤ እንጀምራለን፤ እናሰፋለን፤ በፍጥነት እና በጥራት እንፈጽማለን!"</p>
         
-        <p class="gallery-subtitle">የምቃት እና የስልጠና ዉሏችን</p>
+        <p class="gallery-subtitle">የስልጠና እንቅስቃሴ ሁኔታ</p>
 
         <div class="photo-grid">
             
