@@ -15,7 +15,7 @@
             margin: 0;
             padding: 0;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            overflow-x: hidden; /* ወደ ጎን ስክሮል ባር እንዳይታይ */
+            overflow-x: hidden;
         }
         
         .nav-bar {
@@ -58,7 +58,6 @@
             text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
         }
 
-        /* የክፍሎች (Sections) አቀማመጥ */
         .section-box {
             margin-bottom: 40px;
             text-align: left;
@@ -74,7 +73,6 @@
             padding-left: 10px;
         }
 
-        /* 1. የፎቶዎች ወደ ጎን መሽከርከሪያ ማዕቀፍ (Slider Wrapper) */
         .slider-wrapper {
             width: 100%;
             overflow: hidden;
@@ -84,39 +82,37 @@
             box-shadow: inset 0 0 10px rgba(0,0,0,0.3);
         }
 
-        /* ፎቶዎቹ የሚደረደሩበት ረጅም መስመር */
         .photo-track {
             display: flex;
             width: max-content;
         }
 
-        /* ከቀኝ ወደ ግራ በዝግታ የሚያዞር አኒሜሽን (30 ሰከንድ ይፈጃል) */
         .animate-left {
-            animation: scrollLeft 30s linear infinite;
+            animation: scrollLeft 35s linear infinite; /* መጠናቸው ስላደገ ፍጥነቱን በትንሹ ቀነስነው */
         }
 
-        /* ማውሱ ፎቶው ላይ ሲያርፍ (Hover ሲያደርግ) መዞሩ እንዲቆም */
         .slider-wrapper:hover .photo-track {
             animation-play-state: paused;
         }
 
-                .photo-card {
+        /* 🛠️ እዚህ ጋር የፎቶ ካርዶችን መጠን ጨምረነዋል */
+        .photo-card {
             background: rgba(255, 255, 255, 0.95);
             border-radius: 8px;
             box-shadow: 0 4px 10px rgba(0,0,0,0.3);
             overflow: hidden;
-            width: 420px; /* ከ 300px ወደ 420px አሳድገነዋል (ሰፊ እንዲሆን) */
-            margin: 0 20px; /* በፎቶዎች መካከል ያለው ርቀት */
+            width: 420px; /* መጠን ከ300px ወደ 420px አድጓል */
+            margin: 0 20px;
             flex-shrink: 0;
         }
         
+        /* 🛠️ የፎቶውን ቁመት ጨምረነዋል */
         .photo-card img {
             width: 100%;
-            height: 280px; /* ከ 200px ወደ 280px አሳድገነዋል (ረጅም እንዲሆን) */
+            height: 280px; /* ቁመት ከ200px ወደ 280px አድጓል */
             object-fit: cover;
             display: block;
         }
-
         
         .photo-info {
             padding: 10px;
@@ -131,10 +127,9 @@
             color: #2c3e50;
         }
 
-        /* ፎቶዎቹን ወደ ጎን የማንሸራተቻ ህግ (Animation Keyframes) */
         @keyframes scrollLeft {
             0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); } /* ፎቶዎቹ ሲያልቁ ድጋሚ ያለምንም መቆራረጥ እንዲቀጥል */
+            100% { transform: translateX(-50%); }
         }
     </style>
 </head>
@@ -146,24 +141,21 @@
     </div>
 
     <div class="gallery-container">
-        <!-- መፈክር -->
         <p class="slogan">"እናቅዳለን፤ እንጀምራለን፤ እናሰፋለን፤ በፍጥነት እና በጥራት እንፈጽማለን!"</p>
         
         <!-- ክፍል 1፦ የምርቃት ስነ-ስርዓት (ከላይ) -->
         <div class="section-box">
             <h2 class="section-title">የምርቃት ስነ-ስርዓት</h2>
             <div class="slider-wrapper">
-                <!-- ፎቶዎቹ ያለምንም መቆራረጥ እንዲዞሩ አምስቱ ፎቶዎች በኮዱ ውስጥ ሁለት ጊዜ ተደግመው ተጽፈዋል -->
                 <div class="photo-track animate-left">
-                    <!-- የመጀመሪያው ዙር 5 ፎቶዎች -->
                     <div class="photo-card"><img src="images/st1.jpg"><div class="photo-info"><h3>የምርቃት ስነ-ስርዓት</h3></div></div>
                     <div class="photo-card"><img src="images/st2.jpg"><div class="photo-info"><h3>የምርቃት ስነ-ስርዓት</h3></div></div>
                     <div class="photo-card"><img src="images/st3.jpg"><div class="photo-info"><h3>የምርቃት ስነ-ስርዓት</h3></div></div>
                     <div class="photo-card"><img src="images/st4.jpg"><div class="photo-info"><h3>የምርቃት ስነ-ስርዓት</h3></div></div>
                     <div class="photo-card"><img src="images/st5.jpg"><div class="photo-info"><h3>የምርቃት ስነ-ስርዓት</h3></div></div>
-                    <!-- ሁለተኛው ዙር (ለስላሳ ስክሮል እንዲሆን መደገም አለበት) -->
+                    <!-- ለስላሳ ስክሮል ድግግሞሽ -->
                     <div class="photo-card"><img src="images/st1.jpg"><div class="photo-info"><h3>የምርቃት ስነ-ስርዓት</h3></div></div>
-                    <div class="photo-card"><img src="images/st2.jpg"><div class="photo-info"><h3>የምርቃት ስነ-ስርዓት</h3></div></div>
+                    <div class="photo-card"><img src="images/st2.jpg"><div class="photo-info"><h3>የምርቃት ስነ-ስርዓт</h3></div></div>
                     <div class="photo-card"><img src="images/st3.jpg"><div class="photo-info"><h3>የምርቃት ስነ-ስርዓት</h3></div></div>
                     <div class="photo-card"><img src="images/st4.jpg"><div class="photo-info"><h3>የምርቃት ስነ-ስርዓት</h3></div></div>
                     <div class="photo-card"><img src="images/st5.jpg"><div class="photo-info"><h3>የምርቃት ስነ-ስርዓት</h3></div></div>
@@ -176,16 +168,20 @@
             <h2 class="section-title">የሰልጣኞች ስልጠና አውደርዕይ</h2>
             <div class="slider-wrapper">
                 <div class="photo-track animate-left">
-                    <!-- እዚህ ጋር በ images ፎልደርህ ውስጥ ያሉትን የድሮ የስልጠና ፎቶዎች ተጠቅሜያለሁ -->
+                    <!-- 🛠️ እዚህ ጋር ያንተን ትክክለኛ የፋይል ስሞች (training1 እስከ training6) አስገብተናል -->
                     <div class="photo-card"><img src="images/training1.jpg"><div class="photo-info"><h3>የሰልጣኞች ስልጠና አውደርዕይ</h3></div></div>
                     <div class="photo-card"><img src="images/training2.jpg"><div class="photo-info"><h3>የሰልጣኞች ስልጠና አውደርዕይ</h3></div></div>
                     <div class="photo-card"><img src="images/training3.jpg"><div class="photo-info"><h3>የሰልጣኞች ስልጠና አውደርዕይ</h3></div></div>
-                    <div class="photo-card"><img src="images/training1.jpg"><div class="photo-info"><h3>የሰልጣኞች ስልጠና አውደርዕይ</h3></div></div>
+                    <div class="photo-card"><img src="images/training4.jpg"><div class="photo-info"><h3>የሰልጣኞች ስልጠና አውደርዕይ</h3></div></div>
+                    <div class="photo-card"><img src="images/training5.jpg"><div class="photo-info"><h3>የሰልጣኞች ስልጠና አውደርዕይ</h3></div></div>
+                    <div class="photo-card"><img src="images/training6.jpg"><div class="photo-info"><h3>የሰልጣኞች ስልጠና አውደርዕይ</h3></div></div>
                     <!-- ለስላሳ ስክሮል ድግግሞሽ -->
                     <div class="photo-card"><img src="images/training1.jpg"><div class="photo-info"><h3>የሰልጣኞች ስልጠና አውደርዕይ</h3></div></div>
                     <div class="photo-card"><img src="images/training2.jpg"><div class="photo-info"><h3>የሰልጣኞች ስልጠና አውደርዕይ</h3></div></div>
                     <div class="photo-card"><img src="images/training3.jpg"><div class="photo-info"><h3>የሰልጣኞች ስልጠና አውደርዕይ</h3></div></div>
-                    <div class="photo-card"><img src="images/training1.jpg"><div class="photo-info"><h3>የሰልጣኞች ስልጠና አውደርዕይ</h3></div></div>
+                    <div class="photo-card"><img src="images/training4.jpg"><div class="photo-info"><h3>የሰልጣኞች ስልጠና አውደርዕይ</h3></div></div>
+                    <div class="photo-card"><img src="images/training5.jpg"><div class="photo-info"><h3>የሰልጣኞች ስልጠና አውደርዕይ</h3></div></div>
+                    <div class="photo-card"><img src="images/training6.jpg"><div class="photo-info"><h3>የሰልጣኞች ስልጠና አውደርዕይ</h3></div></div>
                 </div>
             </div>
         </div>
