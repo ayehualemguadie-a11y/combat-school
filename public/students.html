@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="am">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>የሰልጣኞች እና የምርቃት ፎቶ ማሳያ</title>
+    <!-- ካንተ style.css ጋር እንዲገናኝ ያደርገዋል -->
+    <link rel="stylesheet" href="style.css"> 
+    <style>
+        /* ለፎቶ ጋለሪው የሚሆኑ ዘመናዊ ስታይሎች */
+        .gallery-container {
+            max-width: 1200px;
+            margin: 30px auto;
+            padding: 20px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            text-align: center;
+        }
+        .gallery-title {
+            color: #2c3e50;
+            margin-bottom: 10px;
+            font-size: 28px;
+        }
+        .gallery-subtitle {
+            color: #7f8c8d;
+            margin-bottom: 30px;
+        }
+        .photo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1-fr));
+            gap: 25px;
+            padding: 10px;
+        }
+        .photo-card {
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+        .photo-card:hover {
+            transform: translateY(-5px);
+        }
+        .photo-card img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            display: block;
+        }
+        .photo-info {
+            padding: 15px;
+            background: #fdfdfd;
+            border-top: 1px solid #eee;
+        }
+        .photo-info h3 {
+            margin: 0 0 5px 0;
+            font-size: 18px;
+            color: #2c3e50;
+        }
+        .photo-info p {
+            margin: 0;
+            color: #27ae60;
+            font-weight: bold;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="gallery-container">
+        <h1 class="gallery-title">የሰልጣኞች እና የምርቃት መዝገብ ፎቶዎች</h1>
+        <p class="gallery-subtitle">በውጊያ ቴክኒክ ትምህርት ቤት የሰልጣኞች የክትትል እና የምርቃት ትዝታዎች</p>
+
+        <div class="photo-grid">
+            
+            <!-- ፎቶ 1፡ የሰልጣኝ ፎቶ -->
+            <div class="photo-card">
+                <!-- የምትፈልገውን ፎቶ ስም images/ ውስጥ ካለው ጋር አስተካክል -->
+                <img src="images/training1.jpg" alt="የሰልጣኞች ስልጠና">
+                <div class="photo-info">
+                    <h3>የሰልጣኞች ተግባራዊ ልምምድ</h3>
+                    <p>በስልጠና ላይ</p>
+                </div>
+            </div>
+
+            <!-- ፎቶ 2፡ የምርቃት ፎቶ -->
+            <div class="photo-card">
+                <img src="images/training2.jpg" alt="የምርቃት ስነ-ስርዓት">
+                <div class="photo-info">
+                    <h3>የምርቃት እና የሽልማት ስነ-ስርዓት</h3>
+                    <p>የምርቃት ቀን</p>
+                </div>
+            </div>
+
+            <!-- ፎቶ 3 -->
+            <div class="photo-card">
+                <img src="images/training3.jpg" alt="የሰልጣኞች ፎቶ">
+                <div class="photo-info">
+                    <h3>የመካናይዝድ ኃይል ስልጠና</h3>
+                    <p>በስልጠና ላይ</p>
+                </div>
+            </div>
+
+            <!-- ፎቶ 4 -->
+            <div class="photo-card">
+                <img src="images/training4.jpg" alt="የምርቃት ፎቶ">
+                <div class="photo-info">
+                    <h3>የምሩቃን ሰልፍ</h3>
+                    <p>የምርቃት ቀን</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</body>
+</html>
