@@ -213,13 +213,12 @@
 
 <!-- 💡 የፎቶዎቹን መጠን በግዙፍ ያሳደገው አዲሱ የሲኤስኤስ ስታይል ማዘዣ -->
 <style>
-    /* 📐 ⚠️ የፎቶዎቹ መጠን እጅግ ማራኪ ሆኖ በትልቁ አድጓል (Width 360px & Height 240px) */
-     ⚠️ የፎቶዎቹ መጠን በግድ እጅግ በጣም በትልቁ እንዲያድግ የተቆለፈ አዲስ የሲኤስኤስ ስታይል */
+    /* 📐 ⚠️ የፎቶዎቹ መጠን በግድ እጅግ በጣም በትልቁ እንዲያድግና የጀርባውን ምስል እንዲሸፍን የተቆለፈ አዲስ የሲኤስኤስ ስታይል */
     .training-photo-item {
         display: inline-block !important;
-        width: 380px !important; /* 💡 ሳይዙ በጥራት እጅግ በጣም በትልቁ አድጓል */
-        height: 250px !important; /* 💡 ቁመቱም በግዙፉ ከፍ ብሏል */
-        margin: 0 20px !important;
+        width: 650px !important; /* 💡 ሳይዙ በጥራት እጅግ በጣም በግዙፉ አድጓል (የጀርባውን ምስል ይሸፍናል) */
+        height: 420px !important; /* 💡 ቁመቱም በግዙፉ ከፍ ብሏል */
+        margin: 0 5px !important; /* 💡 በመካከላቸው ያለውን ክፍተት አጥብበን ሙሉ በሙሉ እንዲሸፍን ማድረግ */
         overflow: hidden !important;
         border-radius: 12px !important;
         box-shadow: 0 10px 25px rgba(0,0,0,0.5) !important; /* ጥላው ይበልጥ ደምቋል */
@@ -229,61 +228,34 @@
     }
     
     .training-photo-item img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        transition: transform 0.5s ease;
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: cover !important;
+        transition: transform 0.5s ease !important;
     }
 
     /* ማውዙ ሲያርፍበት ፎቶው በጥራት ዙም የማድረግ ውበት */
     .training-photo-item:hover img {
-        transform: scale(1.08);
+        transform: scale(1.08) !important;
     }
 
-    /* ከግራ ወደ ቀኝ በለስላሳ የሚያሸራትተው አኒሜሽን */
+    /* 🏃‍♂️ ፎቶዎቹን ከግራ ወደ ቀኝ በጣም በዝግታ (Kess eyale) የሚያሸራትተው ዋናው አኒሜሽን */
     @keyframes scrollPhotosLeftToRight {
         0% { transform: translateX(-50%); }
         100% { transform: translateX(0); }
     }
-    .training-marquee-track { animation: scrollPhotosLeftToRight 35s linear infinite; }
-    .training-marquee-container:hover .training-marquee-track { animation-play-state: paused; }
-</style>
 
-<!-- 💡 ፎቶዎቹ በአንድ መስመር ከግራ ወደ ቀኝ እንዲንሸራተቱ ማዘዣ (CSS) -->
-<style>
-    /* 📐 የእያንዳንዱ ፎቶ ስፋትና ቁመት መጠን በጥራት እንዲቀንስ ማድረጊያ */
-    .training-photo-item {
-        display: inline-block;
-        width: 260px; /* ፎቶዎቹ ሙሉ በሙሉ እንዲታዩ መጠናቸው ቀንሷል */
-        height: 180px;
-        margin: 0 15px;
-        overflow: hidden;
-        border-radius: 6px;
-        box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-        border: 2px solid #fbbf24; /* ወርቃማ ፍሬም */
+    /* 🛠️ ፍጥነቱን በጣም ረጋ ለማድረግ ሰከንዱን ከ 35s ወደ 75s አሳድገነዋል (በጣም በዝግታ ይዞራል) */
+    .training-marquee-track { 
+        animation: scrollPhotosLeftToRight 75s linear infinite !important; 
     }
     
-    .training-photo-item img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-    }
-
-    /* 🏃‍♂️ ፎቶዎቹን ከግራ ወደ ቀኝ በለስላሳ የሚያሸራትተው ዋናው አኒሜሽን */
-    @keyframes scrollPhotosLeftToRight {
-        0% {
-            transform: translateX(-50%); /* ከግራ በኩል ተንሸራቶ ጉዞ ይጀምራል */
-        }
-        100% {
-            transform: translateX(0); /* ወደ ቀኝ በኩል ያለምንም ማቋረጥ ይጓዛል */
-        }
-    }
-
     /* ማውዙ ፎቶው ላይ ሲያርፍ አኒሜሽኑ ለጥቂት ሰከንድ ቆም እንዲል ማድረጊያ ውበት */
-    .training-marquee-container:hover .training-marquee-track {
-        animation-play-state: paused;
+    .training-marquee-container:hover .training-marquee-track { 
+        animation-play-state: paused !important; 
     }
 </style>
+
 <!-- 🎖️ ያንተ ስም ያለበት የግርጌ ማስታወሻ ልክ እንደ ታስክባር ከዳር እስከ ዳር 100% ሙሉ በሙሉ ተዘርግቷል -->
 <<!-- ⚠️ ከሳጥን ውጭ ወጥቶ ልክ እንደ ዊንዶውስ ታስክባር 100% ከዳር እስከ ዳር የሚዘረጋ አዲስ የክብር Footer -->
 <footer style="background: #111827; color: white; text-align: center; padding: 25px 10px; margin-top: 50px; font-size: 15px; width: 100vw !important; max-width: 100vw !important; position: absolute; left: 50%; transform: translateX(-50%); box-sizing: border-box; z-index: 999; border-radius: 0 !important; box-shadow: none !important;">
