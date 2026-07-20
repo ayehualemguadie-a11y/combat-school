@@ -199,28 +199,26 @@
         /* 📐 ፎቶዎቹ ዳርና ዳር ሙሉ በሙሉ እንዲሞሉ መጠኑን በግዙፍ ያሳደገው አዲሱ ስታይል */
     <style>
     /* 📐 መቶ አለቃ፣ ፎቶዎቹ በግዙፍ እንዲታዩ ቁመቱ ወደ 650px ያደገ ማዕቀፍ */
+       /* 📐 መቶ አለቃ፣ ሰራዊቱ ሙሉ በሙሉ እንዲታይ ቁመቱ ወደ 780px ያደገ ማዕቀፍ */
     .training-marquee-container {
         position: relative;
         width: 100% !important; 
         max-width: 100% !important; /* ሙሉ ስክሪን ዳርና ዳር እንዲነካ */
-        height: 650px !important; /* 💡 በፈለጉት መሠረት ቁመቱ ከ420px ወደ 650px በግዙፉ አድጓል! */
+        height: 780px !important; /* 💡 በፈለጉት መሠረት ቁመቱ ከ650px ወደ 780px በግዙፉ አድጓል! */
         margin: 0 auto !important;
         overflow: hidden;
         border-bottom: 4px solid #fbbf24; /* ወርቃማው የመከላከያ መስመር */
         background-color: #000;
     }
 
-    /* ሁሉንም 6 ፎቶዎች አንድ ቦታ ላይ ደራርቦ 100% ሙሉ ለማድረግ */
-    .training-photo-item {
-        position: absolute;
-        top: 0;
-        left: 0;
+    /* ፎቶው ሳይቆረጥ ከአናት እስከ እግር ሙሉ በሙሉ እንዲታይ ማድረጊያ */
+    .training-photo-item img {
         width: 100% !important;
         height: 100% !important;
-        opacity: 0;
-        z-index: 1;
-        transition: opacity 1.5s ease-in-out;
+        object-fit: contain !important; /* 💡 መቶ አለቃ፣ ፎቶው ሳይቆረጥ ሙሉ አካሉ በሳጥኑ ውስጥ እንዲገባ ያደርገዋል */
+        object-position: center center !important; /* መሃል ለመሃል ያስተካክለዋል */
     }
+
 
     .training-photo-item img {
         width: 100% !important;
