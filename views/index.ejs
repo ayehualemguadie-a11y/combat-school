@@ -236,11 +236,13 @@
         transition: opacity 1.5s ease-in-out;
     }
 
-    .training-photo-item img {
+        .training-photo-item img {
         width: 100% !important;
         height: 100% !important;
-        object-fit: cover;
+        object-fit: cover; /* ፎቶው ሳጥኑን ሙሉ በሙሉ እንዲሞላ */
+        object-position: center top !important; /* 💡 መቶ አለቃ፣ ፎቶው ከአናቱ ተነስቶ እንዲታይና እንዳይቆረጥ ያደርገዋል */
     }
+
 
     /* 🏃‍♂️ የመከላከያ ዩኒቨርሲቲ ስታይል (Smooth Fade & Zoom) አኒሜሽን ህግ */
     .training-photo-item:nth-child(1) { animation: etduFadeZoomAnimation 24s infinite; animation-delay: 0s; }
