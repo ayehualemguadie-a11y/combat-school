@@ -200,24 +200,26 @@
     <style>
     /* 📐 መቶ አለቃ፣ ፎቶዎቹ በግዙፍ እንዲታዩ ቁመቱ ወደ 650px ያደገ ማዕቀፍ */
        /* 📐 መቶ አለቃ፣ ሰራዊቱ ሙሉ በሙሉ እንዲታይ ቁመቱ ወደ 780px ያደገ ማዕቀፍ */
+       /* 📐 መቶ አለቃ፣ ፎቶው እንዳይለጠጥ መጠኑ ሚዛናዊ ተደርጎ የተስተካከለ ማዕቀፍ */
     .training-marquee-container {
         position: relative;
         width: 100% !important; 
         max-width: 100% !important; /* ሙሉ ስክሪን ዳርና ዳር እንዲነካ */
-        height: 780px !important; /* 💡 በፈለጉት መሠረት ቁመቱ ከ650px ወደ 780px በግዙፉ አድጓል! */
+        height: 550px !important; /* 💡 ከልክ በላይ ዙም እንዳይሆን ቁመቱ ወደ 550px ወርዷል */
         margin: 0 auto !important;
         overflow: hidden;
         border-bottom: 4px solid #fbbf24; /* ወርቃማው የመከላከያ መስመር */
         background-color: #000;
     }
 
-    /* ፎቶው ሳይቆረጥ ከአናት እስከ እግር ሙሉ በሙሉ እንዲታይ ማድረጊያ */
+    /* ፎቶው ሳይለጠጥና ሳይበላሽ በጥራት እንዲታይ ማድረጊያ */
     .training-photo-item img {
         width: 100% !important;
         height: 100% !important;
-        object-fit: contain !important; /* 💡 መቶ አለቃ፣ ፎቶው ሳይቆረጥ ሙሉ አካሉ በሳጥኑ ውስጥ እንዲገባ ያደርገዋል */
-        object-position: center center !important; /* መሃል ለመሃል ያስተካክለዋል */
+        object-fit: cover !important; /* 💡 ፎቶው ተለጥጦ እንዳይበላሽና ብዥ እንዳይል ያደርገዋል */
+        object-position: center 15% !important; /* 💡 ከአናቱ በጥቂቱ ዝቅ ብሎ የሰራዊቱን ራስ በግልጽ ያሳያል */
     }
+
 
 
     .training-photo-item img {
