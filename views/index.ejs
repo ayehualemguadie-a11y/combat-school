@@ -220,11 +220,12 @@
         transition: opacity 1s ease-in-out; 
     }
 
+        /* 💡 መቶ አለቃ፣ ፎቶው እንዳይቆረጥና ሙሉ አካሉ በግልጽ እንዲታይ የተደረገበት ማዘዣ */
     .training-photo-item img {
         width: 100% !important;
         height: 100% !important;
-        object-fit: cover !important; /* 💡 ፎቶው ሳይለጠጥና ሳይበላሽ ሙሉ ሳጥኑን እንዲሞላ */
-        object-position: center 20% !important; /* 💡 የሰራዊቱን አናትና ራስ በትክክል መሃል ላይ ያሳያል */
+        object-fit: fill !important; /* 💡 ፎቶው ሳይቆረጥ (ያለምንም መቆረጥ) ሙሉ በሙሉ ሳጥኑን እንዲሞላ ያደርገዋል */
+        object-position: center center !important; /* ፎቶውን መሃል ለመሃል ያስተካክለዋል */
     }
 
     /* 🏃‍♂️ 💡 መቶ አለቃ፣ መዘግየትን ለማስቀረት ጠቅላላ የዙር ጊዜውን ወደ 24s አሳጥረነዋል (እያንዳንዱ ፎቶ 4 ሰከንድ ይታያል) */
