@@ -211,22 +211,22 @@
 
 
 
-<!-- 💡 የፎቶዎቹን መጠን በግዙፍ ያሳደገው አዲሱ የሲኤስኤስ ስታይል ማዘዣ -->
 <style>
-    /* 📐 የፎቶዎቹ መያዣ ሳጥን አቀማመጥ */
+    /* 📐 ፎቶዎቹ በግዙፍ አድገው የጀርባውን ምስል ሙሉ በሙሉ እንዲሸፍኑ የተደረገ ማዕቀፍ */
     .training-marquee-container {
         position: relative;
-        width: 650px !important;  /* ያንተ ትልቁ ስፋት */
-        height: 420px !important; /* ያንተ ትልቁ ቁመት */
-        margin: 40px auto !important;
+        width: 100% !important; /* 💡 መቶ አለቃ፣ የጀርባውን ምስል ሙሉ በሙሉ እንዲሸፍን 100% አድርገነዋል */
+        max-width: 1200px !important; /* የገጹን ዳርና ዳር እንዲነካ ስፋቱን አሳድገነዋል */
+        height: 550px !important; /* 💡 ቁመቱንም በግዙፉ ከፍ አድርገነዋል */
+        margin: 20px auto !important;
         overflow: hidden;
         border-radius: 12px;
-        box-shadow: 0 10px 25px rgba(0,0,0,0.6);
+        box-shadow: 0 12px 30px rgba(0,0,0,0.7);
         border: 4px solid #fbbf24; /* ወርቃማው ፍሬም */
         background-color: #000;
     }
 
-    /* ሁሉንም ፎቶዎች አንድ ቦታ ላይ ደራርቦ ለማስቀመጥ */
+    /* ሁሉንም ፎቶዎች ሳጥኑን ሙሉ በሙሉ እንዲሸፍኑ (100%) ማድረግ */
     .training-photo-item {
         position: absolute;
         top: 0;
@@ -241,9 +241,9 @@
     }
 
     .training-photo-item img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: cover; /* ፎቶው ሳይጨፈለቅ ሙሉ ሳጥኑን እንዲሞላ ያደርጋል */
     }
 
     /* 🏃‍♂️ የሰዓት እጅ (Clock) አኒሜሽን ህግ ለእያንዳንዱ ፎቶ */
@@ -259,7 +259,7 @@
             mask-image: conic-gradient(#000 0deg, transparent 0deg);
             -webkit-mask-image: conic-gradient(#000 0deg, transparent 0deg);
         }
-        /* ከ 0% እስከ 20% ባለው ጊዜ ውስጥ ልክ እንደ ሰዓት እጅ 360 ዲግሪ ይዞራል */
+        /* ልክ እንደ ሰዓት እጅ 360 ዲግሪ ይዞራል */
         20% {
             opacity: 1;
             z-index: 2;
@@ -288,6 +288,7 @@
         animation-play-state: paused;
     }
 </style>
+
 
 <!-- 🎖️ ያንተ ስም ያለበት የግርጌ ማስታወሻ ልክ እንደ ታስክባር ከዳር እስከ ዳር 100% ሙሉ በሙሉ ተዘርግቷል -->
 <<!-- ⚠️ ከሳጥን ውጭ ወጥቶ ልክ እንደ ዊንዶውስ ታስክባር 100% ከዳር እስከ ዳር የሚዘረጋ አዲስ የክብር Footer -->
