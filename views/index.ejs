@@ -213,46 +213,79 @@
 
 <!-- 💡 የፎቶዎቹን መጠን በግዙፍ ያሳደገው አዲሱ የሲኤስኤስ ስታይል ማዘዣ -->
 <style>
-    /* 📐 ⚠️ የፎቶዎቹ መጠን በግድ እጅግ በጣም በትልቁ እንዲያድግና የጀርባውን ምስል እንዲሸፍን የተቆለፈ አዲስ የሲኤስኤስ ስታይል */
-    .training-photo-item {
-        display: inline-block !important;
-        width: 650px !important; /* 💡 ሳይዙ በጥራት እጅግ በጣም በግዙፉ አድጓል (የጀርባውን ምስል ይሸፍናል) */
-        height: 420px !important; /* 💡 ቁመቱም በግዙፉ ከፍ ብሏል */
-        margin: 0 5px !important; /* 💡 በመካከላቸው ያለውን ክፍተት አጥብበን ሙሉ በሙሉ እንዲሸፍን ማድረግ */
-        overflow: hidden !important;
-        border-radius: 12px !important;
-        box-shadow: 0 10px 25px rgba(0,0,0,0.5) !important; /* ጥላው ይበልጥ ደምቋል */
-        border: 4px solid #fbbf24 !important; /* ወርቃማው ፍሬም በግልጽ ጎልቷል */
-        background-color: #000 !important;
-        transition: transform 0.4s ease-in-out !important;
+    /* 📐 የፎቶዎቹ መያዣ ሳጥን አቀማመጥ */
+    .training-marquee-container {
+        position: relative;
+        width: 650px !important;  /* ያንተ ትልቁ ስፋት */
+        height: 420px !important; /* ያንተ ትልቁ ቁመት */
+        margin: 40px auto !important;
+        overflow: hidden;
+        border-radius: 12px;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.6);
+        border: 4px solid #fbbf24; /* ወርቃማው ፍሬም */
+        background-color: #000;
     }
-    
-    .training-photo-item img {
+
+    /* ሁሉንም ፎቶዎች አንድ ቦታ ላይ ደራርቦ ለማስቀመጥ */
+    .training-photo-item {
+        position: absolute;
+        top: 0;
+        left: 0;
         width: 100% !important;
         height: 100% !important;
-        object-fit: cover !important;
-        transition: transform 0.5s ease !important;
+        opacity: 0;
+        z-index: 1;
+        /* የሰዓት እጅ መልክ የሚሰጠው ዋናው ማስክ */
+        mask-image: conic-gradient(#000 0deg, transparent 0deg);
+        -webkit-mask-image: conic-gradient(#000 0deg, transparent 0deg);
     }
 
-    /* ማውዙ ሲያርፍበት ፎቶው በጥራት ዙም የማድረግ ውበት */
-    .training-photo-item:hover img {
-        transform: scale(1.08) !important;
+    .training-photo-item img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
     }
 
-    /* 🏃‍♂️ ፎቶዎቹን ከግራ ወደ ቀኝ በጣም በዝግታ (Kess eyale) የሚያሸራትተው ዋናው አኒሜሽን */
-    @keyframes scrollPhotosLeftToRight {
-        0% { transform: translateX(-50%); }
-        100% { transform: translateX(0); }
+    /* 🏃‍♂️ የሰዓት እጅ (Clock) አኒሜሽን ህግ ለእያንዳንዱ ፎቶ */
+    .training-photo-item:nth-child(1) { animation: pptClockAnimation 24s linear infinite; animation-delay: 0s; }
+    .training-photo-item:nth-child(2) { animation: pptClockAnimation 24s linear infinite; animation-delay: 6s; }
+    .training-photo-item:nth-child(3) { animation: pptClockAnimation 24s linear infinite; animation-delay: 12s; }
+    .training-photo-item:nth-child(4) { animation: pptClockAnimation 24s linear infinite; animation-delay: 18s; }
+
+    @keyframes pptClockAnimation {
+        0% {
+            opacity: 1;
+            z-index: 2;
+            mask-image: conic-gradient(#000 0deg, transparent 0deg);
+            -webkit-mask-image: conic-gradient(#000 0deg, transparent 0deg);
+        }
+        /* ከ 0% እስከ 20% ባለው ጊዜ ውስጥ ልክ እንደ ሰዓት እጅ 360 ዲግሪ ይዞራል */
+        20% {
+            opacity: 1;
+            z-index: 2;
+            mask-image: conic-gradient(#000 360deg, transparent 360deg);
+            -webkit-mask-image: conic-gradient(#000 360deg, transparent 360deg);
+        }
+        /* ፎቶው ሙሉ በሙሉ ታይቶ ለጥቂት ሰከንድ ይቆማል */
+        25% {
+            opacity: 1;
+            z-index: 1;
+            mask-image: conic-gradient(#000 360deg, transparent 360deg);
+            -webkit-mask-image: conic-gradient(#000 360deg, transparent 360deg);
+        }
+        26% {
+            opacity: 0;
+            z-index: 1;
+        }
+        100% {
+            opacity: 0;
+            z-index: 1;
+        }
     }
 
-    /* 🛠️ ፍጥነቱን በጣም ረጋ ለማድረግ ሰከንዱን ከ 35s ወደ 75s አሳድገነዋል (በጣም በዝግታ ይዞራል) */
-    .training-marquee-track { 
-        animation: scrollPhotosLeftToRight 75s linear infinite !important; 
-    }
-    
-    /* ማውዙ ፎቶው ላይ ሲያርፍ አኒሜሽኑ ለጥቂት ሰከንድ ቆም እንዲል ማድረጊያ ውበት */
-    .training-marquee-container:hover .training-marquee-track { 
-        animation-play-state: paused !important; 
+    /* ማውሱ ፎቶው ላይ ሲያርፍ አኒሜሽኑ ለጥቂት ሰከንድ ቆም እንዲል ማድረጊያ */
+    .training-marquee-container:hover .training-photo-item {
+        animation-play-state: paused;
     }
 </style>
 
