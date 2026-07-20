@@ -175,46 +175,30 @@
             "ጠንካራ የሜካናይዝድ ኃይል በመገንባት ዝግጁነታችንን እናረጋግጣለን!"
         </h2>
 
-        <!-- 🏃‍♂️ ⚠️ ከዳር እስከ ዳር ያለምንም መቆራረጥ ፎቶዎቹ የሚሮጡበት ሙሉ ስክሪን መስመር -->
-        <div class="training-marquee-container" style="width: 100%; overflow: hidden; position: relative; white-space: nowrap; padding: 15px 0;">
-            <div class="training-marquee-track" style="display: inline-block; white-space: nowrap; animation: scrollPhotosLeftToRight 38s linear infinite;">
-                
-                <!-- 📸 1. መደበኞቹ 4ቱ የሥልጠና ፎቶዎች -->
-                <div class="training-photo-item"><img src="/images/photo1.jpg" alt="Training 1"></div>
-                <div class="training-photo-item"><img src="/images/photo2.jpg" alt="Training 2"></div>
-                <div class="training-photo-item"><img src="/images/photo3.jpg" alt="Training 3"></div>
-                <div class="training-photo-item"><img src="/images/photo4.jpg" alt="Training 4"></div>
-
-                <!-- 📸 2. አዲሶቹ የአዋሽ አርባ ፎቶዎች (aw1 - aw6) -->
-                <div class="training-photo-item"><img src="/images/aw1.jpg" onerror="this.src='/images/AW1.jpg';" alt="Awash 1"></div>
-                <div class="training-photo-item"><img src="/images/aw2.jpg" onerror="this.src='/images/AW2.jpg';" alt="Awash 2"></div>
-                <div class="training-photo-item"><img src="/images/aw3.jpg" onerror="this.src='/images/AW3.jpg';" alt="Awash 3"></div>
-                <div class="training-photo-item"><img src="/images/aw4.jpg" onerror="this.src='/images/AW4.jpg';" alt="Awash 4"></div>
-                <div class="training-photo-item"><img src="/images/aw5.jpg" onerror="this.src='/images/AW5.jpg';" alt="Awash 5"></div>
-                <div class="training-photo-item"><img src="/images/aw6.jpg" onerror="this.src='/images/AW6.jpg';" alt="Awash 6"></div>
-
-                <!-- 🔄 3. አኒሜሽኑ ሳያቋርጥ በተከታታይ እንዲዞር የተደገሙ ፎቶዎች (Loop Copy) -->
-                <div class="training-photo-item"><img src="/images/photo1.jpg" alt="c1"></div>
-                <div class="training-photo-item"><img src="/images/photo2.jpg" alt="c2"></div>
-                <div class="training-photo-item"><img src="/images/photo3.jpg" alt="c3"></div>
-                <div class="training-photo-item"><img src="/images/photo4.jpg" alt="c4"></div>
-                <div class="training-photo-item"><img src="/images/aw1.jpg" alt="c5"></div>
-                <div class="training-photo-item"><img src="/images/aw2.jpg" alt="c6"></div>
-                <div class="training-photo-item"><img src="/images/aw3.jpg" alt="c7"></div>
-                <div class="training-photo-item"><img src="/images/aw4.jpg" alt="c8"></div>
-                <div class="training-photo-item"><img src="/images/aw5.jpg" alt="c9"></div>
-                <div class="training-photo-item"><img src="/images/aw6.jpg" alt="c10"></div>
-            </div>
-        </div>
+      <div class="training-marquee-container">
+    <!-- መፈክሩ በፎቶዎቹ ላይ በግልጽ እንዲታይ ከላይ ተቀምጧል -->
+    <div class="slogan-overlay">
+        <h2>«ስልጠናችንን በማዘመን ተዋግቶ የሚያሸንፍ የሜካናይዝድ ሃይል እናፈራለን!»</h2>
     </div>
+
+    <!-- 💡 መቶ አለቃ፣ አዲሶቹ H1 እስከ H6 ፎቶዎች እዚህ ገብተዋል -->
+    <div class="training-photo-item"><img src="images/H1.jpg" alt="ስልጠና 1"></div>
+    <div class="training-photo-item"><img src="images/H2.jpg" alt="ስልጠና 2"></div>
+    <div class="training-photo-item"><img src="images/H3.jpg" alt="ስልጠና 3"></div>
+    <div class="training-photo-item"><img src="images/H4.jpg" alt="ስልጠና 4"></div>
+    <div class="training-photo-item"><img src="images/H5.jpg" alt="ስልጠና 5"></div>
+    <div class="training-photo-item"><img src="images/H6.jpg" alt="ስልጠና 6"></div>
+</div>
+
 </section>
 <style>
-    /* 📐 መቶ አለቃ፣ ቁመቱ ወደ 420px ዝቅ ብሎ የተስተካከለ ማዕቀፍ */
+   <style>
+    /* 📐 መቶ አለቃ፣ ቁመቱ 420px ሆኖ የተስተካከለ ማዕቀፍ */
     .training-marquee-container {
         position: relative;
         width: 100% !important; 
         max-width: 1200px !important; /* የገጹን ዳርና ዳር ይነካል */
-        height: 420px !important; /* 💡 በፈለጉት መሠረት ቁመቱ ከ550px ወደ 420px ዝቅ ብሏል */
+        height: 420px !important; /* ቁመቱ መካከለኛ ሆኖ ጀርባው እንዲተነፍስ ተደርጓል */
         margin: 30px auto !important;
         overflow: hidden;
         border-radius: 12px;
@@ -223,7 +207,7 @@
         background-color: #000;
     }
 
-    /* ሁሉንም ፎቶዎች አንድ ቦታ ላይ ደራርቦ 100% ሙሉ ለማድረግ */
+    /* ሁሉንም 6 ፎቶዎች አንድ ቦታ ላይ ደራርቦ 100% ሙሉ ለማድረግ */
     .training-photo-item {
         position: absolute;
         top: 0;
@@ -232,38 +216,38 @@
         height: 100% !important;
         opacity: 0;
         z-index: 1;
-        /* ልክ እንደ መከላከያ ዩኒቨርሲቲው በዝግታ እየቀለሙ እንዲተኩ (Fade) ማድረጊያ */
         transition: opacity 1.5s ease-in-out;
     }
 
-        .training-photo-item img {
+    .training-photo-item img {
         width: 100% !important;
         height: 100% !important;
-        object-fit: cover; /* ፎቶው ሳጥኑን ሙሉ በሙሉ እንዲሞላ */
+        object-fit: cover;
         object-position: center top !important; /* 💡 መቶ አለቃ፣ ፎቶው ከአናቱ ተነስቶ እንዲታይና እንዳይቆረጥ ያደርገዋል */
     }
 
-
-    /* 🏃‍♂️ የመከላከያ ዩኒቨርሲቲ ስታይል (Smooth Fade & Zoom) አኒሜሽን ህግ */
-    .training-photo-item:nth-child(1) { animation: etduFadeZoomAnimation 24s infinite; animation-delay: 0s; }
-    .training-photo-item:nth-child(2) { animation: etduFadeZoomAnimation 24s infinite; animation-delay: 6s; }
-    .training-photo-item:nth-child(3) { animation: etduFadeZoomAnimation 24s infinite; animation-delay: 12s; }
-    .training-photo-item:nth-child(4) { animation: etduFadeZoomAnimation 24s infinite; animation-delay: 18s; }
+    /* 🏃‍♂️ ለ 6 ፎቶዎች የተስተካከለ የ (Smooth Fade & Zoom) አኒሜሽን ህግ (ጠቅላላ ዙር 36 ሰከንድ) */
+    .training-photo-item:nth-child(1) { animation: etduFadeZoomAnimation 36s infinite; animation-delay: 0s; }
+    .training-photo-item:nth-child(2) { animation: etduFadeZoomAnimation 36s infinite; animation-delay: 6s; }
+    .training-photo-item:nth-child(3) { animation: etduFadeZoomAnimation 36s infinite; animation-delay: 12s; }
+    .training-photo-item:nth-child(4) { animation: etduFadeZoomAnimation 36s infinite; animation-delay: 18s; }
+    .training-photo-item:nth-child(5) { animation: etduFadeZoomAnimation 36s infinite; animation-delay: 24s; }
+    .training-photo-item:nth-child(6) { animation: etduFadeZoomAnimation 36s infinite; animation-delay: 30s; }
 
     @keyframes etduFadeZoomAnimation {
         0% {
             opacity: 0;
             transform: scale(1);
         }
-        5% {
+        3% {
             opacity: 1;
             z-index: 2;
         }
-        25% {
+        16.66% {
             opacity: 1;
             transform: scale(1.08); /* ፎቶው በዝግታ ዙም (Zoom) ያደርጋል */
         }
-        30% {
+        19.66% {
             opacity: 0;
             transform: scale(1.08);
         }
@@ -272,17 +256,17 @@
         }
     }
 
-    /* ✍️ 💡 መቶ አለቃ፣ ጽሑፉ በፎቶዎቹ ላይ በግልጽ ገብቶ እንዲታይ የተደረገበት ማዘዣ */
+    /* ✍️ መቶ አለቃ፣ ጽሑፉ በፎቶዎቹ ላይ በግልጽ ገብቶ እንዲታይ የተደረገበት ማዘዣ */
     .slogan-overlay {
         position: absolute;
-        bottom: 30px; /* ከታች በጥቂቱ ከፍ ብሎ */
+        bottom: 30px; 
         left: 50%;
         transform: translateX(-50%);
-        z-index: 20 !important; /* በፎቶዎቹ ላይ በግድ እንዲንሳፈፍ ቁጥሩን ከፍ አድርገነዋል */
+        z-index: 20 !important; /* በፎቶዎቹ ላይ በግድ እንዲንሳፈፍ */
         background: rgba(0, 0, 0, 0.7); /* ጽሑፉ በደመቀ ሁኔታ እንዲነበብ ጥቁር ጥላ */
         padding: 12px 25px;
         border-radius: 8px;
-       /* border-bottom: 4px solid #fbbf24; /* የታችኛው ወርቃማ መስመር */
+        border-bottom: 4px solid #fbbf24; /* የታችኛው ወርቃማ መስመር */
         width: 85%;
         text-align: center;
         pointer-events: none; 
@@ -298,7 +282,7 @@
     }
 
     /* ማውሱ ፎቶው ላይ ሲያርፍ አኒሜሽኑ ለጥቂት ሰከንድ ቆም እንዲል ማድረጊያ */
-    /*.training-marquee-container:hover .training-photo-item {
+    .training-marquee-container:hover .training-photo-item {
         animation-play-state: paused;
     }
 </style>
