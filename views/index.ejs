@@ -194,74 +194,76 @@
 
 </section>
 <style>
-   <style>
-    /* 📐 መቶ አለቃ፣ ቁመቱ 420px ሆኖ የተስተካከለ ማዕቀፍ */
-        /* 📐 ፎቶዎቹ ዳርና ዳር ሙሉ በሙሉ እንዲሞሉ መጠኑን በግዙፍ ያሳደገው አዲሱ ስታይል */
-    <style>
-    /* 📐 መቶ አለቃ፣ ፎቶዎቹ በግዙፍ እንዲታዩ ቁመቱ ወደ 650px ያደገ ማዕቀፍ */
-       /* 📐 መቶ አለቃ፣ ሰራዊቱ ሙሉ በሙሉ እንዲታይ ቁመቱ ወደ 780px ያደገ ማዕቀፍ */
-       /* 📐 መቶ አለቃ፣ ፎቶው እንዳይለጠጥ መጠኑ ሚዛናዊ ተደርጎ የተስተካከለ ማዕቀፍ */
+  <style>
+    /* 📐 መቶ አለቃ፣ ፎቶዎቹ ሳይቆረጡና ሳይለጠጡ በትክክለኛው መጠን እንዲቀመጡ የተደረገ ማዕቀፍ */
     .training-marquee-container {
         position: relative;
         width: 100% !important; 
-        max-width: 100% !important; /* ሙሉ ስክሪን ዳርና ዳር እንዲነካ */
-        height: 550px !important; /* 💡 ከልክ በላይ ዙም እንዳይሆን ቁመቱ ወደ 550px ወርዷል */
+        max-width: 100% !important; /* ሙሉ ስክሪን ዳርና ዳር ይነካል */
+        height: 500px !important; /* ሚዛናዊ የሆነና ለፎቶዎቹ ተስማሚ ቁመት */
         margin: 0 auto !important;
         overflow: hidden;
         border-bottom: 4px solid #fbbf24; /* ወርቃማው የመከላከያ መስመር */
         background-color: #000;
     }
 
-    /* ፎቶው ሳይለጠጥና ሳይበላሽ በጥራት እንዲታይ ማድረጊያ */
+    /* ሁሉንም 6 ፎቶዎች አንድ ቦታ ላይ ደራርቦ 100% ሙሉ ለማድረግ */
+    .training-photo-item {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100% !important;
+        height: 100% !important;
+        opacity: 0;
+        z-index: 1;
+        /* 💡 ፎቶው ሲቀየር ያለምንም መቆራረጥ ለስላሳ እንዲሆን */
+        transition: opacity 1s ease-in-out; 
+    }
+
     .training-photo-item img {
         width: 100% !important;
         height: 100% !important;
-        object-fit: cover !important; /* 💡 ፎቶው ተለጥጦ እንዳይበላሽና ብዥ እንዳይል ያደርገዋል */
-        object-position: center 15% !important; /* 💡 ከአናቱ በጥቂቱ ዝቅ ብሎ የሰራዊቱን ራስ በግልጽ ያሳያል */
+        object-fit: cover !important; /* 💡 ፎቶው ሳይለጠጥና ሳይበላሽ ሙሉ ሳጥኑን እንዲሞላ */
+        object-position: center 20% !important; /* 💡 የሰራዊቱን አናትና ራስ በትክክል መሃል ላይ ያሳያል */
     }
 
+    /* 🏃‍♂️ 💡 መቶ አለቃ፣ መዘግየትን ለማስቀረት ጠቅላላ የዙር ጊዜውን ወደ 24s አሳጥረነዋል (እያንዳንዱ ፎቶ 4 ሰከንድ ይታያል) */
+    .training-photo-item:nth-child(1) { animation: etduPureFadeAnimation 24s infinite; animation-delay: 0s; }
+    .training-photo-item:nth-child(2) { animation: etduPureFadeAnimation 24s infinite; animation-delay: 4s; }
+    .training-photo-item:nth-child(3) { animation: etduPureFadeAnimation 24s infinite; animation-delay: 8s; }
+    .training-photo-item:nth-child(4) { animation: etduPureFadeAnimation 24s infinite; animation-delay: 12s; }
+    .training-photo-item:nth-child(5) { animation: etduPureFadeAnimation 24s infinite; animation-delay: 16s; }
+    .training-photo-item:nth-child(6) { animation: etduPureFadeAnimation 24s infinite; animation-infinite-delay: 20s; }
 
-
-    .training-photo-item img {
-        width: 100% !important;
-        height: 100% !important;
-        object-fit: cover; /* ፎቶው ሳይጨፈለቅ ሙሉ ሳጥኑን እንዲሞላ */
-        object-position: center center !important; /* 💡 ፎቶው መሃል ለመሃል ሙሉ ይዘቱ እንዲታይ */
-    }
-
-    /* 🏃‍♂️ የ (Smooth Fade & Zoom) አኒሜሽን ህግ (ጠቅላላ ዙር 36 ሰከንድ) */
-    .training-photo-item:nth-child(1) { animation: etduFadeZoomAnimation 36s infinite; animation-delay: 0s; }
-    .training-photo-item:nth-child(2) { animation: etduFadeZoomAnimation 36s infinite; animation-delay: 6s; }
-    .training-photo-item:nth-child(3) { animation: etduFadeZoomAnimation 36s infinite; animation-delay: 12s; }
-    .training-photo-item:nth-child(4) { animation: etduFadeZoomAnimation 36s infinite; animation-delay: 18s; }
-    .training-photo-item:nth-child(5) { animation: etduFadeZoomAnimation 36s infinite; animation-delay: 24s; }
-    .training-photo-item:nth-child(6) { animation: etduFadeZoomAnimation 36s infinite; animation-delay: 30s; }
-
-    @keyframes etduFadeZoomAnimation {
+    /* 💡 ከልክ በላይ ዙም ሆኖ መለጠጥን ለማስቀረት scale() ሙሉ በሙሉ ተወግዷል (Pure Smooth Fade) */
+    @keyframes etduPureFadeAnimation {
         0% {
             opacity: 0;
-            transform: scale(1);
         }
-        3% {
+        /* ፎቶው እንደገባ ወዲያውኑ በ 0.5 ሰከንድ ውስጥ ፍንትው ብሎ ይበራል */
+        2% {
             opacity: 1;
             z-index: 2;
         }
+        /* ፎቶው በጥራት ያለምንም ዙም ለ 4 ሰከንዶች ጸንቶ ይቆማል */
         16.66% {
             opacity: 1;
-            transform: scale(1.06); /* በዝግታ ወደ ውስጥ ዙም ያደርጋል */
+            z-index: 2;
         }
-        19.66% {
+        /* ቀስ ብሎ በዝግታ እየጠፋ ለቀጣዩ ፎቶ ቦታ ይለቃል */
+        20.66% {
             opacity: 0;
-            transform: scale(1.06);
+            z-index: 1;
         }
         100% {
             opacity: 0;
+            z-index: 1;
         }
     }
 
     /* ማውሱ ፎቶው ላይ ሲያርፍ አኒሜሽኑ ለጥቂት ሰከንድ ቆም እንዲል ማድረጊያ */
-     /*.training-marquee-container:hover .training-photo-item {
-       /*  animation-play-state: paused;
+    .training-marquee-container:hover .training-photo-item {
+        animation-play-state: paused;
     }
 </style>
 
