@@ -196,16 +196,19 @@
 <style>
   <style>
     /* 📐 መቶ አለቃ፣ ፎቶዎቹ ሳይቆረጡና ሳይለጠጡ በትክክለኛው መጠን እንዲቀመጡ የተደረገ ማዕቀፍ */
-    .training-marquee-container {
+   .training-marquee-container {
         position: relative;
         width: 100% !important; 
-        max-width: 100% !important; /* ሙሉ ስክሪን ዳርና ዳር ይነካል */
-        height: 500px !important; /* ሚዛናዊ የሆነና ለፎቶዎቹ ተስማሚ ቁመት */
-        margin: 0 auto !important;
+        max-width: 1000px !important; /* 💡 ፎቶው ወደ ጎን ተለጥጦ እንዳይበላሽ ስፋቱን (Width) በልክ ገድበነዋል */
+        height: 380px !important; /* 💡 ከፎቶው የተፈጥሮ ቅርጽ ጋር እንዲመጣጠን ቁመቱን (Height) አስተካክለነዋል */
+        margin: 20px auto !important; /* መሃል ለመሃል ውብ ሆኖ እንዲቀመጥ */
         overflow: hidden;
-        border-bottom: 4px solid #fbbf24; /* ወርቃማው የመከላከያ መስመር */
+        border: 4px solid #fbbf24; /* ወርቃማው የመከላከያ ፍሬም በሁሉም አቅጣጫ */
+        border-radius: 12px;
+        box-shadow: 0 12px 30px rgba(0,0,0,0.6);
         background-color: #000;
     }
+
 
     /* ሁሉንም 6 ፎቶዎች አንድ ቦታ ላይ ደራርቦ 100% ሙሉ ለማድረግ */
     .training-photo-item {
@@ -220,53 +223,36 @@
         transition: opacity 1s ease-in-out; 
     }
 
-        /* 💡 መቶ አለቃ፣ ፎቶው እንዳይቆረጥና ሙሉ አካሉ በግልጽ እንዲታይ የተደረገበት ማዘዣ */
-      /* 💡 መቶ አለቃ፣ ፎቶው ሳይቆረጥና ሳይለጠጥ በተፈጥሮ ቅርጹ በጥራት እንዲታይ ማድረጊያ */
-    .training-photo-item img {
+     .training-photo-item img {
         width: 100% !important;
         height: 100% !important;
-        object-fit: contain !important; /* 💡 ፎቶው ሳይቆረጥና ሳይለጠጥ በኦሪጅናል ቅርጹ በጥራት ያስቀምጠዋል */
-        object-position: center center !important; /* ፎቶውን መሃል ለመሃል ያደርገዋል */
+        object-fit: fill !important; /* 💡 ሳጥኑ በልክ ስለተሰራ አሁን ሳይለጠጥ ሙሉ በሙሉ ይሞላዋል */
+        object-position: center center !important;
     }
 
 
     /* 🏃‍♂️ 💡 መቶ አለቃ፣ መዘግየትን ለማስቀረት ጠቅላላ የዙር ጊዜውን ወደ 24s አሳጥረነዋል (እያንዳንዱ ፎቶ 4 ሰከንድ ይታያል) */
+        /* 🏃‍♂️ መቶ አለቃ፣ እያንዳንዱ ፎቶ ለ 4 ሰከንድ ጸንቶ እንዲቆይ የተስተካከለ የአኒሜሽን ጊዜ */
     .training-photo-item:nth-child(1) { animation: etduPureFadeAnimation 24s infinite; animation-delay: 0s; }
     .training-photo-item:nth-child(2) { animation: etduPureFadeAnimation 24s infinite; animation-delay: 4s; }
     .training-photo-item:nth-child(3) { animation: etduPureFadeAnimation 24s infinite; animation-delay: 8s; }
     .training-photo-item:nth-child(4) { animation: etduPureFadeAnimation 24s infinite; animation-delay: 12s; }
     .training-photo-item:nth-child(5) { animation: etduPureFadeAnimation 24s infinite; animation-delay: 16s; }
-    .training-photo-item:nth-child(6) { animation: etduPureFadeAnimation 24s infinite; animation-infinite-delay: 20s; }
+    .training-photo-item:nth-child(6) { animation: etduPureFadeAnimation 24s infinite; animation-delay: 20s; }
 
-    /* 💡 ከልክ በላይ ዙም ሆኖ መለጠጥን ለማስቀረት scale() ሙሉ በሙሉ ተወግዷል (Pure Smooth Fade) */
+
+       /* 💡 ፎቶው ሳይለጠጥና ሳይቆረጥ በለስላሳ ሁኔታ እንዲጠፋና እንዲበራ ማድረጊያ */
     @keyframes etduPureFadeAnimation {
-        0% {
-            opacity: 0;
-        }
-        /* ፎቶው እንደገባ ወዲያውኑ በ 0.5 ሰከንድ ውስጥ ፍንትው ብሎ ይበራል */
-        2% {
-            opacity: 1;
-            z-index: 2;
-        }
-        /* ፎቶው በጥራት ያለምንም ዙም ለ 4 ሰከንዶች ጸንቶ ይቆማል */
-        16.66% {
-            opacity: 1;
-            z-index: 2;
-        }
-        /* ቀስ ብሎ በዝግታ እየጠፋ ለቀጣዩ ፎቶ ቦታ ይለቃል */
-        20.66% {
-            opacity: 0;
-            z-index: 1;
-        }
-        100% {
-            opacity: 0;
-            z-index: 1;
-        }
+        0% { opacity: 0; }
+        2% { opacity: 1; z-index: 2; } /* ወዲያውኑ ፍንትው ብሎ ይበራል */
+        16.66% { opacity: 1; z-index: 2; } /* ለ 4 ሰከንድ በጥራት ይቆማል */
+        20.66% { opacity: 0; z-index: 1; } /* ቀስ ብሎ እየጠፋ ለቀጣዩ ቦታ ይለቃል */
+        100% { opacity: 0; z-index: 1; }
     }
 
     /* ማውሱ ፎቶው ላይ ሲያርፍ አኒሜሽኑ ለጥቂት ሰከንድ ቆም እንዲል ማድረጊያ */
-    .training-marquee-container:hover .training-photo-item {
-        animation-play-state: paused;
+   /* .training-marquee-container:hover .training-photo-item {
+     /*   animation-play-state: paused;
     }
 </style>
 
