@@ -194,7 +194,7 @@
 
 </section>
 <style>
-  <style>
+<style>
     /* 📐 ፎቶዎቹ እንዳይንዘረጠሩ ወደ ጎን የሚንሸራተተው ዋናው ማዕቀፍ (Slider Wrapper) */
     .training-marquee-container {
         width: 100% !important;
@@ -210,8 +210,8 @@
     .training-marquee-track {
         display: flex !important;
         width: max-content !important;
-        /* ልክ እንደ students.html ከቀኝ ወደ ግራ በዝግታ የሚያዞር አኒሜሽን */
-        animation: indexScrollLeft 35s linear infinite !important; 
+        /* 💡 መቶ አለቃ፣ ከግራ ወደ ቀኝ (Left to Right) በዝግታ የሚያዞረው አኒሜሽን እዚህ ገብቷል */
+        animation: indexScrollLeftToRight 35s linear infinite !important; 
     }
 
     /* ማውሱ ፎቶው ላይ ሲያርፍ (Hover ሲያደርግ) መዞሩ እንዲቆም */
@@ -219,7 +219,7 @@
         animation-play-state: paused !important;
     }
 
-    /* 📐 💡 መቶ አለቃ፣ ልክ እንደ students.html የፎቶ ካርዶቹን መጠን በትልቁ እዚህ ገድበነዋል */
+    /* 📐 ልክ እንደ students.html የፎቶ ካርዶቹን መጠን በትልቁ እዚህ ገድበነዋል */
     .training-photo-item {
         display: block !important;
         background: rgba(255, 255, 255, 0.95) !important;
@@ -236,17 +236,18 @@
     .training-photo-item img {
         width: 100% !important;
         height: 100% !important;
-        object-fit: cover !important; /* 💡 መቶ አለቃ፣ ፎቶው እንዳይለጠጥ (እንዳይንዘረተር) የሚቆልፈው ዋናው ማዘዣ ነው */
+        object-fit: cover !important; /* 💡 ፎቶው እንዳይለጠጥ (እንዳይንዘረተር) የሚቆልፈው ዋናው ማዘዣ ነው */
         object-position: center center !important;
         display: block !important;
     }
 
-    /* 🏃‍♂️ ፎቶዎቹን ያለምንም መቆራረጥ ወደ ጎን የማንሸራተቻ አኒሜሽን ህግ */
-    @keyframes indexScrollLeft {
-        0% { transform: translateX(0); }
-        100% { transform: translateX(-50%); } 
+    /* 🏃‍♂️ 💡 መቶ አለቃ፣ ከግራ ወደ ቀኝ ያለምንም መቆራረጥ የማንሸራተቻ አኒሜሽን ህግ */
+    @keyframes indexScrollLeftToRight {
+        0% { transform: translateX(-50%); } /* ከግራ ተነስቶ */
+        100% { transform: translateX(0); } /* ወደ ቀኝ ይጓዛል */
     }
 </style>
+
 
 
 
