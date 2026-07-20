@@ -221,12 +221,14 @@
     }
 
         /* 💡 መቶ አለቃ፣ ፎቶው እንዳይቆረጥና ሙሉ አካሉ በግልጽ እንዲታይ የተደረገበት ማዘዣ */
+      /* 💡 መቶ አለቃ፣ ፎቶው ሳይቆረጥና ሳይለጠጥ በተፈጥሮ ቅርጹ በጥራት እንዲታይ ማድረጊያ */
     .training-photo-item img {
         width: 100% !important;
         height: 100% !important;
-        object-fit: fill !important; /* 💡 ፎቶው ሳይቆረጥ (ያለምንም መቆረጥ) ሙሉ በሙሉ ሳጥኑን እንዲሞላ ያደርገዋል */
-        object-position: center center !important; /* ፎቶውን መሃል ለመሃል ያስተካክለዋል */
+        object-fit: contain !important; /* 💡 ፎቶው ሳይቆረጥና ሳይለጠጥ በኦሪጅናል ቅርጹ በጥራት ያስቀምጠዋል */
+        object-position: center center !important; /* ፎቶውን መሃል ለመሃል ያደርገዋል */
     }
+
 
     /* 🏃‍♂️ 💡 መቶ አለቃ፣ መዘግየትን ለማስቀረት ጠቅላላ የዙር ጊዜውን ወደ 24s አሳጥረነዋል (እያንዳንዱ ፎቶ 4 ሰከንድ ይታያል) */
     .training-photo-item:nth-child(1) { animation: etduPureFadeAnimation 24s infinite; animation-delay: 0s; }
