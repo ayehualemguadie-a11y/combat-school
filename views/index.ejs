@@ -196,18 +196,20 @@
 <style>
   <style>
     /* 📐 መቶ አለቃ፣ ፎቶዎቹ ሳይቆረጡና ሳይለጠጡ በትክክለኛው መጠን እንዲቀመጡ የተደረገ ማዕቀፍ */
-   .training-marquee-container {
+       /* 📐 መቶ አለቃ፣ ፎቶው እንዳይንዘረጠር ቁመቱ በከፍተኛ ሁኔታ ያደገ ማዕቀፍ */
+    .training-marquee-container {
         position: relative;
         width: 100% !important; 
-        max-width: 500px !important; /* 💡 ፎቶው ወደ ጎን ተለጥጦ እንዳይበላሽ ስፋቱን (Width) በልክ ገድበነዋል */
-        height: 480px !important; /* 💡 ከፎቶው የተፈጥሮ ቅርጽ ጋር እንዲመጣጠን ቁመቱን (Height) አስተካክለነዋል */
+        max-width: 1000px !important; /* ስፋቱ ባለበት 1000px ሆኖ ይቀጥላል */
+        height: 520px !important; /* 💡 መቶ አለቃ፣ ፎቶው ወደላይ እንዲረዝምና መጋደም እንዲያቆም ቁመቱን ወደ 520px አሳድገነዋል */
         margin: 20px auto !important; /* መሃል ለመሃል ውብ ሆኖ እንዲቀመጥ */
         overflow: hidden;
-        border: 4px solid #fbbf24; /* ወርቃማው የመከላከያ ፍሬም በሁሉም አቅጣጫ */
+        border: 4px solid #fbbf24; /* ወርቃማው የመከላከያ ፍሬም */
         border-radius: 12px;
         box-shadow: 0 12px 30px rgba(0,0,0,0.6);
         background-color: #000;
     }
+
 
 
     /* ሁሉንም 6 ፎቶዎች አንድ ቦታ ላይ ደራርቦ 100% ሙሉ ለማድረግ */
