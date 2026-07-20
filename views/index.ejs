@@ -194,18 +194,18 @@
 <style>
    <style>
     /* 📐 መቶ አለቃ፣ ቁመቱ 420px ሆኖ የተስተካከለ ማዕቀፍ */
+        /* 📐 ፎቶዎቹ ዳርና ዳር ሙሉ በሙሉ እንዲሞሉ መጠኑን በግዙፍ ያሳደገው አዲሱ ስታይል */
     .training-marquee-container {
         position: relative;
-        width: 100% !important; 
-        max-width: 1200px !important; /* የገጹን ዳርና ዳር ይነካል */
-        height: 420px !important; /* ቁመቱ መካከለኛ ሆኖ ጀርባው እንዲተነፍስ ተደርጓል */
-        margin: 30px auto !important;
+        width: 100% !important; /* 💡 መቶ አለቃ፣ ገጹን ዳርና ዳር ሙሉ በሙሉ እንዲነካ ያደርገዋል */
+        max-width: 100% !important; /* ሙሉ ስክሪን (Full Screen) እንዲሆን የተቆለፈ */
+        height: 520px !important; /* 💡 ቁመቱን በጥራት ከፍ አድርገነዋል (ፎቶዎቹ ሳይቆረጡ በግዙፍ እንዲታዩ) */
+        margin: 0 auto !important; /* ከላይና ከታች የነበረውን አላስፈላጊ ባዶ ቦታ ለማጥፋት */
         overflow: hidden;
-        border-radius: 12px;
-        box-shadow: 0 15px 35px rgba(0,0,0,0.7);
-        border: 4px solid #fbbf24; /* ወርቃማው የመከላከያ ፍሬም */
+        border-bottom: 4px solid #fbbf24; /* ወርቃማው የመከላከያ ፍሬም ከታች ብቻ እንዲሆን */
         background-color: #000;
     }
+
 
     /* ሁሉንም 6 ፎቶዎች አንድ ቦታ ላይ ደራርቦ 100% ሙሉ ለማድረግ */
     .training-photo-item {
