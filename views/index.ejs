@@ -208,16 +208,13 @@
         </div>
     </div>
 </section>
-
-
-
 <style>
-    /* 📐 መቶ አለቃ፣ ፎቶዎቹ በግዙፍ አድገው ሙሉ ገጹን እንዲሸፍኑ የተደረገ ማዕቀፍ */
+    /* 📐 መቶ አለቃ፣ ቁመቱ ወደ 420px ዝቅ ብሎ የተስተካከለ ማዕቀፍ */
     .training-marquee-container {
         position: relative;
         width: 100% !important; 
         max-width: 1200px !important; /* የገጹን ዳርና ዳር ይነካል */
-        height: 550px !important; /* በግዙፉ ከፍ ያለ ቁመት */
+        height: 420px !important; /* 💡 በፈለጉት መሠረት ቁመቱ ከ550px ወደ 420px ዝቅ ብሏል */
         margin: 30px auto !important;
         overflow: hidden;
         border-radius: 12px;
@@ -254,9 +251,8 @@
     @keyframes etduFadeZoomAnimation {
         0% {
             opacity: 0;
-            transform: scale(1); /* መደበኛ መጠን */
+            transform: scale(1);
         }
-        /* በ6 ሰከንድ ውስጥ ፎቶው በዝግታ እየጎላና ወደ ውስጥ ዙም እያደረገ ይገባል */
         5% {
             opacity: 1;
             z-index: 2;
@@ -274,34 +270,33 @@
         }
     }
 
-    /* ✍️ መቶ አለቃ፣ የመፈክሩ (Slogan) ጽሑፍ በፎቶው ላይ ውብ ሆኖ እንዲቀመጥ ማድረጊያ */
+    /* ✍️ 💡 መቶ አለቃ፣ ጽሑፉ በፎቶዎቹ ላይ በግልጽ ገብቶ እንዲታይ የተደረገበት ማዘዣ */
     .slogan-overlay {
         position: absolute;
-        bottom: 40px; /* ከታች በጥቂቱ ከፍ ብሎ */
+        bottom: 30px; /* ከታች በጥቂቱ ከፍ ብሎ */
         left: 50%;
         transform: translateX(-50%);
-        z-index: 10; /* ከፎቶዎቹ በላይ እንዲንሳፈፍ */
-        background: rgba(0, 0, 0, 0.65); /* ጽሑፉ በደንብ እንዲነበብ ጥቁር ጥላ */
-        padding: 15px 30px;
+        z-index: 20 !important; /* በፎቶዎቹ ላይ በግድ እንዲንሳፈፍ ቁጥሩን ከፍ አድርገነዋል */
+        background: rgba(0, 0, 0, 0.7); /* ጽሑፉ በደመቀ ሁኔታ እንዲነበብ ጥቁር ጥላ */
+        padding: 12px 25px;
         border-radius: 8px;
-        border-bottom: 4px solid #fbbf24; /* የታችኛው ወርቃማ መስመር */
+       /* border-bottom: 4px solid #fbbf24; /* የታችኛው ወርቃማ መስመር */
         width: 85%;
         text-align: center;
-        pointer-events: none; /* ማውሱ ፎቶውን እንዳይከለክለው */
+        pointer-events: none; 
     }
 
     .slogan-overlay h2 {
-        color: #ffffff;
-        font-size: 26px;
+        color: #ffffff !important;
+        font-size: 24px;
         font-weight: bold;
         margin: 0;
-        letter-spacing: 0.5px;
-        text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.9);
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
 
     /* ማውሱ ፎቶው ላይ ሲያርፍ አኒሜሽኑ ለጥቂት ሰከንድ ቆም እንዲል ማድረጊያ */
-    .training-marquee-container:hover .training-photo-item {
+    /*.training-marquee-container:hover .training-photo-item {
         animation-play-state: paused;
     }
 </style>
