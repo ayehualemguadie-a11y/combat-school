@@ -199,30 +199,18 @@
     .training-marquee-container {
         width: 100% !important;
         max-width: 100% !important;
-        overflow: hidden;
+        overflow: hidden !important;
         background: rgba(255, 255, 255, 0.1);
         padding: 20px 0;
         margin: 20px auto !important;
         box-shadow: inset 0 0 10px rgba(0,0,0,0.3);
     }
-/* 💡 መቶ አለቃ፣ ይህንን ብቻ በስታይል ክፍል ውስጥ ይጨምሩ፤ ፎቶዎቹን በአንድ መስመር አስረው ከግራ ወደ ቀኝ ያዞራቸዋል */
-.training-marquee-track {
-    display: flex !important;
-    width: max-content !important;
-    animation: scrollPhotosLeftToRight 35s linear infinite !important;
-}
 
-@keyframes scrollPhotosLeftToRight {
-    0% { transform: translateX(-50%); }
-    100% { transform: translateX(0); }
-}
-
-
-    /* ፎቶዎቹ በአንድ ረጅም መስመር የሚደረደሩበት ትራክ */
+    /* ፎቶዎቹ በአንድ ረጅም መስመር ተሰልፈው ከግራ ወደ ቀኝ እንዲዞሩ ማድረጊያ */
     .training-marquee-track {
         display: flex !important;
         width: max-content !important;
-        /* 💡 መቶ አለቃ፣ ከግራ ወደ ቀኝ (Left to Right) በዝግታ የሚያዞረው አኒሜሽን እዚህ ገብቷል */
+        /* 💡 መቶ አለቃ፣ የአኒሜሽኑ ስም ከታች ካለው @keyframes ጋር በትክክል ተስተካክሏል */
         animation: indexScrollLeftToRight 35s linear infinite !important; 
     }
 
@@ -233,7 +221,7 @@
 
     /* 📐 ልክ እንደ students.html የፎቶ ካርዶቹን መጠን በትልቁ እዚህ ገድበነዋል */
     .training-photo-item {
-        display: block !important;
+        display: inline-block !important; /* 💡 ወደ ታች እንዳይወርዱ በአንድ መስመር የሚያስራቸው ዋናው ቁልፍ ይህ ነው */
         background: rgba(255, 255, 255, 0.95) !important;
         border-radius: 8px !important;
         box-shadow: 0 4px 15px rgba(0,0,0,0.3) !important;
@@ -259,6 +247,7 @@
         100% { transform: translateX(0); } /* ወደ ቀኝ ይጓዛል */
     }
 </style>
+
 
 
 
