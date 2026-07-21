@@ -1,1 +1,189 @@
+<!DOCTYPE html>
+<html lang="am">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>የቀድሞ የትምህርት ቤቱ መሪዎች (Former Leaders)</title>
+    <link rel="stylesheet" href="style.css"> 
+    <style>
+        body {
+            background-image: url('images/bg-smoke.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        .nav-bar {
+            background-color: rgba(44, 62, 80, 0.85);
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        
+        .home-btn {
+            background-color: #e74c3c;
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-weight: bold;
+            font-size: 15px;
+            transition: background 0.3s ease;
+        }
+        .home-btn:hover {
+            background-color: #c0392b;
+        }
+
+        .gallery-container {
+            max-width: 1200px;
+            margin: 30px auto;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .gallery-title {
+            color: #ffffff;
+            margin-bottom: 5px;
+            font-size: 32px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.6);
+        }
+        
+        .slogan {
+            color: #f1c40f; 
+            font-size: 22px;
+            font-weight: bold;
+            font-style: italic;
+            margin-top: 10px;
+            margin-bottom: 35px;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
+        }
+
+        /* ፎቶዎቹ በሥርዓት 3 በ 3 ሆነው በአራት ማዕዘን የሚቀመጡበት ግሪድ */
+        .leader-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 30px;
+            padding: 10px;
+        }
+        
+        /* 📐 መቶ አለቃ፣ ፎቶዎቹ እንዳይንዘረጠሩ የካርዶቹ መጠን እዚህ ተለክቷል */
+        .leader-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 12px;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+            overflow: hidden;
+            transition: transform 0.3s ease;
+            border: 3px solid #fbbf24; /* ወርቃማ ፍሬም */
+        }
+        
+        .leader-card:hover {
+            transform: translateY(-8px);
+        }
+        
+        .leader-card img {
+            width: 100%;
+            height: 280px; /* ፎቶዎቹ ሳይንዘረጠሩ የሚታዩበት ቁመት */
+            object-fit: cover;
+            display: block;
+        }
+        
+        .leader-info {
+            padding: 20px;
+            background: #ffffff;
+            border-top: 1px solid #eee;
+        }
+        
+        .leader-info h3 {
+            margin: 0 0 8px 0;
+            font-size: 20px;
+            color: #2c3e50;
+            font-weight: bold;
+        }
+        
+        .leader-info p {
+            margin: 0;
+            color: #d32f2f;
+            font-weight: bold;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="nav-bar">
+        <span style="color: white; font-weight: bold; font-size: 18px;">የውጊያ ቴክኒክ ትምህርት ቤት</span>
+        <a href="/" class="home-btn">🏠 ወደ ዋናው ገጽ (Home) ተመለስ</a>
+    </div>
+
+    <div class="gallery-container">
+        <h1 class="gallery-title">ከ 1970 - 2016 ዓ.ም ድረሰ ትምህርት ቤቱን የመሩ አዛዦች</h1>
+        <p class="slogan">"ታሪካቸውን ዘክረን የወደፊት ስኬታችንን እናረጋግጣለን!"</p>
+
+        <div class="leader-grid">
+            
+            <!-- መሪ 1 -->
+            <div class="leader-card">
+                <img src="images/leader1.jpg" alt="ብ/ጄ አሊ አብዱላሂ">
+                <div class="leader-info">
+                    <h3>ብ/ጄ አሊ აብዱላሂ</h3>
+                    <p>ከ 1970 ዓ/ም - 1972 ዓ/ም</p>
+                </div>
+            </div>
+
+            <!-- መሪ 2 -->
+            <div class="leader-card">
+                <img src="images/leader2.jpg" alt="ኮ/ል ኃይሌ ቶ/ሚካኤል">
+                <div class="leader-info">
+                    <h3>ኮ/ል ኃይሌ ቶ/ሚካኤል</h3>
+                    <p>ከ 1972 ዓ/ም - 1974 ዓ/ም</p>
+                </div>
+            </div>
+
+            <!-- መሪ 3 -->
+            <div class="leader-card">
+                <img src="images/leader3.jpg" alt="ኮ/ል ዘገየ ኬምባ">
+                <div class="leader-info">
+                    <h3>ኮ/ል ዘገየ ኬምባ</h3>
+                    <p>ከ 1974 ዓ/ም - 1977 ዓ/ም</p>
+                </div>
+            </div>
+
+            <!-- መሪ 4 -->
+            <div class="leader-card">
+                <img src="images/leader4.jpg" alt="ብ/ጄ ካሳዬ ጨመዳ">
+                <div class="leader-info">
+                    <h3>ብ/ጄ ካሳዬ ጨመዳ</h3>
+                    <p>ከ 1977 ዓ/ም - 1980 ዓ/ም</p>
+                </div>
+            </div>
+
+            <!-- መሪ 5 -->
+            <div class="leader-card">
+                <img src="images/leader5.jpg" alt="ኮ/ል ሃይለማሪያም ገ/ስላሴ">
+                <div class="leader-info">
+                    <h3>ኮ/ል ሃይለማሪያም ገ/ስላሴ</h3>
+                    <p>ከ 1980 ዓ/ም - 1982 ዓ/ም</p>
+                </div>
+            </div>
+
+            <!-- መሪ 6 -->
+            <div class="leader-card">
+                <img src="images/leader6.jpg" alt="ኮ/ል ሀይሌ ባሩዳ">
+                <div class="leader-info">
+                    <h3>ኮ/ል ሀይሌ ባሩዳ</h3>
+                    <p>ከ 1982 ዓ/ም - 1983 ዓ/ም</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</body>
+</html>
 
