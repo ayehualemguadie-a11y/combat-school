@@ -195,23 +195,25 @@
 </section>
 <style>
 <style>
-    /* 📐 ፎቶዎቹ እንዳይንዘረጠሩ ወደ ጎን የሚንሸራተተው ዋናው ማዕቀፍ (Slider Wrapper) */
+    /* 📐 መቶ አለቃ፣ ፎቶዎቹ አሁን ባሉበት በ 2 በ 2 አቀማመጥ እንዲቆለፉ ማድረጊያ ማዕቀፍ */
     .training-marquee-container {
         width: 100% !important;
-        max-width: 100% !important;
-        overflow: hidden !important;
-        background: rgba(255, 255, 255, 0.1);
-        padding: 20px 0;
+        max-width: 1200px !important;
+        height: 650px !important; /* የክፍሉ ቁመት */
+        overflow: hidden !important; /* ከሳጥኑ ውጭ የሚተርፉት እንዳይታዩ መቆለፊያ */
+        position: relative !important;
         margin: 20px auto !important;
-        box-shadow: inset 0 0 10px rgba(0,0,0,0.3);
     }
 
-    /* ፎቶዎቹ በአንድ ረጅም መስመር ተሰልፈው ከግራ ወደ ቀኝ እንዲዞሩ ማድረጊያ */
+    /* ፎቶዎቹን ሳይበታትን 2 በ 2 አድርጎ በአራት ማዕዘን የሚደረድረው ዋናው ትራክ */
     .training-marquee-track {
-        display: flex !important;
-        width: max-content !important;
-        /* 💡 መቶ አለቃ፣ የአኒሜሽኑ ስም ከታች ካለው @keyframes ጋር በትክክል ተስተካክሏል */
-        animation: indexScrollLeftToRight 35s linear infinite !important; 
+        display: grid !important;
+        grid-template-columns: repeat(2, 1fr) !important; /* 💡 2 በ 2 አቀማመጡን ጠብቆ ያቆያል */
+        gap: 20px !important;
+        width: 100% !important;
+        position: absolute !important;
+        /* 🏃‍♂️ 💡 መቶ አለቃ፣ ከላይ ወደ ታች በዝግታ የሚያዞረው አኒሜሽን እዚህ ገብቷል */
+        animation: scrollPhotosTopToBottom 25s linear infinite !important;
     }
 
     /* ማውሱ ፎቶው ላይ ሲያርፍ (Hover ሲያደርግ) መዞሩ እንዲቆም */
@@ -219,34 +221,31 @@
         animation-play-state: paused !important;
     }
 
-    /* 📐 ልክ እንደ students.html የፎቶ ካርዶቹን መጠን በትልቁ እዚህ ገድበነዋል */
+    /* የእያንዳንዱ ፎቶ ካርድ መጠንና ጥራት መጠበቂያ */
     .training-photo-item {
-        display: inline-block !important; /* 💡 ወደ ታች እንዳይወርዱ በአንድ መስመር የሚያስራቸው ዋናው ቁልፍ ይህ ነው */
+        display: block !important;
         background: rgba(255, 255, 255, 0.95) !important;
-        border-radius: 8px !important;
-        box-shadow: 0 4px 15px rgba(0,0,0,0.3) !important;
+        border-radius: 12px !important;
+        box-shadow: 0 6px 20px rgba(0,0,0,0.4) !important;
         overflow: hidden !important;
-        width: 420px !important; /* ፎቶዎቹ ሳይንዘረጠሩ በትክክለኛው ስፋት ይቀመጣሉ */
-        height: 280px !important; /* ቁመታቸውም ሚዛናዊ ሆኖ ያምራል */
-        margin: 0 20px !important; /* በፎቶዎች መካከል ያለው ክፍተት */
-        flex-shrink: 0 !important;
+        height: 300px !important; /* የፎቶዎቹ መካከለኛ ቁመት */
+        width: 100% !important;
     }
     
-    /* ፎቶው ሳይቆረጥና ሳይለጠጥ ሙሉ ሳጥኑን በጥራት እንዲሞላ ማድረጊያ */
     .training-photo-item img {
         width: 100% !important;
         height: 100% !important;
-        object-fit: cover !important; /* 💡 ፎቶው እንዳይለጠጥ (እንዳይንዘረተር) የሚቆልፈው ዋናው ማዘዣ ነው */
+        object-fit: cover !important; /* ፎቶው እንዳይለጠጥ መጠበቂያ */
         object-position: center center !important;
-        display: block !important;
     }
 
-    /* 🏃‍♂️ 💡 መቶ አለቃ፣ ከግራ ወደ ቀኝ ያለምንም መቆራረጥ የማንሸራተቻ አኒሜሽን ህግ */
-    @keyframes indexScrollLeftToRight {
-        0% { transform: translateX(-50%); } /* ከግራ ተነስቶ */
-        100% { transform: translateX(0); } /* ወደ ቀኝ ይጓዛል */
+    /* 🏃‍♂️ 💡 መቶ አለቃ፣ ፎቶዎቹን አሁን ባሉበት ቅርጽ ከላይ ወደ ታች በዝግታ የሚያሽከረክረው ዋናው አኒሜሽን */
+    @keyframes scrollPhotosTopToBottom {
+        0% { transform: translateY(-50%); } /* ከላይ ይጀምራል */
+        100% { transform: translateX(0); } /* ወደ ታች ይጓዛል */
     }
 </style>
+
 
 
 
