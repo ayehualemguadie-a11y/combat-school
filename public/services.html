@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="am">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>የሚሰጡ አገልግሎቶች - የጤና ተቋም</title>
+    <link rel="stylesheet" href="style.css"> 
+    <style>
+        body {
+            background-image: url('images/bg-smoke.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        .nav-bar {
+            background-color: rgba(44, 62, 80, 0.85);
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        
+        .home-btn {
+            background-color: #e74c3c;
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-weight: bold;
+            font-size: 15px;
+            transition: background 0.3s ease;
+        }
+        .home-btn:hover {
+            background-color: #c0392b;
+        }
+
+        .services-container {
+            max-width: 1100px;
+            margin: 40px auto;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .page-title {
+            color: #ffffff;
+            font-size: 32px;
+            font-weight: bold;
+            margin-bottom: 30px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.6);
+        }
+
+        /* የይዘቱ ዋና ሳጥን አቀማመጥ */
+        .content-box {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: rgba(0, 0, 0, 0.75);
+            border-radius: 12px;
+            border: 4px solid #fbbf24; /* ወርቃማው የመከላከያ ፍሬም */
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+            padding: 30px;
+        }
+
+        /* 📐 መቶ አለቃ፣ ፎቶው ሳይንዘረጠጥ በጥራት የሚቀመጥበት ልክ */
+        .hospital-image-wrapper {
+            width: 100%;
+            max-width: 700px;
+            height: 420px;
+            border-radius: 8px;
+            overflow: hidden;
+            margin-bottom: 25px;
+            border: 2px solid rgba(255,255,255,0.2);
+        }
+
+        .hospital-image-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* ፎቶው ሳይለጠጥና ሳይቆረጥ ይሞላል */
+            object-position: center center;
+        }
+
+        .text-section {
+            width: 100%;
+            max-width: 850px;
+            text-align: center;
+        }
+
+        .main-subtitle {
+            color: #fbbf24;
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            border-bottom: 2px solid rgba(251, 191, 36, 0.3);
+            padding-bottom: 10px;
+        }
+
+        /* የሕክምና አገልግሎቶች ዝርዝር */
+        .service-list {
+            list-style: none;
+            padding: 0;
+            margin: 20px 0;
+            text-align: left;
+            display: inline-block;
+        }
+
+        .service-list li {
+            color: #ffffff;
+            font-size: 19px;
+            line-height: 1.8;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+
+        .service-list span {
+            color: #fbbf24;
+            font-size: 22px;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="nav-bar">
+        <span style="color: white; font-weight: bold; font-size: 18px;">የውጊያ ቴክኒክ ትምህርት ቤት</span>
+        <a href="/" class="home-btn">🏠 ወደ ዋናው ገጽ (Home) ተመለስ</a>
+    </div>
+
+    <div class="services-container">
+        <h1 class="page-title">የሚሰጡ አገልግሎቶች</h1>
+
+        <div class="content-box">
+            <!-- 📸 የጤና ተቋሙ ፎቶ ማሳያ -->
+            <div class="hospital-image-wrapper">
+                <img src="images/hospital.jpg" alt="የአዋሽ አርባ መከላከያ ካምፕ የጤና ተቋም">
+            </div>
+
+            <!-- ✍️ የሕክምና አገልግሎት መግለጫ ጽሑፍ -->
+            <div class="text-section">
+                <h2 class="main-subtitle">የአዋሽ አርባ መከላከያ ካምፕ የጤና ተቋም</h2>
+                
+                <ul class="service-list">
+                    <li><span>🏥</span> በዋናነት ለሠራዊቱ አባላት እና ለአካባቢው ማህበረሰብ የሚሰጥ የጤና እንክብካቤ፣</li>
+                    <li><span>⚡</span> ድንገተኛ የመጀመሪያ ደረጃ ሕክምና አገልግሎት፣</li>
+                    <li><span>🩺</span> የተመላላሽ ታካሚ (OPD) የሕክምና አገልግሎት፣</li>
+                    <li><span>🩹</span> የቁስል እንክብካቤ እና ክትትል፣</li>
+                    <li><span>🦟</span> የወባ በሽታ መከላከያና የሕክምና አገልግሎት ይሰጣል።</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
