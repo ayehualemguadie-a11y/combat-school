@@ -224,23 +224,31 @@
         position: relative;
         width: 100% !important; 
         max-width: 100% !important; /* ሙሉ ስክሪን ዳርና ዳር እንዲነካ */
-        height: 1050px !important; /* 💡 መቶ አለቃ፣ ፎቶው ወደላይ በግዙፉ እንዲረዝም ቁመቱ 1050px ሆኗል! */
+        height: 1050px !important; /* 💡 ፎቶው ወደላይ በግዙፉ እንዲረዝም ቁመቱ 1050px ሆኗል! */
         margin: 5px auto !important; /* ወደ ላይ ከፍ ብሎ እንዲቀመጥ */
-        overflow: hidden;
+        overflow: hidden !important;
         border-bottom: 4px solid #fbbf24; /* ወርቃማው የመከላከያ መስመር */
         background-color: #000;
     }
 
-    /* ሁሉንም 6 ፎቶዎች አንድ ቦታ ላይ ደራርቦ 100% ሙሉ ለማድረግ */
+    /* 💡 ፎቶዎቹ በአንድ ረድፍ ተሰልፈው ከግራ ወደ ቀኝ እንዲንቀሳቀሱ display: flex ተደርጓል */
+    .training-marquee-track {
+        display: flex !important;
+        width: max-content !important;
+        animation: scrollPhotosLeftToRight 40s linear infinite !important; /* 🏃‍♂️ ከግራ ወደ ቀኝ ማዞሪያ */
+    }
+
+    .training-marquee-container:hover .training-marquee-track {
+        animation-play-state: paused !important;
+    }
+
+    /* 📐 ፎቶዎቹ ሳይንዘረጠሩና ሳይቆረጡ በአንድ መስመር እንዲሰለፉ የተቆለፈበት ልክ */
     .training-photo-item {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100% !important;
-        height: 100% !important;
-        opacity: 0;
-        z-index: 1;
-        transition: opacity 1s ease-in-out;
+        display: inline-block !important;
+        position: relative !important;
+        width: 1400px !important; /* ሙሉ ስክሪን እንዲሸፍን ስፋቱ ጨምሯል */
+        height: 1050px !important; /* ሙሉ አካላቸው በግልጽ የሚታይበት ቁመት */
+        flex-shrink: 0 !important;
     }
 
     /* 💡 ፎቶው ሳይቆረጥ በቁመቱ ሙሉ በሙሉ በጥራት እንዲታይ ማድረጊያ */
@@ -248,35 +256,20 @@
         width: 100% !important;
         height: 100% !important;
         object-fit: cover !important; /* ፎቶው እንዳይበላሽ መቆለፊያ */
-        object-position: center center !important; /* ፎቶውን መሃል ለመሃል ያደርገዋል */
-    }
-
-    /* 🏃‍♂️ የ (Smooth Fade) አኒሜሽን ጊዜ ለእያንዳንዱ ፎቶ */
-    .training-photo-item:nth-child(1) { animation: etduPureFadeAnimation 24s infinite; animation-delay: 0s; }
-    .training-photo-item:nth-child(2) { animation: etduPureFadeAnimation 24s infinite; animation-delay: 4s; }
-    .training-photo-item:nth-child(3) { animation: etduPureFadeAnimation 24s infinite; animation-delay: 8s; }
-    .training-photo-item:nth-child(4) { animation: etduPureFadeAnimation 24s infinite; animation-delay: 12s; }
-    .training-photo-item:nth-child(5) { animation: etduPureFadeAnimation 24s infinite; animation-delay: 16s; }
-    .training-photo-item:nth-child(6) { animation: etduPureFadeAnimation 24s infinite; animation-delay: 20s; }
-
-    @keyframes etduPureFadeAnimation {
-        0% { opacity: 0; }
-        2% { opacity: 1; z-index: 2; }
-        16.66% { opacity: 1; z-index: 2; }
-        20.66% { opacity: 0; z-index: 1; }
-        100% { opacity: 0; z-index: 1; }
+        object-position: center top !important; /* የሰራዊቱን ራስ ከአናቱ በትክክል ያስተካክላል */
+        display: block !important;
     }
 
     /* ✍️ መፈክሮቹ በጥራት የሚንሳፈፉበት ሳጥን */
     .slogan-overlay-box {
         position: absolute;
-        bottom: 60px; /* ፎቶው ሲረዝም ጽሑፉ ይበልጥ ከፍ እንዲል */
+        bottom: 80px; /* ፎቶው ሲረዝም ጽሑፉ ይበልጥ ከፍ እንዲል */
         left: 50%;
         transform: translateX(-50%);
         background: rgba(0, 0, 0, 0.75); /* ጥቁር ጥላ */
         padding: 14px 25px;
         border-radius: 8px;
-        border-bottom: 4px solid #fbbf24; /* ወርቃማ መስመር */
+        border-bottom: 4px solid #fbbf24; /* @ወርቃማ መስመር */
         width: 85%;
         text-align: center;
         z-index: 10 !important;
@@ -291,8 +284,10 @@
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
 
-    .training-marquee-container:hover .training-photo-item {
-        animation-play-state: paused;
+    /* 🏃‍♂️ ከግራ ወደ ቀኝ ያለምንም ማቋረጥ የሚጓዘው አኒሜሽን ህግ */
+    @keyframes scrollPhotosLeftToRight {
+        0% { transform: translateX(-50%); }
+        100% { transform: translateX(0); }
     }
 </style>
 
