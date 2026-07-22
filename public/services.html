@@ -62,29 +62,31 @@
             text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
         }
 
-        /* 💡 መቶ አለቃ፣ ፎቶው ከላይ መግለጫው ከታች እንዲሆን የተሰራው የካርድ ማዕቀፍ */
+        /* 💡 መቶ አለቃ፣ ሁለቱ ካርዶች ጎን ለጎን እኩል እንዲሰለፉ የተደረገበት ግሪድ */
         .service-card-grid {
-            display: flex;
-            justify-content: center;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+            gap: 30px;
             padding: 10px;
         }
 
         .service-card {
             background: #ffffff;
             width: 100%;
-            max-width: 550px; /* በላኩት ፎቶ ልክ መካከለኛ ስፋት */
-            border-radius: 16px; /* ውብ የክብደት ማዕዘን */
+            border-radius: 16px;
             overflow: hidden;
             box-shadow: 0 10px 30px rgba(0,0,0,0.5);
             text-align: left;
-            border: 3px solid #fbbf24; /* ወርቃማ ፍሬም */
-            position: relative;
+            border: 3px solid #fbbf24;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
 
-        /* 📐 ፎቶው ሳይንዘረጠጥና ሳይቆረጥ መጠኑ አነስ ብሎ የተቀመጠበት ልክ */
+        /* 📐 የፎቶዎቹ መጠን እኩልና አነስ ተደርጎ የተቆለፈበት ልክ */
         .card-image-wrapper {
             width: 100%;
-            height: 240px; /* 💡 በላኩት ፎቶ ልክ ቁመቱ በጥራት አነስ ተደርጓል */
+            height: 240px;
             position: relative;
             background-color: #000;
         }
@@ -96,7 +98,6 @@
             object-position: center center;
         }
 
-        /* በፎቶው ላይ የሚንሳፈፉት ትናንሽ በተኖች (ልክ እንደ ላኩት ምስል) */
         .badge-essential {
             position: absolute;
             top: 15px;
@@ -130,10 +131,10 @@
             border: 1px solid rgba(255,255,255,0.4);
         }
 
-        /* ✍️ መግለጫው ከታች የሚቀመጥበት ንጹሕ ክፍል */
         .card-content {
             padding: 25px;
             background: #ffffff;
+            flex-grow: 1;
         }
 
         .card-content h2 {
@@ -161,15 +162,13 @@
     </div>
 
     <div class="services-container">
-        <h1 class="page-title">ት/ቤቱ  የሚሰጣቸው አገልግሎቶች </h1>
-        <p class="page-subtitle">አዋሽ አርባ ደረጃ ሁለት ሆስፒታል</p>
+        <h1 class="page-title">Essential School Services</h1>
+        <p class="page-subtitle">Core services designed to support our community, health, and development</p>
 
         <div class="service-card-grid">
             
-            <!-- 💡 መቶ አለቃ፣ አዲሱ ዘመናዊ የጤና ተቋም ካርድ እዚህ ይጀምራል -->
+            <!-- ካርድ 1፦ የጤና ተቋም (በግራ በኩል) -->
             <div class="service-card">
-                
-                <!-- የላይኛው የፎቶ ክፍል (ቁመቱ አነስ ያለ) -->
                 <div class="card-image-wrapper">
                     <img src="images/hospital.jpg" alt="የጤና ተቋም">
                     <div class="badge-essential">★ Essential</div>
@@ -178,15 +177,31 @@
                         <div class="img-btn">24/7 Emergency 🚑</div>
                     </div>
                 </div>
-
-                <!-- የታችኛው የመግለጫ ክፍል -->
                 <div class="card-content">
                     <h2>Student Health Center</h2>
                     <p>
-                      የአዋሽ አርባ ደረጃ ሁለት ሆስፒታል በዋናነት ለአባላቱ እና ለአካባቢው ማህበረሰብ ድንገተኛ የመጀመሪያ ደረጃ ህክምና፣ የተመላላሽ ታካሚ (OPD) አገልግሎት፣ የቁስል እንክብካቤ እና የወባ በሽታ መከላከያ ህክምና ይሰጣል።
+                        የአዋሽ አርባ መከላከያ ካምፕ የጤና ተቋም በዋናነት ለአባላቱ እና ለአካባቢው ማህበረሰብ ድንገተኛ የመጀመሪያ ደረጃ ህክምና፣ የተመላላሽ ታካሚ (OPD) አገልግሎት፣ የቁስል እንክብካቤ እና የወባ በሽታ መከላከያ ህክምና ይሰጣል።
                     </p>
                 </div>
+            </div>
 
+            <!-- 🛠️ ካርድ 2፦ በምግብ ራስን መቻል (በቀኝ በኩል) -->
+            <div class="service-card">
+                <div class="card-image-wrapper">
+                    <!-- 💡 የላኩልኝ አዲስ ፎቶ እዚህ ገብቷል -->
+                    <img src="images/onion-field.jpg" alt="በምግብ ራስን ለመቻል የተሰሩ ስራዎች">
+                    <div class="badge-essential">★ Development</div>
+                    <div class="image-labels">
+                        <div class="img-btn">Agriculture 🌾</div>
+                        <div class="img-btn">Self-Sufficiency 🚜</div>
+                    </div>
+                </div>
+                <div class="card-content">
+                    <h2>በምግብ ራስን ለመቻል የተሰሩ ስራዎች</h2>
+                    <p>
+                        በትምህርት ቤታችን የግብርና ዘርፍን በማጠናከር፣ የምግብ ዋስትናን ለማረጋገጥና በምግብ ራስን ለመቻል ሰፊ የሽንኩርትና ልዩ ልዩ የአትክልት ልማት ሥራዎች በተሳካ ሁኔታ ተከናውነዋል። ይህም ለካምፑ አባላትና ለአካባቢው ትልቅ አቅም ፈጥሯል።
+                    </p>
+                </div>
             </div>
 
         </div>
