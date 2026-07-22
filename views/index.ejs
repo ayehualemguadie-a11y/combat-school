@@ -219,12 +219,12 @@
 </section>
 <style>
 <style>
-    /* 📐 መቶ አለቃ፣ ፎቶዎቹ ሳይቆረጡ ሙሉ በሙሉ እንዲታዩ ቁመቱ ወደ 780px ያደገ ማዕቀፍ */
+    /* 📐 መቶ አለቃ፣ ሰራዊቱ ሙሉ በሙሉ እንዲታይ ቁመቱ ወደ 1050px በግዙፉ ያደገ ማዕቀፍ */
     .training-marquee-container {
         position: relative;
         width: 100% !important; 
         max-width: 100% !important; /* ሙሉ ስክሪን ዳርና ዳር እንዲነካ */
-        height: 780px !important; /* 💡 በፈለጉት መሠረት ቁመቱ ከ520px ወደ 780px በግዙፉ አድጓል! */
+        height: 1050px !important; /* 💡 መቶ አለቃ፣ ፎቶው ወደላይ በግዙፉ እንዲረዝም ቁመቱ 1050px ሆኗል! */
         margin: 5px auto !important; /* ወደ ላይ ከፍ ብሎ እንዲቀመጥ */
         overflow: hidden;
         border-bottom: 4px solid #fbbf24; /* ወርቃማው የመከላከያ መስመር */
@@ -243,11 +243,11 @@
         transition: opacity 1s ease-in-out;
     }
 
-    /* 💡 ፎቶው ሳይቆረጥ በተፈጥሮ ቅርጹ በጥራት እንዲታይ ማድረጊያ */
+    /* 💡 ፎቶው ሳይቆረጥ በቁመቱ ሙሉ በሙሉ በጥራት እንዲታይ ማድረጊያ */
     .training-photo-item img {
         width: 100% !important;
         height: 100% !important;
-        object-fit: cover !important; /* 💡 ፎቶው ተለጥጦ እንዳይበላሽና እንዳይቆረጥ ያደርገዋል */
+        object-fit: cover !important; /* ፎቶው እንዳይበላሽ መቆለፊያ */
         object-position: center center !important; /* ፎቶውን መሃል ለመሃል ያደርገዋል */
     }
 
@@ -270,7 +270,7 @@
     /* ✍️ መፈክሮቹ በጥራት የሚንሳፈፉበት ሳጥን */
     .slogan-overlay-box {
         position: absolute;
-        bottom: 45px; /* ከታች ከፍ ብሎ */
+        bottom: 60px; /* ፎቶው ሲረዝም ጽሑፉ ይበልጥ ከፍ እንዲል */
         left: 50%;
         transform: translateX(-50%);
         background: rgba(0, 0, 0, 0.75); /* ጥቁር ጥላ */
