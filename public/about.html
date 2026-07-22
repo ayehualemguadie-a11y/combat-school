@@ -60,10 +60,46 @@
         
         <h2 align="center" style="margin-bottom: 25px;">🛡️ የውጊያ ቴክኒክ ት/ቤት የሚሰጣቸው ሥልጠናዎች</h2>
                 <!-- 🖼️ ⚠️ የትምህርት ቤቱ ዋና መግቢያ በር (gate.jpg) ፎቶግራፍ በአቦውት ገጽ ላይ በትልቁ ተቆልፏል -->
-        <div style="text-align: center; margin: 25px auto; max-width: 750px;">
-            <img src="/images/gate.jpg" style="width: 100%; height: auto; border-radius: 10px; border: 3.5px solid #fbbf24; box-shadow: 0 8px 20px rgba(0,0,0,0.5);" alt="Combat Technic School Main Gate">
-            <div style="margin-top: 10px; font-weight: bold; color: #fbbf24; font-size: 15px; font-style: italic;">የውጊያ ቴክኒክ ትምህርት ቤት ዋና መግቢያ በር</div>
+               <!-- 🛠️ መቶ አለቃ፣ gate.jpg እና general.jpg ፎቶዎችን ብቻ ከግራ ወደ ቀኝ የሚያዞረው አዲሱ ክፍል -->
+        <div class="about-slider-container" style="width: 100% !important; max-width: 100% !important; overflow: hidden; background: rgba(255, 255, 255, 0.1); padding: 20px 0; margin: 30px auto !important; box-shadow: inset 0 0 10px rgba(0,0,0,0.3);">
+            <div class="about-slider-track" style="display: flex !important; width: max-content !important; animation: aboutScrollLeftToRight 25s linear infinite !important;">
+                
+                <!-- 💡 የመጀመሪያው ዙር (2 ፎቶዎች) -->
+                <div class="about-photo-card" style="display: block !important; background: rgba(255, 255, 255, 0.95) !important; border-radius: 12px !important; box-shadow: 0 6px 20px rgba(0,0,0,0.4) !important; overflow: hidden !important; width: 440px !important; height: 290px !important; margin: 0 20px !important; flex-shrink: 0 !important; border: 3px solid #fbbf24 !important;">
+                    <img src="images/gate.jpg" style="width: 100% !important; height: 100% !important; object-fit: cover !important; display: block !important;">
+                </div>
+                <div class="about-photo-card" style="display: block !important; background: rgba(255, 255, 255, 0.95) !important; border-radius: 12px !important; box-shadow: 0 6px 20px rgba(0,0,0,0.4) !important; overflow: hidden !important; width: 440px !important; height: 290px !important; margin: 0 20px !important; flex-shrink: 0 !important; border: 3px solid #fbbf24 !important;">
+                    <img src="images/general.jpg" style="width: 100% !important; height: 100% !important; object-fit: cover !important; display: block !important;">
+                </div>
+                
+                <!-- 💡 የሁለተኛው ዙር ድግግሞሽ (ያለምንም ማቋረጥ እንዲዞር) -->
+                <div class="about-photo-card" style="display: block !important; background: rgba(255, 255, 255, 0.95) !important; border-radius: 12px !important; box-shadow: 0 6px 20px rgba(0,0,0,0.4) !important; overflow: hidden !important; width: 440px !important; height: 290px !important; margin: 0 20px !important; flex-shrink: 0 !important; border: 3px solid #fbbf24 !important;">
+                    <img src="images/gate.jpg" style="width: 100% !important; height: 100% !important; object-fit: cover !important; display: block !important;">
+                </div>
+                <div class="about-photo-card" style="display: block !important; background: rgba(255, 255, 255, 0.95) !important; border-radius: 12px !important; box-shadow: 0 6px 20px rgba(0,0,0,0.4) !important; overflow: hidden !important; width: 440px !important; height: 290px !important; margin: 0 20px !important; flex-shrink: 0 !important; border: 3px solid #fbbf24 !important;">
+                    <img src="images/general.jpg" style="width: 100% !important; height: 100% !important; object-fit: cover !important; display: block !important;">
+                </div>
+
+                <!-- 💡 የሦስተኛው ዙር ድግግሞሽ (ትራኩን ሞልቶ በለስላሳ ሁኔታ እንዲንሸራተት) -->
+                <div class="about-photo-card" style="display: block !important; background: rgba(255, 255, 255, 0.95) !important; border-radius: 12px !important; box-shadow: 0 6px 20px rgba(0,0,0,0.4) !important; overflow: hidden !important; width: 440px !important; height: 290px !important; margin: 0 20px !important; flex-shrink: 0 !important; border: 3px solid #fbbf24 !important;">
+                    <img src="images/gate.jpg" style="width: 100% !important; height: 100% !important; object-fit: cover !important; display: block !important;">
+                </div>
+                <div class="about-photo-card" style="display: block !important; background: rgba(255, 255, 255, 0.95) !important; border-radius: 12px !important; box-shadow: 0 6px 20px rgba(0,0,0,0.4) !important; overflow: hidden !important; width: 440px !important; height: 290px !important; margin: 0 20px !important; flex-shrink: 0 !important; border: 3px solid #fbbf24 !important;">
+                    <img src="images/general.jpg" style="width: 100% !important; height: 100% !important; object-fit: cover !important; display: block !important;">
+                </div>
+            </div>
         </div>
+
+        <!-- 🏃‍♂️ ከግራ ወደ ቀኝ የሚያሸራትተው የአኒሜሽን ህግ -->
+        <style>
+            @keyframes aboutScrollLeftToRight {
+                0% { transform: translateX(-50%); }
+                100% { transform: translateX(0); }
+            }
+            .about-slider-container:hover .about-slider-track {
+                animation-play-state: paused !important;
+            }
+        </style>
 
         
         <p>
