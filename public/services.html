@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>የሚሰጡ አገልግሎቶች - የጤና ተቋም</title>
+    <title>የሚሰጡ አገልግሎቶች - Services</title>
     <link rel="stylesheet" href="style.css"> 
     <style>
         body {
@@ -41,7 +41,7 @@
         }
 
         .services-container {
-            max-width: 1100px;
+            max-width: 1200px;
             margin: 40px auto;
             padding: 20px;
             text-align: center;
@@ -49,79 +49,107 @@
         
         .page-title {
             color: #ffffff;
-            font-size: 32px;
+            font-size: 36px;
             font-weight: bold;
-            margin-bottom: 30px;
+            margin-bottom: 10px;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.6);
         }
 
-        /* የይዘቱ ዋና ሳጥን አቀማመጥ */
-        .content-box {
+        .page-subtitle {
+            color: #ecf0f1;
+            font-size: 16px;
+            margin-bottom: 40px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        }
+
+        /* 💡 መቶ አለቃ፣ ፎቶው ከላይ መግለጫው ከታች እንዲሆን የተሰራው የካርድ ማዕቀፍ */
+        .service-card-grid {
             display: flex;
-            flex-direction: column;
-            align-items: center;
-            background: rgba(0, 0, 0, 0.75);
-            border-radius: 12px;
-            border: 4px solid #fbbf24; /* ወርቃማው የመከላከያ ፍሬም */
-            overflow: hidden;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
-            padding: 30px;
+            justify-content: center;
+            padding: 10px;
         }
 
-        /* 📐 መቶ አለቃ፣ ፎቶው ሳይንዘረጠጥ በጥራት የሚቀመጥበት ልክ */
-        .hospital-image-wrapper {
+        .service-card {
+            background: #ffffff;
             width: 100%;
-            max-width: 700px;
-            height: 420px;
-            border-radius: 8px;
+            max-width: 550px; /* በላኩት ፎቶ ልክ መካከለኛ ስፋት */
+            border-radius: 16px; /* ውብ የክብደት ማዕዘን */
             overflow: hidden;
-            margin-bottom: 25px;
-            border: 2px solid rgba(255,255,255,0.2);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            text-align: left;
+            border: 3px solid #fbbf24; /* ወርቃማ ፍሬም */
+            position: relative;
         }
 
-        .hospital-image-wrapper img {
+        /* 📐 ፎቶው ሳይንዘረጠጥና ሳይቆረጥ መጠኑ አነስ ብሎ የተቀመጠበት ልክ */
+        .card-image-wrapper {
+            width: 100%;
+            height: 240px; /* 💡 በላኩት ፎቶ ልክ ቁመቱ በጥራት አነስ ተደርጓል */
+            position: relative;
+            background-color: #000;
+        }
+
+        .card-image-wrapper img {
             width: 100%;
             height: 100%;
-            object-fit: cover; /* ፎቶው ሳይለጠጥና ሳይቆረጥ ይሞላል */
+            object-fit: cover;
             object-position: center center;
         }
 
-        .text-section {
-            width: 100%;
-            max-width: 850px;
-            text-align: center;
+        /* በፎቶው ላይ የሚንሳፈፉት ትናንሽ በተኖች (ልክ እንደ ላኩት ምስል) */
+        .badge-essential {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background-color: #f39c12;
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+            text-transform: uppercase;
         }
 
-        .main-subtitle {
-            color: #fbbf24;
+        .image-labels {
+            position: absolute;
+            bottom: 15px;
+            left: 15px;
+            display: flex;
+            gap: 10px;
+        }
+
+        .img-btn {
+            background: rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+            color: white;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: bold;
+            border: 1px solid rgba(255,255,255,0.4);
+        }
+
+        /* ✍️ መግለጫው ከታች የሚቀመጥበት ንጹሕ ክፍል */
+        .card-content {
+            padding: 25px;
+            background: #ffffff;
+        }
+
+        .card-content h2 {
+            margin: 0 0 12px 0;
+            color: #1a252f;
             font-size: 24px;
             font-weight: bold;
-            margin-bottom: 20px;
-            border-bottom: 2px solid rgba(251, 191, 36, 0.3);
-            padding-bottom: 10px;
         }
 
-        /* የሕክምና አገልግሎቶች ዝርዝር */
-        .service-list {
-            list-style: none;
-            padding: 0;
-            margin: 20px 0;
-            text-align: left;
-            display: inline-block;
-        }
-
-        .service-list li {
-            color: #ffffff;
-            font-size: 19px;
-            line-height: 1.8;
-            margin-bottom: 15px;
-            font-weight: bold;
-        }
-
-        .service-list span {
-            color: #fbbf24;
-            font-size: 22px;
-            margin-right: 10px;
+        .card-content p {
+            margin: 0;
+            color: #5a6c7d;
+            font-size: 16px;
+            line-height: 1.7;
+            font-weight: 500;
+            text-align: justify;
         }
     </style>
 </head>
@@ -133,26 +161,34 @@
     </div>
 
     <div class="services-container">
-        <h1 class="page-title">የሚሰጡ አገልግሎቶች</h1>
+        <h1 class="page-title">Essential Student Services</h1>
+        <p class="page-subtitle">Core services designed to support your academic success, health, and overall well-being</p>
 
-        <div class="content-box">
-            <!-- 📸 የጤና ተቋሙ ፎቶ ማሳያ -->
-            <div class="hospital-image-wrapper">
-                <img src="images/hospital.jpg" alt="የአዋሽ አርባ መከላከያ ካምፕ የጤና ተቋም">
-            </div>
-
-            <!-- ✍️ የሕክምና አገልግሎት መግለጫ ጽሑፍ -->
-            <div class="text-section">
-                <h2 class="main-subtitle">የአዋሽ አርባ መከላከያ ካምፕ የጤና ተቋም</h2>
+        <div class="service-card-grid">
+            
+            <!-- 💡 መቶ አለቃ፣ አዲሱ ዘመናዊ የጤና ተቋም ካርድ እዚህ ይጀምራል -->
+            <div class="service-card">
                 
-                <ul class="service-list">
-                    <li><span>🏥</span> በዋናነት ለሠራዊቱ አባላት እና ለአካባቢው ማህበረሰብ የሚሰጥ የጤና እንክብካቤ፣</li>
-                    <li><span>⚡</span> ድንገተኛ የመጀመሪያ ደረጃ ሕክምና አገልግሎት፣</li>
-                    <li><span>🩺</span> የተመላላሽ ታካሚ (OPD) የሕክምና አገልግሎት፣</li>
-                    <li><span>🩹</span> የቁስል እንክብካቤ እና ክትትል፣</li>
-                    <li><span>🦟</span> የወባ በሽታ መከላከያና የሕክምና አገልግሎት ይሰጣል።</li>
-                </ul>
+                <!-- የላይኛው የፎቶ ክፍል (ቁመቱ አነስ ያለ) -->
+                <div class="card-image-wrapper">
+                    <img src="images/hospital.jpg" alt="የጤና ተቋም">
+                    <div class="badge-essential">★ Essential</div>
+                    <div class="image-labels">
+                        <div class="img-btn">Health Services 🏥</div>
+                        <div class="img-btn">24/7 Emergency 🚑</div>
+                    </div>
+                </div>
+
+                <!-- የታችኛው የመግለጫ ክፍል -->
+                <div class="card-content">
+                    <h2>Student Health Center</h2>
+                    <p>
+                      የአዋሽ አርባ ደረጃ ሁለት ሆስፒታል በዋናነት ለአባላቱ እና ለአካባቢው ማህበረሰብ ድንገተኛ የመጀመሪያ ደረጃ ህክምና፣ የተመላላሽ ታካሚ (OPD) አገልግሎት፣ የቁስል እንክብካቤ እና የወባ በሽታ መከላከያ ህክምና ይሰጣል።
+                    </p>
+                </div>
+
             </div>
+
         </div>
     </div>
 
