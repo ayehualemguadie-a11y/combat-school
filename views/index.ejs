@@ -176,71 +176,124 @@
             "ጠንካራ የሜካናይዝድ ኃይል በመገንባት ዝግጁነታችንን እናረጋግጣለን!"
         </h2>
 
-      <div class="training-marquee-container">
-    <!-- መፈክሩ በፎቶዎቹ ላይ በግልጽ እንዲታይ ከላይ ተቀምጧል -->
-    <!-- 🛠️ መቶ አለቃ፣ ይህንን የጽሑፍ መስመር ከኮዱ ውስጥ ፈልገው ሙሉ በሙሉ ያጥፉት -->
-<div class="slogan-overlay">
-    <h2>«ስልጠናችንን በማዘመን ተዋግቶ የሚያሸንፍ የሜካናይዝድ ሃይል እናፈራለን!»</h2>
-</div>
+    <div class="training-marquee-container">
+    
+    <!-- 💡 ፎቶ 1 እና መፈክር 1 -->
+    <div class="training-photo-item">
+        <img src="images/H1.jpg" alt="ስልጠና 1">
+        <div class="slogan-overlay-box"><h2>"ጠንካራ የሜካናይዝድ ኃይል በመገንባት ዝግጁነታችንን እናረጋግጣለን!"</h2></div>
+    </div>
+    
+    <!-- 💡 ፎቶ 2 እና መፈክር 2 -->
+    <div class="training-photo-item">
+        <img src="images/H2.jpg" alt="ስልጠና 2">
+        <div class="slogan-overlay-box"><h2>«ስልጠናችንን በማዘመን ተዋግቶ የሚያሸንፍ የሜካናይዝድ ሃይል እናፈራለን!»</h2></div>
+    </div>
+    
+    <!-- 💡 ፎቶ 3 እና መፈክር 1 -->
+    <div class="training-photo-item">
+        <img src="images/H3.jpg" alt="ስልጠና 3">
+        <div class="slogan-overlay-box"><h2>"ጠንካራ የሜካናይዝድ ኃይል በመገንባት ዝግጁነታችንን እናረጋግጣለን!"</h2></div>
+    </div>
+    
+    <!-- 💡 ፎቶ 4 እና መፈክር 2 -->
+    <div class="training-photo-item">
+        <img src="images/H4.jpg" alt="ስልጠና 4">
+        <div class="slogan-overlay-box"><h2>«ስልጠናችንን በማዘመን ተዋግቶ የሚያሸንፍ የሜካናይዝድ ሃይል እናፈራለን!»</h2></div>
+    </div>
+    
+    <!-- 💡 ፎቶ 5 እና መፈክር 1 -->
+    <div class="training-photo-item">
+        <img src="images/H5.jpg" alt="ስልጠና 5">
+        <div class="slogan-overlay-box"><h2>"ጠንካራ የሜካናይዝድ ኃይል በመገንባት ዝግጁነታችንን እናረጋግጣለን!"</h2></div>
+    </div>
+    
+    <!-- 💡 ፎቶ 6 እና መፈክር 2 -->
+    <div class="training-photo-item">
+        <img src="images/H6.jpg" alt="ስልጠና 6">
+        <div class="slogan-overlay-box"><h2>«ስልጠናችንን በማዘመን ተዋግቶ የሚያሸንፍ የሜካናይዝድ ሃይል እናፈራለን!»</h2></div>
+    </div>
 
-
-    <!-- 💡 መቶ አለቃ፣ አዲሶቹ H1 እስከ H6 ፎቶዎች እዚህ ገብተዋል -->
-    <div class="training-photo-item"><img src="images/H1.jpg" alt="ስልጠና 1"></div>
-    <div class="training-photo-item"><img src="images/H2.jpg" alt="ስልጠና 2"></div>
-    <div class="training-photo-item"><img src="images/H3.jpg" alt="ስልጠና 3"></div>
-    <div class="training-photo-item"><img src="images/H4.jpg" alt="ስልጠና 4"></div>
-    <div class="training-photo-item"><img src="images/H5.jpg" alt="ስልጠና 5"></div>
-    <div class="training-photo-item"><img src="images/H6.jpg" alt="ስልጠና 6"></div>
 </div>
 
 </section>
 <style>
 <style>
-    /* 📐 መቶ አለቃ፣ ፎቶዎቹ 2 በ 2 ሆነው ያለምንም መንዘረጥረት የሚቀመጡበት ዋና ማዕቀፍ */
+    /* 📐 መቶ አለቃ፣ ፎቶዎቹ ወደ ላይ ከፍ እንዲሉ Margin-top በጥቂቱ ቀንሶ የተስተካከለ ማዕቀፍ */
     .training-marquee-container {
-        width: 100% !important;
-        max-width: 1200px !important;
-        margin: 20px auto !important;
-        padding: 10px !important;
+        position: relative;
+        width: 100% !important; 
+        max-width: 100% !important; /* ሙሉ ስክሪን ዳርና ዳር ይነካል */
+        height: 520px !important; /* ለፎቶዎቹና ለጽሑፉ ሚዛናዊ ቁመት */
+        margin: 5px auto !important; /* 💡 ወደ ላይ ከፍ ብሎ እንዲቀመጥ ከላይ ያለው ክፍተት በጣም እንዲያንስ ተደርጓል */
+        overflow: hidden;
+        border-bottom: 4px solid #fbbf24; /* ወርቃማው የመከላከያ መስመር */
+        background-color: #000;
     }
 
-    /* ፎቶዎቹን በጥራት 2 በ 2 አድርጎ በአራት ማዕዘን የሚደረድረው ዋናው ክፍል */
-    .training-marquee-track {
-        display: grid !important;
-        grid-template-columns: repeat(2, 1fr) !important; /* 💡 2 በ 2 አቀማመጡን 100% ይጠብቃል */
-        gap: 25px !important;
-        width: 100% !important;
-    }
-
-    /* 📐 የእያንዳንዱ ፎቶ ካርድ መጠን ሳይለጠጥና ሳይቆረጥ በልክ እንዲቀመጥ መቆለፊያ */
-       /* 📐 መቶ አለቃ፣ ሰራዊቱ ሳይቆረጥ ሙሉ አካሉ እንዲታይ ቁመት ብቻ የጨመረ አዲስ ማዘዣ */
+    /* ሁሉንም 6 ፎቶዎች አንድ ቦታ ላይ ደራርቦ 100% ሙሉ ለማድረግ */
     .training-photo-item {
-        display: block !important;
-        background: rgba(255, 255, 255, 0.95) !important;
-        border-radius: 12px !important;
-        box-shadow: 0 6px 20px rgba(0,0,0,0.4) !important;
-        overflow: hidden !important;
-        height: 550px !important; /* 💡 መቶ አለቃ፣ በፈለጉት መሠረት ቁመት ብቻ ከ340px ወደ 550px በግዙፉ አድጓል! */
-        position: relative !important;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100% !important;
+        height: 100% !important;
+        opacity: 0;
+        z-index: 1;
+        transition: opacity 1s ease-in-out;
     }
 
-    
-    /* 💡 መቶ አለቃ፣ ፎቶዎቹ ወደላይና ወደታች እንዳይንሸራተቱና እንዳይለጠጡ እያንዳንዱ ፎቶ በራሱ ቦታ ላይ በዝግታ እየጠፋ እንዲበራ (Fade) ማድረጊያ */
     .training-photo-item img {
         width: 100% !important;
         height: 100% !important;
-        object-fit: cover !important; /* 💡 ፎቶው እንዳይለጠጥ (እንዳይንዘረተር) የሚቆልፈው ዋናው ማዘዣ ነው */
+        object-fit: cover !important;
         object-position: center center !important;
-        animation: pptVerticalFade 6s ease-in-out infinite !important; /* 💡 በዝግታ በቦታው እየተቀያየረ ይዞራል */
     }
 
-    /* 🏃‍♂️ ፎቶዎቹ ሳይንቀሳቀሱ ባለቡበት ቦታ በዝግታ እየጠፉና እየበሩ የሚተኩበት አኒሜሽን */
-    @keyframes pptVerticalFade {
-        0% { opacity: 0.4; }
-        50% { opacity: 1; }
-        100% { opacity: 0.4; }
+    /* 🏃‍♂️ 💡 መቶ አለቃ፣ ጽሑፎቹ ከፎቶዎቹ ጋር አብረው እንዲበሩና እንዲጠፉ ሙሉ አኒሜሽኑ እዚህ ገብቷል (ጠቅላላ ዙር 24 ሰከንድ) */
+    .training-photo-item:nth-child(1) { animation: etduPureFadeAnimation 24s infinite; animation-delay: 0s; }
+    .training-photo-item:nth-child(2) { animation: etduPureFadeAnimation 24s infinite; animation-delay: 4s; }
+    .training-photo-item:nth-child(3) { animation: etduPureFadeAnimation 24s infinite; animation-delay: 8s; }
+    .training-photo-item:nth-child(4) { animation: etduPureFadeAnimation 24s infinite; animation-delay: 12s; }
+    .training-photo-item:nth-child(5) { animation: etduPureFadeAnimation 24s infinite; animation-delay: 16s; }
+    .training-photo-item:nth-child(6) { animation: etduPureFadeAnimation 24s infinite; animation-delay: 20s; }
+
+    @keyframes etduPureFadeAnimation {
+        0% { opacity: 0; }
+        2% { opacity: 1; z-index: 2; } /* ወዲያውኑ ፎቶውና ጽሑፉ አብረው ፍንትው ብለው ይበራሉ */
+        16.66% { opacity: 1; z-index: 2; } /* ለ 4 ሰከንድ ጸንተው ይቆማሉ */
+        20.66% { opacity: 0; z-index: 1; } /* ቀስ ብለው አብረው እየጠፉ ለቀጣዩ ቦታ ይለቃሉ */
+        100% { opacity: 0; z-index: 1; }
+    }
+
+    /* ✍️ መፈክሮቹ በፎቶዎቹ ላይ የሚንሳፈፉበት ውብ ጥቁር ጥላና ወርቃማ መስመር ያለው ሳጥን */
+    .slogan-overlay-box {
+        position: absolute;
+        bottom: 35px; /* ከታች ከፍ ብሎ */
+        left: 50%;
+        transform: translateX(-50%);
+        background: rgba(0, 0, 0, 0.75); /* ጽሑፉ በደመቀ ሁኔታ እንዲነበብ ጥቁር ጥላ */
+        padding: 12px 25px;
+        border-radius: 8px;
+        border-bottom: 4px solid #fbbf24; /* የታችኛው ወርቃማ መስመር */
+        width: 85%;
+        text-align: center;
+    }
+
+    .slogan-overlay-box h2 {
+        color: #ffffff !important;
+        font-size: 24px;
+        font-weight: bold;
+        margin: 0;
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.9);
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    .training-marquee-container:hover .training-photo-item {
+        animation-play-state: paused;
     }
 </style>
+
 <!-- 🎖️ ያንተ ስም ያለበት የግርጌ ማስታወሻ ልክ እንደ ታስክባር ከዳር እስከ ዳር 100% ሙሉ በሙሉ ተዘርግቷል -->
 <<!-- ⚠️ ከሳጥን ውጭ ወጥቶ ልክ እንደ ዊንዶውስ ታስክባር 100% ከዳር እስከ ዳር የሚዘረጋ አዲስ የክብር Footer -->
 <footer style="background: #111827; color: white; text-align: center; padding: 25px 10px; margin-top: 50px; font-size: 15px; width: 100vw !important; max-width: 100vw !important; position: absolute; left: 50%; transform: translateX(-50%); box-sizing: border-box; z-index: 999; border-radius: 0 !important; box-shadow: none !important;">
