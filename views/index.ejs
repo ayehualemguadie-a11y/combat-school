@@ -219,13 +219,13 @@
 </section>
 <style>
 <style>
-    /* 📐 መቶ አለቃ፣ ፎቶዎቹ ወደ ላይ ከፍ እንዲሉ Margin-top በጥቂቱ ቀንሶ የተስተካከለ ማዕቀፍ */
+    /* 📐 መቶ አለቃ፣ ፎቶዎቹ ሳይቆረጡ ሙሉ በሙሉ እንዲታዩ ቁመቱ ወደ 780px ያደገ ማዕቀፍ */
     .training-marquee-container {
         position: relative;
         width: 100% !important; 
-        max-width: 100% !important; /* ሙሉ ስክሪን ዳርና ዳር ይነካል */
-        height: 520px !important; /* ለፎቶዎቹና ለጽሑፉ ሚዛናዊ ቁመት */
-        margin: 5px auto !important; /* 💡 ወደ ላይ ከፍ ብሎ እንዲቀመጥ ከላይ ያለው ክፍተት በጣም እንዲያንስ ተደርጓል */
+        max-width: 100% !important; /* ሙሉ ስክሪን ዳርና ዳር እንዲነካ */
+        height: 780px !important; /* 💡 በፈለጉት መሠረት ቁመቱ ከ520px ወደ 780px በግዙፉ አድጓል! */
+        margin: 5px auto !important; /* ወደ ላይ ከፍ ብሎ እንዲቀመጥ */
         overflow: hidden;
         border-bottom: 4px solid #fbbf24; /* ወርቃማው የመከላከያ መስመር */
         background-color: #000;
@@ -243,14 +243,15 @@
         transition: opacity 1s ease-in-out;
     }
 
+    /* 💡 ፎቶው ሳይቆረጥ በተፈጥሮ ቅርጹ በጥራት እንዲታይ ማድረጊያ */
     .training-photo-item img {
         width: 100% !important;
         height: 100% !important;
-        object-fit: cover !important;
-        object-position: center center !important;
+        object-fit: cover !important; /* 💡 ፎቶው ተለጥጦ እንዳይበላሽና እንዳይቆረጥ ያደርገዋል */
+        object-position: center center !important; /* ፎቶውን መሃል ለመሃል ያደርገዋል */
     }
 
-    /* 🏃‍♂️ 💡 መቶ አለቃ፣ ጽሑፎቹ ከፎቶዎቹ ጋር አብረው እንዲበሩና እንዲጠፉ ሙሉ አኒሜሽኑ እዚህ ገብቷል (ጠቅላላ ዙር 24 ሰከንድ) */
+    /* 🏃‍♂️ የ (Smooth Fade) አኒሜሽን ጊዜ ለእያንዳንዱ ፎቶ */
     .training-photo-item:nth-child(1) { animation: etduPureFadeAnimation 24s infinite; animation-delay: 0s; }
     .training-photo-item:nth-child(2) { animation: etduPureFadeAnimation 24s infinite; animation-delay: 4s; }
     .training-photo-item:nth-child(3) { animation: etduPureFadeAnimation 24s infinite; animation-delay: 8s; }
@@ -260,24 +261,25 @@
 
     @keyframes etduPureFadeAnimation {
         0% { opacity: 0; }
-        2% { opacity: 1; z-index: 2; } /* ወዲያውኑ ፎቶውና ጽሑፉ አብረው ፍንትው ብለው ይበራሉ */
-        16.66% { opacity: 1; z-index: 2; } /* ለ 4 ሰከንድ ጸንተው ይቆማሉ */
-        20.66% { opacity: 0; z-index: 1; } /* ቀስ ብለው አብረው እየጠፉ ለቀጣዩ ቦታ ይለቃሉ */
+        2% { opacity: 1; z-index: 2; }
+        16.66% { opacity: 1; z-index: 2; }
+        20.66% { opacity: 0; z-index: 1; }
         100% { opacity: 0; z-index: 1; }
     }
 
-    /* ✍️ መፈክሮቹ በፎቶዎቹ ላይ የሚንሳፈፉበት ውብ ጥቁር ጥላና ወርቃማ መስመር ያለው ሳጥን */
+    /* ✍️ መፈክሮቹ በጥራት የሚንሳፈፉበት ሳጥን */
     .slogan-overlay-box {
         position: absolute;
-        bottom: 35px; /* ከታች ከፍ ብሎ */
+        bottom: 45px; /* ከታች ከፍ ብሎ */
         left: 50%;
         transform: translateX(-50%);
-        background: rgba(0, 0, 0, 0.75); /* ጽሑፉ በደመቀ ሁኔታ እንዲነበብ ጥቁር ጥላ */
-        padding: 12px 25px;
+        background: rgba(0, 0, 0, 0.75); /* ጥቁር ጥላ */
+        padding: 14px 25px;
         border-radius: 8px;
-        border-bottom: 4px solid #fbbf24; /* የታችኛው ወርቃማ መስመር */
+        border-bottom: 4px solid #fbbf24; /* ወርቃማ መስመር */
         width: 85%;
         text-align: center;
+        z-index: 10 !important;
     }
 
     .slogan-overlay-box h2 {
