@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="am">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>የትምህርት ቤቱ ቢሮዎች - Offices</title>
+    <link rel="stylesheet" href="style.css"> 
+    <style>
+        body {
+            background-image: url('images/bg-smoke.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        .nav-bar {
+            background-color: rgba(44, 62, 80, 0.85);
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        
+        .home-btn {
+            background-color: #e74c3c;
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-weight: bold;
+            font-size: 15px;
+            transition: background 0.3s ease;
+        }
+        .home-btn:hover {
+            background-color: #c0392b;
+        }
+
+        .offices-container {
+            max-width: 1100px;
+            margin: 40px auto;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .page-title {
+            color: #ffffff;
+            font-size: 34px;
+            font-weight: bold;
+            margin-bottom: 35px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.6);
+        }
+
+        /* የቢሮዎች መግለጫ ሳጥን */
+        .office-card {
+            background: rgba(0, 0, 0, 0.75);
+            border-radius: 12px;
+            border-left: 6px solid #fbbf24;
+            border-right: 6px solid #fbbf24;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+            padding: 30px;
+            margin-bottom: 30px;
+            text-align: left;
+        }
+
+        .office-card h2 {
+            color: #fbbf24;
+            font-size: 26px;
+            margin-top: 0;
+            margin-bottom: 15px;
+        }
+
+        .office-card p {
+            color: #ffffff;
+            font-size: 18px;
+            line-height: 1.7;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="nav-bar">
+        <span style="color: white; font-weight: bold; font-size: 18px;">የውጊያ ቴክኒክ ትምህርት ቤት</span>
+        <a href="/" class="home-btn">🏠 ወደ ዋናው ገጽ (Home) ተመለስ</a>
+    </div>
+
+        <div class="offices-container" style="max-width: 1100px; margin: 40px auto; padding: 20px; text-align: center; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
+        <h1 class="page-title" style="color: #ffffff; font-size: 34px; font-weight: bold; margin-bottom: 35px; text-shadow: 2px 2px 4px rgba(0,0,0,0.6);">የትምህርት ቤቱ መዋቅራዊ ቢሮዎች</h1>
+
+        <!-- 🎖️ ዘርፍ 1፦ የአዛዥ ዘርፍ -->
+        <div class="office-card" style="background: rgba(0, 0, 0, 0.75); border-radius: 12px; border-left: 6px solid #fbbf24; border-right: 6px solid #fbbf24; box-shadow: 0 10px 25px rgba(0,0,0,0.5); padding: 30px; margin-bottom: 35px; text-align: left;">
+            <h2 style="color: #fbbf24; font-size: 26px; margin-top: 0; margin-bottom: 15px; border-bottom: 2px solid rgba(251, 191, 36, 0.3); padding-bottom: 10px;">🎖️ የትምህርት ቤቱ አዛዥ ዘርፍ (Commander's Sector)</h2>
+            <p style="color: #ecf0f1; font-size: 17px; margin-bottom: 20px; font-style: italic;">የትምህርት ቤቱን ጠቅላላ የሥልጠና፣ የቴክኒክና የዕዝ መዋቅር በበላይነት የሚመራና ስልታዊ ውሳኔዎችን የሚያስተላልፍ ዋናው የአመራር ማዕከል ነው።</p>
+            
+            <h3 style="color: #f1c40f; font-size: 19px; margin-bottom: 12px; font-weight: bold;">በአዛዥ ዘርፍ ሥር ያሉ ቢሮዎችና ቡድኖች፦</h3>
+            <ul style="list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 12px;">
+                <li style="color: #ffffff; font-size: 16px; font-weight: bold;">💰 ፩. ፋይናንስ ቡድን</li>
+                <li style="color: #ffffff; font-size: 16px; font-weight: bold;">🧠 ፪. ሥነ-ልቦና ቡድን ቢሮ</li>
+                <li style="color: #ffffff; font-size: 16px; font-weight: bold;">⚖️ ፫. ሕግ ክፍል</li>
+                <li style="color: #ffffff; font-size: 16px; font-weight: bold;">🏢 ፬. አዛዥ ጽ/ቤት</li>
+                <li style="color: #ffffff; font-size: 16px; font-weight: bold;">🔰 ፭. ሴፍቲ ቡድን</li>
+                <li style="color: #ffffff; font-size: 16px; font-weight: bold;">📊 ፯. ዕቅድ እና ሪፖርት</li>
+            </ul>
+        </div>
+
+        <!-- 📚 ዘርፍ 2፦ የም/አዛዥ ሥልጠና ድጋፍ ዘርፍ -->
+        <div class="office-card" style="background: rgba(0, 0, 0, 0.75); border-radius: 12px; border-left: 6px solid #fbbf24; border-right: 6px solid #fbbf24; box-shadow: 0 10px 25px rgba(0,0,0,0.5); padding: 30px; margin-bottom: 35px; text-align: left;">
+            <h2 style="color: #fbbf24; font-size: 26px; margin-top: 0; margin-bottom: 15px; border-bottom: 2px solid rgba(251, 191, 36, 0.3); padding-bottom: 10px;">📚 ም/አዛዥ ሥልጠና ድጋፍ ቡድን ኃላፊ (Deputy Training Support Department)</h2>
+            <p style="color: #ecf0f1; font-size: 17px; margin-bottom: 20px; font-style: italic;">የሥልጠና ተግባራትን በተሟላ ሁኔታ ለማስፈጸም የሰው ኃይልን፣ የጥገና ሥራዎችንና አጠቃላይ የሎጅስቲክስ አቅርቦቶችን በበላይነት የሚያስተናግድና የሚደግፍ ዘርፍ ነው።</p>
+            
+            <h3 style="color: #f1c40f; font-size: 19px; margin-bottom: 12px; font-weight: bold;">በሥልጠና ድጋፍ ዘርፍ ሥር ያሉ ክፍሎችና ቡድኖች፦</h3>
+            <ul style="list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 12px;">
+                <li style="color: #ffffff; font-size: 16px; font-weight: bold;">👥 ፩. የሰው ሀብት አመራር ቡድን</li>
+                <li style="color: #ffffff; font-size: 16px; font-weight: bold;">🔧 ፪. ጥገና ክፍል</li>
+                <li style="color: #ffffff; font-size: 16px; font-weight: bold;">📦 ፫. ሎጅስቲክስ ክፍል</li>
+            </ul>
+        </div>
+
+        <!-- 🔧 ዘርፍ 3፦ የም/አዛዥ ሥልጠና ኃላፊ ዘርፍ -->
+        <div class="office-card" style="background: rgba(0, 0, 0, 0.75); border-radius: 12px; border-left: 6px solid #fbbf24; border-right: 6px solid #fbbf24; box-shadow: 0 10px 25px rgba(0,0,0,0.5); padding: 30px; margin-bottom: 30px; text-align: left;">
+            <h2 style="color: #fbbf24; font-size: 26px; margin-top: 0; margin-bottom: 15px; border-bottom: 2px solid rgba(251, 191, 36, 0.3); padding-bottom: 10px;">🔧 ም/አዛዥ ሥልጠና ኃላፊ (Deputy Director of Training Office)</h2>
+            <p style="color: #ecf0f1; font-size: 17px; margin-bottom: 20px; font-style: italic;">የጦር መሣሪያዎችን፣ ታንኮችንና ወታደራዊ ተሽከርካሪዎችን የቴክኒክ አጠቃቀም ሥልጠና የሚመራ፣ የትምህርት ጥራትን የሚከታተልና ዋና ዋና ዲፓርትመንቶችን የሚመራ የሥልጠና ዘርፍ ነው።</p>
+            
+            <h3 style="color: #f1c40f; font-size: 19px; margin-bottom: 12px; font-weight: bold;">በሥልጠና ዘርፍ ሥር ያሉ ዲፓርትመንቶችና ክፍሎች፦</h3>
+            <ul style="list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 12px;">
+                <li style="color: #ffffff; font-size: 16px; font-weight: bold;">💥 ፩. መድፈኛ ዲፓርትመንት (ዲ/ት)</li>
+                <li style="color: #ffffff; font-size: 16px; font-weight: bold;">🚜 ፪. ታንከኛ ዲፓርትመንት (ዲ/ት)</li>
+                <li style="color: #ffffff; font-size: 16px; font-weight: bold;">🚀 ፫. አየር መከላከያ ዲፓርትመንት (ዲ/ት)</li>
+                <li style="color: #ffffff; font-size: 16px; font-weight: bold;">📖 ፬. በሥልጠና ዘርፍ ሥልጠና ድጋፍ ቡድን</li>
+                <li style="color: #ffffff; font-size: 16px; font-weight: bold;">🎓 ፭. የትምህርት ጥራት ክትትል ክፍል ሬጅስትራር ቡድን</li>
+            </ul>
+        </div>
+    </div>
+
+    </div>
+
+</body>
+</html>
