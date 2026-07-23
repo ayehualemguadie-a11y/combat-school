@@ -161,45 +161,76 @@
         <a href="/" class="home-btn">🏠 ወደ ዋናው ገጽ (Home) ተመለስ</a>
     </div>
 
-    <div class="services-container">
-        <h1 class="page-title">(ት/ቤቱ የሚሰጣቸው አገልግሎቶች )Essential School Services</h1>
-        <p class="page-subtitle">በውጊያ ቴ/ት ቤት ልት/ቤቱ አባላት እንዲሁም ለአባላት ብዙ ድጋፍ ያደርጋል ከነዚህ ውስጥ በጥቂቱ የሆስፒታል አገልግሎት፣የመኖሪያ ቤት አገልግሎት(የግቢ አባል እና የተማሪዎች መኖሪያ አገልግሎት) ፣የመዝናኛ አገልግሎት ፣የላይብራሪ ፣የአይሲቲ  እና ሌሎችም </p>
+       <div class="services-container" style="max-width: 1200px; margin: 40px auto; padding: 20px; text-align: center; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
+        <h1 class="page-title" style="color: #ffffff; font-size: 36px; font-weight: bold; margin-bottom: 10px; text-shadow: 2px 2px 4px rgba(0,0,0,0.6);">የትምህርት ቤቱ የሚሰጣቸው አገልግሎቶች (Essential School Services)</h1>
+        <p class="page-subtitle" style="color: #ecf0f1; font-size: 18px; max-width: 900px; margin: 0 auto 40px auto; line-height: 1.8; text-shadow: 1px 1px 2px rgba(0,0,0,0.5);">
+            የውጊያ ቴክኒክ ትምህርት ቤት ለትምህርት ቤቱ አባላት እንዲሁም ለሰልጣኞች ልዩ ልዩ ሁለንተናዊ ድጋፎችን ያደርጋል። ከእነዚህም የልማትና የበጎ አድራጎት ሥራዎች መካከል ዋና ዋናዎቹ አገልግሎቶች የሚከተሉት ናቸው፦
+        </p>
 
-        <div class="service-card-grid">
+        <!-- 💡 መቶ አለቃ፣ ካርዶቹ 3 በጎን ሆነው ያለምንም መንዘረጥረት እንዲሰለፉ የተደረገበት ግሪድ -->
+        <div class="service-card-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(360px, 1fr)); gap: 30px; padding: 10px;">
             
-            <!-- ካርድ 1፦ የጤና ተቋም (በግራ በኩል) -->
-            <div class="service-card">
-                <div class="card-image-wrapper">
-                    <img src="images/hospital.jpg" alt="የጤና ተቋም">
-                    <div class="badge-essential">★ Essential</div>
-                    <div class="image-labels">
-                        <div class="img-btn">Health Services 🏥</div>
-                        <div class="img-btn">24/7 Emergency 🚑</div>
-                    </div>
+            <!-- 🏥 ካርድ 1፦ የሆስፒታል አገልግሎት -->
+            <div class="service-card" style="background: #ffffff; border-radius: 16px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.5); text-align: left; border: 3px solid #fbbf24; display: flex; flex-direction: column; justify-content: space-between;">
+                <div class="card-image-wrapper" style="width: 100%; height: 220px; background-color: #000;">
+                    <img src="images/hospital.jpg" style="width: 100%; height: 100%; object-fit: cover;" alt="የሆስፒታል አገልግሎት">
                 </div>
-                <div class="card-content">
-                    <h2>Student Health Center</h2>
-                    <p>
+                <div class="card-content" style="padding: 22px;">
+                    <h2 style="margin: 0 0 10px 0; color: #1a252f; font-size: 22px; font-weight: bold;">🏥 የሆስፒታል አገልግሎት</h2>
+                    <p style="margin: 0; color: #5a6c7d; font-size: 15px; line-height: 1.6; text-align: justify;">
                         የአዋሽ አርባ መከላከያ ካምፕ የጤና ተቋም በዋናነት ለአባላቱ እና ለአካባቢው ማህበረሰብ ድንገተኛ የመጀመሪያ ደረጃ ህክምና፣ የተመላላሽ ታካሚ (OPD) አገልግሎት፣ የቁስል እንክብካቤ እና የወባ በሽታ መከላከያ ህክምና ይሰጣል።
                     </p>
                 </div>
             </div>
 
-            <!-- 🛠️ ካርድ 2፦ በምግብ ራስን መቻል (በቀኝ በኩል) -->
-            <div class="service-card">
-                <div class="card-image-wrapper">
-                    <!-- 💡 የላኩልኝ አዲስ ፎቶ እዚህ ገብቷል -->
-                    <img src="images/onion-field.jpg" alt="በምግብ ራስን ለመቻል የተሰሩ ስራዎች">
-                    <div class="badge-essential">★ Development</div>
-                    <div class="image-labels">
-                        <div class="img-btn">Agriculture 🌾</div>
-                        <div class="img-btn">Self-Sufficiency 🚜</div>
-                    </div>
+            <!-- 🌾 ካርድ 2፦ በምግብ ራስን መቻል -->
+            <div class="service-card" style="background: #ffffff; border-radius: 16px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.5); text-align: left; border: 3px solid #fbbf24; display: flex; flex-direction: column; justify-content: space-between;">
+                <div class="card-image-wrapper" style="width: 100%; height: 220px; background-color: #000;">
+                    <img src="images/onion-field.jpg" style="width: 100%; height: 100%; object-fit: cover;" alt="በምግብ ራስን ለመቻል የተሰሩ ስራዎች">
                 </div>
-                <div class="card-content">
-                    <h2>በምግብ ራስን ለመቻል የተሰሩ ስራዎች</h2>
-                    <p>
-                        በትምህርት ቤታችን የግብርና ዘርፍን በማጠናከር፣ የምግብ ዋስትናን ለማረጋገጥና በምግብ ራስን ለመቻል ሰፊ የሽንኩርትና ልዩ ልዩ የአትክልት ልማት ሥራዎች በተሳካ ሁኔታ ተከናውነዋል። ይህም ለካምፑ አባላትና ለአካባቢው ትልቅ አቅም ፈጥሯል።
+                <div class="card-content" style="padding: 22px;">
+                    <h2 style="margin: 0 0 10px 0; color: #1a252f; font-size: 22px; font-weight: bold;">🌾 በምግብ ራስን ለመቻል የተሰሩ ስራዎች</h2>
+                    <p style="margin: 0; color: #5a6c7d; font-size: 15px; line-height: 1.6; text-align: justify;">
+                        በትምህርት ቤታችን የግብርና ዘርፍን በማጠናከር የምግብ ዋስትናን ለማረጋገጥና በምግብ ራስን ለመቻል ሰፊ የአትክልትና መስኖ ልማት ሥራዎች ተከናውነዋል፤ ይህም ለካምፑ አባላት ትልቅ ድጋፍ ሆኗል።
+                    </p>
+                </div>
+            </div>
+
+            <!-- 🏠 ካርድ 3፦ የመኖሪያ ቤት አገልግሎት -->
+            <div class="service-card" style="background: #ffffff; border-radius: 16px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.5); text-align: left; border: 3px solid #fbbf24; display: flex; flex-direction: column; justify-content: space-between;">
+                <div class="card-image-wrapper" style="width: 100%; height: 220px; background-color: #000;">
+                    <img src="images/gate.jpg" style="width: 100%; height: 100%; object-fit: cover;" alt="የመኖሪያ ቤት አገልግሎት">
+                </div>
+                <div class="card-content" style="padding: 22px;">
+                    <h2 style="margin: 0 0 10px 0; color: #1a252f; font-size: 22px; font-weight: bold;">🏠 የመኖሪያ ቤት አገልግሎት</h2>
+                    <p style="margin: 0; color: #5a6c7d; font-size: 15px; line-height: 1.6; text-align: justify;">
+                        ለትምህርት ቤቱ ቋሚ የካምፕ ግቢ አባላት፣ አመራሮች እንዲሁም ለሥልጠና ለሚመጡ ዕጩ ሙያተኞችና ተማሪዎች ደረጃውን የጠበቀ ደህንነቱ የተጠበቀ የመኖሪያና የማደሪያ አገልግሎት ያቀርባል።
+                    </p>
+                </div>
+            </div>
+
+            <!-- ☕ ካርድ 4፦ የመዝናኛ አገልግሎት -->
+            <div class="service-card" style="background: #ffffff; border-radius: 16px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.5); text-align: left; border: 3px solid #fbbf24; display: flex; flex-direction: column; justify-content: space-between;">
+                <div class="card-image-wrapper" style="width: 100%; height: 220px; background-color: #000;">
+                    <img src="images/general.jpg" style="width: 100%; height: 100%; object-fit: cover;" alt="የመዝናኛ አገልግሎት">
+                </div>
+                <div class="card-content" style="padding: 22px;">
+                    <h2 style="margin: 0 0 10px 0; color: #1a252f; font-size: 22px; font-weight: bold;">☕ የመዝናኛ አገልግሎት</h2>
+                    <p style="margin: 0; color: #5a6c7d; font-size: 15px; line-height: 1.6; text-align: justify;">
+                        የሠራዊቱ አባላትና ሰልጣኞች ከሥልጠና ሰዓት ውጭ አእምሯቸውን የሚያድሱበት፣ ወታደራዊ አንድነታቸውን የሚያጠነክሩበትና ዘመናዊ መስተንግዶ የሚያገኙበት ምቹ የመዝናኛ ክበብ አገልግሎት ተደራጅቷል።
+                    </p>
+                </div>
+            </div>
+
+            <!-- 📚 ካርድ 5፦ የላይብራሪ እና የአይሲቲ አገልግሎት -->
+            <div class="service-card" style="background: #ffffff; border-radius: 16px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.5); text-align: left; border: 3px solid #fbbf24; display: flex; flex-direction: column; justify-content: space-between;">
+                <div class="card-image-wrapper" style="width: 100%; height: 220px; background-color: #000;">
+                    <img src="images/bg-smoke.png" style="width: 100%; height: 100%; object-fit: cover;" alt="የላይብራሪ እና አይሲቲ">
+                </div>
+                <div class="card-content" style="padding: 22px;">
+                    <h2 style="margin: 0 0 10px 0; color: #1a252f; font-size: 22px; font-weight: bold;">🖥️ ላይብራሪ እና አይሲቲ (ICT)</h2>
+                    <p style="margin: 0; color: #5a6c7d; font-size: 15px; line-height: 1.6; text-align: justify;">
+                        በዘመናዊ ወታደራዊ መጻሕፍት የበለጸገ የቤተ-መጻሕፍት አገልግሎት እንዲሁም በቴክኖロジー የተደገፈ ጥናትንና ምርምርን ለማገዝ የኮምፒውተርና የዲጂታል አይሲቲ (ICT) መሠረተ-ልማት አገልግሎቶችን ያቀርባል።
                     </p>
                 </div>
             </div>
