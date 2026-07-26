@@ -52,6 +52,38 @@
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
             transform: translateY(-3px);
         }
+/* 🛠️ መቶ አለቃ፣ ማውዝ ሲያርፍባቸው በተኖቹ እንዲበሩና ከፍ እንዲሉ ማድረጊያ (Defense University Style) */
+.nav-bar a, .dropdown-menu a, .dropdown a, nav a, .menu a {
+    position: relative !important;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1) !important; /* ለስላሳ ወታደራዊ ንቅናቄ */
+    display: inline-block !important;
+}
+
+/* 💡 ማውሱ በተኑ ላይ ሲያርፍ ወዲያውኑ ወደ ወርቃማነት እየተቀየረ ወደላይ ከፍ ይላል */
+.nav-bar a:hover, .dropdown-menu a:hover, .dropdown a:hover, nav a:hover, .menu a:hover {
+    color: #fbbf24 !important; /* የመከላከያ ወርቃማ ቀለም */
+    transform: translateY(-4px) scale(1.06) !important; /* በተኑን በግልጽ ወደላይ ከፍ ያደርገዋል */
+    text-shadow: 0 0 10px rgba(251, 191, 36, 0.8) !important; /* የበራ የመስመር ጥላ */
+}
+
+/* 📐 ከበተኖቹ በታች በለስላሳ ሁኔታ ተስቦ የሚወጣ ወርቃማ መስመር ማድረጊያ */
+.nav-bar a::after, nav a::after, .menu a::after {
+    content: '' !important;
+    position: absolute !important;
+    width: 100% !important;
+    transform: scaleX(0) !important;
+    height: 3px !important;
+    bottom: -5px !important;
+    left: 0 !important;
+    background-color: #fbbf24 !important;
+    transform-origin: bottom center !important;
+    transition: transform 0.25s ease-out !important;
+}
+
+.nav-bar a:hover::after, nav a:hover::after, .menu a:hover::after {
+    transform: scaleX(1) !important; /* ወርቃማውን መስመር በስተመሃል ይዘረጋል */
+}
+
     </style>
 </head>
 <body>
