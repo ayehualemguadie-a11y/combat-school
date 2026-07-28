@@ -97,6 +97,12 @@ app.get("/upload.html", (req, res) => {
 app.get("/dashboard.html", (req, res) => {
     res.sendFile(path.join(__dirname, "public", "dashboard.html"));
 });
+// 🔗 መቶ አለቃ፣ /admin-form ሲጫን የዜና መጻፊያ ፎርሙን (admin.ejs) የሚከፍተው አዲሱ መስመር
+app.get('/admin-form', (req, res) => {
+    // 💡 ማስታወሻ፦ የዜና መጻፊያ ፎርምዎ ፋይል ስም admin ከሆነ 'admin' ይበሉት፣ dashboard ከሆነ 'dashboard'
+    res.render('admin'); 
+});
+
 
 // የመግቢያ ገጽ
 app.get("/login.html", (req, res) => {
