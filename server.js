@@ -139,27 +139,35 @@ app.post("/upload", upload.single("photo"), async (req, res) => {
     }
 });
 
-// 📰 ዜና እና ማስታወቂያዎችን መለጠፊያ ተግባር
+// 📰 ዜና እና ማስታወቂያዎችን መለጠፊያ ተግባር (የተስተካከለ)
+// 💡 መቶ አለቃ፣ ፎርሙ ላይ Choose File የሚለው ሳጥን name="image" መሆኑን ያረጋግጡ
 app.post("/upload-news", upload.single("image"), async (req, res) => {
     const title = req.body.title;
     const description = req.body.description;
-    const imageUrl = req.file ? req.file.path : "";
+    
+    // 📐 የፎቶው መሄጃ መስመር በትክክል ወደ images ፎልደር እንዲቀመጥ ማድረጊያ
+    const imageUrl = req.file ? '/images/' + req.file.filename : "";
 
     try {
+        // ወደ መከላከያ ዳታቤዝዎ (Database) ዜናውን በክብር ማስገባት
         await db.query("INSERT INTO news (title, description, image) VALUES ($1, $2, $3)", [title, description, imageUrl]);
+        
+        // 💡 ዜናው በተሳካ ሁኔታ ሲጠናቀቅ የሚወጣው ውብ ወታደራዊ መልእክት
         res.send(`
-            <div style="font-family:sans-serif; text-align:center; margin-top:50px;">
-                <h2 style="color:green;">📰 News Published Successfully to Cloud Storage!</h2>
+            <div style="font-family:'Segoe UI', sans-serif; text-align:center; margin-top:80px; background:#1a252f; padding:40px; max-width:500px; margin-left:auto; margin-right:auto; border-radius:12px; border:3px solid #fbbf24; color:white; box-shadow:0 10px 25px rgba(0,0,0,0.5);">
+                <h2 style="color:#27ae60; font-size:26px;">📰 ዜናው በተሳካ ሁኔታ በዳታቤዝ ላይ ተጭኗል!</h2>
+                <p style="color:#ecf0f1; font-size:16px; margin-bottom:25px;">የምግብ ራስን መቻልና የአረንጓዴ ልማት ወቅታዊ መረጃው በይፋ ተለቋል።</p>
                 <br>
-                <a href="/news.html" style="padding:10px; background:#222; color:#fff; text-decoration:none; border-radius:5px;">Add Another News</a>
+                <a href="/admin" style="padding:12px 25px; background:#fbbf24; color:#000; text-decoration:none; border-radius:5px; font-weight:bold; font-size:16px; transition:0.3s;">📢 ሌላ አዲስ ዜና ጨምር</a>
                 <br><br><br>
-                <a href="/dashboard.html" style="color:#555;">Back to Dashboard</a>
+                <a href="/news" style="color:#e74c3c; font-weight:bold; text-decoration:none; font-size:16px;">👁️ ቀጥታ ወደ ዜናው ገጽ ሂድ (View News Feed)</a>
             </div>
         `);
     } catch (err) {
-        res.send("News Upload Error: " + err.message);
+        res.send("የዜና መጫን ስህተት አጋጥሟል: " + err.message);
     }
 });
+
 
 // 👤 የአድሚን አካውንት መቀየሪያ ተግባር
 app.post("/change-admin", async (req, res) => {
