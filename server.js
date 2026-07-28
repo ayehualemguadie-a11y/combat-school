@@ -145,32 +145,41 @@ app.post("/upload", upload.single("photo"), async (req, res) => {
     }
 });
 
-// 📰 ዜና እና ማስታወቂያዎችን መለጠፊያ ተግባር (የተስተካከለ)
-// 💡 መቶ አለቃ፣ ፎርሙ ላይ Choose File የሚለው ሳጥን name="image" መሆኑን ያረጋግጡ
+// 📰 ዜና መለጠፊያ ተግባር (የሰርቨር ስህተት መከላከያ የተገጠመለት)
 app.post("/upload-news", upload.single("image"), async (req, res) => {
     const title = req.body.title;
     const description = req.body.description;
-    
-    // 📐 የፎቶው መሄጃ መስመር በትክክል ወደ images ፎልደር እንዲቀመጥ ማድረጊያ
     const imageUrl = req.file ? '/images/' + req.file.filename : "";
 
+    // 💡 መቶ አለቃ፣ የፊደል ስህተትንና የዳታቤዝ ግጭትን ለመከላከል try-catch በጥንቃቄ ተገጥሟል
     try {
-        // ወደ መከላከያ ዳታቤዝዎ (Database) ዜናውን በክብር ማስገባት
+        if (!title || !description) {
+            return res.send("እባክዎ ርዕስ እና መግለጫ በትክክል ይሙሉ!");
+        }
+
+        // ወደ ዳታቤዝ ማስገባት
         await db.query("INSERT INTO news (title, description, image) VALUES ($1, $2, $3)", [title, description, imageUrl]);
         
-        // 💡 ዜናው በተሳካ ሁኔታ ሲጠናቀቅ የሚወጣው ውብ ወታደራዊ መልእክት
         res.send(`
-            <div style="font-family:'Segoe UI', sans-serif; text-align:center; margin-top:80px; background:#1a252f; padding:40px; max-width:500px; margin-left:auto; margin-right:auto; border-radius:12px; border:3px solid #fbbf24; color:white; box-shadow:0 10px 25px rgba(0,0,0,0.5);">
-                <h2 style="color:#27ae60; font-size:26px;">📰 ዜናው በተሳካ ሁኔታ በዳታቤዝ ላይ ተጭኗል!</h2>
-                <p style="color:#ecf0f1; font-size:16px; margin-bottom:25px;">የምግብ ራስን መቻልና የአረንጓዴ ልማት ወቅታዊ መረጃው በይፋ ተለቋል።</p>
+            <div style="font-family:sans-serif; text-align:center; margin-top:80px; background:#1a252f; padding:40px; max-width:500px; margin-left:auto; margin-right:auto; border-radius:12px; border:3px solid #fbbf24; color:white;">
+                <h2 style="color:#27ae60;">📰 ዜናው በዳታቤዝ ላይ በተሳካ ሁኔታ ተጭኗል!</h2>
                 <br>
-                <a href="/admin" style="padding:12px 25px; background:#fbbf24; color:#000; text-decoration:none; border-radius:5px; font-weight:bold; font-size:16px; transition:0.3s;">📢 ሌላ አዲስ ዜና ጨምር</a>
+                <a href="/admin-form" style="padding:10px 20px; background:#fbbf24; color:#000; text-decoration:none; border-radius:5px; font-weight:bold;">ሌላ አዲስ ዜና ጨምር</a>
                 <br><br><br>
-                <a href="/news" style="color:#e74c3c; font-weight:bold; text-decoration:none; font-size:16px;">👁️ ቀጥታ ወደ ዜናው ገጽ ሂድ (View News Feed)</a>
+                <a href="/news" style="color:#ecf0f1; text-decoration:none; font-weight:bold;">👉 ቀጥታ ወደ ዜናው ገጽ ሂድ</a>
             </div>
         `);
     } catch (err) {
-        res.send("የዜና መጫን ስህተት አጋጥሟል: " + err.message);
+        // 💡 ሰርቨሩ ከመቆም ይልቅ ስህተቱ ምን እንደሆነ እዚህ ላይ በግልጽ ያሳየናል
+        res.send(`
+            <div style="font-family:sans-serif; padding:30px; max-width:600px; margin:50px auto; border:2px solid red; background:#fff5f5; border-radius:8px;">
+                <h3 style="color:red; margin-top:0;">⚠️ የዳታቤዝ ስህተት አጋጥሟል!</h3>
+                <p><strong>የስህተቱ መግለጫ፦</strong> ${err.message}</p>
+                <p>💡 <em>መፍትሔ፦</em> "news" የተባለው ሰንጠረዥ (Table) በዳታቤዝዎ ውስጥ መፈጠሩን እና አምዶቹ (title, description, image) በትክክል መኖራቸውን ያረጋግጡ።</p>
+                <br>
+                <a href="/admin-form">ወደ ፎርሙ ተመለስ</a>
+            </div>
+        `);
     }
 });
 
