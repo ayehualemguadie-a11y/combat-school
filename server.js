@@ -61,6 +61,65 @@ const setupDatabase = async () => {
     }
 };
 setupDatabase();
+// 💡 መቶ አለቃ፣ ሰርቨሩ በራሱ ሰንጠረዡን (Table) በክላውድ ዳታቤዝ ላይ እንዲፈጥር የሚያዝ ልዩ ኮድ
+db.query(`
+    CREATE TABLE IF NOT EXISTS news (
+        id SERIAL PRIMARY KEY,
+        title TEXT NOT NULL,
+        description TEXT NOT NULL,
+        image TEXT,
+        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    );
+`).then(() => console.log("🚀 የዜና ሰንጠረዥ በክላውድ ዳታቤዝ ላይ በራስ-ሰር ተፈጥሯል!"))
+  .catch(err => console.error("⚠️ ሰንጠረዥ መፍጠር አልተቻለም፦", err.message));
+
+// 🔗 ፩. የአስተዳዳሪውን የፎርም ገጽ ማሳያ መስመር
+app.get('/admin-form', (req, res) => {
+    res.render('admin'); 
+});
+
+// 📰 ፪. ዜና እና ማስታወቂያዎችን ክላውድ ላይ መለጠፊያ ተግባር (ፍጹም የተስተካከለ)
+app.post("/upload-news", upload.single("image"), async (req, res) => {
+    const title = req.body.title;
+    const description = req.body.description;
+    
+    // 📐 ፎቶው በክላውድ (Cloudinary) ላይ ከተጫነ በኋላ የሚሰጠውን ሊንክ በቀጥታ የመውሰጃ ሕግ
+    const imageUrl = req.file ? req.file.path : "";
+
+    try {
+        if (!title || !description) {
+            return res.send("እባክዎ ርዕስ እና መግለጫ በትክክል ይሙሉ!");
+        }
+
+        // ወደ ክላውድ ዳታቤዝዎ ዜናውን በክብር ማስገባት
+        await db.query("INSERT INTO news (title, description, image) VALUES ($1, $2, $3)", [title, description, imageUrl]);
+        
+        // 💡 ዜናው በተሳካ ሁኔታ ሲጠናቀቅ የሚወጣው ውብ ወታደራዊ መልእክት
+        res.send(`
+            <div style="font-family:'Segoe UI', sans-serif; text-align:center; margin-top:80px; background:#1a252f; padding:40px; max-width:500px; margin-left:auto; margin-right:auto; border-radius:12px; border:3px solid #fbbf24; color:white; box-shadow:0 10px 25px rgba(0,0,0,0.5);">
+                <h2 style="color:#27ae60; font-size:26px;">📰 ዜናው በክላውድ ላይ በተሳካ ሁኔታ ታትሟል!</h2>
+                <p style="color:#ecf0f1; font-size:16px; margin-bottom:25px;">የምግብ ራስን መቻልና የአረንጓዴ ልማት ወቅታዊ መረጃው በይፋ ተለቋል።</p>
+                <br>
+                <a href="/admin-form" style="padding:12px 25px; background:#fbbf24; color:#000; text-decoration:none; border-radius:5px; font-weight:bold; font-size:16px;">📢 ሌላ አዲስ ዜና ጨምር</a>
+                <br><br><br>
+                <a href="/news" style="color:#e74c3c; font-weight:bold; text-decoration:none; font-size:16px;">👁️ ቀጥታ ወደ ዜናው ገጽ ሂድ (View News Feed)</a>
+            </div>
+        `);
+    } catch (err) {
+        res.send("የዜና መጫን ስህተት አጋጥሟል: " + err.message);
+    }
+});
+
+// 🔗 ፫. የተጫኑትን ዜናዎች በሙሉ ከክላውድ ዳታቤዝ አምጥቶ ወደ news.ejs መላኪያ መስመር
+app.get('/news', async (req, res) => {
+    try {
+        const result = await db.query("SELECT * FROM news ORDER BY id DESC");
+        res.render('news', { newsList: result.rows });
+    } catch (err) {
+        res.send("ዜናዎችን ማምረት አልተቻለም፦ " + err.message);
+    }
+});
+
 
 
 // ------------------ የገጾች ማሳያ መንገዶች (GET) ------------------
