@@ -17,9 +17,8 @@
 <body>
 
     <div class="form-box">
-        <h2>🎖️ የዜና እና ወቅታዊ መረጃዎች መጫኛ ፎርም</h2>
+        <h2>🎖️ የዜና እና ወቅቂያዊ መረጃዎች መጫኛ ፎርም</h2>
         
-        <!-- 💡 ⚠️ መቶ አለቃ፣ ይህ ፎርም ቀጥታ ወደ ክላውድ ሰርቨርዎ መረጃውን ይልካል -->
         <form action="/upload-news" method="POST" enctype="multipart/form-data">
             
             <label>የዜናው ርዕስ (News Title)፦</label>
@@ -29,6 +28,7 @@
             <textarea name="description" rows="6" placeholder="ሙሉ የዜናውን ታሪክ እዚህ ላይ ያብራሩ..." required></textarea>
 
             <label>ተያያዥ ፎቶ ይምረጡ (Choose Image)፦</label>
+            <!-- ⚠️ 💡 መቶ አለቃ፣ ስሙ በትክክል name="image" ተብሎ ተቆልፏል (ከባክኤንዱ upload.single('image') ጋር እንዲገጣጠም) -->
             <input type="file" name="image" accept="image/*" required>
 
             <button type="submit" class="submit-btn">🚀 ዜናውን በይፋ ልቀቅ (Publish News)</button>
