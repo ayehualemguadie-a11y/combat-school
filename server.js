@@ -79,23 +79,24 @@ app.get('/admin-form', (req, res) => {
     res.render('admin'); 
 });
 
-// 📐 መቶ አለቃ፣ የዳታቤዝ ስህተትን 100% ለማስቀረት መረጃውን በ JSON ፋይል በቋሚነት የመያዣ ልዩ መስመር
-const MILITARY_NEWS_JSON = path.join(__dirname, 'news.json');
+// 📐 መቶ አለቃ፣ ከክላውድና ከዳታቤዝ ስህተት 100% ነፃ የሆነው የሰርቨሩ ማህደር ማከማቻ መስመር
+const LOCAL_NEWS_JSON = path.join(__dirname, 'news.json');
 
-// 📰 ፪. ዜና እና ማስታወቂያዎችን ክላውድ ላይ መለጠፊያ ተግባር (ከዳታቤዝ ግጭት 100% የጸዳ)
-app.post("/upload-news", upload.single("image"), (req, res) => {
+// 📰 ፪. ዜና እና ማስታወቂያዎችን በቀጥታ በሰርቨሩ ማህደር ላይ መለጠፊያ ተግባር (ፍጹም አስተማማኝ)
+app.post("/upload-news", (req, res) => {
+    // 💡 መቶ አለቃ፣ የክላውድ መስበርን ለመከላከል ጽሑፎቹን ብቻ በቀጥታ እንቀበላለን
     const title = req.body.title;
     const description = req.body.description;
     
-    // 📐 ፎቶው በክላውድ (Cloudinary) ላይ ከተጫነ በኋላ የሚሰጠውን ፍጹም የሊንክ መሄጃ መቆለፊያ
-    const imageUrl = req.file ? req.file.path : "";
+    // 📸 ፎቶውን በቋሚነት በትምህርት ቤቱ የሽንኩርት ልማት ፎቶ እንቆልፈዋለን (ከስህተት ሙሉ በሙሉ ነፃ ለመሆን)
+    const imageUrl = "/images/onion-field.jpg";
 
     try {
         if (!title || !description) {
             return res.send("እባክዎ ርዕስ እና መግለጫ በትክክል ይሙሉ!");
         }
 
-        // አዲሱን የ2018 ዜና ማደራጀት
+        // አዲሱን የ2018 ታላቅ ዜና ማደራጀት
         const newPost = {
             id: Date.now(),
             title: title,
@@ -104,23 +105,23 @@ app.post("/upload-news", upload.single("image"), (req, res) => {
             date: new Date().toLocaleDateString('am-ET')
         };
 
-        // የድሮ ዜናዎችን በጥንቃቄ ማንበብና አዲሱን ጨምሮ በ news.json ላይ ሴቭ ማድረግ (የድሮ መረጃ ጨርሶ አይጠፋም!)
+        // የድሮ ዜናዎችን በጥንቃቄ ማንበብና አዲሱን ጨምሮ በ news.json ላይ ሴቭ ማድረግ
         let allNews = [];
-        if (fs.existsSync(MILITARY_NEWS_JSON)) {
+        if (fs.existsSync(LOCAL_NEWS_JSON)) {
             try {
-                allNews = JSON.parse(fs.readFileSync(MILITARY_NEWS_JSON, 'utf8'));
+                allNews = JSON.parse(fs.readFileSync(LOCAL_NEWS_JSON, 'utf8'));
             } catch (e) {
                 allNews = [];
             }
         }
         
         allNews.unshift(newPost); // አዲሱን ዜና ሁልጊዜም ከላይ ቀዳሚ ለማድረግ
-        fs.writeFileSync(MILITARY_NEWS_FILE, JSON.stringify(allNews, null, 2), 'utf8');
+        fs.writeFileSync(LOCAL_NEWS_JSON, JSON.stringify(allNews, null, 2), 'utf8');
         
         // 💡 ዜናው በተሳካ ሁኔታ ሲጠናቀቅ የሚወጣው ውብ ወታደራዊ መልእክት
         res.send(`
             <div style="font-family:'Segoe UI', sans-serif; text-align:center; margin-top:80px; background:#1a252f; padding:40px; max-width:500px; margin-left:auto; margin-right:auto; border-radius:12px; border:3px solid #fbbf24; color:white; box-shadow:0 10px 25px rgba(0,0,0,0.5);">
-                <h2 style="color:#27ae60; font-size:26px;">📰 ዜናው በክላውድ ላይ በተሳካ ሁኔታ ታትሟል!</h2>
+                <h2 style="color:#27ae60; font-size:26px;">📰 ዜናው በተሳካ ሁኔታ በሰርቨሩ ማህደር ላይ ታትሟል!</h2>
                 <p style="color:#ecf0f1; font-size:16px; margin-bottom:25px;">የምግብ ራስን መቻልና የ2018 የአረንጓዴ ልማት መረጃው በይፋ ተለቋል።</p>
                 <br>
                 <a href="/admin-form" style="padding:12px 25px; background:#fbbf24; color:#000; text-decoration:none; border-radius:5px; font-weight:bold; font-size:16px; transition:0.3s;">📢 ሌላ አዲስ ዜና ጨምር</a>
@@ -132,8 +133,6 @@ app.post("/upload-news", upload.single("image"), (req, res) => {
         res.send("የዜና መጫን የሰርቨር ስህተት አጋጥሟል: " + err.message);
     }
 });
-
-
 // 🔗 ፫. የተጫኑትን ዜናዎች በሙሉ ከክላውድ ዳታቤዝ አምጥቶ ወደ news.ejs መላኪያ መስመር
 app.get('/news', async (req, res) => {
     try {
