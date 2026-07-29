@@ -73,10 +73,10 @@ db.query(`
 `).then(() => console.log("🚀 የዜና ሰንጠረዥ በክላውድ ዳታቤዝ ላይ በራስ-ሰር ተፈጥሯል!"))
   .catch(err => console.error("⚠️ ሰንጠረዥ መፍጠር አልተቻለም፦", err.message));
 
-// 🔗 ፩. የአስተዳዳሪውን የፎርም ገጽ ማሳያ መስመር
 app.get('/admin-form', (req, res) => {
-    res.render('admin'); 
+    res.render('admin'); // 💡 አሁን በፈጠርነው admin.ejs ገጽ ላይ ፎርሙን ፍንትው አድርጎ ይከፍታል
 });
+
 
 // ------------------ የገጾች ማሳያ መንገዶች (GET) ------------------
 
