@@ -92,7 +92,7 @@ app.post("/upload-news", upload.single("image"), async (req, res) => {
             return res.send("እባክዎ ርዕስ እና መግለጫ በትክክል ይሙሉ!");
         }
 
-        // 💡 ዜናውን ወደ ክላውድ ፖስትግሬስ ዳታቤዝዎ በክብር ያስገባል
+// 💡 ዜናውን ወደ ክላውድ ፖስትግሬስ ዳታቤዝዎ በክብር ያስገባል
         await db.query("INSERT INTO news (title, description, image) VALUES ($1, $2, $3)", [title, description, imageUrl]);
 
         // ዜናው በተሳካ ሁኔታ ሲጠናቀቅ የሚወጣው ውብ ወታደራዊ መልእክት
@@ -107,9 +107,11 @@ app.post("/upload-news", upload.single("image"), async (req, res) => {
             </div>
         `);
     } catch (err) {
+        // 💡 መቶ አለቃ፣ የጎደለው የ catch እና የቅንፍ መቆለፊያዎች እዚህ ተሟልተዋል!
         res.send("የዜና መጫን የዳታቤዝ ስህተት አጋጥሟል: " + err.message);
     }
 });
+
 
 // 🔗 ፫. የተጫኑትን ዜናዎች በሙሉ ከክላውድ ዳታቤዝ አምጥቶ ወደ news.ejs መላኪያ መስመር
 app.get('/news', async (req, res) => {
