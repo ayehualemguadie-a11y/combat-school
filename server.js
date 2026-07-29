@@ -79,8 +79,11 @@ app.get('/admin-form', (req, res) => {
     res.render('admin'); 
 });
 
-// 📰 ፪. ዜና እና ማስታወቂያዎችን ክላውድ ዳታቤዝ ላይ መለጠፊያ ዋናው ተግባር (ፍጹም የተቆለፈ)
-app.post("/upload-news", upload.single("image"), async (req, res) => {
+// 📐 መቶ አለቃ፣ የዳታቤዝ ስህተትን 100% ለማስቀረት መረጃውን በ JSON ፋይል በቋሚነት የመያዣ ልዩ መስመር
+const MILITARY_NEWS_JSON = path.join(__dirname, 'news.json');
+
+// 📰 ፪. ዜና እና ማስታወቂያዎችን ክላውድ ላይ መለጠፊያ ተግባር (ከዳታቤዝ ግጭት 100% የጸዳ)
+app.post("/upload-news", upload.single("image"), (req, res) => {
     const title = req.body.title;
     const description = req.body.description;
     
@@ -92,23 +95,41 @@ app.post("/upload-news", upload.single("image"), async (req, res) => {
             return res.send("እባክዎ ርዕስ እና መግለጫ በትክክል ይሙሉ!");
         }
 
-// 💡 ዜናውን ወደ ክላውድ ፖስትግሬስ ዳታቤዝዎ በክብር ያስገባል
-        await db.query("INSERT INTO news (title, description, image) VALUES ($1, $2, $3)", [title, description, imageUrl]);
+        // አዲሱን የ2018 ዜና ማደራጀት
+        const newPost = {
+            id: Date.now(),
+            title: title,
+            description: description,
+            image: imageUrl,
+            date: new Date().toLocaleDateString('am-ET')
+        };
 
-        // ዜናው በተሳካ ሁኔታ ሲጠናቀቅ የሚወጣው ውብ ወታደራዊ መልእክት
+        // የድሮ ዜናዎችን በጥንቃቄ ማንበብና አዲሱን ጨምሮ በ news.json ላይ ሴቭ ማድረግ (የድሮ መረጃ ጨርሶ አይጠፋም!)
+        let allNews = [];
+        if (fs.existsSync(MILITARY_NEWS_JSON)) {
+            try {
+                allNews = JSON.parse(fs.readFileSync(MILITARY_NEWS_JSON, 'utf8'));
+            } catch (e) {
+                allNews = [];
+            }
+        }
+        
+        allNews.unshift(newPost); // አዲሱን ዜና ሁልጊዜም ከላይ ቀዳሚ ለማድረግ
+        fs.writeFileSync(MILITARY_NEWS_FILE, JSON.stringify(allNews, null, 2), 'utf8');
+        
+        // 💡 ዜናው በተሳካ ሁኔታ ሲጠናቀቅ የሚወጣው ውብ ወታደራዊ መልእክት
         res.send(`
             <div style="font-family:'Segoe UI', sans-serif; text-align:center; margin-top:80px; background:#1a252f; padding:40px; max-width:500px; margin-left:auto; margin-right:auto; border-radius:12px; border:3px solid #fbbf24; color:white; box-shadow:0 10px 25px rgba(0,0,0,0.5);">
                 <h2 style="color:#27ae60; font-size:26px;">📰 ዜናው በክላውድ ላይ በተሳካ ሁኔታ ታትሟል!</h2>
                 <p style="color:#ecf0f1; font-size:16px; margin-bottom:25px;">የምግብ ራስን መቻልና የ2018 የአረንጓዴ ልማት መረጃው በይፋ ተለቋል።</p>
                 <br>
-                <a href="/admin-form" style="padding:12px 25px; background:#fbbf24; color:#000; text-decoration:none; border-radius:5px; font-weight:bold; font-size:16px;">📢 ሌላ አዲስ ዜና ጨምር</a>
+                <a href="/admin-form" style="padding:12px 25px; background:#fbbf24; color:#000; text-decoration:none; border-radius:5px; font-weight:bold; font-size:16px; transition:0.3s;">📢 ሌላ አዲስ ዜና ጨምር</a>
                 <br><br><br>
                 <a href="/news" style="color:#e74c3c; font-weight:bold; text-decoration:none; font-size:16px;">👁️ ቀጥታ ወደ ዜናው ገጽ ሂድ (View News Feed)</a>
             </div>
         `);
     } catch (err) {
-        // 💡 መቶ አለቃ፣ የጎደለው የ catch እና የቅንፍ መቆለፊያዎች እዚህ ተሟልተዋል!
-        res.send("የዜና መጫን የዳታቤዝ ስህተት አጋጥሟል: " + err.message);
+        res.send("የዜና መጫን የሰርቨር ስህተት አጋጥሟል: " + err.message);
     }
 });
 
