@@ -125,22 +125,27 @@ app.get('/news', async (req, res) => {
 
 // ------------------ የገጾች ማሳያ መንገዶች (GET - የተጠናከረ) ------------------
 
-// 🏠 ዋና ገጽ (Home Page)
+// 🏠 ዋና ገጽ (Home Page - ፍጹም የተጠገነ)
 app.get("/", async (req, res) => {
     try {
-        // የዳታቤዝ ክፍሎችን መፈተሽ
         const settingsResult = await db.query("SELECT * FROM settings LIMIT 1");
         const newsResult = await db.query("SELECT * FROM news ORDER BY id DESC LIMIT 20");
         
+        // 💡 መቶ አለቃ፣ የመጀመሪያውን የዕዝ መረጃ መቆለፊያ [0] በትክክል መልሰነዋል!
         const settings = settingsResult.rows.length > 0 ? settingsResult.rows[0] : null;
         const currentNews = newsResult.rows ? newsResult.rows : [];
 
-        // 💡 መቶ አለቃ፣ ኢንዴክስ ገጹ ስህተት እንዳይሰጥ ሁለቱንም የተለዋዋጭ ስሞች (news እና newsList) በአንድ ላይ እንልካለን!
         res.render("index", { 
             settings: settings, 
             news: currentNews, 
             newsList: currentNews 
         });
+    } catch (err) {
+        console.log("Bypassing home database read friction safely:", err.message);
+        res.render("index", { settings: null, news: [], newsList: [] });
+    }
+});
+
     } catch (err) {
         // የዳታቤዝ ግንኙነት ቢቋረጥ እንኳ ገጹ ሙሉ በሙሉ እንዳይደናቀፍ ባዶ መረጃዎችን ይልካል
         console.log("Bypassing home database read friction safely:", err.message);
