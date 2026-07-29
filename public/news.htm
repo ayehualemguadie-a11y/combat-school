@@ -48,7 +48,7 @@
         }
         
         .page-title {
-            color: #ffffff;
+            color: #fbbf24;
             font-size: 34px;
             font-weight: bold;
             margin-bottom: 35px;
@@ -58,16 +58,11 @@
         .news-card {
             background: rgba(0, 0, 0, 0.75);
             border-radius: 12px;
-            border-left: 6px solid #fbbf24; /* ወርቃማው የመከላከያ ፍሬም */
+            border-left: 6px solid #fbbf24;
             box-shadow: 0 10px 25px rgba(0,0,0,0.5);
-            padding: 25px;
-            margin-bottom: 25px;
+            padding: 35px;
+            margin-bottom: 35px;
             text-align: left;
-            transition: transform 0.3s ease;
-        }
-
-        .news-card:hover {
-            transform: translateY(-5px);
         }
 
         .news-header {
@@ -76,12 +71,12 @@
             align-items: center;
             border-bottom: 1px solid rgba(251, 191, 36, 0.3);
             padding-bottom: 10px;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
         }
 
         .news-title {
             color: #fbbf24;
-            font-size: 22px;
+            font-size: 24px;
             margin: 0;
             font-weight: bold;
         }
@@ -97,12 +92,13 @@
 
         .news-image-wrapper {
             width: 100%;
-            max-width: 650px;
-            height: 320px;
-            border-radius: 8px;
+            max-width: 750px;
+            height: 450px;
+            border-radius: 12px;
             overflow: hidden;
-            margin: 15px 0;
-            border: 2px solid rgba(255,255,255,0.1);
+            margin: 20px 0;
+            border: 3px solid #fbbf24;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.4);
         }
 
         .news-image-wrapper img {
@@ -114,8 +110,8 @@
 
         .news-content {
             color: #ffffff;
-            font-size: 17px;
-            line-height: 1.7;
+            font-size: 18px;
+            line-height: 1.8;
             margin: 0;
             text-align: justify;
         }
@@ -131,42 +127,37 @@
     <div class="news-container">
         <h1 class="page-title">📰 ዜና እና ወቅታዊ ማስታወቂያዎች</h1>
 
-        <!-- 🌾 የልማት ዜና -->
+        <!-- 🌾 ፩. የሽንኩርትና የግብርና ልማት ዜና (በክብር መጀመሪያ ላይ ተቆልፏል) -->
         <div class="news-card">
             <div class="news-header">
-                <h2 class="news-title">🌾 የአካባቢውን ስነ_ምህዳር ለመቀየር እናበምግብ ራስን ለመቻል የተከናወኑ የግብርናና የመስኖ ልማት ሥራዎች</h2>
-                <span class="news-date">አዲስ ዜና 📌</span>
+                <h2 class="news-title">🌾 በምግብ ራስን ለመቻል የተከናወኑ የግብርናና የመስኖ ልማት ሥራዎች</h2>
+                <span class="news-date">ቀዳሚ ታሪክ 📌</span>
             </div>
-
-            <!-- 📸 የዜናው ፎቶ (ፎቶውን ሲጭኑ እዚህ በግልጽ ይወጣል) -->
             <div class="news-image-wrapper">
-                <img src="images/farm-news.jpg" onerror="this.src='images/onion-field.jpg';">
+                <!-- 📸 የእርስዎ ዋና የሽንኩርት ምርት ፎቶ እዚህ ጋር በኩራት በቦታው አለ! -->
+                <img src="images/onion-field.jpg" alt="በምግብ ራስን ለመቻል የተከናወኑ ስራዎች">
             </div>
-
             <p class="news-content">
-                የውጊያ ቴክኒክ ትምህርት ቤት የሰራዊቱን ሁለንተናዊ አቅም ከመገንባት ጎን ለጎን፣ በምግብ ዋስትና ራሱን ለመቻልና የወጪ ጫናን ለመቀነስ በልማት ዘርፍ አመርቂ ሥራዎችን እያከናወነ ይገኛል። ትምህርት ቤቱ ሰፊ የመስኖ ልማት መሠረተ-ልማቶችን በመዘርጋት የሽንኩርት፣ የቲማቲምና የልዩ ልዩ აትክልቶች ምርትን በከፍተኛ ጥራትና በብዛት ማምረት ችሏል። ይህ ተግባር በተቋሙ ውስጥ የሚገኙ አባላትንና ሰልጣኞችን የዕለት ተዕለት የምግብ አቅርቦት በራስ አቅም በበቂ ሁኔታ ለመሸፈን ትልቅ ሚና እየተጫወተ ያለና ይበልጥ ተጠናክሮ የሚቀጥል ታላቅ ስኬት ነው።
+                የውጊያ ቴክኒክ ትምህርት ቤት የሰራዊቱን ሁለንተናዊ አቅም ከመገንባት ጎን ለጎን饰 በምግብ ዋስትና ራሱን ለመቻልና የወጪ ጫናን ለመቀነስ በልማት ዘርፍ አመርቂ ሥራዎችን እያከናወነ ይገኛል። ትምህርት ቤቱ ሰፊ የመስኖ ልማት መሠረተ-ልማቶችን በመዘርጋት የሽንኩርት饰 የቲማቲምና የልዩ ልዩ አትክልቶች ምርትን በከፍተኛ ጥራትና በብዛት ማምረት ችሏል። ይህ ተግባር በተቋሙ ውስጥ የሚገኙ አባላትንና ሰልጣኞችን የዕለት ተዕለት የምግብ አቅርቦት በራስ አቅም በበቂ ሁኔታ ለመሸፈን ትልቅ ሚና እየተጫወተ ያለና ይበልጥ ተጠናክሮ የሚቀጥል ታላቅ ስኬት ነው።
             </p>
         </div>
-                <!-- 🌳 💡 መቶ አለቃ፣ በትምህርት ቤቱ የተሰራውን የአረንጓዴ ልማት ስራ የሚገልጸው አዲሱ ዜና እዚህ ገብቷል -->
-                <!-- 🌳 💡 መቶ አለቃ፣ በትምህርት ቤቱ የተሰራውን የአረንጓዴ ልማት ስራ የሚገልጸው አዲሱ ዜና እዚህ ገብቷል -->
-        <div class="news-card" style="background: rgba(0, 0, 0, 0.75); border-radius: 12px; border-left: 6px solid #fbbf24; box-shadow: 0 10px 25px rgba(0,0,0,0.5); padding: 35px; margin-bottom: 25px; text-align: left;">
-            
-            <div class="news-header" style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(251, 191, 36, 0.3); padding-bottom: 10px; margin-bottom: 20px;">
-                <h2 class="news-title" style="color: #fbbf24; font-size: 24px; margin: 0; font-weight: bold;">🌳 የአካባቢውን ሥነ-ምህዳር ለመቀየር የተከናወኑ የአረንጓዴ ልማት ሥራዎች</h2>
-                <span class="news-date" style="color: #ffffff; font-size: 14px; background: rgba(39, 174, 96, 0.9); padding: 4px 10px; border-radius: 4px; font-weight: bold;">ወቅታዊ ልማት 📌</span>
-            </div>
 
-            <!-- 📐 ለወደፊቱ የአረንጓዴ ልማት ፎቶ ሲጭኑ ስሙን green-news.jpg ካደረጉት እዚህ በጥራት ይወጣል -->
-            <div class="news-image-wrapper" style="width: 100%; max-width: 750px; height: 450px; border-radius: 12px; overflow: hidden; margin: 20px 0; border: 3px solid #fbbf24; box-shadow: 0 5px 15px rgba(0,0,0,0.4);">
-                <img src="images/green-news.jpg" onerror="this.src='images/gate.jpg';" style="width: 100%; height: 100%; object-fit: cover; object-position: center center;">
+        <!-- 🌳 ፪. አዲሱ የ2018 ዓ.ም የ12,000 ችግኞች ተከላ ዜና (ከሽንኩርቱ ቀጥሎ ገብቷል) -->
+        <div class="news-card">
+            <div class="news-header">
+                <h2 class="news-title">🌳 በዘንድሮው የ2018 በጀት ዓመት 12,000 የጥላና የፍራፍሬ ዛፎችን ለመትከል የውጊያ ቴክኒክ ትምህርት ቤት ሙሉ ዝግጁነቱን አረጋገጠ! 🚀</h2>
+                <span class="news-date">ሀምሌ 2018 ዓ.ም 📌</span>
             </div>
-
-            <p class="news-content" style="color: #ffffff; font-size: 18px; line-height: 1.8; margin: 0; text-align: justify;">
-               የአዋሽ ውጊያ ቴክኒክ ትምህርት ቤት የተጣለበትን ወታደራዊና ስልታዊ የሥልጠና ተልዕኮ በከፍተኛ ዲሲፕሊን ከመወጣት ጎን ለጎን፣ የአካባቢውን ሥነ-ምህዳር ሙሉ በሙሉ ለመቀየር የጀመረውን ታላቅ የአረንጓዴ ልማት ጉዞ ዘንድሮም በላቀ ደረጃ ለማስቀጠል ሙሉ ዝግጁነቱን አጠናቋል። ትምህርት ቤቱ የሚገኝበት የአዋሽ አርባ አካባቢ እጅግ ሞቃታማ የአየር ፀባይ ያለው በመሆኑ፣ ሰብዓዊና ቁሳዊ ሀብትን ምቹ በሆነ ሁኔታ ለመንከባከብና ካምፑን ለኑሮ ተስማሚ ለማድረግ የአረንጓዴ አሻራ ልማት የትምህርት ቤቱ የማይናወጥ ባህል ሆኖ ቀጥሏል። <br><br>
+            <div class="news-image-wrapper">
+                <img src="images/green-news.jpg" alt="የአረንጓዴ አሻራ ዝግጅት">
+            </div>
+            <p class="news-content">
+                የአዋሽ ውጊያ ቴክኒክ ትምህርት ቤት የተጣለበትን ወታደራዊና ስልታዊ የሥልጠና ተልዕኮ በከፍተኛ ዲሲፕሊን ከመወጣት ጎን ለጎን፣ የአካባቢውን ሥነ-ምህዳር ሙሉ በሙሉ ለመቀየር የጀመረውን ታላቅ የአረንጓዴ ልማት ጉዞ ዘንድሮም በላቀ ደረጃ ለማስቀጠል ሙሉ ዝግጁነቱን አጠናቋል። ትምህርት ቤቱ የሚገኝበት የአዋሽ አርባ አካባቢ እጅግ ሞቃታማ የአየር ፀባይ ያለው በመሆኑ፣ ሰብዓዊና ቁሳዊ ሀብትን ምቹ በሆነ ሁኔታ ለመንከባከብና ካምፑን ለኑሮ ተስማሚ ለማድረግ የአረንጓዴ አሻራ ልማት የትምህርት ቤቱ የማይናወጥ ባህል ሆኖ ቀጥሏል። <br><br>
                 በዚሁ መሠረት በዘንድሮው የ2018 ዓ.ም የክረምት መርሐ-ግብር የትምህርት ቤቱን መላው ማህበረሰብ፣ ቋሚ አባላትና በየጊዜው ለሥልጠና የሚመጡ ዕጩ መኮንኖችንና ሰልጣኞችን በከፍተኛ ወታደራዊ ንቅናቄ በማስተባበር 12,000 (አሥራ ሁለት ሺህ) አዳዲስ የጥላና የፍራፍሬ ዛፍ ችግኞችን ለመትከልና ለማሳደግ ሰፊ ቅድመ-ዝግጅት ተደርጓል። እነዚህ ችግኞች በካምፑ ዙሪያ በሚገኙ መኖሪያ ቤቶች፣ በማስተማሪያ ክፍሎች አጠገብ፣ በዋና ዋና የመንገድ ዳርቻዎችና ክፍት ቦታዎች ላይ የሚተከሉ ሲሆን፣ ተቋሙ አዳዲስ መሠረተ-ልማቶችን በሚገነባበት ወቅት የአረንጓዴ ልማትን በተጓዳኝ በማስቀጠል ስልታዊ መመሪያን በጥብቅ እየተገበረ ይገኛል። ይህ ታላቅ የተፈጥሮ እንክብካቤ ሥራ አካባቢውን ለስልጠና ይበልጥ ምቹና ማራኪ ከማድረጉም በላይ饰 በትምህርት ቤቱ የተጀመረውን ሁለንተናዊ የለውጥና ራስን የመቻል ጉዞ ይበልጥ የሚያፋጥን ደማቅ ስኬት ነው።
-          </p>
+            </p>
         </div>
 
+    </div>
 
 </body>
 </html>
