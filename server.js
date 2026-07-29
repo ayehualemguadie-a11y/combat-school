@@ -123,33 +123,61 @@ app.get('/news', async (req, res) => {
 });
 
 
-// ------------------ የገጾች ማሳያ መንገዶች (GET) ------------------
+// ------------------ የገጾች ማሳያ መንገዶች (GET - የተጠናከረ) ------------------
 
-// ዋና ገጽ (Home Page)
+// 🏠 ዋና ገጽ (Home Page)
 app.get("/", async (req, res) => {
     try {
+        // የዳታቤዝ ክፍሎችን መፈተሽ
         const settingsResult = await db.query("SELECT * FROM settings LIMIT 1");
         const newsResult = await db.query("SELECT * FROM news ORDER BY id DESC LIMIT 20");
         
         const settings = settingsResult.rows.length > 0 ? settingsResult.rows[0] : null;
-res.render("index", { settings, news: newsResult.rows, newsList: newsResult.rows }); // 💡 ሁለቱንም ስሞች በአንድ ላይ በመላክ ስህተቱን ይከላከላል
+        const currentNews = newsResult.rows ? newsResult.rows : [];
 
+        // 💡 መቶ አለቃ፣ ኢንዴክስ ገጹ ስህተት እንዳይሰጥ ሁለቱንም የተለዋዋጭ ስሞች (news እና newsList) በአንድ ላይ እንልካለን!
+        res.render("index", { 
+            settings: settings, 
+            news: currentNews, 
+            newsList: currentNews 
+        });
     } catch (err) {
-        res.send("Error loading home page: " + err.message);
+        // የዳታቤዝ ግንኙነት ቢቋረጥ እንኳ ገጹ ሙሉ በሙሉ እንዳይደናቀፍ ባዶ መረጃዎችን ይልካል
+        console.log("Bypassing home database read friction safely:", err.message);
+        res.render("index", { settings: null, news: [], newsList: [] });
     }
 });
 
-// የጋለሪ ፎቶዎች ማሳያ ገጽ
+// 📰 የሕዝብ ዜና ማሳያ ገጽ (News Feed)
+app.get('/news', async (req, res) => {
+    try {
+        const result = await db.query("SELECT * FROM news ORDER BY id DESC");
+        const currentNews = result.rows ? result.rows : [];
+        
+        // 💡 ለኢጄኤስ ገጹ ዜናዎቹን 'newsList' እና 'news' በሚሉ ሁለቱም ስሞች አጣጥሞ ያስረክባል
+        res.render('news', { 
+            newsList: currentNews,
+            news: currentNews
+        });
+    } catch (err) {
+        console.log("Bypassing news feed database friction safely:", err.message);
+        res.render('news', { newsList: [], news: [] });
+    }
+});
+
+// 🖼️ የጋለሪ ፎቶዎች ማሳያ ገጽ
 app.get("/gallery", async (req, res) => {
     try {
         const result = await db.query("SELECT * FROM gallery ORDER BY id DESC");
-        res.render("gallery", { photos: result.rows });
+        const currentPhotos = result.rows ? result.rows : [];
+        res.render("gallery", { photos: currentPhotos });
     } catch (err) {
-        res.send("Error loading gallery: " + err.message);
+        console.log("Bypassing gallery database friction safely:", err.message);
+        res.render("gallery", { photos: [] });
     }
 });
 
-// የፎቶ መጫኛ ፎርም ገጽ
+// 📄 የፎቶ መጫኛ ፎርም ገጽ
 app.get("/upload.html", (req, res) => {
     res.sendFile(path.join(__dirname, "public", "upload.html"));
 });
