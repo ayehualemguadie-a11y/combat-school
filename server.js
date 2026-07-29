@@ -123,15 +123,14 @@ app.get('/news', async (req, res) => {
 });
 
 
-// ------------------ የገጾች ማሳያ መንገዶች (GET - የተጠናከረ) ------------------
+// ------------------ የገጾች ማሳያ መንገዶች (GET - የተጠገነ) ------------------
 
-// 🏠 ዋና ገጽ (Home Page - ፍጹም የተጠገነ)
+// 🏠 ዋና ገጽ (Home Page)
 app.get("/", async (req, res) => {
     try {
         const settingsResult = await db.query("SELECT * FROM settings LIMIT 1");
         const newsResult = await db.query("SELECT * FROM news ORDER BY id DESC LIMIT 20");
         
-        // 💡 መቶ አለቃ፣ የመጀመሪያውን የዕዝ መረጃ መቆለፊያ [0] በትክክል መልሰነዋል!
         const settings = settingsResult.rows.length > 0 ? settingsResult.rows[0] : null;
         const currentNews = newsResult.rows ? newsResult.rows : [];
 
@@ -141,14 +140,7 @@ app.get("/", async (req, res) => {
             newsList: currentNews 
         });
     } catch (err) {
-        console.log("Bypassing home database read friction safely:", err.message);
-        res.render("index", { settings: null, news: [], newsList: [] });
-    }
-});
-
-    } catch (err) {
-        // የዳታቤዝ ግንኙነት ቢቋረጥ እንኳ ገጹ ሙሉ በሙሉ እንዳይደናቀፍ ባዶ መረጃዎችን ይልካል
-        console.log("Bypassing home database read friction safely:", err.message);
+        console.log("Error loading home page:", err.message);
         res.render("index", { settings: null, news: [], newsList: [] });
     }
 });
@@ -159,13 +151,12 @@ app.get('/news', async (req, res) => {
         const result = await db.query("SELECT * FROM news ORDER BY id DESC");
         const currentNews = result.rows ? result.rows : [];
         
-        // 💡 ለኢጄኤስ ገጹ ዜናዎቹን 'newsList' እና 'news' በሚሉ ሁለቱም ስሞች አጣጥሞ ያስረክባል
         res.render('news', { 
             newsList: currentNews,
             news: currentNews
         });
     } catch (err) {
-        console.log("Bypassing news feed database friction safely:", err.message);
+        console.log("Error loading news feed:", err.message);
         res.render('news', { newsList: [], news: [] });
     }
 });
@@ -177,7 +168,7 @@ app.get("/gallery", async (req, res) => {
         const currentPhotos = result.rows ? result.rows : [];
         res.render("gallery", { photos: currentPhotos });
     } catch (err) {
-        console.log("Bypassing gallery database friction safely:", err.message);
+        console.log("Error loading gallery:", err.message);
         res.render("gallery", { photos: [] });
     }
 });
@@ -186,7 +177,6 @@ app.get("/gallery", async (req, res) => {
 app.get("/upload.html", (req, res) => {
     res.sendFile(path.join(__dirname, "public", "upload.html"));
 });
-
 
 
 // ዳሽቦርድ ገጽ
