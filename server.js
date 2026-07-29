@@ -132,7 +132,8 @@ app.get("/", async (req, res) => {
         const newsResult = await db.query("SELECT * FROM news ORDER BY id DESC LIMIT 20");
         
         const settings = settingsResult.rows.length > 0 ? settingsResult.rows[0] : null;
-        res.render("index", { settings, news: newsResult.rows });
+res.render("index", { settings, news: newsResult.rows, newsList: newsResult.rows }); // 💡 ሁለቱንም ስሞች በአንድ ላይ በመላክ ስህተቱን ይከላከላል
+
     } catch (err) {
         res.send("Error loading home page: " + err.message);
     }
