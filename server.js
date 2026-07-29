@@ -126,7 +126,7 @@ app.post("/upload-news", (req, res) => {
                 <br>
                 <a href="/admin-form" style="padding:12px 25px; background:#fbbf24; color:#000; text-decoration:none; border-radius:5px; font-weight:bold; font-size:16px; transition:0.3s;">📢 ሌላ አዲስ ዜና ጨምር</a>
                 <br><br><br>
-                // 💡 መቶ አለቃ፣ ወደ እውነተኛው የኤችቲኤምኤል ገጽ እንዲመራ href="/news.html" ተብሎ ተስተካክሏል!
+             
                <a href="/news.html" style="color:#e74c3c; font-weight:bold; text-decoration:none; font-size:16px;">👁️ ቀጥታ ወደ ዜናው ገጽ ሂድ (View News Feed)</a>
             </div>
         `);
