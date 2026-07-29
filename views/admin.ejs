@@ -9,27 +9,23 @@
         h2 { color: #fbbf24; text-align: center; margin-top: 0; }
         label { display: block; margin: 15px 0 5px 0; font-weight: bold; font-size: 16px; }
         input[type="text"], textarea { width: 100%; padding: 12px; box-sizing: border-box; border-radius: 6px; border: 1px solid #ccc; font-size: 16px; background: #fff; color: #333; }
-        input[type="file"] { margin: 15px 0; color: #fbbf24; font-size: 15px; }
-        .submit-btn { background: #27ae60; color: white; border: none; padding: 14px 20px; width: 100%; border-radius: 6px; font-size: 18px; font-weight: bold; cursor: pointer; transition: 0.3s; }
+        .submit-btn { background: #27ae60; color: white; border: none; padding: 14px 20px; width: 100%; border-radius: 6px; font-size: 18px; font-weight: bold; cursor: pointer; transition: 0.3s; margin-top: 20px; }
         .submit-btn:hover { background: #219150; }
     </style>
 </head>
 <body>
 
     <div class="form-box">
-        <h2>🎖️ የዜና እና ወቅቂያዊ መረጃዎች መጫኛ ፎርም</h2>
+        <h2>🎖️ የዜና እና ወቅታዊ መረጃዎች መጫኛ ፎርም</h2>
         
-        <form action="/upload-news" method="POST" enctype="multipart/form-data">
+        <!-- 💡 ⚠️ መቶ አለቃ፣ ከስህተት ሙሉ በሙሉ ነፃ ለመሆን ጽሑፍ ብቻ በቀጥታ ወደ ሰርቨሩ ማህደር የሚልክ አዲስ ፎርም -->
+        <form action="/upload-news" method="POST">
             
             <label>የዜናው ርዕስ (News Title)፦</label>
             <input type="text" name="title" placeholder="የዜናውን ርዕስ እዚህ ይጻፉ..." required>
 
             <label>ዝርዝር መግለጫ (News Description)፦</label>
             <textarea name="description" rows="6" placeholder="ሙሉ የዜናውን ታሪክ እዚህ ላይ ያብራሩ..." required></textarea>
-
-            <label>ተያያዥ ፎቶ ይምረጡ (Choose Image)፦</label>
-            <!-- ⚠️ 💡 መቶ አለቃ፣ ስሙ በትክክል name="image" ተብሎ ተቆልፏል (ከባክኤንዱ upload.single('image') ጋር እንዲገጣጠም) -->
-            <input type="file" name="image" accept="image/*" required>
 
             <button type="submit" class="submit-btn">🚀 ዜናውን በይፋ ልቀቅ (Publish News)</button>
         </form>
