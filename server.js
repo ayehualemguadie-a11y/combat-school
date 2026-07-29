@@ -62,7 +62,7 @@ const setupDatabase = async () => {
 };
 setupDatabase();
 
-// 💡 መቶ አለቃ፣ ሰርቨሩ በራሱ ሰንጠረዡን (Table) በክላውድ ዳታቤዝ ላይ እንዲፈጥር የሚያዝ ልዩ ኮድ
+// 💡 ሰርቨሩ በራሱ ሰንጠረዡን (Table) በክላውድ ዳታቤዝ ላይ እንዲፈጥር የሚያዝ ልዩ ኮድ
 db.query(`
     CREATE TABLE IF NOT EXISTS news (
         id SERIAL PRIMARY KEY,
@@ -92,9 +92,9 @@ app.post("/upload-news", upload.single("image"), async (req, res) => {
             return res.send("እባክዎ ርዕስ እና መግለጫ በትክክል ይሙሉ!");
         }
 
-        // 💡 መቶ አለቃ፣ ዜናውን ወደ ክላውድ ፖስትግሬስ ዳታቤዝዎ በክብር ያስገባል
+        // 💡 ዜናውን ወደ ክላውድ ፖስትግሬስ ዳታቤዝዎ በክብር ያስገባል
         await db.query("INSERT INTO news (title, description, image) VALUES ($1, $2, $3)", [title, description, imageUrl]);
-        
+
         // ዜናው በተሳካ ሁኔታ ሲጠናቀቅ የሚወጣው ውብ ወታደራዊ መልእክት
         res.send(`
             <div style="font-family:'Segoe UI', sans-serif; text-align:center; margin-top:80px; background:#1a252f; padding:40px; max-width:500px; margin-left:auto; margin-right:auto; border-radius:12px; border:3px solid #fbbf24; color:white; box-shadow:0 10px 25px rgba(0,0,0,0.5);">
@@ -152,6 +152,7 @@ app.get("/gallery", async (req, res) => {
 app.get("/upload.html", (req, res) => {
     res.sendFile(path.join(__dirname, "public", "upload.html"));
 });
+
 
 
 // ዳሽቦርድ ገጽ
