@@ -1,107 +1,21 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Combat Technic School</title>
-    <link rel="stylesheet" href="/style.css">
-    <style>
-        /* 1. የመፈክሩ ከቀኝ ወደ ግራ የመንሸራተቻ እና የ360 ዲግሪ አኒሜሽን ማዘዣ */
-        @keyframes moveAndSpinSlogan {
-            0% { transform: translateX(100vw) rotate(0deg); text-shadow: 0 0 10px #fbbf24, 0 0 20px #d97706, 2px 2px 5px rgba(0,0,0,0.9); }
-            45% { transform: translateX(10vw) rotate(0deg); }
-            50% { transform: translateX(0vw) rotate(360deg); text-shadow: 0 0 25px #fbbf24, 0 0 45px #f59e0b, 2px 2px 5px rgba(0,0,0,0.9); }
-            55% { transform: translateX(-10vw) rotate(360deg); }
-            100% { transform: translateX(-100%) rotate(360deg); text-shadow: 0 0 10px #fbbf24, 0 0 20px #d97706, 2px 2px 5px rgba(0,0,0,0.9); }
-        }
-        .scrolling-glowing-slogan { animation: moveAndSpinSlogan 15s linear infinite; }
-
-        /* 2. ⚠️ አራቱንም የባነር ፎቶዎች ከቀኝ ወደ ግራ በለስላሳ የሚያሸራትተው አዲሱ አኒሜሽን */
-        .slide { display: none; width: 100%; height: 100%; }
-        .slide.active { display: block; }
-        .slide-left-effect { animation: smoothSlideLeft 1.2s cubic-bezier(0.25, 1, 0.5, 1) forwards; }
-        
-        @keyframes smoothSlideLeft {
-            from { opacity: 0.3; transform: translateX(100%); }
-            to { opacity: 1; transform: translateX(0); }
-        }
-
-        .dot { height: 11px; width: 11px; background-color: rgba(255,255,255,0.4); border-radius: 50%; display: inline-block; transition: background-color 0.6s ease; }
-        .dot.active { background-color: #fbbf24; width: 26px; border-radius: 6px; }
-
-        /* አዲሱ የደማቅ ቀይ አዝራሮች (Red Buttons) ስታይል ማዘዣ */
-        .btn-red {
-            display: inline-block;
-            background-color: #dc2626 !important;
-            color: white !important;
-            padding: 14px 32px;
-            text-decoration: none;
-            border-radius: 6px;
-            font-weight: 900;
-            font-size: 16px;
-            margin: 10px;
-            box-shadow: 0 6px 15px rgba(220, 38, 38, 0.4);
-            border: 2px solid transparent;
-            transition: all 0.3s ease-in-out;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-        .btn-red:hover {
-            background-color: #b91c1c !important;
-            border-color: #fbbf24;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
-            transform: translateY(-3px);
-        }
-/* 🛠️ መቶ አለቃ፣ ማውዝ ሲያርፍባቸው በተኖቹ እንዲበሩና ከፍ እንዲሉ ማድረጊያ (Defense University Style) */
-.nav-bar a, .dropdown-menu a, .dropdown a, nav a, .menu a {
-    position: relative !important;
-    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1) !important; /* ለስላሳ ወታደራዊ ንቅናቄ */
-    display: inline-block !important;
-}
-
-/* 💡 ማውሱ በተኑ ላይ ሲያርፍ ወዲያውኑ ወደ ወርቃማነት እየተቀየረ ወደላይ ከፍ ይላል */
-.nav-bar a:hover, .dropdown-menu a:hover, .dropdown a:hover, nav a:hover, .menu a:hover {
-    color: #fbbf24 !important; /* የመከላከያ ወርቃማ ቀለም */
-    transform: translateY(-4px) scale(1.06) !important; /* በተኑን በግልጽ ወደላይ ከፍ ያደርገዋል */
-    text-shadow: 0 0 10px rgba(251, 191, 36, 0.8) !important; /* የበራ የመስመር ጥላ */
-}
-
-/* 📐 ከበተኖቹ በታች በለስላሳ ሁኔታ ተስቦ የሚወጣ ወርቃማ መስመር ማድረጊያ */
-.nav-bar a::after, nav a::after, .menu a::after {
-    content: '' !important;
-    position: absolute !important;
-    width: 100% !important;
-    transform: scaleX(0) !important;
-    height: 3px !important;
-    bottom: -5px !important;
-    left: 0 !important;
-    background-color: #fbbf24 !important;
-    transform-origin: bottom center !important;
-    transition: transform 0.25s ease-out !important;
-}
-
-.nav-bar a:hover::after, nav a:hover::after, .menu a:hover::after {
-    transform: scaleX(1) !important; /* ወርቃማውን መስመር በስተመሃል ይዘረጋል */
-}
-
-  <!DOCTYPE html>
 <html lang="am">
 <head>
-    <!-- 💡 መቶ አለቃ፣ ገጹ በሞባይል ስክሪን ልክ ራሱን በራሱ እንዲያስተካክል የሚያዝዘው ዋናው ወታደራዊ መቆለፊያ መስመር -->
     <meta charset="UTF-8">
+    <!-- 💡 መቶ አለቃ፣ ገጹ በሞባይል ስክሪን ልክ ራሱን በራሱ እንዲያስተካክል የሚያዝዘው ዋናው መቆለፊያ መስመር -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>የውጊያ ቴክኒክ ትምህርት ቤት</title>
     
     <style>
-        /* 📐 በሞባይል ስክሪን ላይ ፎቶዎች ወደ ጎን እንዳይገፉና ገጹ እንዳይቆረጥ የሚከለክል ልዩ ሕግ */
+        /* 📐 በኮምፒውተርም ሆነ በሞባይል ገጹ ወደ ጎን ተለጥጦ እንዳይቆረጥ የሚከለክል ልዩ ሕግ */
         html, body {
             max-width: 100% !important;
-            overflow-x: hidden !important; /* ወደ ጎን መንሸራተትን ሙሉ በሙሉ ይቆልፋል */
-            margin: 0;
-            padding: 0;
+            overflow-x: hidden !important; /* ወደ ጎን መንሸራተትንና መቆረጥን ሙሉ በሙሉ ይቆልፋል */
+            margin: 0 !important;
+            padding: 0 !important;
         }
 
-        /* 📸 የታንክ ፎቶዎች ማሳያ ሳጥን (በማንኛውም ስክሪን ልክ ራሱን የሚያስተካክል) */
+        /* 📸 የታንክ ፎቶዎች ማሳያ ሳጥን (በማንኛውም ስክሪን ልክ ራሱን የሚያስተካክል ተለዋዋጭ ዲዛይን) */
         .slider-container, .photo-slider, .image-wrapper {
             width: 100% !important;
             max-width: 100% !important;
@@ -113,6 +27,18 @@
             max-width: 100% !important;
             height: auto !important;
             object-fit: cover !important;
+        }
+
+        /* 🛠️ የሞባይል ስክሪን ሲሆን ብቻ በግድ ፎቶዎቹንና ጽሑፎቹን የሚጠግን ሕግ */
+        @media (max-width: 768px) {
+            div, section, header, .slider-container, .photo-slider, img {
+                max-width: 100% !important;
+                box-sizing: border-box !important;
+            }
+            .slider-container img, .photo-slider img {
+                width: 100% !important;
+                height: auto !important;
+            }
         }
     </style>
 </head>
@@ -128,7 +54,7 @@
         <span style="font-size: 10px; color: rgba(255,255,255,0.6);">▼</span>
     </div>
 
-    <!-- ሌሎች መደበኛ በተኖች (Library የነበረው ወደ Services ተቀይሯል) -->
+    <!-- ሌሎች መደበኛ በተኖች (💡 መቶ አለቃ Library የነበረው ወደ Services ተቀይሯል!) -->
     <a href="/about.html" style="color: #cccccc; text-decoration: none; font-size: 14px; font-weight: 500; transition: 0.3s; white-space: nowrap;">E-Learning</a>
     <a href="/services.html" style="color: #ffffff; text-decoration: none; font-size: 14px; font-weight: bold; transition: 0.3s; white-space: nowrap; border-bottom: 2px solid #fbbf24; padding-bottom: 2px;">Services</a>
     <a href="/offices.html" style="color: #cccccc; text-decoration: none; font-size: 14px; font-weight: 500; transition: 0.3s; white-space: nowrap;">Registrar</a>
@@ -162,13 +88,12 @@
             Ethiopian Combat Technique School
         </h2>
         <div style="width: 100%; border-top: 2px solid #e67e22; padding-top: 6px; display: flex; align-items: center;">
-            <p style="color: #566573 !important; font-size: 11px !important; font-weight: bold !important; letter-spacing: 0.5px; margin: 0; text-transform: uppercase; width: 100; line-height: 1.2;">
+            <p style="color: #566573 !important; font-size: 11px !important; font-weight: bold !important; letter-spacing: 0.5px; margin: 0; text-transform: uppercase; width: 100%; line-height: 1.2;">
                 — STRIVING FOR EXCELLENCE OF NATIONAL DEFENCE FORCES
             </p>
         </div>
     </div>
 </header>
-
 <!-- 🌐 የተደራረቡት አዝራሮች ተለቅመው የጠፉበት እና ቪዥን ወደ vision.html የተቆለፈበት ንጹሕ ማውጫ (Navbar) -->
 <nav style="background: linear-gradient(135deg, #1d4ed8 0%, #1e40af 100%) !important; display: flex; justify-content: center; align-items: center; padding: 14px 0; gap: 15px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25); border-radius: 4px; margin: 10px auto 0 auto; max-width: 95%; position: relative; z-index: 9999;">
     
