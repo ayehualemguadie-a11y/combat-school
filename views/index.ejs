@@ -84,64 +84,64 @@
     transform: scaleX(1) !important; /* ወርቃማውን መስመር በስተመሃል ይዘረጋል */
 }
 
-    </style>
+   </style>
 </head>
 <body>
-<!-- 🎖️ የመከላከያ ሎጎ፣ የዋና መግቢያ በር ፎቶ እና የት/ቤት ሎጎ በአንድ ላይ የተቆለፉበት አዲሱ የክብር ራስጌ ክፍል -->
-<header style="background: linear-gradient(rgba(17, 24, 39, 0.5), rgba(17, 24, 39, 0.75)), url('/images/gate.jpg') !important; background-size: cover !important; background-position: center 30% !important; background-repeat: no-repeat !important; border-bottom: 4px solid #fbbf24; padding: 25px 40px !important; box-shadow: 0 4px 15px rgba(0,0,0,0.5); position: relative; z-index: 10; max-width: 95% !important; margin: 0 auto !important; border-radius: 0 0 8px 8px;">
-    <div style="display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: 0 auto; gap: 15px; flex-wrap: nowrap; position: relative; z-index: 12;">
+
+<!-- 🌐 ፩. የላይኛው ጥቁር ማውጫ መስመር (Top Navbar - Defense University Style) -->
+<div style="background-color: #0d1b2a; padding: 10px 40px; display: flex; justify-content: flex-start; align-items: center; gap: 25px; font-family: 'Segoe UI', sans-serif; box-sizing: border-box; border-bottom: 1px solid rgba(255,255,255,0.1); width: 100% !important; margin: 0 !important;">
+    
+    <!-- Staff Profile ማውጫ (ከነጠብጣቧ ጋር) -->
+    <div style="display: flex; align-items: center; gap: 6px; color: #ffffff; font-size: 14px; font-weight: 500; cursor: pointer;">
+        <span style="color: #f39c12; font-size: 10px;">●</span>
+        <a href="/admin" style="color: #ffffff; text-decoration: none; transition: 0.3s;">Staff Profile</a>
+        <span style="font-size: 10px; color: rgba(255,255,255,0.6);">▼</span>
+    </div>
+
+    <!-- ሌሎች መደበኛ በተኖች -->
+    <a href="/about.html" style="color: #cccccc; text-decoration: none; font-size: 14px; font-weight: 500; transition: 0.3s;">E-Learning</a>
+    <a href="/services.html" style="color: #cccccc; text-decoration: none; font-size: 14px; font-weight: 500; transition: 0.3s;">Library</a>
+    <a href="/offices.html" style="color: #cccccc; text-decoration: none; font-size: 14px; font-weight: 500; transition: 0.3s;">Registrar</a>
+    <a href="/students.html" style="color: #cccccc; text-decoration: none; font-size: 14px; font-weight: 500; transition: 0.3s;">SIS</a>
+
+    <!-- በቀኝ ጫፍ ያለችው የ ICT HelpDesk በተን -->
+    <div style="margin-left: auto;">
+        <a href="/news.html" style="color: #e67e22; border: 1px solid #e67e22; padding: 5px 15px; border-radius: 20px; text-decoration: none; font-size: 14px; font-weight: bold; background-color: rgba(230, 126, 34, 0.1); transition: 0.3s;">
+            ICT HelpDesk
+        </a>
+    </div>
+</div>
+
+<!-- 🎖️ ፪. ዋናው ነጭ የራስጌ ክፍል (Main White Header - 100% ማጣጣሚያ) -->
+<header style="background-color: #ffffff !important; padding: 20px 50px !important; display: flex; justify-content: flex-start; align-items: center; gap: 25px; box-shadow: 0 4px 10px rgba(0,0,0,0.08); font-family: 'Segoe UI', sans-serif; box-sizing: border-box; width: 100% !important; margin: 0 !important; border-bottom: 3px solid #0d1b2a;">
+    
+    <!-- 🦅 የትምህርት ቤቱ ክብ አርማ (በግራ በኩል በክብር ይቀመጣል) -->
+    <div style="flex: 0 0 auto; display: flex; align-items: center;">
+        <img src="/images/school-logo.png" 
+             onerror="this.src='/images/school-logo.jpg'; this.onerror=function(){this.src='/images/defense-logo.png';};" 
+             style="height: 110px !important; width: 110px !important; object-fit: contain; filter: drop-shadow(0 2px 5px rgba(0,0,0,0.15));" 
+             alt="Combat Technic School Logo">
+    </div>
+
+    <!-- ✍️ የትምህርት ቤቱ ይፋዊ ስምና መፈክር (በደማቅ ሰማያዊ ቀለም) -->
+    <div style="display: flex; flex-direction: column; justify-content: center; align-items: flex-start; text-align: left;">
         
-        <!-- 🇪🇹 1. በግራ ጫፍ የኢፌድሪ መከላከያ ሠራዊት ሎጎ -->
-        <div style="flex: 0 0 auto; text-align: left;">
-            <img src="/images/defense-logo.png" 
-                 onerror="this.src='/image/defense-logo.png'; this.onerror=function(){this.src='/images/defense-logo.jpg';};" 
-                 style="height: 85px !important; width: auto; object-fit: contain; filter: drop-shadow(0 3px 6px rgba(0,0,0,0.8));" 
-                 alt="FDRE Defense Force Logo">
+        <!-- የአማርኛ ስም -->
+        <h1 style="color: #0f2a4a !important; font-size: 28px !important; font-weight: bold !important; margin: 0 0 4px 0 !important; font-family: 'Segoe UI', sans-serif; letter-spacing: 0.5px;">
+            የኢትዮጵያ ውጊያ ቴክኒክ ትምህርት ቤት
+        </h1>
+        
+        <!-- የእንግሊዝኛ ስም -->
+        <h2 style="color: #1b4f72 !important; font-size: 34px !important; font-weight: 700 !important; margin: 0 0 12px 0 !important; font-family: 'Georgia', serif; letter-spacing: 0.5px;">
+            Ethiopian Combat Technique School
+        </h2>
+        
+        <!-- ወርቃማው የስር መስመር እና ይፋዊ መፈክር -->
+        <div style="width: 100%; border-top: 2px solid #e67e22; padding-top: 6px; display: flex; align-items: center;">
+            <p style="color: #566573 !important; font-size: 13px !important; font-weight: bold !important; letter-spacing: 1.5px; margin: 0; text-transform: uppercase;">
+                — STRIVING FOR EXCELLENCE OF NATIONAL DEFENCE FORCES
+            </p>
         </div>
-<
-
-                <!-- 🛠️ መቶ አለቃ፣ በገጹ አናት ላይ መፈክሩን በትልቁ ከግራ ወደ ቀኝ የሚያዞረው አዲሱ የተስተካከለ ክፍል -->
-                <!-- 🛠️ መቶ አለቃ፣ መፈክሩን በትልቁ እያዞረ ሎጎዋንም ወደ ቦታዋ የመለሰው አዲሱ የተስተካከለ ክፍል -->
-        <div style="flex: 1 1 auto; text-align: center; max-width: 650px; overflow: hidden;">
-            <h1 style="color: #fbbf24; font-size: 26px !important; font-weight: 800; text-shadow: 2px 2px 4px rgba(0,0,0,1); margin: 0; font-family: sans-serif; letter-spacing: 0.5px;">
-                የውጊያ ቴክኒክ ትምህርት ቤት
-            </h1>
-            
-            <!-- 💡 መፈክሩ ከግራ ወደ ቀኝ በትልቁ የሚዞርበት ማዕቀፍ -->
-            <div style="width: 100%; overflow: hidden; margin-top: 5px;">
-              <div style="display: flex; width: max-content; animation: headerSloganScroll 20s linear infinite;"> 
-
-                    <!-- 💡 መጀመሪያ ዙር -->
-                    <p style="color: #FF0000; font-size: 30px !important; font-weight: bold; text-shadow: 2px 2px 4px rgba(0,0,0,1); margin: 0; font-style: italic; white-space: nowrap; padding-right: 50px;">
-                        "እናቅዳለን፤ እንጀምራለን፤ እናሰፋለን፤ በፍጥነት እና በጥራት እንፈጽማለን!"
-                    </p>
-                    <!-- 💡 ሁለተኛ ዙር ድግግሞሽ (ያለምንም መቆራረጥ እንዲዞር) -->
-                    <p style="color: #FF0000; font-size: 30px !important; font-weight: bold; text-shadow: 2px 2px 4px rgba(0,0,0,1); margin: 0; font-style: italic; white-space: nowrap; padding-right: 50px;">
-                        "እናቅዳለን፤ እንጀምራለን፤ እናሰፋለን፤ በፍጥነት እና በጥራት እንፈጽማለን!"
-                    </p>
-                </div>
-            </div>
-        </div>
-
-        <!-- 🚜 3. 💡 መቶ አለቃ፣ በቀኝ ጫፍ የጠፋችውን የውጊያ ቴክኒክ ትምህርት ቤት ሎጎ በሥርዓት የመለስንባት ክፍል -->
-        <div style="flex: 0 0 auto; text-align: right; z-index: 10;">
-            <img src="images/logo.png" 
-                 onerror="this.src='image/logo.png'; this.onerror=function(){this.src='images/logo.jpg';};" 
-                 style="height: 85px !important; width: auto; object-fit: contain; filter: drop-shadow(0 3px 6px rgba(0,0,0,0.8));" 
-                 alt="Combat Technic School Logo">
-        </div>
-
-            </div>
-        </div>
-
-<!-- 🏃‍♂️ የላይኛው ምናሌ መፈክር ከግራ ወደ ቀኝ ማዞሪያ የአኒሜሽን ህግ -->
-<style>
-    @keyframes headerSloganScroll {
-        0% { transform: translateX(-50%); }
-        100% { transform: translateX(0); }
-    }
-</style>
-
 
     </div>
 </header>
