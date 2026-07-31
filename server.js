@@ -82,13 +82,12 @@ app.get('/admin-form', (req, res) => {
 // 📐 መቶ አለቃ፣ ከክላውድና ከዳታቤዝ ስህተት 100% ነፃ የሆነው የሰርቨሩ ማህደር ማከማቻ መስመር
 const LOCAL_NEWS_JSON = path.join(__dirname, 'news.json');
 
-// 📰 ፪. ዜና እና ማስታወቂያዎችን በቀጥታ በሰርቨሩ ማህደር ላይ መለጠፊያ ተግባር (ፍጹም አስተማማኝ)
-app.post("/upload-news", (req, res) => {
-    // 💡 መቶ አለቃ፣ የክላውድ መስበርን ለመከላከል ጽሑፎቹን ብቻ በቀጥታ እንቀበላለን
+// 📰 ፪. ዜና እና ማስታወቂያዎችን በቀጥታ በክላውድ ዳታቤዝ ላይ መለጠፊያ ተግባር (ፍጹም አስተማማኝ)
+app.post("/upload-news", async (req, res) => {
     const title = req.body.title;
     const description = req.body.description;
     
-    // 📸 ፎቶውን በቋሚነት በትምህርት ቤቱ የሽንኩርት ልማት ፎቶ እንቆልፈዋለን (ከስህተት ሙሉ በሙሉ ነፃ ለመሆን)
+    // 📸 ፎቶውን በቋሚነት በትምህርት ቤቱ የሽንኩርት ልማት ፎቶ እንቆልፈዋለን
     const imageUrl = "/images/onion-field.jpg";
 
     try {
@@ -96,52 +95,25 @@ app.post("/upload-news", (req, res) => {
             return res.send("እባክዎ ርዕስ እና መግለጫ በትክክል ይሙሉ!");
         }
 
-        // አዲሱን የ2018 ታላቅ ዜና ማደራጀት
-        const newPost = {
-            id: Date.now(),
-            title: title,
-            description: description,
-            image: imageUrl,
-            date: new Date().toLocaleDateString('am-ET')
-        };
-
-        // የድሮ ዜናዎችን በጥንቃቄ ማንበብና አዲሱን ጨምሮ በ news.json ላይ ሴቭ ማድረግ
-        let allNews = [];
-        if (fs.existsSync(LOCAL_NEWS_JSON)) {
-            try {
-                allNews = JSON.parse(fs.readFileSync(LOCAL_NEWS_JSON, 'utf8'));
-            } catch (e) {
-                allNews = [];
-            }
-        }
+        // 💡 በፋይል ላይ ከመጻፍ ይልቅ መረጃውን ቀጥታ ወደ Supabase ዳታቤዝ ጠረጴዛ (news table) እናስቀምጠዋለን
+        const queryText = 'INSERT INTO news (title, description, image, date) VALUES ($1, $2, $3, NOW())';
         
-        allNews.unshift(newPost); // አዲሱን ዜና ሁልጊዜም ከላይ ቀዳሚ ለማድረግ
-        fs.writeFileSync(LOCAL_NEWS_JSON, JSON.stringify(allNews, null, 2), 'utf8');
+        // ማሳሰቢያ፦ የዳታቤዝ ግንኙነት ስምህ 'db' ወይም 'pool' ሊሆን ይችላል። 'db' ካልሰራ 'pool.query' አድርገው።
+        await db.query(queryText, [title, description, imageUrl]);
         
-        // 💡 ዜናው በተሳካ ሁኔታ ሲጠናቀቅ የሚወጣው ውብ ወታደራዊ መልእክት
+        // 💡 ዜናው በተሳካ ሁኔታ ሲጠናቀቅ የሚወጣው ውብ መልእክት
         res.send(`
             <div style="font-family:'Segoe UI', sans-serif; text-align:center; margin-top:80px; background:#1a252f; padding:40px; max-width:500px; margin-left:auto; margin-right:auto; border-radius:12px; border:3px solid #fbbf24; color:white; box-shadow:0 10px 25px rgba(0,0,0,0.5);">
-                <h2 style="color:#27ae60; font-size:26px;">📰 ዜናው በተሳካ ሁኔታ በሰርቨሩ ማህደር ላይ ታትሟል!</h2>
-                <p style="color:#ecf0f1; font-size:16px; margin-bottom:25px;">የምግብ ራስን መቻልና የ2018 የአረንጓዴ ልማት መረጃው በይፋ ተለቋል።</p>
+                <h2 style="color:#27ae60; font-size:26px;">📰 ዜናው በተሳካ ሁኔታ በክላውድ ዳታቤዝ ላይ ታትሟል!</h2>
+                <p style="color:#ecf0f1; font-size:16px; margin-bottom:25px;">የምግብ ራስን መቻልና የአረንጓዴ ልማት መረጃው በይፋ ተለቋል።</p>
                 <br>
                 <a href="/admin-form" style="padding:12px 25px; background:#fbbf24; color:#000; text-decoration:none; border-radius:5px; font-weight:bold; font-size:16px; transition:0.3s;">📢 ሌላ አዲስ ዜና ጨምር</a>
                 <br><br><br>
-             
-               <a href="/news.html" style="color:#e74c3c; font-weight:bold; text-decoration:none; font-size:16px;">👁️ ቀጥታ ወደ ዜናው ገጽ ሂድ (View News Feed)</a>
+               <a href="/news" style="color:#e74c3c; font-weight:bold; text-decoration:none; font-size:16px;">👁️ ቀጥታ ወደ ዜናው ገጽ ሂድ (View News Feed)</a>
             </div>
         `);
     } catch (err) {
         res.send("የዜና መጫን የሰርቨር ስህተት አጋጥሟል: " + err.message);
-    }
-});
-// 🔗 ፫. የተጫኑትን ዜናዎች በሙሉ ከክላውድ ዳታቤዝ አምጥቶ ወደ news.ejs መላኪያ መስመር
-app.get('/news', async (req, res) => {
-    try {
-        const result = await db.query("SELECT * FROM news ORDER BY id DESC");
-        // 💡 ለኢጄኤስ ገጹ ዜናዎቹን 'newsList' በሚል ስም ያስረክባል
-        res.render('news', { newsList: result.rows });
-    } catch (err) {
-        res.send("ዜናዎችን ከዳታቤዝ ማምጣት አልተቻለም፦ " + err.message);
     }
 });
 
