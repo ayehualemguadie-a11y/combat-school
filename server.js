@@ -143,19 +143,17 @@ app.get("/", async (req, res) => {
     }
 });
 
-// 📰 የሕዝብ ዜና ማሳያ ገጽ (News Feed)
+// 🔗 ፫. የተጫኑትን ዜናዎች በሙሉ ከክላውድ ዳታቤዝ አምጥቶ ወደ news.ejs መላኪያ መስመር
 app.get('/news', async (req, res) => {
     try {
-        const result = await db.query("SELECT * FROM news ORDER BY id DESC");
-        const currentNews = result.rows ? result.rows : [];
+        // 💡 ማሳሰቢያ፦ ዓምዱ 'id' ካልሆነ በ 'created_at' ቀይረህ ፈትነው
+        const result = await db.query("SELECT * FROM news ORDER BY created_at DESC");
         
-        res.render('news', { 
-            newsList: currentNews,
-            news: currentNews
-        });
+        // ለኢጄኤስ ገጹ ዜናዎቹን 'newsList' በሚል ስም ያስረክባል
+        res.render('news', { newsList: result.rows });
     } catch (err) {
-        console.log("Error loading news feed:", err.message);
-        res.render('news', { newsList: [], news: [] });
+        console.error(err);
+        res.status(500).send("ዜናዎችን ከዳታቤዝ ማምጣት አልተቻለም፦ " + err.message);
     }
 });
 
