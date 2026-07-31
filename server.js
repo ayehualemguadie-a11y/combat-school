@@ -96,7 +96,10 @@ app.post("/upload-news", async (req, res) => {
         }
 
         // 💡 በፋይል ላይ ከመጻፍ ይልቅ መረጃውን ቀጥታ ወደ Supabase ዳታቤዝ ጠረጴዛ (news table) እናስቀምጠዋለን
-        const queryText = 'INSERT INTO news (title, description, image, date) VALUES ($1, $2, $3, NOW())';
+
+// 🟢 በትክክል የተስተካከለው አዲሱ መስመር፦
+const queryText = 'INSERT INTO news (title, description, image, created_at) VALUES ($1, $2, $3, NOW())';
+
         
         // ማሳሰቢያ፦ የዳታቤዝ ግንኙነት ስምህ 'db' ወይም 'pool' ሊሆን ይችላል። 'db' ካልሰራ 'pool.query' አድርገው።
         await db.query(queryText, [title, description, imageUrl]);
