@@ -21,5 +21,6 @@ const initDb = async () => {
 
 initDb();
 
-// 💡 ⚠️ በ server.js ላይ 'db' ተብሎ ስለተጠራ ስሙን 'pool' ሳይሆን 'db' አድርገን እንልከዋለን (ስህተቱን ሙሉ በሙሉ ያጠፋል)
-module.exports = pool; 
+// 💡 ⚠️ ወሳኝ መስመር፡ በ server.js ላይ 'db' ተብሎ ስለተጠራ ስሙን 'db' በሚል ተለዋዋጭነት እንልከዋለን
+const db = pool;
+module.exports = db; 
