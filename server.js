@@ -82,29 +82,21 @@ app.get('/admin-form', (req, res) => {
 // 📐 መቶ አለቃ፣ ከክላውድና ከዳታቤዝ ስህተት 100% ነፃ የሆነው የሰርቨሩ ማህደር ማከማቻ መስመር
 const LOCAL_NEWS_JSON = path.join(__dirname, 'news.json');
 
-// 📰 ፪. ዜና እና ማስታወቂያዎችን በቀጥታ በክላውድ ዳታቤዝ ላይ መለጠፊያ ተግባር (ፍጹም አስተማማኝ)
+// 📰 ፪. ዜና እና ማስታወቂያዎችን በቀጥታ በክላውድ ዳታቤዝ ላይ መለጠፊያ ተግባር
 app.post("/upload-news", async (req, res) => {
     const title = req.body.title;
     const description = req.body.description;
-    
-    // 📸 ፎቶውን በቋሚነት በትምህርት ቤቱ የሽንኩርት ልማት ፎቶ እንቆልፈዋለን
-    const imageUrl = "/images/onion-field.jpg";
+    const imageUrl = "/images/onion-field.jpg"; // ፎቶውን በቋሚነት መቆለፊያ
 
     try {
         if (!title || !description) {
             return res.send("እባክዎ ርዕስ እና መግለጫ በትክክል ይሙሉ!");
         }
 
-        // 💡 በፋይል ላይ ከመጻፍ ይልቅ መረጃውን ቀጥታ ወደ Supabase ዳታቤዝ ጠረጴዛ (news table) እናስቀምጠዋለን
-
-// 🟢 በትክክል የተስተካከለው አዲሱ መስመር፦
-const queryText = 'INSERT INTO news (title, description, image, created_at) VALUES ($1, $2, $3, NOW())';
-
-        
-        // ማሳሰቢያ፦ የዳታቤዝ ግንኙነት ስምህ 'db' ወይም 'pool' ሊሆን ይችላል። 'db' ካልሰራ 'pool.query' አድርገው።
+        // መረጃውን ቀጥታ ወደ Supabase ዳታቤዝ ያስቀምጠዋል
+        const queryText = 'INSERT INTO news (title, description, image, created_at) VALUES ($1, $2, $3, NOW())';
         await db.query(queryText, [title, description, imageUrl]);
         
-        // 💡 ዜናው በተሳካ ሁኔታ ሲጠናቀቅ የሚወጣው ውብ መልእክት
         res.send(`
             <div style="font-family:'Segoe UI', sans-serif; text-align:center; margin-top:80px; background:#1a252f; padding:40px; max-width:500px; margin-left:auto; margin-right:auto; border-radius:12px; border:3px solid #fbbf24; color:white; box-shadow:0 10px 25px rgba(0,0,0,0.5);">
                 <h2 style="color:#27ae60; font-size:26px;">📰 ዜናው በተሳካ ሁኔታ በክላውድ ዳታቤዝ ላይ ታትሟል!</h2>
@@ -120,6 +112,16 @@ const queryText = 'INSERT INTO news (title, description, image, created_at) VALU
     }
 });
 
+// 🔗 ፫. የተጫኑትን ዜናዎች ከክላውድ ዳታቤዝ አምጥቶ ወደ news.ejs መላኪያ መስመር
+app.get('/news', async (req, res) => {
+    try {
+        // ዜናዎቹን ከተፈጠሩበት ሰዓት አንፃር በቅደም ተከተል ያመጣቸዋል
+        const result = await db.query("SELECT * FROM news ORDER BY created_at DESC");
+        res.render('news', { newsList: result.rows });
+    } catch (err) {
+        res.send("ዜናዎችን ከዳታቤዝ ማምጣት አልተቻለም፦ " + err.message);
+    }
+});
 
 // ------------------ የገጾች ማሳያ መንገዶች (GET - የተጠገነ) ------------------
 
