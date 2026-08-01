@@ -73,43 +73,45 @@ db.query(`
     );
 `).then(() => console.log("🚀 የዜና ሰንጠረዥ በክላውድ ዳታቤዝ ላይ በራስ-ሰር ተፈጥሯል!"))
   .catch(err => console.error("⚠️ ሰንጠረዥ መፍጠር አልተቻለም፦", err.message));
-
-// 🔗 ፩. የአስተዳዳሪውን የዜና መጻፊያ ገጽ (admin.ejs) መክፈቻ መስመር
 app.get('/admin-form', (req, res) => {
-    res.render('admin'); 
-});
+    res.send(`
+    <!DOCTYPE html>
+    <html lang="am">
+    <head>
+        <meta charset="UTF-8">
+        <title>የዜና ማስተዳደሪያ ክፍል - Admin Dashboard</title>
+        <style>
+            body { background: #2c3e50; font-family: 'Segoe UI', sans-serif; padding: 40px; color: white; }
+            .form-box { max-width: 600px; margin: 0 auto; background: #1a252f; padding: 30px; border-radius: 8px; border: 3px solid #fbbf24; box-shadow: 0 10px 25px rgba(0,0,0,0.5); }
+            h2 { color: #fbbf24; text-align: center; margin-top: 0; }
+            label { display: block; margin: 15px 0 5px 0; font-weight: bold; font-size: 16px; }
+            input[type="text"], textarea { width: 100%; padding: 12px; box-sizing: border-box; border-radius: 6px; border: 1px solid #ccc; font-size: 16px; background: #fff; color: #333; }
+            .submit-btn { background: #27ae60; color: white; border: none; padding: 14px 20px; width: 100%; border-radius: 6px; font-size: 18px; font-weight: bold; cursor: pointer; transition: 0.3s; margin-top: 20px; }
+            .submit-btn:hover { background: #219150; }
+        </style>
+    </head>
+    <body>
+        <div class="form-box">
+            <h2>🎖️ የዜና እና ወቅታዊ መረጃዎች መጫኛ ፎርም</h2>
+            
+            <!-- 🟢 enctype እና አዲሱ የምስል ሳጥን በትክክል ተጨምረዋል -->
+            <form action="/upload-news" method="POST" enctype="multipart/form-data">
+                
+                <label>የዜናው ርዕስ (News Title)፦</label>
+                <input type="text" name="title" placeholder="የዜናውን ርዕስ እዚህ ይጻፉ..." required>
 
-// 📐 መቶ አለቃ፣ ከክላውድና ከዳታቤዝ ስህተት 100% ነፃ የሆነው የሰርቨሩ ማህደር ማከማቻ መስመር
-const LOCAL_NEWS_JSON = path.join(__dirname, 'news.json');
+                <label>ዝርዝር መግለጫ (News Description)፦</label>
+                <textarea name="description" rows="6" placeholder="ሙሉ የዜናውን ታሪክ እዚህ ላይ ያብራሩ..." required></textarea>
 
-// 📰 ፪. ዜና እና ማስታወቂያዎችን በቀጥታ በክላውድ ዳታቤዝ ላይ መለጠፊያ ተግባር
-app.post("/upload-news", async (req, res) => {
-    const title = req.body.title;
-    const description = req.body.description;
-    const imageUrl = "/images/onion-field.jpg"; // ፎቶውን በቋሚነት መቆለፊያ
+                <label>የዜናው ምስል (News Image)፦</label>
+                <input type="file" name="image" accept="image/*" required style="background: white; color: black; padding: 10px; width: 100%; border-radius: 6px; box-sizing: border-box; margin-top: 5px;">
 
-    try {
-        if (!title || !description) {
-            return res.send("እባክዎ ርዕስ እና መግለጫ በትክክል ይሙሉ!");
-        }
-
-        // መረጃውን ቀጥታ ወደ Supabase ዳታቤዝ ያስቀምጠዋል
-        const queryText = 'INSERT INTO news (title, description, image, created_at) VALUES ($1, $2, $3, NOW())';
-        await db.query(queryText, [title, description, imageUrl]);
-        
-        res.send(`
-            <div style="font-family:'Segoe UI', sans-serif; text-align:center; margin-top:80px; background:#1a252f; padding:40px; max-width:500px; margin-left:auto; margin-right:auto; border-radius:12px; border:3px solid #fbbf24; color:white; box-shadow:0 10px 25px rgba(0,0,0,0.5);">
-                <h2 style="color:#27ae60; font-size:26px;">📰 ዜናው በተሳካ ሁኔታ በክላውድ ዳታቤዝ ላይ ታትሟል!</h2>
-                <p style="color:#ecf0f1; font-size:16px; margin-bottom:25px;">የምግብ ራስን መቻልና የአረንጓዴ ልማት መረጃው በይፋ ተለቋል።</p>
-                <br>
-                <a href="/admin-form" style="padding:12px 25px; background:#fbbf24; color:#000; text-decoration:none; border-radius:5px; font-weight:bold; font-size:16px; transition:0.3s;">📢 ሌላ አዲስ ዜና ጨምር</a>
-                <br><br><br>
-               <a href="/news" style="color:#e74c3c; font-weight:bold; text-decoration:none; font-size:16px;">👁️ ቀጥታ ወደ ዜናው ገጽ ሂድ (View News Feed)</a>
-            </div>
-        `);
-    } catch (err) {
-        res.send("የዜና መጫን የሰርቨር ስህተት አጋጥሟል: " + err.message);
-    }
+                <button type="submit" class="submit-btn">🚀 ዜናውን ከምስል ጋር በይፋ ልቀቅ (Publish News)</button>
+            </form>
+        </div>
+    </body>
+    </html>
+    `);
 });
 
 // 🔗 ፫. የተጫኑትን ዜናዎች በሙሉ ከክላውድ ዳታቤዝ አምጥቶ ወደ news.ejs መላኪያ መስመር
