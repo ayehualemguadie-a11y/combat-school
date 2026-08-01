@@ -119,7 +119,9 @@ app.get('/news', async (req, res) => {
         const result = await db.query("SELECT * FROM news ORDER BY id DESC");
         
         // 💡 ማሳሰቢያ፦ 'news' የነበረውን ወደ 'index' ቀይረነዋል! (ምክንያቱም views ውስጥ ያለው እሱ ስለሆነ)
-        res.render('index', { newsList: result.rows });
+       // 🟢 በትክክል የተስተካከለው የመጨረሻው የ server.js መስመር
+res.render('news', { newsList: result.rows });
+
     } catch (err) {
         res.send("ዜናዎችን ከዳታቤዝ ማምጣት አልተቻለም፦ " + err.message);
     }
