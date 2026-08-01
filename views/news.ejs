@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="am">
+<head>
+    <meta charset="UTF-8">
+    <title>የትምህርት ቤቱ ወቅታዊ ዜናዎች - News Feed</title>
+    <style>
+        body { background: #2c3e50; font-family: 'Segoe UI', sans-serif; padding: 40px; color: white; }
+        .news-box { max-width: 800px; margin: 0 auto; background: #1a252f; padding: 30px; border-radius: 8px; border: 3px solid #fbbf24; box-shadow: 0 10px 25px rgba(0,0,0,0.5); }
+        h2 { color: #fbbf24; text-align: center; }
+        .news-item { border-bottom: 2px solid #34495e; padding: 20px 0; margin-bottom: 10px; }
+        .news-title { color: #27ae60; margin-top: 0; font-size: 22px; }
+        .news-desc { color: #ecf0f1; font-size: 16px; line-height: 1.6; }
+        .back-btn { display: inline-block; background: #fbbf24; color: black; padding: 10px 20px; text-decoration: none; border-radius: 5px; font-weight: bold; margin-top: 20px; }
+    </style>
+</head>
+<body>
+
+    <div class="news-box">
+        <h2>📰 የትምህርት ቤቱ ወቅታዊ ዜናዎችና ማስታወቂያዎች</h2>
+        
+        <% if (newsList && newsList.length > 0) { %>
+            <% newsList.forEach(function(news) { %>
+                <div class="news-item">
+                    <h3 class="news-title">🎖️ <%= news.title %></h3>
+                    <p class="news-desc"><%= news.description %></p>
+                    <small style="color: #bdc3c7;">የተለጠፈበት ቀን፦ <%= news.created_at ? new Date(news.created_at).toLocaleDateString('am-ET') : '' %></small>
+                </div>
+            <% }) %>
+        <% } else { %>
+            <p style="text-align: center; color: #bdc3c7;">በአሁኑ ሰዓት ምንም አዲስ የተጫነ ዜና የለም።</p>
+        <% } %>
+
+        <a href="/" class="back-btn">⬅️ ወደ ዋናው ገጽ ተመለስ</a>
+    </div>
+
+</body>
+</html>
