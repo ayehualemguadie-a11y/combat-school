@@ -112,12 +112,11 @@ app.post("/upload-news", async (req, res) => {
     }
 });
 
-// 🔗 ፫. የተጫኑትን ዜናዎች ከክላውድ ዳታቤዝ አምጥቶ ወደ news.ejs መላኪያ መስመር
 // 🔗 ፫. የተጫኑትን ዜናዎች በሙሉ ከክላውድ ዳታቤዝ አምጥቶ ወደ news.ejs መላኪያ መስመር
 app.get('/news', async (req, res) => {
     try {
-        // 💡 ማሳሰቢያ፦ 'db.query' የነበረውን ወደ 'pool.query' ቀይረነዋል!
-        const result = await pool.query("SELECT * FROM news ORDER BY created_at DESC");
+        // 💡 ማሳሰቢያ፦ 'pool.query' የነበረውን ወደ 'db.query' ቀይረነዋል!
+        const result = await db.query("SELECT * FROM news ORDER BY created_at DESC");
         
         // ለኢጄኤስ ገጹ ዜናዎቹን 'newsList' በሚል ስም ያስረክባል
         res.render('news', { newsList: result.rows });
