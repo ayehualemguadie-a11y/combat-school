@@ -230,7 +230,7 @@ app.post("/upload", upload.single("photo"), async (req, res) => {
     }
 });
 
-/ ፪. ዜና እና ማስታወቂያዎችን በጽሑፍ ብቻ በክላውድ ዳታቤዝ ላይ መለጠፊያ ተግባር (ፍጹም አስተማማኝ)
+// ፪. ዜና እና ማስታወቂያዎችን በጽሑፍ ብቻ በክላውድ ዳታቤዝ ላይ መለጠፊያ ተግባር (ፍጹም አስተማማኝ)
 app.post("/upload-news", async (req, res) => {
     const title = req.body.title;
     const description = req.body.description;
@@ -241,8 +241,8 @@ app.post("/upload-news", async (req, res) => {
             return res.send("እባክዎ ርዕስ እና መግለጫ በትክክል ይሙሉ!");
         }
 
-        // መረጃውን ቀጥታ ወደ Neon ዳታቤዝ ያስቀምጠዋል
-        const queryText = 'INSERT INTO news (title, description, image) VALUES ($1, $2, $3)';
+        // መረጃውን ቀጥታ ወደ Neon ዳታቤዝ ያስቀምጠዋል (created_at ዓምድ መጨመሩን እንዳትረሳ)
+        const queryText = 'INSERT INTO news (title, description, image, created_at) VALUES ($1, $2, $3, NOW())';
         await db.query(queryText, [title, description, imageUrl]);
         
         res.send(`
@@ -259,6 +259,7 @@ app.post("/upload-news", async (req, res) => {
         res.send("የዜና መጫን የሰርቨር ስህተት አጋጥሟል: " + err.message);
     }
 });
+
 
 // 👤 የአድሚን አካውንት መቀየሪያ ተግባር
 app.post("/change-admin", async (req, res) => {
