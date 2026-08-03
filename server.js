@@ -73,6 +73,7 @@ db.query(`
     );
 `).then(() => console.log("🚀 የዜና ሰንጠረዥ በክላውድ ዳታቤዝ ላይ በራስ-ሰር ተፈጥሯል!"))
   .catch(err => console.error("⚠️ ሰንጠረዥ መፍጠር አልተቻለም፦", err.message));
+// ፩. የአድሚን ፎርም ማሳያ መስመር (ምስል የሌለው፣ የጽሑፍ ብቻ)
 app.get('/admin-form', (req, res) => {
     res.send(`
     <!DOCTYPE html>
@@ -94,26 +95,20 @@ app.get('/admin-form', (req, res) => {
         <div class="form-box">
             <h2>🎖️ የዜና እና ወቅታዊ መረጃዎች መጫኛ ፎርም</h2>
             
-            <!-- 🟢 enctype እና አዲሱ የምስል ሳጥን በትክክል ተጨምረዋል -->
-            <form action="/upload-news" method="POST" enctype="multipart/form-data">
-                
+            <form action="/upload-news" method="POST">
                 <label>የዜናው ርዕስ (News Title)፦</label>
                 <input type="text" name="title" placeholder="የዜናውን ርዕስ እዚህ ይጻፉ..." required>
 
                 <label>ዝርዝር መግለጫ (News Description)፦</label>
                 <textarea name="description" rows="6" placeholder="ሙሉ የዜናውን ታሪክ እዚህ ላይ ያብራሩ..." required></textarea>
 
-                <label>የዜናው ምስል (News Image)፦</label>
-                <input type="file" name="image" accept="image/*" required style="background: white; color: black; padding: 10px; width: 100%; border-radius: 6px; box-sizing: border-box; margin-top: 5px;">
-
-                <button type="submit" class="submit-btn">🚀 ዜናውን ከምስል ጋር በይፋ ልቀቅ (Publish News)</button>
+                <button type="submit" class="submit-btn">🚀 ዜናውን በይፋ ልቀቅ (Publish News)</button>
             </form>
         </div>
     </body>
     </html>
     `);
 });
-
 // 🔗 ፫. የተጫኑትን ዜናዎች በሙሉ ከክላውድ ዳታቤዝ አምጥቶ ወደ news.ejs መላኪያ መስመር
 // 🔗 ፫. የተጫኑትን ዜናዎች በሙሉ ከክላውድ ዳታቤዝ አምጥቶ ወደ ዋናው ገጽ (index.ejs) መላኪያ መስመር
 app.get('/news', async (req, res) => {
@@ -235,44 +230,35 @@ app.post("/upload", upload.single("photo"), async (req, res) => {
     }
 });
 
-// 📰 ዜና መለጠፊያ ተግባር (የሰርቨር ስህተት መከላከያ የተገጠመለት)
-app.post("/upload-news", upload.single("image"), async (req, res) => {
+/ ፪. ዜና እና ማስታወቂያዎችን በጽሑፍ ብቻ በክላውድ ዳታቤዝ ላይ መለጠፊያ ተግባር (ፍጹም አስተማማኝ)
+app.post("/upload-news", async (req, res) => {
     const title = req.body.title;
     const description = req.body.description;
-    const imageUrl = req.file ? '/images/' + req.file.filename : "";
+    const imageUrl = "/images/onion-field.jpg"; // ፎቶውን በትምህርት ቤቱ ፎቶ መቆለፊያ
 
-    // 💡 መቶ አለቃ፣ የፊደል ስህተትንና የዳታቤዝ ግጭትን ለመከላከል try-catch በጥንቃቄ ተገጥሟል
     try {
         if (!title || !description) {
             return res.send("እባክዎ ርዕስ እና መግለጫ በትክክል ይሙሉ!");
         }
 
-        // ወደ ዳታቤዝ ማስገባት
-        await db.query("INSERT INTO news (title, description, image) VALUES ($1, $2, $3)", [title, description, imageUrl]);
+        // መረጃውን ቀጥታ ወደ Neon ዳታቤዝ ያስቀምጠዋል
+        const queryText = 'INSERT INTO news (title, description, image) VALUES ($1, $2, $3)';
+        await db.query(queryText, [title, description, imageUrl]);
         
         res.send(`
-            <div style="font-family:sans-serif; text-align:center; margin-top:80px; background:#1a252f; padding:40px; max-width:500px; margin-left:auto; margin-right:auto; border-radius:12px; border:3px solid #fbbf24; color:white;">
-                <h2 style="color:#27ae60;">📰 ዜናው በዳታቤዝ ላይ በተሳካ ሁኔታ ተጭኗል!</h2>
+            <div style="font-family:'Segoe UI', sans-serif; text-align:center; margin-top:80px; background:#1a252f; padding:40px; max-width:500px; margin-left:auto; margin-right:auto; border-radius:12px; border:3px solid #fbbf24; color:white; box-shadow:0 10px 25px rgba(0,0,0,0.5);">
+                <h2 style="color:#27ae60; font-size:26px;">📰 ዜናው በተሳካ ሁኔታ በክላውድ ዳታቤዝ ላይ ታትሟል!</h2>
+                <p style="color:#ecf0f1; font-size:16px; margin-bottom:25px;">የምግብ ራስን መቻልና የአረንጓዴ ልማት መረጃው በይፋ ተለቋል።</p>
                 <br>
-                <a href="/admin-form" style="padding:10px 20px; background:#fbbf24; color:#000; text-decoration:none; border-radius:5px; font-weight:bold;">ሌላ አዲስ ዜና ጨምር</a>
+                <a href="/admin-form" style="padding:12px 25px; background:#fbbf24; color:#000; text-decoration:none; border-radius:5px; font-weight:bold; font-size:16px;">📢 ሌላ አዲስ ዜና ጨምር</a>
                 <br><br><br>
-                <a href="/news" style="color:#ecf0f1; text-decoration:none; font-weight:bold;">👉 ቀጥታ ወደ ዜናው ገጽ ሂድ</a>
+               <a href="/news" style="color:#e74c3c; font-weight:bold; text-decoration:none; font-size:16px;">👁️ ቀጥታ ወደ ዜናው ገጽ ሂድ</a>
             </div>
         `);
     } catch (err) {
-        // 💡 ሰርቨሩ ከመቆም ይልቅ ስህተቱ ምን እንደሆነ እዚህ ላይ በግልጽ ያሳየናል
-        res.send(`
-            <div style="font-family:sans-serif; padding:30px; max-width:600px; margin:50px auto; border:2px solid red; background:#fff5f5; border-radius:8px;">
-                <h3 style="color:red; margin-top:0;">⚠️ የዳታቤዝ ስህተት አጋጥሟል!</h3>
-                <p><strong>የስህተቱ መግለጫ፦</strong> ${err.message}</p>
-                <p>💡 <em>መፍትሔ፦</em> "news" የተባለው ሰንጠረዥ (Table) በዳታቤዝዎ ውስጥ መፈጠሩን እና አምዶቹ (title, description, image) በትክክል መኖራቸውን ያረጋግጡ።</p>
-                <br>
-                <a href="/admin-form">ወደ ፎርሙ ተመለስ</a>
-            </div>
-        `);
+        res.send("የዜና መጫን የሰርቨር ስህተት አጋጥሟል: " + err.message);
     }
 });
-
 
 // 👤 የአድሚን አካውንት መቀየሪያ ተግባር
 app.post("/change-admin", async (req, res) => {
