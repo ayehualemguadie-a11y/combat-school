@@ -47,10 +47,6 @@
 <!-- 🌐 ፩. የላይኛው ጥቁር ማውጫ መስመር (Top Navbar - Defense University Style) -->
 <div style="background-color: #0d1b2a; padding: 12px 20px; display: flex; justify-content: flex-start; align-items: center; gap: 15px; font-family: 'Segoe UI', sans-serif; box-sizing: border-box; border-bottom: 1px solid rgba(255,255,255,0.1); width: 100% !important; margin: 0 !important; flex-wrap: wrap; overflow: hidden;">
 
-<!-- 🔒 ሲነካ ፍጹም ዝም እንዲል የተቆለፈው አዲሱ የ About ዋና በተን መስመር -->
-<a href="javascript:void(0);" onclick="event.preventDefault(); return false;" style="color: white; text-decoration: none; font-weight: bold; cursor: default;">
-    About ▾
-</a>
 
     <!-- ሌሎች መደበኛ በተኖች (⚡ የ SERVICES ማውጫ ባለ ሁለት ተቆልቋይ ሆኖ በተሳካ ሁኔታ ተስተካክሏል!) -->
 <a href="/students.html" style="color: #cccccc; text-decoration: none; font-size: 14px; font-weight: 500; transition: 0.3s; white-space: nowrap;">view</a>
@@ -75,6 +71,9 @@
         </a>
         
     </div>
+<!-- 🟢 በጥቁሩ ማውጫ ላይ የተጨመረው አዲሱ የ Office Profile ሊንክ -->
+<a href="/offices.html" style="color: #cccccc; text-decoration: none; font-size: 14px; font-weight: 500; transition: 0.3s; white-space: nowrap;">Office Profile</a>
+
 </div>
 
 <!-- 💡 ይህ የ CSS ስታይል ማውሱ በ Services ላይ ሲያርፍ ዝርዝሩ በራሱ እንዲወርድና ዲዛይኑ እንዲያምር ያደርገዋል -->
@@ -148,9 +147,11 @@
     
     <!-- 🏢 ነጠላ የ OFFICES ተቆልቋይ ምናሌ -->
     <div class="edu-dropdown" style="display: inline-block; position: relative;">
-        <a href="/offices.html" style="color: white; text-decoration: none; font-weight: bold; padding: 10px 15px; display: inline-block;">
-            OFFICES ▾
-        </a>
+       <!-- 🔒 ሲነካ ፍጹም ዝም እንዲል የተቆለፈው እና የጣት ምልክቱ የጠፋበት አዲሱ የ OFFICES ራስ መስመር -->
+<a href="javascript:void(0);" onclick="event.preventDefault(); event.stopPropagation(); return false;" style="color: white; text-decoration: none; font-weight: bold; padding: 10px 15px; display: inline-block; cursor: default !important;">
+    OFFICES ▾
+</a>
+
         <div class="edu-dropdown-content">
             <a href="/commander.html">⭐ 1ኛ. ዋና አዛዥ</a>
             <a href="/logistics.html">📦 2ኛ. ም/አዛዥ ሥልጠና ድጋፍ</a>
