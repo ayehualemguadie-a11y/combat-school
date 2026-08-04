@@ -50,7 +50,42 @@
 
     <!-- ሌሎች መደበኛ በተኖች (💡 መቶ አለቃ Library የነበረው ወደ Services ተቀይሯል!) -->
     <a href="/about.html" style="color: #cccccc; text-decoration: none; font-size: 14px; font-weight: 500; transition: 0.3s; white-space: nowrap;">TRAININGS</a>
-    <a href="/services.html" style="color: #ffffff; text-decoration: none; font-size: 14px; font-weight: bold; transition: 0.3s; white-space: nowrap; border-bottom: 2px solid #fbbf24; padding-bottom: 2px;">Services</a>
+    <!-- ሌሎች መደበኛ በተኖች (⚡ የ SERVICES ማውጫ ባለ ሁለት ተቆልቋይ ሆኖ በተሳካ ሁኔታ ተስተካክሏል!) -->
+<a href="/offices.html" style="color: #cccccc; text-decoration: none; font-size: 14px; font-weight: 500; transition: 0.3s; white-space: nowrap;">OFFICES</a>
+<a href="/students.html" style="color: #cccccc; text-decoration: none; font-size: 14px; font-weight: 500; transition: 0.3s; white-space: nowrap;">view</a>
+
+<!-- 🔒 የ Services ዋና በተን (ሲነካ ምንም እንዳይሰራ ተቆልፏል፣ ማውስ ሲያርፍበት ግን Trainings እና Our Services ያወርዳል) -->
+<div class="services-dropdown" style="position: relative; display: inline-block;">
+    <a href="#" onclick="return false;" style="color: #ffffff; text-decoration: none; font-size: 14px; font-weight: bold; transition: 0.3s; white-space: nowrap; border-bottom: 2px solid #fbbf24; padding-bottom: 2px; cursor: default;">
+        Services ▾
+    </a>
+    
+    <!-- 🔽 ማውሱ ሲያርፍበት የሚወርደው ውቡ ባለ ሁለት ምርጫ ሳጥን -->
+    <div class="services-menu" style="position: absolute; top: 100%; left: 0; background: #1a252f; min-width: 160px; box-shadow: 0 8px 16px rgba(0,0,0,0.3); border-radius: 6px; display: none; border: 2px solid #fbbf24; z-index: 1000; padding: 5px 0; margin-top: 5px;">
+        
+        <!-- 1️⃣ አንደኛው ተቆልቋይ፦ Trainings (ቀጥታ ወደ ስልጠናዎቹ ዝርዝር about.html ይወስዳል) -->
+        <a href="/about.html" style="color: #fbbf24; padding: 10px 15px; text-decoration: none; display: block; font-size: 14px; font-weight: bold; border-bottom: 1px solid #34495e; transition: 0.2s;">
+            🏋️‍♂️ Trainings
+        </a>
+        
+        <!-- 2️⃣ ሁለተኛው ተቆልቋይ፦ Our Services (ወደ services.html ይወስዳል) -->
+        <a href="/services.html" style="color: #ffffff; padding: 10px 15px; text-decoration: none; display: block; font-size: 14px; font-weight: bold; transition: 0.2s;">
+            🛠️ Our Services
+        </a>
+        
+    </div>
+</div>
+
+<!-- 💡 ይህ የ CSS ስታይል ማውሱ በ Services ላይ ሲያርፍ ዝርዝሩ በራሱ እንዲወርድና ዲዛይኑ እንዲያምር ያደርገዋል -->
+<style>
+    .services-dropdown:hover .services-menu {
+        display: block !important;
+    }
+    .services-menu a:hover {
+        background-color: #2c3e50 !important;
+        color: #fbbf24 !important;
+    }
+</style>
     <a href="/offices.html" style="color: #cccccc; text-decoration: none; font-size: 14px; font-weight: 500; transition: 0.3s; white-space: nowrap;">OFFICES</a>
     <a href="/students.html" style="color: #cccccc; text-decoration: none; font-size: 14px; font-weight: 500; transition: 0.3s; white-space: nowrap;">view</a>
 
